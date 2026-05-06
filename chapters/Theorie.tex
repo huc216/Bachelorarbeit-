@@ -1,0 +1,780 @@
+\chapter{Theoretischer Hintergrund}
+
+	 \section{Funktionsprinzip Hydropulsanlage}
+Eine Hydropulsanlage dient im Allgemeinen dazu hydraulische Energie in mechanische Energie umzuwandeln. 
+Die Einsetzbarkeit einer Hydropulsanlage ist vielseitig. Die Anwendungsbereiche erstrecken sich von Bauteilcharakterisierung über quasistatische und dynamische Bauteilprüfung bis hin zu Vibrations- und Schockprüfung \cite{Instron}. Für diese Arbeit ist allerdings nur die dynamische Bauteilprüfung relevant. 
+Oft wird die Hydropulsanlage als eine servohydraulische Prüfmaschine bezeichnet \cite{thkoelln2018}. Der Begriff Servohydraulik beschreibt dabei alle hydraulischen Systeme, bei denen geregelte und gesteuerte Volumenströme Anwendung finden. Ein servohydraulisches System umfasst eine Pumpe mit Antrieb, Leitungen, Ventile, Aktoren und einen Tank \cite{bfhydraulik}.
+
+\textbf{Vielleicht kurz den Unterschied zwischen Kraft und Wegregelung erklären. Ich muss hier noch Bilder der Anlage einfügen. } 
+
+	\section{Mechanische Grundlagen}
+Zum Verständnis der Versuchsauswertungen des Scherzugversuches und des Schwingfestigkeitsversuches sind die Definitionen einiger Begriffe aus der Festigkeitslehre notwendig. 
+
+	\subsection{Beanspruchungsarten}
+	\label {subsec: Beanspruchungsarten}
+Die Beanspruchungsart gibt wieder, in welche Richtung eine Kraft von außen auf ein Bauteil wirkt und führt dementsprechend zu unterschiedlicher Verformung des Bauteils. Die grundlegenden Beanspruchungsarten sind Zug-, Druck-, Schub-, Biege-, Torsions- und Knickbeanspruchungen, sowie aus diesen genannten Beanspruchungsarten zusammengesetzte Beanspruchungen  \cite[Seite 4-7]{HolzmannMeyerSchumpich2020}. Relevant für die Versuchsauswertung des Scherzugversuches ist die Schubbeanspruchung und für den Wöhlerversuch die Zugbeanspruchung. 
+
+	\subsection{Spannungsbegriffe}
+Wird ein Bauteil von außen durch eine der in Kapitel \ref{subsec: Beanspruchungsarten} genannten Beanspruchungsarten belastet, so wirken dieser Belastung innere Kräfte entgegen. Diese sind entgegengerichtet zur äußeren Kraft und gleich groß, um ein Kräftegleichgewicht aufrecht zu erhalten. Mit der Gleichgewichtsbedingung aus der Statik, wird dies in der Formel \Eqref{eq:Kraeftebilanz} allgemein ausgedrückt. Es ist zu sehen, dass die Summe aller Kräfte gleich null sein muss \cite[Seite 9-10]{Balke2008}.
+
+    \begin{equation}\label{eq:Kraeftebilanz}
+        \sum_{i=1}^{n} \mathbf{F}_i = 0.
+    \end{equation}
+
+In \Figref{fig:Rundstab_mit_Zugkraft} werden die inneren Kräfte exemplarisch an einem Schnittufer einer Rundprobe angetragen, die beidseitig mit einer Zugkraft belastet wird \cite[Seite 202]{KabusFestigkeitslehre2023}. 
+
+\begin{figure}[H]
+    \centering
+\begin{tikzpicture}[scale=1.2, every node/.style={scale=0.9}, >=latex]
+
+    % --- 1. DEFINITIONEN ---
+    \def\stabbreite{5.5}
+    \def\stabhöhe{0.8}
+    \def\schnittpos{2.5}
+
+    % --- 2. OBERER GESAMTSTAB (Ausschnitt) ---
+    \begin{scope}[shift={(0,0)}]
+        \draw[thick] (0,0) rectangle (\stabbreite, \stabhöhe);
+        \draw[dashed, gray] (-0.5, 0.4) -- (\stabbreite+0.5, 0.4);
+        
+        % Äußere Kräfte
+        \draw[->, ultra thick] (0, 0.4) -- (-1.2, 0.4) node[left] {$F$};
+        \draw[->, ultra thick] (\stabbreite, 0.4) -- (\stabbreite+1.2, 0.4) node[right] {$F$};
+        
+        % Schnittlinie
+        \draw[thick, xshift=\schnittpos cm, yshift=0cm] 
+            decorate[decoration={zigzag, segment length=5pt, amplitude=2pt}] {(0,0) -- (0,\stabhöhe)};
+        
+        % Querschnittsfläche (Berührt oben und unten)
+        \draw[pattern=north east lines, draw=black] (\stabbreite-0.8, 0.4) ellipse (0.3 and 0.4);
+        
+        % Beschriftung nach links verschoben
+        \node (flaeche_text) at (\stabbreite-1.1, -0.6) {Querschnittsfläche $A$};
+        % Pfeil startet nun mittig über dem Text und zeigt zur Fläche
+        \draw[->, thick] (flaeche_text.north) -- (\stabbreite-0.8, 0.15);
+    \end{scope}
+
+    % --- 3. LINKES SCHNITTUFER ---
+    \begin{scope}[shift={(0,-2.2)}]
+        \draw[thick] (0,0) -- (\schnittpos,0);
+        \draw[thick] (0,\stabhöhe) -- (\schnittpos,\stabhöhe);
+        \draw[thick] (0,0) -- (0,\stabhöhe);
+        \draw[thick, xshift=\schnittpos cm, yshift=0cm] 
+            decorate[decoration={zigzag, segment length=5pt, amplitude=2pt}] {(0,0) -- (0,\stabhöhe)};
+        
+        \draw[->, ultra thick] (0, 0.4) -- (-1.2, 0.4) node[left] {$F$};
+        \draw[->, ultra thick] (\schnittpos, 0.4) -- (\schnittpos+1.0, 0.4) node[right] {$F_i$};
+        
+        \coordinate (S1) at (\schnittpos, 0.1);
+    \end{scope}
+
+    % --- 4. RECHTES SCHNITTUFER ---
+    \begin{scope}[shift={(\schnittpos+0.8, -3.4)}]
+        \draw[thick] (0,0) -- (\stabbreite-\schnittpos, 0);
+        \draw[thick] (0,\stabhöhe) -- (\stabbreite-\schnittpos,\stabhöhe);
+        \draw[thick] (\stabbreite-\schnittpos, 0) -- (\stabbreite-\schnittpos, \stabhöhe);
+        \draw[thick, xshift=0cm, yshift=0cm] 
+            decorate[decoration={zigzag, segment length=5pt, amplitude=2pt}] {(0,0) -- (0,\stabhöhe)};
+        
+        \draw[->, ultra thick] (\stabbreite-\schnittpos, 0.4) -- (\stabbreite-\schnittpos+1.2, 0.4) node[right] {$F$};
+        \draw[->, ultra thick] (0, 0.4) -- (-1.0, 0.4) node[left] {$F_i$};
+        
+        \coordinate (S2) at (0, 0.7);
+    \end{scope}
+
+    % --- 5. BESCHRIFTUNG SCHNITTUFER ---
+    \node (text_schnitt) at (3.9, -2.2) {Schnittufer};
+    \draw[->, thick] (text_schnitt.west) -- (S1);
+    \draw[->, thick] (text_schnitt.west) -- (S2);
+
+\end{tikzpicture}
+            \caption{Rundstab mit Zugkraft \cite[Seite 202]{KabusFestigkeitslehre2023}.}
+	  \label{fig:Rundstab_mit_Zugkraft}
+\end{figure}
+
+Da bei der Zugkraft die Kräfte normal zur Ebene angreifen, wird die Kraft daher auch Normalkraft $F_N$ genannt \cite[Seite 4-7]{HolzmannMeyerSchumpich2020}.
+Für das Beispiel in \Figref{fig:Rundstab_mit_Zugkraft} kann nun das Kräftegleichgewicht gemäß \Eqref{eq:Kraeftebilanz} aufgestellt werden:
+
+     \begin{equation}\label{eq:Kraeftegleichgewicht}
+        -F_N + \sigma A = 0.
+    \end{equation}
+
+Dabei ist $F_N$ die Zugkraft, die von Außen auf das Bauteil wirkt und  $\sigma A$ steht für die innere Kraft, die der äußeren Kraft entgegenwirkt, bestehend aus der Spannung und der beanspruchten Fläche des Bauteils.
+Wenn nun die innere Kraft auf die beanspruchte Querschnittsfläche bezogen wird, ensteht der Begriff der Spannung und es folgt \Eqref{eq:Zugspannung}:
+
+    \begin{equation}\label{eq:Zugspannung}
+        \sigma = \frac{F_N}{A}\,.
+    \end{equation}
+
+Ist die Spannung $\sigma >0 $ wird sie als Zugspannung definiert und ist die Spannung $\sigma < 0$ handelt es sich um eine Druckspannung \cite[Seite 9-10]{Balke2008}.
+Diese Spannung findet sich im Wöhlerversuch wieder. 
+
+Der Spannungsbegriff lässt sich nochmals in Normalspannung und Tangentialspannung unterteilen. Diese beiden Spannungen unterscheiden sich durch die unterschiedliche Krafteinwirkung. Normalspannungen entstehen durch senkrecht auf die Fläche auftretenden Kräfte. Tangentialspannungen hingegen treten immer dann auf, wenn Kräfte in der Schnittebene - auch Querkräfte $F_Q$ genannt - auftreten. Analog zu \Eqref{eq:Zugspannung} ergibt sich die Tangentialspannung in \Eqref{eq:Schubspannung} \cite[Seite 206]{KabusFestigkeitslehre2023}: 
+
+    \begin{equation}\label{eq:Schubspannung}
+        \tau = \frac{F_Q}{A}\,.
+    \end{equation}
+
+Die Tangentialspannung dient der Bewertung der Nietverbindung im Scherzugversuches.
+Diese grundlegenden Definitionen stellen die Grundlage für die Auswertung der Spannungszustände in den Versuchen dar. 
+
+	\subsection{Elastische und plastische Verformung}	
+Elastische und plastische Verformungen sind die Auswirkung einer Beanspruchung und damit einer wirkenden Spannung.
+Bei der elastischen Verformung bewegt sich das Bauteil nach Entlastung wieder in die Ausgangslage zurück, wohingegen bei plastischer Verformung dies nicht der Fall ist. 
+Wenn ein Bauteil rein elastisch verformt wird, so gilt das folgende Hooke'sche Gesetz (\Eqref{eq:Dehnung}), welches die Proportionalität zwischen Spannung und Dehnung aufzeigt, verknüpft mit dem werkstoffspezifischen E-Modul. 
+
+    \begin{equation}\label{eq:Dehnung}
+    \sigma = E \cdot \varepsilon 
+    \end{equation}
+
+Bei dem statischen Zugversuch verformt sich das Bauteil unter der Streckgrenze elastisch und über der Streckgrenz sowohl elastisch als auch plastisch. Bei zyklischer Belastung hingegen tritt eine plastische Verformung auch unterhalb der Streckgrenze auf. Der Grund dafür folgt im nächsten Kapitel. \textbf{Quelle! + nochmal überarbeiten}
+
+	\subsection{Gitterfehler}
+Die sogennanten Ermüdungsrisse, die bei zyklischer Belastung entstehen, werden durch die Mikrostruktur der Metalle begünstigt. Explizit handelt es sich bei Metallen um Realkristalle, die sich durch ihre fehlerhafte Gitterstruktur auszeichnen. Diese Gitterfehler, die zunächst zu Mikrorissen und später zu einem Bruch führen können gilt es in Punkt-, Linien-, Flächen-, und Raumdefekte zu unterscheiden. Zu den Punktdefekten gehören Leerstellen. Als Liniendefekt gibt es die Versetzungen. Flächendefekte sind zum Beispiel Korngrenzen und Stapelfehler.  Zu den räumlichen Defekten gehören Poren, Einschlüsse und Ausscheidungen \cite[Seite 55]{Werkstoffkunde2015}. Wichtig für die Entstehung von Ermüdungsrissen sind von den Punktdefekten die Leerstellen und von den Liniendefekten die Versetzungen. Die Entstehung von Ermüdungsrissen basiert auf dem Vorhandensein von Leerstellen und der Bewegung von Versetzungen.
+
+Bei idealen Kristallen ist jeder Platz in der Gitterstruktur mit einem Atom belegt. Bei einem Realkristall hingegen gibt es unebsetzte Gitterplätze, also die bereits erwähnten Leerstellen. Dadurch können die Atome leichter diffundieren, wodurch wiederum die plastische Verformung begünstigt wird. Wenn sich ein Bauteil beginnt plastisch zu verformen, nimmt des Weiteren auch die Anzahl der Leerstellen zu \cite[Kapitel 2.2.1]{Werkstofftechnik2018}.
+
+Damit sich Versetzungen bewegen können, muss die Gleitebene parallel zur Ebene der größten Schubspannung liegen, auf der dann die Versetzungen bis zu einem Hindernis, oft eine Korngrenze oder Ausscheidungen, wandern können. \\ Als Grundlage für die plastische Verformung bei zyklischer Beanspruchung dienen einige wenige Versetzungen, die sich unter der Streckgrenze bereits bewegen können. Wenn sich die Versetzungen an Korngrenzen aufstauen, erzeugt dies Spannungen im Nachbarkristall und es können sich dann dort auch Versetzungen bewegen. In dem ersten halben Zyklus, in dem eine Zugspannung auf das Bauteil wirkt, entsteht durch das Wandern der Versetzungen eine Gleitverschiebung $\Delta s$. Bei einem Spannungsrichtungswechsel von Zug auf Druck, würden die Versetzungen wieder auf der gleichen Gleitbene zurückwandern, jedoch wird diese Rückbewegung durch die Oxidation des Metalls an der neu entstandenen Oberfläche, verhindert. Dadurch erfolgt die Rückgleitung der Versetzungen auf einer parallelen Gleitebene, dargestellt in Teilbild b) in \Figref{fig:gleitbaender-mechanismus}, um wieder in die andere Richtung wandern zu können. Mit jedem Belastungszyklus wiederholt sich dieser Vorgang und es entstehen an der Oberfläche sogenannte Intrusionen und Extrusionen \cite[Seite 265-267]{Werkstofftechnik-Praktikum2021}. 
+
+\begin{figure}[H] 
+    \centering
+\begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}]
+    \tikzset{
+        oberflaeche/.style={ultra thick},
+        gleitlinie/.style={thin},
+        gleitband_rand/.style={thick},
+        spannungskurve/.style={thick}
+    }
+
+    \foreach \x / \label / \stage in {0/a/1, 3.5/b/2, 7/c/3, 10.5/d/4, 14/e/5} {
+        \begin{scope}[xshift=\x cm]
+            % Gestrichelter Rahmen rechts
+            \draw[dashed] (1,0) -- (2.5,0) -- (2.5,5) -- (1,5);
+            
+            % --- Geometrie ---
+            \ifnum \stage=1 % a)
+                \draw[oberflaeche] (0.5,0) -- (0.5,2); 
+                \draw[thick] (0.5,2) -- (0.8,2.3); 
+                \draw[oberflaeche] (0.8,2.3) -- (0.8,5); 
+                \draw[gleitband_rand] (0.5,2) -- (2.5,4);
+                \draw[->] (1.2, 3.0) -- (1.6, 3.4) node[midway, sloped, above=0.1cm] {$\Delta s$};
+                \draw[<-] (0.8, 4) -- (-0.2, 4) node[left, align=right] {Oberfläche\\alt};
+                \draw[<-] (0.65, 2.15) -- (-0.2, 2.15) node[left, align=right] {neu};
+                \draw[->, thick] (1.5, 5.2) -- (1.5, 5.8) node[right] {$\sigma$};
+            \fi
+
+            \ifnum \stage=2 % b)
+                \draw[oberflaeche] (0.5,0) -- (0.5,1.6);
+                \draw[oberflaeche] (0.5,1.9) -- (0.5,5);
+                \draw[thick] (0.5,1.6) -- (0.7,1.8); 
+                \draw[thick] (0.7,1.77) -- (0.7,2.1); 
+                \draw[thick] (0.7,2.1) -- (0.5,1.9); 
+                \draw[gleitband_rand] (0.7,1.79) -- (2.5,3.59); 
+                \draw[gleitband_rand] (0.7,2.1) -- (2.5,3.9); 
+                \draw[->, >=stealth] (1.5, 3.3) -- (1.1, 2.9); 
+            \fi
+
+            \ifnum \stage=3 % c) KORREKTUR: Wand zurück auf x=0.7, kleiner Strich nach rechts verschoben
+                \draw[oberflaeche] (0.5,0) -- (0.5,1.6); % Untere Wand
+                \draw[oberflaeche] (0.7,2.0) -- (0.7,5); % Obere Wand bleibt bei 0.7
+                
+                % Schräge Verbindungslinie (Top)
+                \draw[thick] (0.7,2.0) -- (2.5,3.8); 
+                
+                % Kleine Linie verschoben: Schräge zu x=0.85, vertikaler Strich bei 0.85
+                \draw[thick] (0.5,1.6) -- (0.85,1.9); 
+                \draw[thick] (0.85,1.9) -- (0.85,2.02); % Der verschobene kleine Strich
+                \draw[thick] (0.9,2.05) -- (0.9,2.2);  % Schräge zurück zur Wand
+                
+                % Gleitbänder (starten am verschobenen Strich)
+                \draw[gleitband_rand] (0.85,1.9) -- (2.5,3.55); %unterste linie
+                \draw[gleitband_rand] (0.85,2.02) -- (2.5,3.67);
+                \draw[->] (1.3, 3.0) -- (1.7, 3.4);
+            \fi
+
+            \ifnum \stage=4 % d)
+                \draw[oberflaeche] (0.5,0) -- (0.5,1.6);
+                \draw[oberflaeche] (0.5,1.9) -- (0.5,5);
+                \draw[thick] (0.5,1.6) -- (0.7,1.8) -- (0.7,1.9) -- (0.8,2.0) -- (0.8,2.1) -- (0.9,2.2) -- (0.9,2.3) -- (0.5,1.9);
+                \draw[gleitband_rand] (0.7,1.8) -- (2.5,3.6);
+                \draw[gleitband_rand] (0.7,1.9) -- (2.5,3.7);
+                \draw[gleitband_rand] (0.8,2.0) -- (2.5,3.7);
+                \draw[gleitband_rand] (0.8,2.1) -- (2.5,3.8);
+                \draw[gleitband_rand] (0.9,2.2) -- (2.5,3.8);
+                \draw[gleitband_rand] (0.9,2.3) -- (2.5,3.9);
+                \node[rotate=45, anchor=south] at (1.7,2.0) {Gleitband};
+                \node[anchor=south west] at (0.6,0.3) {Intrusion};
+                \draw[<-] (1.2, 3.0) -- (1.6, 3.4);
+            \fi
+
+            \ifnum \stage=5 % e)
+                \draw[oberflaeche] (0.5,0) -- (0.5,1.6);
+                \draw[oberflaeche] (0.5,1.9) -- (0.5,5);
+                \draw[thick] (0.5,1.6) -- (0.2,1.3) -- (0.2,1.6) -- (0.5,1.9);
+                \draw[gleitband_rand] (0.2,1.3) -- (2.5,3.6);
+                \draw[gleitband_rand] (0.2,1.6) -- (2.5,3.9);
+                \node[anchor=south west] at (0.45,0.3) {Extrusion};
+            \fi
+
+            % --- Diagramme ---
+            \ifnum \stage<5
+            \begin{scope}[yshift=-1.8cm, scale=0.6, xshift=0.5cm]
+                \draw[->] (0,0) -- (2.5,0) node[right] {$t$};
+                \draw[->] (0,0) -- (0,1.5) node[above] {$\sigma$};
+                \ifnum \stage=1 \draw[spannungskurve] (0.5,0) .. controls (1,0) and (1,1) .. (1.5,1); \fi
+                \ifnum \stage=2 \draw[spannungskurve] (0.1,0) .. controls (0.4,0) and (0.4,1.2) .. (0.7,1.2) .. controls (1.0,1.2) and (1.0,0) .. (1.3,0); \fi
+                \ifnum \stage=3 \draw[spannungskurve] (0.1,0) .. controls (0.4,0) and (0.4,1.2) .. (0.7,1.2) .. controls (1,1.2) and (1,0) .. (1.3,0) .. controls (1.6,0) and (1.6,1.2) .. (1.9,1.2); \fi
+                \ifnum \stage=4 \draw[spannungskurve] (0.1,0) .. controls (0.4,0) and (0.4,1.2) .. (0.7,1.2) .. controls (1,1.2) and (1,0) .. (1.3,0) .. controls (1.6,0) and (1.6,1.2) .. (1.9,1.2) .. controls (2.2,1.2) and (2.2,0) .. (2.5,0); \fi
+            \end{scope}
+            \fi
+            
+            \node at (1.25,-2.7) {(\label)};
+        \end{scope}
+    }
+
+\end{tikzpicture}
+    \caption{Entstehung von Gleitbändern, sowie Intrusionen und Extrusionen infolge zyklischer Beanspruchung (eigene Darstellung in Anlehnung an \cite[Seite 8]{Ermüdungsfestigkeit2007}).}
+    \label{fig:gleitbaender-mechanismus}
+\end{figure}
+
+Zusammengefasst ist die Versetzungsbewegung ist also die Grundlage der plastischen Verformung. Die plasstische Verformung des Bauteils führt dann zu Intrusionen und Extrusionen, an denen sich Risskeime ausbilden und ein Anriss entsteht. 
+
+Der Rissvorgang, der meist an den Instrusionen beginnt, kann in drei Rissstadien unterteilt werden. Im ersten Rissstadium bilden sich Anrisse, die sich so lange entlang der Gleitebene weiter ausbilden, bis die Kerbwirkung zu groß ist und der Riss, in Rissstadium zwei den Verlauf zur größten Normalspannung sucht. \Figref{fig:Rissausbreitung} veranschaulicht wie die Anrisse von der Oberfläche links ausgehen und sich ein Anriss weiter ins Bauteilinnere ausbreitet und ab einer gewissen Tiefe im Bauteil horizontal weiter verläuft. Auffallend ist, dass die Rissausbreitung nicht an den Korngrenzen entlang verläuft, sondern durch die einzelnen Körner hindurch. 
+
+Bei der Zug- Druckbealstung wir der Riss bei jeder Schwingung auseinander gezogen und dann wieder etwas zusammengedrückt. Was zur Folge hat, dass der Riss bei jeder Schwingung wächst.
+Da die Rissgröße pro Schwingung zunimmt, sinkt folglich die tragende Fläche und die Spannung erhöht sich nach \Eqref{eq:Zugspannung}. Wenn die Zugfestigkeit erreicht ist tritt Rissstadium drei ein und es erfolgt der restliche Gewaltbruch \cite[Seite 267-269]{Werkstofftechnik-Praktikum2021}. 
+
+Bei dem Wöhlerversuch sind es eben diese Mikrorisse, die schließlich zum Versagen des Bauteils führen. Deshalb wird untersucht, wie viele Lastspiele das Material aushält, bevor die Summe der Mikrorisse zu einer Schädigung des Bauteils führen.
+
+	\subsection{Schwingungen}
+Bei dem Wöhlerversuch erfährt das Bauteil eine zyklische Spannungsänderung, die auch als mechanische Schwingung bezeichnet wird. 
+\Figref{fig:Lastzeitverlaeufe} stellt die beiden Schwingungsarten gegenüber.
+Auf der einen Seite zeigt Teilbild b) die allgemeine dynamische Schwingung, wie sie auch häufig in der Praxis auftritt, und auf der anderen Seite wird die periodische Sinusschwingung in Teilbild a) dargestellt. Da die allgemeine dynamische Schwingung jedoch zu komplex zum Nachbilden für Versuche ist, wird für den Wöhlerversuch eine periodische Schwingung gemäß Teilbild a) verwendet. 
+Um zu gewährleisten, dass die Schwingungen reproduzierbar sind, werden in Teilbild a) die veranschaulichten charakteristischen Größen definiert. Diese umfassen die Oberspannung $\sigma_{\text{max}}$, die Unterspannung $\sigma_{\text{min}}$, die Mittelspannung $\sigma_m$ sowie die Spannungsamplitude $\sigma_a$ (siehe Symbole \Figref{fig:Lastzeitverlaeufe} a) \cite[Seite 269 und Seite 270]{Werkstofftechnik-Praktikum2021}. Hinweisend wird darauf aufmerksam gemacht, dass die Sinuskurve hier nur der Erläuterung der Spannungen dient. In der Praxis kommen oftmals auch Dreiecks- oder Rechtecksbelastungen zum Einsatz. \textbf{Quelle!}
+
+\begin{figure}[H]
+    \centering
+\begin{tikzpicture}[scale=1.1, every node/.style={scale=1}, >=latex, font=\fontsize{12}{14.4}\selectfont]
+
+    % --- LINKES BILD (a): Harmonischer Verlauf (noch ein Stück höher) ---
+    \begin{scope}[shift={(0,0)}]
+        % Achsen
+        \draw[->] (0,-0.5) -- (0,4.2) node[left, rotate=90, yshift=12pt] {Spannung $\sigma$};
+        \draw[->] (0,0) -- (6,0) node[below] {Zeit $t$};
+        
+        % Mittellinie (dash dot) jetzt auf y=1.9
+        \draw[dash dot, thick] (0,1.9) -- (6,1.9);
+
+        % Sinuskurve (Offset 1.9, Amplitude 1.3 -> Schwingt von 0.6 bis 3.2)
+        \draw[very thick] plot[domain=0:5.5, samples=150] (\x, {1.9 + 1.3*sin(\x*200)});
+
+        % Schwarze Hilfslinie am Wellenberg (bei y=3.2)
+        \draw[thick] (2.2, 3.2) -- (3.5, 3.2);
+
+        % --- Bemaßung ---
+        
+        % 1 Zyklus / Schwingspiel
+        \draw[<->] (0,4.0) -- (1.8,4.0) node[midway, above, align=center] {1 Zyklus = \\1 Schwingspiel};
+        \draw[thin] (1.8,1.9) -- (1.8,4.0);
+        
+        % sigma_a (oben)
+        \draw[<->] (0.45,1.9) -- (0.45,3.2) node[midway, left, rotate=90, anchor=south, yshift=-3pt] {$\sigma_a$};
+        
+        % sigma_min = sigma_unten (Abstand Achse zu Wellental bei y=0.6)
+        \draw[<->] (1.35,0) -- (1.35,0.6) node[midway, left, rotate=90, anchor=south] {$\sigma_{\text{min}}$};
+        
+        % sigma_m (Mittelspannung bis y=1.9)
+        \draw[<->] (2.25,0) -- (2.25,1.9) node[midway, left, rotate=90, anchor=south] {$\sigma_m$};
+        
+        % 2*sigma_a (Abstand 0.6 bis 3.2)
+        \draw[<->] (3.15,0.6) -- (3.15,3.2) node[midway, left, rotate=90, anchor=south, xshift=11pt] {$2\sigma_a$};
+        
+        % sigma_max = sigma_oben (Von Achse bis y=3.2)
+        \draw[<->] (4.05,0) -- (4.05,3.2) node[midway, left, rotate=90, anchor=south, xshift=-3pt] {$\sigma_{\text{max}}$};
+        
+        \node at (-0.5,-0.6) {a)};
+    \end{scope}
+
+    % --- RECHTES BILD (b): Stochastischer Verlauf ---
+    \begin{scope}[shift={(8,0)}] 
+        \draw[->] (0,-0.5) -- (0,4.2) node[left, rotate=90, yshift=12pt] {Spannung $\sigma$};
+        \draw[->] (0,0) -- (6,0) node[below] {Zeit $t$};
+        
+        % Stochastische Kurve (ebenfalls auf Offset 1.9 angepasst)
+        \draw[very thick] plot[domain=0:5.5, samples=150] (\x, 
+            {1.9 + 0.7*sin(\x*500) + 0.4*cos(\x*800) + 0.5*sin(\x*200) + 0.3*sin(\x*1200)});
+            
+        \node at (-0.5,-0.6) {b)};
+    \end{scope}
+
+\end{tikzpicture}
+\caption{Lastzeitverläufe: a) Kenngrößen am Beispiel einer periodischen Sinusschwingung, b) stochastische Betriebslast (Eigene Darstellung in Anlehnung an \cite[Seite 269 und Seite 270]{Werkstofftechnik-Praktikum2021}).}
+\label{fig:Lastzeitverlaeufe}
+\end{figure}
+
+Bei dem Wöhlerversuch wird die Mittelspannung $\sigma_m$  konstant gehalten und für jede Probe eine unterschiedliche Spannungsamplitude $\sigma_a$ gewählt.
+Für die Zusammenhänge der Kenngrößen sind folgende Formeln von Bedeutung. 
+
+Die Mittelspannung lässt sich mit der Formel in \Eqref{eq:Mittelspannung} berechnen. 
+
+\begin{equation}\label{eq:Mittelspannung}
+\sigma_m = \frac{\sigma_{\text{max}} + \sigma_{\text{min}}}{2}
+\end{equation}
+
+Die Spannungsamplitude kann nach \Eqref{eq:Spannungsamplitude} ermittelt werden.
+
+\begin{equation}\label{eq:Spannungsamplitude}
+\sigma_a = \frac{\sigma_{\text{max}} - \sigma_{\text{min}}}{2}
+\end{equation}
+
+Eine weitere wichtige Größe ist das Spannungsverhältnis R in \Eqref{eq:Ruhegrad}. Dieses gibt das Verhältnis von Unterspannung zu Oberspannung an \cite[Seite 270]{Werkstofftechnik-Praktikum2021}.
+
+\begin{equation}\label{eq:Ruhegrad}
+R_{\sigma} = \frac{\sigma_{\text{min}}}{\sigma_{\text{max}}}
+\end{equation}
+
+Der zeitliche Verlauf einer Beanspruchung hat Einfluss auf die Lebensdauer eines Bauteils. Trägt man die Beanspruchung über die Zeit auf, dann lassen sich drei verschiedene Bereiche gegenüberstellen. 
+
+\begin{figure}[H]
+    \centering
+\begin{tikzpicture}[>=Stealth, font=\sffamily\small]
+
+    % --- 1. PARAMETER ---
+    \def\m{0.375} 
+    \def\amp{1.4} 
+
+    % --- 2. KOORDINATENSYSTEM ---
+    \draw[->, thick] (-8,0) -- (8,0) node[right] {Zeit $t$};
+    \draw[->, thick] (0,-4) -- (0,4.5) node[above] {Spannung $\sigma$};
+    \node[right] at (0.1, 4.1) {Zug +};
+    \node[right] at (0.1, -3.7) {Druck --};
+
+% --- 3. HÜLLKURVEN ---
+% + 1.0 am Ende der y-Klammer verschiebt die Linie nach oben
+\draw[dashed, gray] (-7.5, {\m*(-7.5) + \amp + 0.1}) -- (7.5, {\m*(7.5) + \amp + 0.1}) node[right, black] {$\sigma_{\text{max}}$};
+\draw[dashed, gray] (-7.5, {\m*(-7.5) - \amp - 0.05}) -- (7.5, {\m*(7.5) - \amp - 0.05}) node[right, black] {$\sigma_{\text{min}}$};
+
+    % --- 4. OPTIMIERTES MAKRO ---
+    \newcommand{\perfectwave}[2]{
+        \pgfmathsetmacro{\midy}{\m*#1}
+        
+        \draw[blue!80!black, thick] plot[domain=#1-0.45:#1+0.45, samples=100] 
+            (\x, {\midy + \amp*sin((\x-#1+0.45)/0.9*360)});
+        
+        \draw[dashed, thin] (#1-0.6, \midy) -- (#1+0.6, \midy);
+       
+        \pgfmathparse{abs(\midy) > 0.1 ? 1 : 0}
+        \ifnum\pgfmathresult=1
+            \draw[<->] (#1, 0) -- (#1, \midy);
+        \fi
+        
+        % Hauptbeschriftung über der Welle (jetzt explizit scriptsize)
+        \node[above, yshift=8pt] at (#1, {\midy + \amp}) {\scriptsize #2};
+    }
+
+    % --- 5. LASTFÄLLE ---
+    % 1. Hälfte: sigma_m rechts vom Pfeil
+% 1. Hälfte: sigma_m rechts vom Pfeil
+    \perfectwave{-6.5}{} % Hier das zweite Argument leer lassen
+    \node[above] at (-6.5, 0.1) {\scriptsize $|\sigma_m| > \sigma_a$}; % Positioniert den Text kurz über der x-Achse
+    \node[right] at (-6.4, -1.2) {\scriptsize $\sigma_m$}; 
+
+    \perfectwave{-4.0}{$|\sigma_m| = \sigma_a$} 
+    \node[right] at (-3.9, -0.7) {\scriptsize $\sigma_m$};
+
+    \perfectwave{-2.0}{$|\sigma_m| < \sigma_a$} 
+    \node[right] at (-1.9, -0.4) {\scriptsize $\sigma_m$};
+
+    % Mitte
+    \perfectwave{0}{$\sigma_m = 0$}          
+
+    % 2. Hälfte: sigma_m links vom Pfeil
+    \perfectwave{2.0}{$\sigma_m < \sigma_a$}  
+    \node[left] at (1.9, 0.4) {\scriptsize $\sigma_m$};
+
+    \perfectwave{4.0}{$\sigma_m = \sigma_a$}  
+    \node[left] at (3.9, 0.7) {\scriptsize $\sigma_m$};
+
+    \perfectwave{6.5}{$\sigma_m > \sigma_a$} 
+    \node[left] at (6.4, 1.2) {\scriptsize $\sigma_m$};
+
+
+    % --- 6. UNTERE BESCHRIFTUNG ---
+    \begin{scope}[shift={(0,-4.8)}]
+        \draw[thick] (-7.5,0) -- (7.5,0);
+        \draw (-3.5, 1.0) -- (-3.5, -1.0); 
+        \draw (3.3, 1.0) -- (3.3, -1.0);  
+        
+        \node at (-6.3, 0.3) {\scriptsize $1 < R_\sigma < \infty$};
+        \node at (-4.2, 0.3) {\scriptsize $R_\sigma = \infty$};
+        \node at (-2.1, 0.3) {\scriptsize $-\infty < R_\sigma < -1$};
+        \node at (0, 0.3)    {\scriptsize $R_\sigma = -1$};
+        \node at (2.2, 0.3)  {\scriptsize $-1 < R_\sigma < 0$};
+        \node at (4.0, 0.3)  {\scriptsize $R_\sigma = 0$};
+        \node at (6.3, 0.3)  {\scriptsize $0 < R_\sigma < 1$};
+        
+        \draw[<->, >=stealth] (-3.4, -0.3) -- (-1.2, -0.3) node[midway, below, scale=0.8] {Druck-};
+        \draw[<->, >=stealth] (1.2, -0.3) -- (3.2, -0.3) node[midway, below, scale=0.8] {Zug-};
+
+        \node[below] at (-5.5, -0.1) {\footnotesize Druckschwellbereich};
+        \node[below] at (0, -0.7) {\footnotesize Wechselbereich};
+        \node[below] at (5.5, -0.1) {\footnotesize Zugschwellbereich};
+    \end{scope}
+
+\end{tikzpicture}
+    \caption{Lastfälle schwellend und wechselnd (Eigene Darstellung in Anlehnung an \cite[Seite 271]{Werkstofftechnik-Praktikum2021}, ergänzt um Betragsstriche nach \cite[Seite 17]{Ermüdungsfestigkeit2007}).}
+    \label{fig:lastfaelle}
+\end{figure}
+
+Die dynamischen Lastfälle lassen sich in schwellende und wechselnde Belastung unterteilen.
+Schwellende Lastfälle zum Beispiel treten bei einer Druckfeder auf, die immer wieder be- und entlastet wird. Dabei bewegt sich die Feder nach der Entlastung stets in die Ausgangslage zurück, in der die Spannung gleich null ist. Wechselnde Lastfälle entstehen dagegen, wenn das Bauteil abwechselnd auf Zug und Druck belastet wird, wie zum Beispiel eine Pleuelstange in einem Verbrennungsmotor \cite{teclehrerfreund2015}.
+
+Wird ein statischer Lastfall betrachtet, so geht es vorwiegend um die Zugfestigkeit, also die Maximalspannung, die ein Werkstoff vor seinem Bruch ertragen kann \cite[Seite 117]{HibbelerTechnischeMechanik2013}, sowie die Streckgrenze. Bei den dynamischen Lastfällen kann aufgrund der zeitlich veränderlichen Belastung eine Probe auch unterhalb der Zugfestigkeit versagen beziehungsweise brechen und erleidet einen sogennanten Ermüdungsschaden \cite[Seite 1]{Ermüdungsfestigkeit2007}. Deshalb spielt bei dynamsichen Belastungen der Begriff Ermüdungsfestigkeit eine große Rolle. Dazu folgt jedoch in Kapitel xxx mehr. (Kapitel 2.2.4 ->Reihenfolge tauschen?)
+
+
+	\section{Wöhlerkurve}
+	\subsection{Statistische Auswertung anhand der Norm}
+Die Wöhlerkurve dient der Ermittlung der Schwingfestigkeit von Bauteilen. Für alle Proben wird eine konstante Mittelspannung eingestellt. Die Spannungsamplitude wird für jede Probe unterschiedlich gewählt, jedoch wird sie während der Versuchsdurchführung konstant gehalten. Als Ergebnis folgt entweder eine Bruchschwingspielzahl $N_B$, oder eine Grenzschwingspielzahl $N_G$. Bei einer Bruchschwingspielzahl werden alle Schwingspiele bis zum Bruch aufsummiert. Bei der Grenzschwingspielzahl hat die Probe eine gewisse Anzahl an Schwingspielen ertragen und der Versuch wird beendet. Das Versuchsergebnis wird als Durchläufer bezeichnet. Den Zusammenhang zwischen Lebensdauer und Amplitude veranschaulicht \Figref{fig:Schwingungen der Einzelproben}. Probe eins und zwei brechen aufgrund ihrer großen Amplituden $\sigma_{\text{a1}}$ und $\sigma_{\text{a2}}$ nach einer gewissen Schwingspielzahl $N_B$. Der letzte Prüfkörper n hingegen erleidet keinen Bruch, aufgrund der verhältnismäßig kleinen Amplitude $\sigma_{\text{an}}$ \cite[Seite 272]{Werkstofftechnik-Praktikum2021}. 
+
+\begin{figure}[H]
+    \centering
+\begin{tikzpicture}[
+    >=stealth, 
+    font=\sffamily\small,
+    axis break/.style={
+        draw=white, fill=white, postaction={draw=black, decoration={zigzag, segment length=3.5pt, amplitude=2.5pt}, decorate}
+    }, >=latex
+]
+\usetikzlibrary{decorations.pathmorphing}
+
+% --- PARAMETER ---
+\def\sigm{1.1}      
+\def\gapstart{1.5}  % Ende vor dem gestrichelten Teil
+\def\markstart{1.9} % Start der durchgezogenen Linie nach dem Zeitsprung
+\def\zackpos{1.7}   % NEUE Position für das Zick-Zack (mittig unter dem gestrichelten Teil)
+
+% --- PROBE 1 ---
+\begin{scope}[shift={(0,7.5)}]
+    \node[anchor=west] at (0.2,2.5) {Probe 1};
+    \draw[thick, ->] (0,0) -- (7.5,0) node[below left] {Zeit $t$};
+    \draw[thick, ->] (0,-0.2) -- (0,2.5) node[rotate=90, left, at start, xshift=2.3cm, yshift=0.95cm] {Spannung $\sigma$};
+    
+    % ZICK-ZACK NACH LINKS VERSCHOBEN (unter gestrichelten Teil)
+    \draw (\zackpos-0.1, -0.12) -- (\zackpos-0.1, 0.12); 
+    \draw (\zackpos+0.1, -0.12) -- (\zackpos+0.1, 0.12);
+    \draw[axis break] (\zackpos-0.1, 0) -- (\zackpos+0.1, 0);
+
+    \draw[dashed] (0,\sigm) -- (5.0,\sigm) node[left, pos=0.01] {$\sigma_m$};
+    \draw (0, 2.1) -- (4.17, 2.1); 
+
+    \draw[thick] plot[domain=0:\gapstart, samples=80] (\x, {\sigm + 1.0*sin(\x*360*1.5)});
+    \draw[thick, dashed] plot[domain=\gapstart:\markstart, samples=30] (\x, {\sigm + 1.0*sin(\x*360*1.5)});
+    \draw[thick] plot[domain=\markstart:4.17, samples=100] (\x, {\sigm + 1.0*sin(\x*360*1.5)});
+
+    \draw[dashed] (4.17, 2.1) -- (4.17, 0) node[below] {$N_{B1}$};
+    \filldraw[fill=white] (4.17, 2.1) circle (1.5pt) coordinate (P1);
+    \node[right] at (4.87, 2.4) {Bruch};
+    \draw[thin] (P1) -- (4.77, 2.4); 
+    \draw[<->] (4.47, \sigm) -- (4.47, 2.1) node[midway, right] {$\sigma_{a1}$};
+    \draw (4.17, 2.1) -- (4.87, 2.1);
+\end{scope}
+
+% --- PROBE 2 ---
+\begin{scope}[shift={(0,3.75)}]
+    \node[anchor=west] at (0.2,2.3) {Probe 2};
+    \draw[thick, ->] (0,0) -- (7.5,0) node[below left] {Zeit $t$};
+    \draw[thick, ->] (0,-0.2) -- (0,2.5) node[rotate=90, left, at start, xshift=2.3cm, yshift=0.95cm] {Spannung $\sigma$};
+    
+    \draw (\zackpos-0.1, -0.12) -- (\zackpos-0.1, 0.12); 
+    \draw (\zackpos+0.1, -0.12) -- (\zackpos+0.1, 0.12);
+    \draw[axis break] (\zackpos-0.1, 0) -- (\zackpos+0.1, 0);
+
+    % Mittellinie korrigiert
+    \draw[dashed] (0,\sigm) -- (6.0,\sigm) node[left, pos=0.01] {$\sigma_m$};
+    \draw (0, 1.8) -- (5.5, 1.8); 
+
+    \draw[thick] plot[domain=0:\gapstart, samples=80] (\x, {\sigm + 0.7*sin(\x*360*1.5)});
+    \draw[thick, dashed] plot[domain=\gapstart:\markstart, samples=30] (\x, {\sigm + 0.7*sin(\x*360*1.5)});
+    \draw[thick] plot[domain=\markstart:5.5, samples=150] (\x, {\sigm + 0.7*sin(\x*360*1.5)});
+
+    \draw[dashed] (5.5, 1.8) -- (5.5, 0) node[below] {$N_{B2}$};
+    \filldraw[fill=white] (5.5, 1.8) circle (1.5pt) coordinate (P2);
+    \node[right] at (6.2, 2.1) {Bruch};
+    \draw[thin] (P2) -- (6.1, 2.1);
+    \draw[<->] (5.8, \sigm) -- (5.8, 1.8) node[midway, right] {$\sigma_{a2} < \sigma_{a1}$};
+    \draw (5.5, 1.8) -- (6.2, 1.8);
+\end{scope}
+
+% --- PROBE n (Schwingung endet auf Mittellinie) ---
+\begin{scope}[shift={(0,0)}]
+    \node[anchor=west] at (0.2,2.2) {Probe $n$};
+    
+    \draw[thick, ->] (0,0) -- (8.0,0) node[below left] {Zeit $t$};
+    \draw[thick, ->] (0,-0.2) -- (0,2.5) node[rotate=90, left, at start, xshift=2.3cm, yshift=0.95cm] {Spannung $\sigma$};
+    
+    \draw (\zackpos-0.1, -0.12) -- (\zackpos-0.1, 0.12); 
+    \draw (\zackpos+0.1, -0.12) -- (\zackpos+0.1, 0.12);
+    \draw[axis break] (\zackpos-0.1, 0) -- (\zackpos+0.1, 0);
+
+    \draw[dashed] (0,\sigm) -- (7.33,\sigm) node[left, pos=0] {$\sigma_m$};
+    \draw (0, 1.5) -- (7.33, 1.5);
+
+    % Schwingung endet exakt bei 7.33 (Schnittpunkt mit Mittellinie)
+    \draw[thick] plot[domain=0:\gapstart, samples=80] (\x, {\sigm + 0.4*sin(\x*360*1.5)});
+    \draw[thick, dashed] plot[domain=\gapstart:\markstart, samples=30] (\x, {\sigm + 0.4*sin(\x*360*1.5)});
+    \draw[thick] plot[domain=\markstart:7.33, samples=200] (\x, {\sigm + 0.4*sin(\x*360*1.5)});
+
+    \node[anchor=south] at (6.6, 1.6) {\underline{kein Bruch}};
+    
+    % DAUERFESTIGKEITSPFEIL: Setzt exakt bei 7.33 auf der Mittellinie an
+    \draw[ultra thick, ->] (7.33, \sigm) -- (8.1, \sigm) node[right, yshift=-3pt] {$\infty$};
+   
+    \draw (7.33, 1.5) -- (7.9, 1.5); 
+    \draw[<->] (7.5, \sigm) -- (7.5, 1.5) node[midway, right] {$\sigma_{an} < \sigma_{an-1}$};
+\end{scope}
+\end{tikzpicture}
+\caption{Schwingungen der Einzelproben mit gleicher Mittelspannung und unterschiedlicher Spannungsamplitude (eigene Darstellung in Anlehnung an \cite[Seite 273]{Werkstofftechnik-Praktikum2021}).}
+\label{fig:Schwingungen der Einzelproben}
+\end{figure}
+
+Um nun aus den aufgezeichneten Schwingungen der einzelnen Proben eine Wöhlerkurve abzuleiten, wird die eingestellte Spannungsamplitude $\sigma_a$, über die erreichte Schwingspielzahl $N$ doppelt logharithmisch aufgetragen. Folglich werden die in \Figref{fig:Schwingungen der Einzelproben} abgebildeten Proben 1 und 2 in  \Figref{fig:Wöhlerkurve} eingetragen. Die Schnittpunkte der jeweiligen Spannungsamplituden $\sigma_{\text{a1}}$ und $\sigma_{\text{a2}}$ mit den beiden Bruchschwingspielzahlen $N_{\text{B1}}$ und  $N_{\text{B2}}$ ergeben Punkte in dem Diagramm, verteilt in einem Streuband.
+Aus den Versuchsergebnissen mehrerer Proben ensteht nach statistischer Auswertung, eine wie in \Figref{fig:Wöhlerkurve} gezeigte Kurve. Die Wöhlerkurve wird nach DIN 50100 in den Bereich der Kurzzeitfestigkeit (LCF, engl. Low Cycle Fatigue), der Zeitfestigkeit (HCF, engl. High Cycle Fatigue) und der Langzeitfestigkeit (LLF, engl. Long Life Fatigue) eingeteilt  \cite[Seite 17]{DIN50100}.  
+
+\begin{figure}[H]
+    \centering
+\begin{tikzpicture}[
+    scale=1.1, 
+    font=\sffamily\small,
+    >=stealth
+]
+
+% --- RAHMEN ---
+\draw[thick] (0,0) -- (8,0) -- (8,7) -- (0,7) -- cycle; 
+
+% --- VERTIKALE ACHSE ---
+\draw[thick, ->] (0,0) -- (0,7.8) node[above] {$\sigma_a$ (lg)};
+
+% --- LOG-SKALA (Oben & Unten) ---
+\foreach \expo in {0,1,2,3,4,5,6,7} {
+  \draw[thick] (\expo,0) -- (\expo,0.25); \draw[thick] (\expo,7) -- (\expo,6.75); 
+  \foreach \sub in {2,3,4,5,6,7,8,9} {
+    \pgfmathsetmacro{\tickx}{\expo + log10(\sub)}
+    \ifdim \tickx pt < 8.01pt
+      \draw[thin] (\tickx,0) -- (\tickx,0.1); \draw[thin] (\tickx,7) -- (\tickx,6.9);
+    \fi
+  }
+}
+\draw[thick] (8,0) -- (8,0.25); \draw[thick] (8,7) -- (8,6.75);
+
+% Achsbeschriftungen unten
+\foreach \x/\l in {0/10^0, 2/10^2, 4/10^4, 6/10^6, 8/10^8} \node[below=4pt] at (\x,0) {$\l$};
+\node[below left] at (9.6,0) {$N$ (lg)};
+\draw[thick, ->] (8,0) -- (9.0,0);
+
+% --- PARAMETER ---
+\def\nkpos{6.5}
+\def\ngpos{7.2}
+\def\h_nk{1.8} 
+
+% --- STREUBAND (Graue Fläche 2) ---
+\fill[gray!20] 
+    (0,6.0) to[out=-2, in=165] (3.8,5.2) -- (\nkpos,1.2) -- (8,1.1) -- 
+    (8,2.2) -- (\ngpos,2.2) -- (4.2,5.8) to[out=178, in=-2] (0,6.2) -- cycle;
+
+\draw[thin] (0,6.0) to[out=-2, in=165] (3.8,5.2) -- (\nkpos,1.2) -- (8,1.1);
+\draw[thin] (0,6.2) to[out=-2, in=178] (4.2,5.8) -- (\ngpos,2.2) -- (8,2.2);
+
+% --- 1 - ZEITFESTIGKEIT & FETTER ÜBERGANG ---
+\draw[ultra thick] (4.5, 5.0) -- (\nkpos, \h_nk); 
+\draw[ultra thick] (\nkpos, \h_nk) -- (\ngpos, \h_nk); 
+
+% --- PUNKTE (3) UND HILFSLINIEN ---
+% Punkt 1 (unverändert oben): (4.7, 4.8)
+\draw[dashed, thin, gray] (4.7, 4.8) -- (0, 4.8) node[left, black] {$\sigma_{a1}$};
+\draw[dashed, thin, gray] (4.7, 4.8) -- (4.7, 0) node[below=15pt, black] {$N_{B1}$};
+
+% Punkt 2 (jetzt weiter unten/rechts): (5.6, 3.4)
+\draw[dashed, thin, gray] (5.6, 3.4) -- (0, 3.4) node[left, black] {$\sigma_{a2}$};
+\draw[dashed, thin, gray] (5.6, 3.4) -- (5.6, 0) node[below=15pt, black] {$N_{B2}$};
+
+% Alle Punkte zeichnen (gefüllt)
+\foreach \p in {(4.7, 4.8), (4.5, 4.75), (5.0, 4.5), (4.9, 4.2), (5.3, 3.9), (5.6, 3.4), (6.1, 3.1), (5.7, 2.7), (6.2, 2.5), (6.3, 1.85)} {
+    \fill \p circle (2pt);
+}
+
+
+% --- 4 - DURCHLÄUFER ---
+\foreach \y in {1.8, 1.6, 1.4} {
+    \draw (\ngpos, \y) circle (2pt);
+    \draw[->] (\ngpos, \y) -- (7.8, \y);
+}
+
+% --- HINWEISSTRICHE (Optimiert nach deiner Skizze) ---
+% 1: Zeitfestigkeitsgerade
+\node (n1) at (4.2, 3.4) {1};
+\draw[->, thin] (n1) -- (5.2, 3.9);
+
+% 2: Streuband (zeigt auf die obere Begrenzungslinie)
+\node (n2) at (6.4, 5.4) {2};
+\draw[->, thin] (n2) -- (5.1, 4.7);
+
+% 3: Ausfall (zeigt auf die Punktegruppe)
+\node (n3) at (7.0, 3.7) {3};
+\draw[->, thin] (n3) -- (6.15, 3.15);
+
+% 4: Durchläufer (zeigt auf den Knickpunkt NG)
+\node (n4) at (7.7, 2.4) {4};
+\draw[->, thin] (n4) -- (\ngpos, 1.9);
+
+% 5: Statische Festigkeit (zeigt auf den Kurvenbeginn links)
+\node (n5) at (-0.6, 6.6) {5};
+\draw[->, thin] (n5) -- (0, 6.05);
+
+% --- TRENNLINIEN ---
+% --- TRENNLINIEN ---
+\draw[thin] (4,0) -- (4,7.0); % Bleibt: LCF/HCF Grenze
+
+% Ändere \ngpos zu \nkpos für die durchgehende Linie:
+\draw[thin] (\nkpos,0) -- (\nkpos,7.0); 
+
+% Falls du NG nur als kurzen Strich bis zum Streuband willst:
+\draw[thin] (\ngpos,0) -- (\ngpos,1.6); 
+\node[below=16pt] at (\nkpos,0) {$N_K$};
+\node[below=16pt] at (\ngpos,0) {$N_G$};
+
+% --- BEREICHE OBEN ---
+\draw[<->] (0,7.3) -- (4,7.3) node[midway, above, align=center] {Kurzzeit-\\festigkeit (LCF)};
+\draw[<->] (4,7.3) -- (\nkpos,7.3) node[midway, above, align=center] {Zeit-\\festigkeit (HCF)}; % Ende jetzt bei NK
+\draw[<->] (\nkpos,7.3) -- (8,7.3) node[midway, above, align=center] {Langzeit-\\ festigkeit\\ (LLF)}; % Start jetzt bei NK
+
+% Horizontale Referenzlinie
+\draw[thin] (0,\h_nk) -- (\nkpos,\h_nk) node[left, pos=0] {$L_{al, 1E7}$};
+
+\end{tikzpicture}
+
+% --- LEGENDE (als Text unter der Abbildung) ---
+\vspace{0.5cm}
+\begin{flushleft}
+\textbf{Legende}\\
+1 Zeitfestigkeitsgerade\\
+2 Streuband der Versuche\\
+3 Ausfall\\
+4 Durchläufer\\
+5 Statische Festigkeit
+\end{flushleft}
+\caption{Prinzipskizze einer Wöhlerkurve (In Anlehnung an \cite[Seite 17]{DIN50100}).}
+\label{fig:Wöhlerkurve}
+\end{figure}
+
+Bei Nummer 4 in \Figref{fig:Wöhlerkurve} ist die Grenzschwingspielzahl erreicht und die Probe wird, wie bereits erwähnt, als Durchläufer gewertet. Die statische Festigkeit ist an Pfeil 5 in \Figref{fig:Wöhlerkurve} vorzufinden.
+
+Hinsichtlich der Einteilung der Wöhlerkurve in die drei Bereiche lassen sich folgende Aussagen treffen.
+Im Bereich der Kurzzeitfestigkeit werden die Proben mit einer großen Amplitude beaufschlagt und es ergibt sich eine geringe Lebensdauer. Dabei liegen die Messergebnisse zwischen \(10^{0}\) bis \(10^{4}\) Schwingspielen. Die Zeitfestigkeit zeichnet sich durch die Zeitfestigkeitsgerade (siehe Nummer 1 in \Figref{fig:Wöhlerkurve}) aus. Diese liegt zwischen  \(10^{4}\) Schwingspielen und der Knickschwingspielzahl $N_K$. Die Knickschwingspielzahl liegt im Bereich zwischen $5 \cdot 10^4$ und $10^7$ Schwingspielen und repräsentiert den Übergang von der Zeitfestigkeit zur Langzeitfestigkeit. Die Zeitfestigkeitsgerade kann entweder mit folgender \Eqref{eq:Zeitfestigkeitsgerade_C} ermittelt werden:
+
+\begin{equation}\label{eq:Zeitfestigkeitsgerade_C}
+    N = C \cdot L_{\mathrm{a}}^{-k},
+\end{equation}
+ 
+oder unter Verwendung der Knickschwingspielzahl wie folgt nach \Eqref{eq:Zeitfestigkeitsgerade_N_K} aufgestellt werden:
+
+\begin{equation}\label{eq:Zeitfestigkeitsgerade_N_K}
+    N = N_{\mathrm{K}} \cdot \left( \frac{L_{\mathrm{a}}}{L_{\mathrm{aL,NG}}} \right)^{-k}.
+\end{equation}
+
+Zum Bereich der Langzeitfestigkeit zählen alle Schwingspiele, die größer sind als die Knickschwingspielzahl $N_K$.
+
+Laut DIN 50100 gibt es drei Typen der Langzeitfestigkeit, welche einen unterschiedlichen Verlauf der Wöhlerkurve nach dem Knickpunkt darstellen:
+
+% Im Dokument:
+\begin{itemize}
+    \item {Typ 1: horizontaler Verlauf}
+    \item {Typ 2: gerade mit geringerer Neigung $k_2$}
+  \item {Typ 3: zuerst horizontaler Verlauf und dann noch weiterer Abfall der Kurve}
+\end{itemize}
+  
+
+Je nach Werkstoff kann die Grenzschwingspielzahl variieren. Bei Stahl liegt sie zwischen \( N = 2 \cdot 10^{6} \ldots 10^{7} \) und bei Aluminium zwischen \( 5 \cdot 10^{7} \ldots 10^{8} \) Schwingspielen \cite[Seite 60-61]{HolzmannMeyerSchumpich2020}. 
+
+Ein zyklisch belastetest Bauteil erfährt einen Dauerbruch. Ursache für einen Dauerbruch ist die Ermüdung. 
+
+	\subsection{Verfahren zur Bestimmung der Zeit- und Dauerfestigkeit}
+
+\begin{figure}[H]
+    \centering
+    \sffamily\small
+    
+    % --- TEIL A: INTRINSISCH (ZYX-Euler-Winkel 90°) ---
+    \textbf{A) Intrinsische Rotation ($z \to y' \to x''$ mit je $90^\circ$)} \\
+    \vspace{0.2cm}
+    \begin{tikzpicture}[scale=1.1, >=stealth, x={(0.7cm,-0.4cm)}, y={(1cm,0.3cm)}, z={(0cm,1.2cm)}]
+        % (1) Z-Drehung: x -> y, y -> -x
+        \begin{scope}[xshift=0cm]
+            \draw[thick,->] (0,0,0) -- (1.5,0,0) node[right] {$x$};
+            \draw[thick,->] (0,0,0) -- (0,1.5,0) node[right] {$y$};
+            \draw[thick,->] (0,0,0) -- (0,0,1.5) node[above] {$z=z'$};
+            \draw[blue, dashed, thick,->] (0,0,0) -- (0,1.3,0) node[right] {$x'$};
+            \draw[blue, dashed, thick,->] (0,0,0) -- (-1.3,0,0) node[left] {$y'$};
+            \node[below=2.5cm] at (0,0,0) {(1) $90^\circ$ um $z$};
+        \end{scope}
+
+        % (2) Y'-Drehung um die NEUE Achse (y' zeigt nach -x_sa)
+        % Drehung um y' lässt y' fest, rotiert z' auf x' und x' auf -z'
+        \begin{scope}[xshift=5cm]
+            \draw[gray, thin, ->] (0,0,0) -- (0,1.3,0) node[right] {$x'$};
+            \draw[thick, ->] (0,0,0) -- (-1.3,0,0) node[left] {$y'=y''$};
+            \draw[gray, thin, ->] (0,0,0) -- (0,0,1.5) node[above] {$z'$};
+            \draw[blue, dashed, thick,->] (0,0,0) -- (0,0,-1.3) node[below] {$x''$};
+            \draw[blue, dashed, thick,->] (0,0,0) -- (0,1.3,0) node[right] {$z''$};
+            \node[below=2.5cm] at (0,0,0) {(2) $90^\circ$ um $y'$};
+        \end{scope}
+
+        % (3) X''-Drehung um die NEUESTE Achse (x'' zeigt nach -z_sa)
+        \begin{scope}[xshift=10cm]
+            \draw[thick, ->] (0,0,0) -- (0,0,-1.3) node[below] {$x''=x'''$};
+            \draw[gray, thin, ->] (0,0,0) -- (-1.3,0,0) node[left] {$y''$};
+            \draw[gray, thin, ->] (0,0,0) -- (0,1.3,0) node[right] {$z''$};
+            \draw[blue, dashed, thick,->] (0,0,0) -- (1.3,0,0) node[right] {$z'''$};
+            \draw[blue, dashed, thick,->] (0,0,0) -- (0,1.3,0) node[right] {$y'''$};
+            \node[below=2.5cm] at (0,0,0) {(3) $90^\circ$ um $x''$};
+        \end{scope}
+    \end{tikzpicture}
+
+    \vspace{1cm}
+
+    % --- TEIL B: EXTRINSISCH (ZYX-Fixed-Angles 90°) ---
+    \textbf{B) Extrinsische Rotation ($z \to y \to x$ um festes $S_a$ mit je $90^\circ$)} \\
+    \vspace{0.2cm}
+    \begin{tikzpicture}[scale=1.1, >=stealth, x={(0.7cm,-0.4cm)}, y={(1cm,0.3cm)}, z={(0cm,1.2cm)}]
+        % (1) Z-Drehung (identisch)
+        \begin{scope}[xshift=0cm]
+            \draw[thick,->] (0,0,0) -- (1.5,0,0) node[right] {$x$};
+            \draw[thick,->] (0,0,0) -- (0,1.5,0) node[right] {$y$};
+            \draw[thick,->] (0,0,0) -- (0,0,1.5) node[above] {$z=z'$};
+            \draw[blue, dashed, thick,->] (0,0,0) -- (0,1.3,0) node[right] {$x'$};
+            \node[below=1.5cm] at (0,0,0) {(1) $90^\circ$ um festes $z$};
+        \end{scope}
+
+        % (2) Y-Drehung um die ALTE schwarze y-Achse
+        \begin{scope}[xshift=5cm]
+            \draw[thick,->] (0,0,0) -- (1.5,0,0) node[right] {$x$};
+            \draw[thick,->] (0,0,0) -- (0,1.5,0) node[right] {$y=y''$};
+            \draw[thick,->] (0,0,0) -- (0,0,1.5) node[above] {$z$};
+            \draw[blue, dashed, thick,->] (0,0,0) -- (0,0,-1.3) node[below] {$x''$};
+            \draw[blue, dashed, thick,->] (0,0,0) -- (1.3,0,0) node[right] {$z''$};
+            \node[below=1.5cm] at (0,0,0) {(2) $90^\circ$ um festes $y$};
+        \end{scope}
+
+        % (3) X-Drehung um die ALTE schwarze x-Achse
+        \begin{scope}[xshift=10cm]
+            \draw[thick, ->] (0,0,0) -- (1.5,0,0) node[right] {$x=x'''$};
+            \draw[thick, ->] (0,0,0) -- (0,1.5,0) node[right] {$y$};
+            \draw[thick, ->] (0,0,0) -- (0,0,1.5) node[above] {$z$};
+            \draw[blue, dashed, thick,->] (0,0,0) -- (0,0,1.3) node[above] {$y'''$};
+            \draw[blue, dashed, thick,->] (0,0,0) -- (0,-1.3,0) node[left] {$z'''$};
+            \node[below=1.5cm] at (0,0,0) {(3) $90^\circ$ um festes $x$};
+        \end{scope}
+    \end{tikzpicture}
+
+    \caption{Gegenüberstellung bei $90^\circ$ Rotationen. Man beachte die unterschiedlichen Endlagen der Achsen.}
+\end{figure}
+

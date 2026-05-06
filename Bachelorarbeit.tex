@@ -1,0 +1,332 @@
+%
+% Ostbayerische Technische Hochschule Regensburg (OTH)
+% Fakultät Maschinenbau
+% Prof. Dr.-Ing. Marcus Wagner
+%
+% Vorlage und Hinweise für die Erstellung von Abschlussarbeiten
+% Inhaltliche Angaben basieren zum Teil auf Vorlagen von Prof. Ehrlich LFT
+%
+% v7 19.02.2026
+\documentclass[
+12pt, %Schriftgröße
+paper=a4,%Papierformat
+%fleqn,%
+oneside,% vermeidet Leerseiten, NUR für PDF Ausgabe geeignet, nicht für Ausdruck
+%twoside, % WICHTIG: Für Papierausdruck einschalten
+DIV=15,BCOR=10mm, % Seitenlayout wie bei Koma-Script
+headsepline,%
+cleardoublepage=empty, % Keine headsepline auf leeren Seiten, %cleardoublepage=current,%fügt Seitennummer und headsepline ein
+headings=normal,%
+titlepage,%
+bibliography=totoc,% Literaturverzeichnis erscheint im Inhaltsverzeichnis
+listof=totoc,% Listen in Inhaltsverzeichnis
+parskip=half% s. weiter unten
+]{scrbook}  % double sided document
+%
+%
+%-----------------------------------------------------------------------
+% HINWEIS zur Übersetzung: Das Dokument kann mit pdflatex/lualatex/xetex übersetzt werden.
+%
+%Für die Literaturverwaltung muss biber.exe verwendet werden, nicht bibtex.
+%-----------------------------------------------------------------------
+%
+%
+%\usepackage{blindtext} % Paket zum Erzeugen von Blindtext zum testen: \blindmathtrue, \blindtext[15], \blinddocument, \Blinddocument, \blindlist{itemize}[5]
+
+%-----------------------------------------------------------------------
+% Paketdefinitionen
+%-----------------------------------------------------------------------
+% --- Engine-Erkennung (pdfLaTeX / LuaLaTeX / XeLaTeX)
+\usepackage{iftex}
+
+\ifPDFTeX
+% ===== pdfLaTeX =====
+\usepackage[utf8]{inputenc} % Eingabe-Encoding (nur für pdfLaTeX nötig)
+\usepackage[T1]{fontenc}    % Font-Encoding für korrekte Trennung/Umlaute
+\usepackage{lmodern}        % Latin Modern als Schrift
+\else
+% ===== LuaLaTeX oder XeLaTeX =====
+\usepackage{fontspec}       % System/OpenType-Schriften
+\defaultfontfeatures{Ligatures=TeX}
+
+% --- Beispiel 1: "Times"-Look (sehr verbreitet) ---
+%\setmainfont{TeX Gyre Termes}      % Times-ähnlich, fast immer vorhanden
+%\setsansfont{TeX Gyre Heros}       % Helvetica-ähnlich
+%\setmonofont{TeX Gyre Cursor}      % Courier-ähnlich
+
+% --- Alternativ: echte Systemfonts (wenn installiert) ---
+% \setmainfont{Times New Roman}
+% \setsansfont{Arial}
+% \setmonofont{Consolas}
+
+% Eine gute Standard-Schrift (ähnlich zu Latin Modern):
+%\setmainfont{Latin Modern Roman}
+%\setsansfont{Latin Modern Sans}
+%\setmonofont{Latin Modern Mono}
+
+\fi
+
+% --- Sprach-/Typo-Pakete (für alle Engines gleich gut)
+\usepackage[ngerman]{babel} %Einbindung von neuer Rechtschreibung, deutscher Trennung etc.  babel makes sure the correct hyphenation patterns are used and changes the language of text strings like Table of Contents
+\usepackage{csquotes} %Biblatex braucht das. Dient für korrekte Anführungszeichen
+
+
+\usepackage{microtype} %optimiert den Textsatz auf Mikro‑Ebene, also dort, wo TeX normalerweise sehr starr ist. 
+
+\usepackage{latexsym,amsfonts,amssymb,amsmath,bm} % Standardpakete for mat. Symbole
+\usepackage{graphicx} % graphic package of tex
+\usepackage{xurl} % Optional: bessere URL-Zeilenumbrüche
+\usepackage{array}
+\usepackage{longtable} %Tabellen über eine Seite 
+\usepackage[per-mode=symbol,exponent-product=\cdot, output-decimal-marker={,}]{siunitx} %Angeben von Einheiten mit Befehl \si{}{}, ang, num, Option per-mode=fraction stellt Brüche sauber dar.
+\usepackage[format=hang]{caption}
+\usepackage{xcolor} %Farbe orange, Mischen von Farben
+\usepackage{subfig}
+\usepackage{here} % disables a flow of pictures and can be used with [H]
+%\usepackage{mcode} % allows the direct input of m-files
+
+
+
+
+\usepackage{scrhack}
+\usepackage{gauss}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usetikzlibrary{decorations.pathmorphing, arrows.meta, patterns}
+\usetikzlibrary{shapes,arrows,quotes}
+\usepackage{setspace}
+
+\usepackage[
+%plainpages=false,
+%pdfpagelabels,
+raiselinks, pageanchor, hyperindex,
+pdftex,
+colorlinks=true,
+linkcolor=blue,
+citecolor=red,
+filecolor = black,
+urlcolor = blue,
+%hidelinks, %Alternativ zu colorlinks, wenn man die Links nicht sehen will 
+bookmarks=true,
+bookmarksopen=true,
+bookmarksopenlevel=2,
+pagebackref=false,
+bookmarksnumbered=true,
+pdfstartpage=1,
+pdfstartview=FitH,
+plainpages=false,
+pdfpagemode=UseOutlines,
+]{hyperref}
+% for one-sided view in PDF-Reader
+\hypersetup{pdfpagelayout=SinglePage,pdfstartview=Fit} 
+% for book-like two-sided view in PDF-Reader
+%\hypersetup{pdfpagelayout=TwoPageRight} 
+
+
+%-----------------------------------------------------------------------
+% Einbindung Literatur über biblatex
+%-----------------------------------------------------------------------
+\usepackage[
+backend=biber,
+style=numeric-comp, %Referenzen sind Zahlen
+maxbibnames=99, %Anzahl Namen in Lizverzeichnis bei einem Artikel
+date=year,
+%maxcitenames=2, %Anzahl genannter Namen bei Zitaten im Text, ohne Angabe maximal drei 
+isbn=false, %keine ausgabe, auch wenn in bib enthalten
+url=false, %keine ausgabe, auch wenn in bib enthalten
+doi=true, %ausgabe,  wenn in bib enthalten. DOI ist sehr wichtig
+giveninits=true % Vornamen nur als Initialen
+]{biblatex}% !! ACHTUNG muss mit biber übersetzt werden und nicht mit bibtex!
+\AtEveryBibitem{\clearfield{pagetotal}} %Ausschalten Ausgabe Feld Seitenzahl
+\AtEveryBibitem{\clearlist{language}} %Ausschalten Ausgabe Feld Sprache
+\AtEveryBibitem{\clearfield{note}} %Ausschalten Ausgabe Feld Note
+\addbibresource{literatur.bib} % Bib Datei mit Einträgen, geht nur in Präambel
+
+
+%-----------------------------------------------------------------------
+% Abkürzungsverzeichnis, Formelzeichen etc. mit glossaries
+%-----------------------------------------------------------------------
+\usepackage[ 
+nonumberlist, %keine Seitenzahlen anzeigen 
+acronym,      %ein Abkürzungsverzeichnis erstellen, dafür ist dann keine eigene Definition mit newglossary notwendig
+toc=false,          %Einträge im Inhaltsverzeichnis 
+nopostdot,    %Kein Punkt am Ende der Beschreibung
+nomain,       %Das Hauptglossary wird nicht benutzt
+style=super,
+section      %im Inhaltsverzeichnis auf section-Ebene erscheinen 
+]{glossaries}
+%Anlegen von Typen von Glossaren. Vorgegeben sind die Üblochen
+%Formelzeichen
+\newglossary[slg]{symbolslist}{syi}{syg}{Formelzeichen} 
+%Indizesverzeichnis
+\newglossary[ilg]{indexlist}{iyi}{iyg}{Indizes} 
+%Operatoren und Symbole
+\newglossary[olg]{operatorlist}{oyi}{oyg}{Operatoren und Symbole} 
+%Glossar erzeugen
+\makeglossaries %sorgt dafür, dass die Hilfsdateien angelegt werden.
+%
+% Das Glossar entsteht an der Stelle wo \printglossaries ausgeführt wird. In diesem Dokument ganz am Ende, siehe unten
+%
+% WICHTIG, wie Literatur und Index wird Glossar nur durch Ausführen eines eigenen Programms erzeugt
+% Dazu In Texstudio Tools->Glossary ausführen (F9-Taste)
+% Dafür ist auf dem Rechner eine PERL Installation notwendig.
+%
+% Die Glossareinträge stehen in dieser Datei. Es muss unbedingt vor begin{document} eingelesen werden
+%
+\input{chapters/glossar}
+%
+%Nutzung des Glossar, z.B \gls{FEM}. Dies führt bei der ersten Nutzung dazu, dass die Abkürzung ausgeschrieben wird, bei weiterer Nutzung nur noch die Abkürzung.
+
+
+%-----------------------------------------------------------------------
+% Layout
+%-----------------------------------------------------------------------
+%\textwidth		 160mm % in Word 2,5cm Rand jede Seite, also 16cm Breite
+%\textheight 	 252mm % in Word 2,5 oben, 2 unten, also Höhe 252
+%\oddsidemargin   6mm
+%\evensidemargin -6mm
+%\topmargin      -12mm
+%%\headheight     0cm
+%\headsep    	 5mm
+%\topskip    	 0mm
+%\voffset    	 0mm
+%\hoffset    	 0mm
+%\footskip   	 7.5mm
+%\raggedbottom
+%\renewcommand{\topfraction}{1.0}
+%% Explizites Setzen Zeilenabstand bei Absatz, parskip=half sehr groß
+\setlength{\parskip}{2ex plus 0.5ex minus 0.5ex}
+
+\usepackage{enumitem} %Abstände in Listen einstellen
+%\setlist[itemize]{noitemsep, nolistsep} %sehr kompakt
+%\setlist[enumerate]{noitemsep, nolistsep}
+\setlist{itemsep=1pt, parsep=1pt} % Setzt itemsep auf kleinen Abstand für alle Listen
+
+
+
+\usepackage{siunitx}
+%-----------------------------------------------------------------------
+% Grafikpfad
+%-----------------------------------------------------------------------
+% Commands for figures:
+%\DeclareGraphicsExtensions{.eps,.ai} % file extension of postscript-pictures for the generation of PS-documents
+%\DeclareGraphicsExtensions{.pdf,.jpg} % file extension of postscript-pictures for the generation of PDF-documents
+\graphicspath{{figs/}} % path of the picture files
+\def\figurename{Abb. } % keyword for the captions
+
+%-----------------------------------------------------------------------
+% Kommandos für einheitliche Bezeichnungen im Dokument
+%-----------------------------------------------------------------------
+\newcommand{\Eqref}[1]{Gl.\,(\ref{#1})}
+\newcommand{\Figref}[1]{Abb.\,\ref{#1}}
+\newcommand{\Chapref}[1]{Kap.\,\ref{#1}}
+\newcommand{\Anhref}[1]{Anh.\,\ref{#1}}
+\newcommand{\Tabref}[1]{Tab.\,\ref{#1}}
+
+
+
+%-----------------------------------------------------------------------
+%-----------------------------------------------------------------------
+% Beginn Input: Allgemeine Angaben zu Titel und Autor
+%-----------------------------------------------------------------------
+%-----------------------------------------------------------------------
+%
+% type of thesis:
+%\newcommand{\graduation}{Master} \newcommand{\abbretyp}{M}
+\newcommand{\graduation}{Bachelor} \newcommand{\abbretyp}{B}
+%
+% Choose ONE of the following programms:
+%\newcommand{\studies}{Produktions- und Automatisierungstechnik}
+\newcommand{\studies}{Maschinenbau} \newcommand{\abbrestud}{MB}
+%\newcommand{\studies}{Industrial Engineering} \newcommand{\abbrestud}{IE}
+%
+% Enter the name of the thesis:
+\newcommand{\doctitle}{Einführung eines Standards zur Aufbereitung und Auswertung von Messdaten der Hydropulsanlage}
+%---------------------------------- -------------------------------------
+% Bei externer Arbeit die folgenden drei Kommandos aktivieren
+%---------------------------------- -------------------------------------
+% Enter the name of the cooperating company:
+\newcommand{\company}{}
+% Enter the address of the cooperating company:
+%\newcommand{\compaddress}{Traunreutherstra?e 1, 93055 Neutraubling}
+% Enter the name of the company advisor:
+\newcommand{\betreuer}{}
+% Enter the name of the academic advisor:
+\newcommand{\professor}{Prof. Dr.-Ing. Marcus Wagner}
+% Enter the start date of your work:
+\newcommand{\beginndatum}{<16.03.2026>}
+% Enter the end date of your work:
+\newcommand{\abgabedatum}{16.08.2026}
+% Enter how you want to be adressed:
+\newcommand{\bearbeiteranrede}{Frau}
+% Enter your name:
+\newcommand{\bearbeitername}{Carla Hüttner}
+\newcommand{\bearbeitergeburtstag}{<01.08.2003>}
+% Enter your matriculation number
+\newcommand{\matrikelnummer}{<3333699>}
+
+\newcommand{\bearbeitungszeitraum}{{<16.03.2026 -- 16.08.2026>}}
+
+% Additional settings for PDF-document:
+\hypersetup{
+pdftitle=\doctitle,
+pdfauthor=\bearbeitername,
+pdfsubject=\studies,
+% Enter 5-7 keyword for your work/area of work:
+pdfkeywords={}
+}
+
+% -----------------------------------
+% --- Main Document -----------------
+% ---               -----------------
+%\includeonly{}
+
+\begin{document}
+
+    \pagenumbering{arabic}
+
+    %% Einleitungsseiten, müssen so genutzt werden
+    \include{chapters/title_abstract_content}
+
+
+    %Auf Wunsch, für die Bewertung hat dies keine Auswirkungen
+    %\listoffigures % a list of all figures is created
+    %\listoftables % a list of all tables is created
+
+    %% Kapitel
+
+    \include{chapters/einleitung}
+
+    \include{chapters/Theorie}
+
+    
+    \include{chapters/Scherzugversuch}
+
+
+    \include{chapters/Layout und Aufbau}
+
+    %% Kapitel
+    \include{chapters/abbildungen}
+
+    %% Kapitel
+    %s \include{chapters/zitieren}
+
+    %\nocite{bibid}
+    %% Literaturverzeichnis ausgeben
+    \printbibliography[heading=bibnumbered] %Diese Option nummeriert das Litvezeichnsi
+
+    %% Abkürzungsverzeichnisse, wenn gewünscht, ansonsten die folgende Zeile auskommentieren. 
+    \chapter{Glossar} \printglossaries % Entries in file chapters/gloassar are printed at this position. Used für abbreviations and explanations of symbols
+    % Einzeln 
+    %\printglossary[type=\acronymtype, title={Abkürzungsverzeichnis}] %Abkürzungen
+    %\printglossary[type=symbolslist, title={Formelzeichen}]
+    %\printglossary[type=indexlist, title={Indizes}]
+    %\printglossary[type=operatorlist,style=super]
+
+
+    %% Wenn notwendig Anhangkapitel hier einfügen
+    \appendix
+    \include{chapters/appendix}
+
+
+\end{document} 
