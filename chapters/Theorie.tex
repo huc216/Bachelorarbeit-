@@ -672,13 +672,13 @@ Hinsichtlich der Einteilung der Wöhlerkurve in die drei Bereiche lassen sich fo
 Im Bereich der Kurzzeitfestigkeit werden die Proben mit einer großen Amplitude beaufschlagt und es ergibt sich eine geringe Lebensdauer. Dabei liegen die Messergebnisse zwischen \(10^{0}\) bis \(10^{4}\) Schwingspielen. Die Zeitfestigkeit zeichnet sich durch die Zeitfestigkeitsgerade (siehe Nummer 1 in \Figref{fig:Wöhlerkurve}) aus. Diese liegt zwischen  \(10^{4}\) Schwingspielen und der Knickschwingspielzahl $N_K$. Die Knickschwingspielzahl liegt im Bereich zwischen $5 \cdot 10^4$ und $10^7$ Schwingspielen und repräsentiert den Übergang von der Zeitfestigkeit zur Langzeitfestigkeit. Die Zeitfestigkeitsgerade kann entweder mit folgender \Eqref{eq:Zeitfestigkeitsgerade_C} ermittelt werden:
 
 \begin{equation}\label{eq:Zeitfestigkeitsgerade_C}
-    N = C \cdot L_{\mathrm{a}}^{-k},
+    N = C \cdot \sigma_{\mathrm{a}}^{-k},
 \end{equation}
  
 oder unter Verwendung der Knickschwingspielzahl wie folgt nach \Eqref{eq:Zeitfestigkeitsgerade_N_K} aufgestellt werden:
 
 \begin{equation}\label{eq:Zeitfestigkeitsgerade_N_K}
-    N = N_{\mathrm{K}} \cdot \left( \frac{L_{\mathrm{a}}}{L_{\mathrm{aL,NG}}} \right)^{-k}.
+    N = N_{\mathrm{K}} \cdot \left( \frac{\sigma_{\mathrm{a}}}{\sigma_{\mathrm{aL,NG}}} \right)^{-k}.
 \end{equation}
 
 Zum Bereich der Langzeitfestigkeit zählen alle Schwingspiele, die größer sind als die Knickschwingspielzahl $N_K$.
@@ -692,8 +692,70 @@ Laut DIN 50100 gibt es drei Typen der Langzeitfestigkeit, welche einen unterschi
   \item {Typ 3: zuerst horizontaler Verlauf und dann noch weiterer Abfall der Kurve}
 \end{itemize}
   
+  Da Typ III nach einmaliger Nennung in der Norm außen vor gelassen wird, wird in \Figref{fig:Vergleich Typ I und Typ II der Wöhlerkurve} nur der Vergleich zwischen Typ I und II veranschaulicht. 
 
-Je nach Werkstoff kann die Grenzschwingspielzahl variieren. Bei Stahl liegt sie zwischen \( N = 2 \cdot 10^{6} \ldots 10^{7} \) und bei Aluminium zwischen \( 5 \cdot 10^{7} \ldots 10^{8} \) Schwingspielen \cite[Seite 60-61]{HolzmannMeyerSchumpich2020}. 
+  
+\begin{figure}[H]
+    \centering
+    \sffamily\small
+    
+    \begin{tikzpicture}[scale=1.1, >=stealth]
+        % Achsen
+        \draw[thick, ->] (0,0) -- (11,0) node[below left=0.1cm, xshift=2.5cm] {Schwingspielzahl $N$ (log)};
+        \draw[thick, ->] (0,0) -- (0,5.5) node[midway, left=0.6cm, rotate=90, xshift=90pt] {Spannungsamplitude $\sigma_a$ (log)};
+
+        % --- Wöhlerkurve Typ I ---
+        \draw[thick] (0.2, 4.5) 
+            .. controls (2.5, 4.5) and (3.5, 1.4) .. (5.5, 1.4) 
+            -- (10.5, 1.4); 
+
+        % Steigungsdreieck k (hängt unter Kurve I im Zeitfestigkeitsbereich)
+        % Horizontale oben, vertikale geht nach unten zur Kurve
+        \draw[thin, gray] (1.7, 3.35) -- (1.7, 2.6) -- (2.6, 2.6);
+        \node[below left, scale=0.8] at (1.6, 3.1) {$k$};
+
+        % --- Wöhlerkurve Typ II ---
+        \draw[thick, dashed] (0.8, 3.8) 
+            .. controls (2.2, 3.5) and (3.5, 1.2) .. (4.8, 1.0) 
+            -- (10.5, 0.45); 
+
+        % Steigungsdreieck k* (hängt unter Kurve II im Auslauf)
+        \draw[thin, gray] (7.7, 0.7) -- (6.0, 0.7) -- (6.0, 0.9);
+        \node[below, scale=0.8] at (6.0, 0.7) {$k^*$};
+
+        % Vertikale Hilfslinien NG
+        \draw[thin] (5.5, 1.4) -- (5.5, 0);
+        \node[below=0.6cm, scale=0.85] at (5.5, 0) {$N_G = 5 \cdot 10^6$};
+
+        \draw[thin] (8.5, 0.6) -- (8.5, 0);
+        \node[below=0.6cm, scale=0.85] at (8.5, 0) {$N_G = 10^7$ bis $10^8$};
+
+        % Pfeile für sigma_aL
+        \draw[<->] (5.5, 0.05) -- (5.5, 1.35) node[midway, left, scale=0.8] {$\sigma_{aL}$};
+        \draw[<->] (8.5, 0.05) -- (8.5, 0.55) node[midway, left, scale=0.8] {$\sigma_{aL}$};
+
+        % Legende
+        \begin{scope}[shift={(6.2, 4.8)}]
+            \draw[thick] (0, 0) -- (0.8, 0) node[right] {Wöhlerkurve -- Typ I};
+            \node[right, scale=0.85] at (0.8, -0.3) {$\rightarrow$ krz-Stähle};
+            
+            \draw[thick, dashed] (0, -1.0) -- (0.8, -1.0) node[right] {Wöhlerkurve -- Typ II};
+            \node[right, align=left, scale=0.85] at (0.8, -1.7) {
+                $\rightarrow$ kfz-Stähle\\
+                $\rightarrow$ hdp-Stähle\\
+            };
+        \end{scope}
+
+    \end{tikzpicture}
+    \caption{Vergleich Typ I und Typ II der Wöhlerkurve.}
+    \label{fig:Vergleich Typ I und Typ II der Wöhlerkurve}
+\end{figure}
+
+
+Zu erkennen ist der Unterschied, dass bei Typ II die Spannungsamplitude weiter abfällt, nur mit einer kleineren Steigung.
+
+
+
 
 Ein zyklisch belastetest Bauteil erfährt einen Dauerbruch. Ursache für einen Dauerbruch ist die Ermüdung. 
 
