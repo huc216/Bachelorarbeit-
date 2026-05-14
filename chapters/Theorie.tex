@@ -226,7 +226,7 @@ Damit sich Versetzungen bewegen können, muss die Gleitebene parallel zur Ebene 
     }
 
 \end{tikzpicture}
-    \caption{Entstehung von Gleitbändern, sowie Intrusionen und Extrusionen infolge zyklischer Beanspruchung (eigene Darstellung in Anlehnung an \cite[Seite 8]{Ermüdungsfestigkeit2007}).}
+    \caption{Entstehung von Gleitbändern, sowie Intrusionen und Extrusionen infolge zyklischer Beanspruchung (In Anlehnung an \cite[Seite 8]{Ermüdungsfestigkeit2007}).}
     \label{fig:gleitbaender-mechanismus}
 \end{figure}
 
@@ -415,7 +415,7 @@ Der zeitliche Verlauf einer Beanspruchung hat Einfluss auf die Lebensdauer eines
     \end{scope}
 
 \end{tikzpicture}
-    \caption{Lastfälle schwellend und wechselnd (Eigene Darstellung in Anlehnung an \cite[Seite 271]{Werkstofftechnik-Praktikum2021}, ergänzt um Betragsstriche nach \cite[Seite 17]{Ermüdungsfestigkeit2007}).}
+    \caption{Lastfälle schwellend und wechselnd (In Anlehnung an \cite[Seite 271]{Werkstofftechnik-Praktikum2021}, ergänzt um Betragsstriche nach \cite[Seite 17]{Ermüdungsfestigkeit2007}).}
     \label{fig:lastfaelle}
 \end{figure}
 
@@ -427,108 +427,104 @@ Wird ein statischer Lastfall betrachtet, so geht es vorwiegend um die Zugfestigk
 
 	\section{Wöhlerkurve}
        \subsection{Funktionsprinzip Hydropulsanlage}
-Für die Erstellung der Wöhlerkurve wird die servohydraulische Prüfmaschine namens Hydropulser verwendet \cite{thkoelln2018}. Der Begriff Servohydraulik beschreibt dabei alle hydraulischen Systeme, bei denen geregelte und gesteuerte Volumenströme Anwendung finden. Ein servohydraulisches System umfasst eine Pumpe mit Antrieb, Leitungen, Ventilen, Aktoren und einen Tank \cite{bfhydraulik}.
+Für die Erstellung der Wöhlerkurve wird die servohydraulische Prüfmaschine (auch Hydropulser genannt) verwendet. Der Begriff Servohydraulik beschreibt dabei alle hydraulischen Systeme, bei denen geregelte und gesteuerte Volumenströme Anwendung finden \textbf{Quelle für den Satz} . 
+
+Die Hauptkomponenten eines servohydraulischen Systems umfassen eine Antriebsmaschine, eine hydrostatische Pumpe, einen Motor, Steuerventile sowie den Prüfzylinder als Arbeitsmaschine. Der Kreislauf wird durch einen Flüssigkeitsbehälter ergänzt. Zur Pflege der Druckflüssigkeit sind ein Filter, ein Kühler und ein Vorwärmer integriert. Vervollständigt wird das System durch die Leitungen und die Druckflüssigkeit \cite[Seite 2-3]{Ölhydraulik2020}. 
 
 Eine Hydropulsanlage dient im Allgemeinen dazu hydraulische Energie in mechanische Energie umzuwandeln. 
 Die Einsetzbarkeit einer Hydropulsanlage ist vielseitig. Die Anwendungsbereiche erstrecken sich von Bauteilcharakterisierung über quasistatische und dynamische Bauteilprüfung bis hin zu Vibrations- und Schockprüfung \cite{Instron}. Für diesen Versuch ist allerdings nur die dynamische Bauteilprüfung relevant. 
-\Figref{fig:Regelkreis_Hydropulser} veranschaulicht die Funktionsweise mit den erwähnten Bauteilen einer servohydraulischen Prüfmaschine. Zur Differenzierung ist der Ölkreislauf mit durchgezogenen Linien gekennzeichnet und der Regelkreis mit gestrichelten Linien.
-Bei dem Stoffkreislauf kommt das Öl aus einem Aggregat, symbolisiert durch eine Pumpe, die das Öl in den Kreislauf pumpt. Das Aggregat umfasst jedoch nicht nur die Pumpe sondern auch den Motor, der die Pumpe antreibt, einen Ölspeicher, sowie einen Hochdruckfilter als auch ein Druckbegrenzungsventil. Das Öl fließt dabei durch ein hochpräzises Servoventil, dass bestimmt, in welche Kammer des Zylinders das Öl fließt und auch wie viel Öl in den Zylinder fließt. Dies ist von Bedeutung, da um den Dreiecksverlauf gefahren wird der Zylinder immer wieder hoch und runter gefahren werden muss. Der Zylinder wirkt dann Kraft auf die Probe aus. 
-Verbaut sind im Maschinendynamiklabor aktuell ein Kraftaufnehmer und ein Wegaufnehmer. Beide können zur Regelung der Anlage verwendet werden. Da laut DIN 50100 Kraftregelung für den Wöhlerversuch vorgeschrieben wird, wird sich auch daran gehalten. Zusätzlich kann aber immer auch ein Abbruchkriterium für den Weg gesetzt werden, bei dem die Maschine den Versuch abbricht. 
-Der Kraftaufnehmer misst also die aktuelle Kraft mittels einer Kraftmessdose. Dieses Signal wird verstärkt und an einen PID-Regler weiter gegeben, der den Ist-Wert vom Soll-Wert abzieht und dann die Regeldifferenz an das Ventil weiter gibt \cite[Seite 262]{Ölhydraulik2020}. 
 
+Den Aufbau der Hydropulsanlage des Maschinendynamik-Labors an der Ostbayerischen Technischen Hochschule Regensburg zeigt  \Figref{fig:Regelkreis_Hydropulser_Gesamt} a). 
+\Figref{fig:Regelkreis_Hydropulser_Gesamt} b) veranschaulicht diese servohydraulische Prüfmaschine schematisch mit ihrer Funktionsweise.
+Zur Differenzierung ist der Ölkreislauf mit durchgezogenen Linien und der Regelkreis mit gestrichelten Linien gekennzeichnet.
+Bei dem Stoffkreislauf wird das Öl aus einem Aggregat, symbolisiert durch eine Pumpe, in den Kreislauf gefördert. Das Aggregat umfasst jedoch nicht nur die Pumpe, sondern auch den Motor, der die Pumpe antreibt, einen Ölspeicher, einen Hochdruckfilter sowie ein Druckbegrenzungsventil. Ein hochpräzises Servoventil bestimmt dabei, in welche Kammer des Zylinders das Öl fließt sowie die Durchflussmenge. Dies ist von Bedeutung, um die Probe einer zyklischen Belastung aussetzen zu können. Der Zylinder übt dann Kraft auf die Probe aus. 
 
 \begin{figure}[H]
     \centering
-\begin{tikzpicture}[
-    >=latex, 
-    font=\sffamily\normalsize, 
-    block/.style={rectangle, draw, minimum width=2.5cm, minimum height=0.9cm, align=center, fill=white, thick},
-    sensor/.style={diamond, draw, minimum width=0.9cm, minimum height=0.9cm, fill=white, thick},
-    line/.style={draw, ->, thick},
-    signal/.style={draw, ->, dashed, thick}
-]
-
-    % --- PRÜFSTAND (LINKS) ---
-    % Zylindergehäuse
-    \draw[thick] (0,0) rectangle (1.6,3);
+    % --- OBERES TEILBILD (FOTO) ---
+         \subfloat[Aufbau Hydropulsanlage \protect\\ Maschinendynamik-Labor \protect\\ OTH Regensburg\label{fig:Hydropulsanlage_foto}]{%
+        \begin{minipage}{0.4\textwidth} % Vergrößert das Foto für optimale Sichtbarkeit
+            \centering
+            \includegraphics[width=\textwidth]{Hydropulsanlage_gesamt}
+        \end{minipage}%
+    }
     
-    % Kolben als Doppelstrich
-    \draw[thick, fill=white] (0,1.4) rectangle (1.6,1.6); 
-    
-    % Durchgehende Kolbenstange
-    \draw[ultra thick] (0.8,-0.9) -- (0.8,1.4); 
-    \draw[ultra thick] (0.8,1.6) -- (0.8,4); 
-    \node[left=0.3cm] at (0,1.5) {Zylinder};
+    \vspace{0.5cm} % Erzeugt einen sauberen vertikalen Abstand zwischen den beiden Elementen
 
-    % Zylinderbefestigung (Fundament)
-    \fill[pattern=north east lines] (-0.3,-0.2) rectangle (1.9,0);
-    \draw[thick] (-0.3,0) -- (1.9,0);
+    % --- UNTERES TEILBILD (DIAGRAMM) ---
+    \subfloat[Schematischer Aufbau und signaltechnischer Regelkreis\label{fig:Regelkreis_Schema}]{%
+        \begin{minipage}{1.0\textwidth} % Nutzt die volle Textbreite für maximale Lesbarkeit
+            \centering
+            \begin{tikzpicture}[
+                >=latex, 
+                scale=1.0, every node/.style={scale=0.85}, % Skalierung leicht erhöht für die volle Breite
+                font=\sffamily\small, 
+                block/.style={rectangle, draw, minimum width=2.5cm, minimum height=0.9cm, align=center, fill=white, thick},
+                sensor/.style={diamond, draw, minimum width=0.9cm, minimum height=0.9cm, fill=white, thick},
+                line/.style={draw, ->, thick},
+                signal/.style={draw, ->, dashed, thick}
+            ]
+            
+                % --- PRÜFSTAND (LINKS) ---
+                \draw[thick] (0,0) rectangle (1.6,3);
+                \draw[thick, fill=white] (0,1.4) rectangle (1.6,1.6); 
+                \draw[ultra thick] (0.8,-0.9) -- (0.8,1.4); 
+                \draw[ultra thick] (0.8,1.6) -- (0.8,4); 
+                \node[left=0.3cm] at (0,1.5) {Zylinder};
+                \fill[pattern=north east lines] (-0.3,-0.2) rectangle (1.9,0);
+                \draw[thick] (-0.3,0) -- (1.9,0);
+                \draw[thick, fill=gray!20] (0.65,4.3) rectangle (0.95,5.7);
+                \node[right=0.3cm] at (0.95,5) {Probe};
+                \draw[thick, fill=white] (0.4,4) rectangle (1.2,4.3);
+                \draw[thick, fill=white] (0.4,5.7) rectangle (1.2,6);
+                \node[sensor] (loadcell) at (0.8,6.5) {};
+                \node[left=0.1cm] at (loadcell.west) {Kraftaufnehmer};
+                \draw[thick] (0.8,6) -- (0.8,6.1);
+                \node[block, minimum width=0.8cm, minimum height=0.6cm, fill=white] (lvdt) at (0.8,-0.9) {};
+                \node[right=1.0cm] at (lvdt.west) {Wegaufnehmer};
+            
+                % --- REGELUNG (RECHTS) ---
+                \node[block] (amp) at (6.0, 6.5) {Verstärker};
+                \node[block] (scope) at (9.4, 6.5) {Anzeige};
+                \node[block] (controller) at (6.0, 4.5) {Regler};
+                \node[block] (input) at (9.4, 4.5) {Sollwert};
+                \node[block] (valve) at (6.0, 2) {Ventil};
+                \node[draw, circle, thick, minimum size=1.0cm] (pump) at (6.0, 0.3) {P};
+                \node[right=0.4cm] at (pump) {Aggregat};
+            
+                % --- VERBINDUNGEN ---
+                \draw[line] ([xshift=-0.15cm]pump.north) -- ([xshift=-0.15cm]valve.south); 
+                \draw[line] ([xshift=0.15cm]valve.south) -- ([xshift=0.15cm]pump.north);
+                \draw[line] ([yshift=0.25cm]valve.west) -- ++(-0.5,0) |- (1.6,2.6); 
+                \draw[line] (1.6,2.4) -- ++(0.7,0) |- ([yshift=0.1cm]valve.west);   
+                \draw[line] ([yshift=-0.25cm]valve.west) -- ++(-0.5,0) |- (1.6,0.4); 
+                \draw[line] (1.6,0.6) -- ++(0.7,0) |- ([yshift=-0.1cm]valve.west);   
+                \draw[signal] (loadcell.east) -- (amp.west);
+                \draw[signal, ->] (lvdt.west) -- (-2.2,-0.9) |- (6.0,7.5) -- (amp.north);
+                \draw[signal] (amp.east) -- (scope.west);
+                \draw[signal] (amp.south) -- (controller.north);
+                \draw[signal] (input.west) -- (controller.east);
+                \draw[signal] (controller.south) -- (valve.north);
+                \fill[pattern=north east lines] (-0.5,6.9) rectangle (1.9,7.1);
+                \draw[thick] (-0.5,6.9) -- (1.9,6.9);
+            
+            \end{tikzpicture}
+        \end{minipage}%
+    }
 
-    % Probe
-    \draw[thick, fill=gray!20] (0.65,4.3) rectangle (0.95,5.7);
-    \node[right=0.3cm] at (0.95,5) {Probe};
-    
-    % Einspannungen (Grips)
-    \draw[thick, fill=white] (0.4,4) rectangle (1.2,4.3);
-    \draw[thick, fill=white] (0.4,5.7) rectangle (1.2,6);
-
-    % Kraftaufnehmer
-    \node[sensor] (loadcell) at (0.8,6.5) {};
-    \node[left=0.3cm] at (loadcell.west) {Kraftaufnehmer};
-    \draw[thick] (0.8,6) -- (0.8,6.1);
-
-    % Wegaufnehmer
-    \node[block, minimum width=0.8cm, minimum height=0.6cm, fill=white] (lvdt) at (0.8,-0.9) {};
-    \node[left=0.3cm] at (lvdt.west) {Wegaufnehmer};
-
-    % --- REGELUNG (RECHTS) ---
-    \node[block] (amp) at (6.0, 6.5) {Verstärker};
-    \node[block] (scope) at (9.4, 6.5) {Anzeige};
-    \node[block] (controller) at (6.0, 4.5) {Regler};
-    \node[block] (input) at (9.4, 4.5) {Sollwert};
-    \node[block] (valve) at (6.0, 2) {Ventil};
-
-    % Hydraulikversorgung (Aggregat)
-    \node[draw, circle, thick, minimum size=1.0cm] (pump) at (6.0, 0.3) {P};
-    \node[right=0.4cm] at (pump) {Aggregat};
-
-    % --- VERBINDUNGEN ---
-    % Parallele Leitungen Aggregat <-> Ventil
-    \draw[line] ([xshift=-0.15cm]pump.north) -- ([xshift=-0.15cm]valve.south); 
-    \draw[line] ([xshift=0.15cm]valve.south) -- ([xshift=0.15cm]pump.north);
-
-    % Hydraulik zum Zylinder (Exakt rechtwinkliger Stufenverlauf)
-    % Obere Kammer
-    \draw[line] ([yshift=0.25cm]valve.west) -- ++(-0.5,0) |- (1.6,2.6); % Vorlauf oben
-    \draw[line] (1.6,2.4) -- ++(0.7,0) |- ([yshift=0.1cm]valve.west);   % Rücklauf oben
-    
-    % Untere Kammer
-    \draw[line] ([yshift=-0.25cm]valve.west) -- ++(-0.5,0) |- (1.6,0.4); % Vorlauf unten
-    \draw[line] (1.6,0.6) -- ++(0.7,0) |- ([yshift=-0.1cm]valve.west);   % Rücklauf unten
-
-    % Signale
-    \draw[signal] (loadcell.east) -- (amp.west);
-    \draw[signal] (lvdt.east) -- ++(3.2,0) |- (amp.200); 
-
-    \draw[signal] (amp.east) -- (scope.west);
-    \draw[signal] (amp.south) -- (controller.north);
-    \draw[signal] (input.west) -- (controller.east);
-    \draw[signal] (controller.south) -- (valve.north);
-
-    % Oberes Fundament
-    \fill[pattern=north east lines] (-0.5,6.9) rectangle (1.9,7.1);
-    \draw[thick] (-0.5,6.9) -- (1.9,6.9);
-
-\end{tikzpicture}
-\caption{Aufbau und Regelkreis der Hydropulsanlage (eigene Darstellung in Anlehnung an \cite[Seite 261]{Ölhydraulik2020}).}
-\label{fig:Regelkreis_Hydropulser}
+    % --- GEMEINSAME HAUPTBILDUNTERSCHRIFT ---
+    \caption{Servohydraulische Prüfmaschine (Hydropulsanlage) im\protect\\ Maschinendynamik-Labor der OTH: a) Foto-Versuchsaufbau,\protect\\ b) Schematischer Aufbau und Regelkreis\protect\\ (eigene Darstellung in Anlehnung an \cite[Seite 261]{Ölhydraulik2020}).}
+    \label{fig:Regelkreis_Hydropulser_Gesamt}
 \end{figure}
 
 
-Von den drei zur Verfügung stehenden Hydropulsern im Maschinendynamik Labor an der OTH wird für den vorliegenden Versuch mit dem Hydropulser, der eine Kraft von 16 kN aufbringen kann, gearbeitet. 
+An Sensoren sind im Maschinendynamik-Labor aktuell ein Kraftaufnehmer und ein Wegaufnehmer verbaut und angeschlossen. Beide können zur Regelung der Anlage verwendet werden. Entsprechend der DIN 50100 wird für den vorliegenden Versuch die Kraftregelung angewendet.
+Dabei wird die aktuelle Kraft mittels einer Kraftmessdose aufgenommen. Dieses Ist-Signal wird dann gemäß dem Regelkreislauf in \Figref{fig:Regelkreis_Hydropulser_Gesamt} b) verstärkt und an einen PID-Regler weitergegeben, der die Regeldifferenz zwischen dem Ist-Wert und dem Soll-Wert berechnet und in Form eines Stellsignals an das Servoventil weitergibt. Das Signal des Verstärkers kann zusätzlich durch eine Anzeige sichtbar gemacht werden \cite[Seite 262]{Ölhydraulik2020}.
+
+Im Maschinendynamik-Labor der OTH stehen drei verschiedene Hydropulser zur Verfügung. Für den Schwingfestigkeitsversuch wird der Hydropulser, dessen Zylinder eine Maximalkraft von 16\,kN aufbringen kann, verwendet. Der Hub des Zylinders beträgt 100\,mm. Die gewählte Prüffrequenz liegt bei 40\,Hz. Zur Gewährleistung der Sicherheit kann ein Abbruchkriterium für den Kraft oder Wegsensor eingestellt werden. Dieses greift bei Kraftabfall oder Hubüberschreitung und schaltet die Anlage ab. 
 
 
-\textbf{Vielleicht kurz den Unterschied zwischen Kraft und Wegregelung erklären. Ich muss hier noch Bilder der Anlage einfügen. } 
+\textbf{Warum Kraftregelung? } 
 
 	
 	\subsection{Statistische Auswertung anhand der Norm}
