@@ -424,10 +424,45 @@ Schwellende Lastfälle zum Beispiel treten bei einer Druckfeder auf, die immer w
 
 Wird ein statischer Lastfall betrachtet, so geht es vorwiegend um die Zugfestigkeit, also die Maximalspannung, die ein Werkstoff vor seinem Bruch ertragen kann \cite[Seite 117]{HibbelerTechnischeMechanik2013}, sowie die Streckgrenze. Bei den dynamischen Lastfällen kann aufgrund der zeitlich veränderlichen Belastung eine Probe auch unterhalb der Zugfestigkeit versagen beziehungsweise brechen und erleidet einen sogennanten Ermüdungsschaden \cite[Seite 1]{Ermüdungsfestigkeit2007}. Deshalb spielt bei dynamsichen Belastungen der Begriff Ermüdungsfestigkeit eine große Rolle. Dazu folgt jedoch in Kapitel xxx mehr. (Kapitel 2.2.4 ->Reihenfolge tauschen?)
 
+	\section{Scherzugversuch}
+Das Ziel des Scherzugversuches ist es die Maximalkraft $F_{\text{max}}$ zu bestimmen, die die Probe vor ihrem Versagen aushält. Diese Maximalkraft, auch Scherkraft genannt, ist anschließend die oberste Grenze für die Lasthorizonte des nachfolgenden Wöhlerversuches. Um die Beanspruchbarkeit einer Niete zu messen, wird die Scherkraft in der Niete sowie die Lochleibungskraft heran gezogen. Da das vorliegende Bauteil nur eine Scherfläche ($m$=1) und eine Niete ($n_a$=1) besitzt, vereinfacht sich die Formel für die Abscherspannung. Diese setzt sich nach der allgemeinen Definition der Scherspannung in \Eqref{eq:Schubspannung} aus der Scherkraft und dem Nietlochquerschnitt zusammen zu:
 
-	\section{Wöhlerkurve}
+    \begin{equation}\label{eq:Abscherspannung_Niete}
+        \tau_{\text{a}} = \frac{F}{\frac{\pi \cdot d^2}{4}} = \frac{4 \cdot F}{\pi \cdot d^2}.
+    \end{equation}
+
+Die Formel für den Lochleibungsdruck zeigt \Eqref{eq:Lochleibungsdruck_Niete}:
+
+    \begin{equation}\label{eq:Lochleibungsdruck_Niete}
+    \sigma_{\text{l}} = \frac{F}{d \cdot t}.
+    \end{equation}
+    
+Dabei ist $d$ der Nietdurchmesser und $t$ die Blechdicke. Sind zwei unterschiedlich dicke Bleche miteinander vernietet, wird mit der Blechdicke des dünneren Bleches gerechnet \cite[Seite 129]{Maschinenteile2007}.  
+
+Für die Versuchsauswertung sind folgende drei Größen relevant: \\
+Der arithmetische Mittelwert $\bar{x}$ nach \Eqref{eq:Arithmetischer_Mittelwert} \cite[Seite 23]{Statistik2018}:
+
+    \begin{equation}\label{eq:Arithmetischer_Mittelwert}
+   \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i.
+    \end{equation}
+    
+Die Standardabweichung $s$ nach \Eqref{eq:Standardabweichung} \cite[Seite 28]{Statistik2018}:
+
+    \begin{equation}\label{eq:Standardabweichung}
+   s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2}.
+    \end{equation}
+    
+Und der Variationskoeffizient $v$ nach \Eqref{eq:Variationskoeffizient} \cite[Seite 29]{Statistik2018}:
+
+    \begin{equation}\label{eq:Variationskoeffizient}
+   v [\%] = \frac{s}{\bar{x}} \cdot 100.
+    \end{equation}
+     
+Der arithmetische Mittelwert repräsentiert bei der Versuchsauswertung den Durchschnitt der Maximalkräfte $F_{\text{max}}$~der Proben. Die Standardabweichung zeigt die Streuung der Versuchsergebnisse um den arithmetischen Mittelwert und sagt damit etwas über die Wiederholgenauigkeit der Versuche aus. Der Variationskoeffizient gibt das Verhältnis zwischen der Standardabweichung und dem Mittelwert an und ist eine dimensionslose Kenngröße zum Vergleich zwischen den verschiedenen Probendicken \cite[Seite 23-29]{Statistik2018}. 
+
+	\section{Wöhlerversuch}
        \subsection{Funktionsprinzip Hydropulsanlage}
-Für die Erstellung der Wöhlerkurve wird die servohydraulische Prüfmaschine (auch Hydropulser genannt) verwendet. Der Begriff Servohydraulik beschreibt dabei alle hydraulischen Systeme, bei denen geregelte und gesteuerte Volumenströme Anwendung finden \textbf{Quelle für den Satz} . 
+Für die Erstellung der Wöhlerkurve wird die servohydraulische Prüfmaschine (auch Hydropulser genannt) verwendet. Der Begriff Servohydraulik beschreibt dabei alle hydraulischen Systeme, bei denen geregelte und gesteuerte Volumenströme Anwendung finden \textbf{Quelle für den Satz}  . 
 
 Die Hauptkomponenten eines servohydraulischen Systems umfassen eine Antriebsmaschine, eine hydrostatische Pumpe, einen Motor, Steuerventile sowie den Prüfzylinder als Arbeitsmaschine. Der Kreislauf wird durch einen Flüssigkeitsbehälter ergänzt. Zur Pflege der Druckflüssigkeit sind ein Filter, ein Kühler und ein Vorwärmer integriert. Vervollständigt wird das System durch die Leitungen und die Druckflüssigkeit \cite[Seite 2-3]{Ölhydraulik2020}. 
 
