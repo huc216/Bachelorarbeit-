@@ -2413,14 +2413,15 @@
     <bcf:citekey order="35" intorder="1">Ölhydraulik2020</bcf:citekey>
     <bcf:citekey order="36" intorder="1">Ölhydraulik2020</bcf:citekey>
     <bcf:citekey order="37" intorder="1">Ölhydraulik2020</bcf:citekey>
-    <bcf:citekey order="38" intorder="1">Werkstofftechnik-Praktikum2021</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">StatHedderich2020</bcf:citekey>
     <bcf:citekey order="39" intorder="1">Werkstofftechnik-Praktikum2021</bcf:citekey>
     <bcf:citekey order="40" intorder="1">Werkstofftechnik-Praktikum2021</bcf:citekey>
-    <bcf:citekey order="41" intorder="1">DIN50100</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">Werkstofftechnik-Praktikum2021</bcf:citekey>
     <bcf:citekey order="42" intorder="1">DIN50100</bcf:citekey>
     <bcf:citekey order="43" intorder="1">DIN50100</bcf:citekey>
-    <bcf:citekey order="44" intorder="1">Blindniete_Norm</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">DIN50100</bcf:citekey>
     <bcf:citekey order="45" intorder="1">Blindniete_Norm</bcf:citekey>
+    <bcf:citekey order="46" intorder="1">Blindniete_Norm</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
