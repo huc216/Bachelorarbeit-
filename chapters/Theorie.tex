@@ -243,7 +243,7 @@ Bei dem Wöhlerversuch sind es eben diese Mikrorisse, die schließlich zum Versa
 Bei dem Wöhlerversuch erfährt das Bauteil eine zyklische Spannungsänderung, die auch als mechanische Schwingung bezeichnet wird. 
 \Figref{fig:Lastzeitverlaeufe} stellt die beiden Schwingungsarten gegenüber.
 Auf der einen Seite zeigt Teilbild b) die allgemeine dynamische Schwingung, wie sie auch häufig in der Praxis auftritt, und auf der anderen Seite wird die periodische Sinusschwingung in Teilbild a) dargestellt. Da die allgemeine dynamische Schwingung jedoch zu komplex zum Nachbilden für Versuche ist, wird für den Wöhlerversuch eine periodische Schwingung gemäß Teilbild a) verwendet. 
-Um zu gewährleisten, dass die Schwingungen reproduzierbar sind, werden in Teilbild a) die veranschaulichten charakteristischen Größen definiert. Diese umfassen die Oberspannung $\sigma_{\text{max}}$, die Unterspannung $\sigma_{\text{min}}$, die Mittelspannung $\sigma_m$ sowie die Spannungsamplitude $\sigma_a$ (siehe Symbole \Figref{fig:Lastzeitverlaeufe} a) \cite[Seite 269 und Seite 270]{Werkstofftechnik-Praktikum2021}. Es ist anzumerken, dass die Sinuskurve hier nur der Erläuterung der Spannungen dient. In der Praxis kommen oftmals auch Dreiecks- oder Trapezbelastungen zum Einsatz \cite[Seite 252]{Läpple2016}. 
+Um zu gewährleisten, dass die Schwingungen reproduzierbar sind, werden in Teilbild a) die veranschaulichten charakteristischen Größen definiert. Diese umfassen die Oberspannung $\sigma_{\text{max}}$, die Unterspannung $\sigma_{\text{min}}$, die Mittelspannung $\sigma_m$ sowie die Spannungsamplitude $\sigma_a$ (siehe Symbole \Figref{fig:Lastzeitverlaeufe} a) \cite[Seite 269 und Seite 270]{Werkstofftechnik-Praktikum2021}. Es ist anzumerken, dass die Sinuskurve hier nur der Erläuterung der Schwingbeanspruchung dient. In der Praxis kommen oftmals auch Dreiecks- oder Rechtecksbelastungen zum Einsatz \cite[Seite 23]{Haibach2006}. 
 
 \begin{figure}[H]
     \centering
@@ -665,12 +665,12 @@ Die Wöhlerkurve kann nach zwei unterschiedlichen Prinzipien aufgestellt werden.
     \draw[<->] (7.5, \sigm) -- (7.5, 1.5) node[midway, right] {$\sigma_{an} < \sigma_{an-1}$};
 \end{scope}
 \end{tikzpicture}
-\caption{Schwingungen der Einzelproben mit gleicher Mittelspannung und unterschiedlicher Spannungsamplitude (eigene Darstellung in Anlehnung an \cite[Seite 273]{Werkstofftechnik-Praktikum2021}).}
+\caption{Schwingungen der Einzelproben mit gleicher Mittelspannung und unterschiedlicher Spannungsamplitude (In Anlehnung an \cite[Seite 273]{Werkstofftechnik-Praktikum2021}).}
 \label{fig:Schwingungen der Einzelproben}
 \end{figure}
 
 Um nun aus den aufgezeichneten Schwingungen der einzelnen Proben eine Wöhlerkurve abzuleiten, wird die eingestellte Spannungsamplitude $\sigma_a$, über die erreichte Schwingspielzahl $N$ doppelt logharithmisch aufgetragen. Folglich werden die Datenpunkte der in \Figref{fig:Schwingungen der Einzelproben} abgebildeten Proben 1 und 2 in  \Figref{fig:Wöhlerkurve} eingetragen. Dies sind die Schnittpunkte der jeweiligen Spannungsamplituden $\sigma_{\text{a1}}$ und $\sigma_{\text{a2}}$ mit den beiden Bruchschwingspielzahlen $N_{\text{B1}}$ und  $N_{\text{B2}}$, verteilt in einem Streuband.
-Aus den Versuchsergebnissen mehrerer Proben ensteht nach statistischer Auswertung eine wie in \Figref{fig:Wöhlerkurve} gezeigte Kurve. Die Wöhlerkurve wird nach DIN 50100 in den Bereich der Kurzzeitfestigkeit (LCF, engl. Low Cycle Fatigue), der Zeitfestigkeit (HCF, engl. High Cycle Fatigue) und der Langzeitfestigkeit (LLF, engl. Long Life Fatigue) eingeteilt  \cite[Seite 17]{DIN50100}.  
+Aus den Versuchsergebnissen mehrerer Proben ensteht nach statistischer Auswertung eine wie in \Figref{fig:Wöhlerkurve} gezeigte Kurve. Die Wöhlerkurve wird nach DIN 50100 in den Bereich der Kurzzeitfestigkeit (LCF, engl. Low Cycle Fatigue), der Zeitfestigkeit (HCF, engl. High Cycle Fatigue) und der Langzeitfestigkeit (LLF, engl. Long Life Fatigue) eingeteilt  \cite[Seite 17]{DIN50100}. In der Praxis zeigt sich, dass im Bereich der Zeitfestigkeit und der Langzeitfestigkeit die Proben eine beträchtliche Streuung zeigen. Ursache hierfür sind eine Vielzahl von Einflussfaktoren, wie beispielsweise Werkstoffinhomogenitäten oder eine ungleiche Einspannung, deren Wirkungen das Verhalten der Probe beeinflussen. Das sich bildende Streuband wird in \Figref{fig:Wöhlerkurve} (Nummer 2) veranschaulicht \cite[Seite 259]{Laepple2016}.
 
 \begin{figure}[H]
     \centering
@@ -801,23 +801,7 @@ Aus den Versuchsergebnissen mehrerer Proben ensteht nach statistischer Auswertun
 Die statische Festigkeit ist an Pfeil 5 in \Figref{fig:Wöhlerkurve} dargestellt und stellt die maximal ertragbare statische Belastung dar. Nummer 3 symbolisiert eine Probe im Zeitfestigkeitsbereich. Da sie eines der beiden Ausfallkriterien (Anriss oder Bruch) erreicht hat, wird sie als Ausfall bezeichnet. Nummer 4 hingegen liegt im Bereich der Langzeitfestigkeit und wird als Durchläufer gewertet, da die Grenzschwingspielzahl erreicht ist.
 
 Hinsichtlich des Aufbaus der Wöhlerkurve lassen sich drei Bereiche unterscheiden.
-Im Bereich der Kurzzeitfestigkeit werden die Proben mit einer großen Amplitude beaufschlagt und es ergibt sich eine geringe Lebensdauer. Dabei liegen die Messergebnisse zwischen \(10^{0}\) und \(10^{4}\) Schwingspielen. Die Zeitfestigkeit liegt zwischen  \(10^{4}\) Schwingspielen und der Knickschwingspielzahl $N_K$ und wird durch die Zeitfestigkeitsgerade (siehe Nummer 1 in \Figref{fig:Wöhlerkurve}) beschrieben. Die Zeitfestigkeitsgerade kann mit folgender \Eqref{eq:Zeitfestigkeitsgerade_C} ermittelt werden:
-
-\begin{equation}\label{eq:Zeitfestigkeitsgerade_C}
-    N = C \cdot \sigma_{\mathrm{a}}^{-k}.
-\end{equation}
- 
-Eine Alternative Gleichung zur Bestimmung der Zeitfestigkeitsgerade kann unter Verwendung der Knickschwingspielzahl wie folgt nach \Eqref{eq:Zeitfestigkeitsgerade_N_K} aufgestellt werden:
-
-\begin{equation}\label{eq:Zeitfestigkeitsgerade_N_K}
-    N = N_{\mathrm{K}} \cdot \left( \frac{\sigma_{\mathrm{a}}}{\sigma_{\mathrm{aL,NG}}} \right)^{-k}.
-\end{equation}
-
-Anhand von zwei bekannten Punkten, die innerhalb der Zeitfestigkeitsgerade 
-\begin{equation}\label{eq:Neigungsexponent}
-    k = - \frac{\lg \left( \frac{N_1}{N_2} \right)}{\lg \left( \frac{\sigma_{\text{A}1}}{\sigma_{\text{A}2}} \right)}
-\end{equation}
-
+Im Bereich der Kurzzeitfestigkeit werden die Proben mit einer großen Amplitude beaufschlagt und es ergibt sich eine geringe Lebensdauer. Dabei liegen die Messergebnisse zwischen \(10^{0}\) und \(10^{4}\) Schwingspielen. Die Zeitfestigkeit liegt zwischen  \(10^{4}\) Schwingspielen und der Knickschwingspielzahl $N_K$ und wird durch die Zeitfestigkeitsgerade (siehe Nummer 1 in \Figref{fig:Wöhlerkurve}) beschrieben.
 
 Am Ende der Zeitfestigkeitsgerade folgt die Knickschwingspielzahl. Diese liegt im Bereich zwischen $5 \cdot 10^4$ und $10^7$ Schwingspielen und repräsentiert den Übergang von der Zeitfestigkeit zur Langzeitfestigkeit.
 Zum Bereich der Langzeitfestigkeit zählen alle Schwingspiele, die größer sind als die Knickschwingspielzahl $N_K$.
@@ -900,11 +884,56 @@ Ein zyklisch belastetest Bauteil erfährt einen Dauerbruch. Ursache für einen D
 
 	\subsection{Verfahren zur Bestimmung der Zeitfestigkeit}
 Zur Bestimmung der Lage der Zeitfestigkeit können laut DIN 50100 zwei Verfahren angewendet werden. 
-Das erste Verfahren ist das Perlenschnurverfahren, das Verwendung findet, wenn die Lage des Zeitfestigkeitsbereichs nicht bekannt ist. Dabei wird sich mit verschiedenen Lasthorizonten langsam voran getastet. 
 
+Das erste Verfahren wird Horizontenverfahren genannt und kommt zum Einsatz, wenn bekannt ist, wo der Bereich der Kurzzeitfestigkeit und der Langzeitfestigkeit liegt \cite[Seite 273]{Eulitz2022}. Da bei dem vorliegenden Versuch von der Firma Siemens jedoch nur insgesamt 15 Proben für den Wöhlerversuch bereitgestellt wurden und zusätzlich der Bereich der Zeitfestigkeit nicht bekannt ist, wird auf das zweite Verfahren zurück gegriffen. 
 
+Das zweite Verfahren ist das Perlenschnurverfahren, welches Verwendung findet, wenn die Lage des Zeitfestigkeitsbereichs nicht bekannt ist. Der entscheidende Vorteil ist, dass auch bei einer geringen Probenanzahl eine geeignete Wöhlerlinie bestimmt werden kann. Die Vorgehensweise ist ein Vorantasten auf unterschiedlichen Lasthorizonten, bis zu den Übergängen der Kurz- und Langzeitfestigkeit. Mehrere Proben auf einem Lasthorizont zu messen ist möglich \cite[Seite 278]{Eulitz2022}. 
 
-Das zweite Verfahren wird Horizontenverfahren genannt. 
-Dieses kommt zum Einsatz, wenn bekannt ist, wo der Bereich der Kurzzeitfestigkeit und der Langzeitfestigkeit liegt. Die Vorgehensweise ist dabei 
+Die Zeitfestigkeitsgerade kann mit folgender \Eqref{eq:Zeitfestigkeitsgerade_C} gemäß DIN 50100 ermittelt werden:
+
+\begin{equation}\label{eq:Zeitfestigkeitsgerade_C}
+    N = C \cdot \sigma_{\mathrm{a}}^{-k}.
+\end{equation}
+
+Die Parameter k und C in \Eqref{eq:Zeitfestigkeitsgerade_C} stehen für die Steigung der Zeitfestigkeitsgeraden und für den Achsenabschnitt der Schwingspielzahl N für $L_a$=1. 
+Wird der dekadische Logarithmus angewendet, kann \Eqref{eq:Zeitfestigkeitsgerade_C} auch wie folgt geschrieben werden:
+
+    \begin{equation}\label{eq:Zeitfestigkeitsgerade_log}
+    \lg N = \lg C - k \cdot \lg L_a.
+    \end{equation}
+    
+\Eqref{eq:Zeitfestigkeitsgerade_log} kann durch Substitution in eine Geradengleichung umgeformt werden (siehe \Eqref{eq:substitution}).
+
+	\begin{equation}
+	y = a_0 + a_1 \cdot x
+	\label{eq:substitution}
+	\end{equation}
+	
+Die verwendeten Substituenten sind dabei wie folgt definiert:
+\begin{align*}
+y   &= \lg N   \\
+a_0 &= \lg C   \\
+a_1 &= -k  \\           
+x   &= \lg L_{\text{a}} .
+\end{align*} 
+
+Beide Parameter $a_0$ und $a_1$ werden mit der Methode der kleinsten Fehlerquadrate nach \Eqref{eq:reg_a1} und \Eqref{eq:reg_a0}  bestimmt. 
+
+\begin{equation}\label{eq:reg_a1}
+    a_1 = \frac{n \cdot \sum(x \cdot y) - \sum x \cdot \sum y}{n \cdot \sum(x^2) - (\sum x)^2}
+\end{equation}
+
+\begin{equation}\label{eq:reg_a0}
+    a_0 = \frac{1}{n} \left( \sum y - a_1 \cdot \sum x \right)
+\end{equation}
+
+Für die Bestimmung der Konstante C in \Eqref{eq:Zeitfestigkeitsgerade_C} kann folgender Zusammenhang verwendet werden (\Eqref{eq:reg_C}): 
+
+\begin{equation}\label{eq:reg_C}
+    C = 10^{a_0}.
+\end{equation}
+
+Die ermittelte Regressionsgerade repräsentiert die 50\% Wöhlerlinie. Dies impliziert, dass 50\% der Bauteile bei dieser Linie bereits ausgefallen sind. Um die Wöhlerlinie aussagekräftiger anzufertigen, wird eine Linie bei 10\% und eine Linie bei 90\% Ausfallwahrscheinlichkeit ergänzt.  
+Unter der Prämisse, dass die Standardabweichung auf allen Lasthorizonten gleich ist (DIN 50100) resultiert, dass die 10$\%$ und 90$\%$ Überlebenswahrscheinlichkeit-Linien parallel zur 50$\%$-Linie angetragen werden können. 
 
 	\subsection{Verfahren zur Bestimmung der Dauerfestigkeit}
