@@ -889,7 +889,7 @@ Das erste Verfahren wird Horizontenverfahren genannt und kommt zum Einsatz, wenn
 
 Das zweite Verfahren ist das Perlenschnurverfahren, welches Verwendung findet, wenn die Lage des Zeitfestigkeitsbereichs nicht bekannt ist. Der entscheidende Vorteil ist, dass auch bei einer geringen Probenanzahl eine geeignete Wöhlerlinie bestimmt werden kann. Die Vorgehensweise ist ein Vorantasten auf unterschiedlichen Lasthorizonten, bis zu den Übergängen der Kurz- und Langzeitfestigkeit. Mehrere Proben auf einem Lasthorizont zu messen ist möglich \cite[Seite 278]{Eulitz2022}. 
 
-Die Zeitfestigkeitsgerade kann mit folgender \Eqref{eq:Zeitfestigkeitsgerade_C} gemäß DIN 50100 ermittelt werden:
+Die Zeitfestigkeitsgerade kann mit der sogenannten Basquin-Gleichung (\Eqref{eq:Zeitfestigkeitsgerade_C}) gemäß DIN 50100 ermittelt werden:
 
 \begin{equation}\label{eq:Zeitfestigkeitsgerade_C}
     N = C \cdot \sigma_{\mathrm{a}}^{-k}.
@@ -927,13 +927,81 @@ Beide Parameter $a_0$ und $a_1$ werden mit der Methode der kleinsten Fehlerquadr
     a_0 = \frac{1}{n} \left( \sum y - a_1 \cdot \sum x \right)
 \end{equation}
 
-Für die Bestimmung der Konstante C in \Eqref{eq:Zeitfestigkeitsgerade_C} kann folgender Zusammenhang verwendet werden (\Eqref{eq:reg_C}): 
+Mit den bestimmten Regressionsparametern können nun die Steigung $k$ und der Lageparameter $C$ der Basquin-Gleichung in \Eqref{eq:reg_C} und berechnet werden. 
 
 \begin{equation}\label{eq:reg_C}
-    C = 10^{a_0}.
+    C = 10^{a_0}
 \end{equation}
 
-Die ermittelte Regressionsgerade repräsentiert die 50\% Wöhlerlinie. Dies impliziert, dass 50\% der Bauteile bei dieser Linie bereits ausgefallen sind. Um die Wöhlerlinie aussagekräftiger anzufertigen, wird eine Linie bei 10\% und eine Linie bei 90\% Ausfallwahrscheinlichkeit ergänzt.  
-Unter der Prämisse, dass die Standardabweichung auf allen Lasthorizonten gleich ist (DIN 50100) resultiert, dass die 10$\%$ und 90$\%$ Überlebenswahrscheinlichkeit-Linien parallel zur 50$\%$-Linie angetragen werden können. 
+\begin{equation}\label{eq:reg_k}
+    k = -{a_1}
+\end{equation}
+
+Die damit ermittelte Regressionsgerade repräsentiert die 50\% Wöhlerlinie. Dies impliziert, dass 50\% der Bauteile bei dieser Linie bereits ausgefallen sind. Um die Wöhlerlinie aussagekräftiger anzufertigen, wird eine Linie bei 10\% und eine Linie bei 90\% Ausfallwahrscheinlichkeit ergänzt.  
+Unter der Prämisse, dass die Standardabweichung auf allen Lasthorizonten gleich ist (DIN 50100) resultiert, dass die 10$\%$ und 90$\%$ Ausfallwahrscheinlichkeit-Linien parallel zur 50$\%$-Linie angetragen werden können. 
+
+Die Standardabweichung wird ermittelt, indem jeder Versuchspunkt auf einen virtuellen Lasthorizont, der frei wählbar ist verschoben wird (siehe \Figref{fig:Diagramm_Perlenschnurverfahren}). 
+
+\begin{figure}[H]
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{Perlenschnurverfahren}
+        
+        \vspace{0.2cm} % Kleiner Abstand zum Bild
+        \begin{minipage}{0.75\textwidth}
+            \small
+            \textbf{Legende:}
+            \begin{description}
+                \item[1] Verschiebung der Versuchsergebnisse entlang der Geradenneigung
+            \end{description}
+        \end{minipage}
+        \vspace{0.2cm} % Kleiner Abstand zur Caption
+        
+        \caption{Ermittlung der Standardabweichung Perlenschnurverfahren \cite[Seite 56]{DIN50100}.}
+        \label{fig:Diagramm_Perlenschnurverfahren}
+    \end{center}
+\end{figure}
+
+Die hervorgehobene Linie kennzeichnet die 50\%-Zeitfestigkeitsgerade mit der Steigung k. Mit der Nummer 1 ist die verschobene Linie dargestellt, die die neue fiktive Schwingspielzahl auf dem fiktiven Lasthorizont darstellt. 
+
+ Die entsprechende Formel, die die neue fiktive Schwingspielzahl nach der Verschiebung angibt ist \Eqref{eq:N_fiktiv}.
+ 
+ \begin{equation}\label{eq:N_fiktiv}
+    N_{i,\mathrm{fiktiv}} = N_i \cdot \left( \frac{L_{\mathrm{a,fiktiv}}}{L_{\mathrm{a},i}} \right)^{-k}
+\end{equation}
+
+Mit \Eqref{eq:mittelwert} wird der Mittelwert der Schwingspielzahlen des fiktiven Lasthorizontes gebildet und anschließend mit \Eqref{eq:rueckrechnung} wieder entlogarithmiert, sodass die Schwingspielzahl der 50\%-Wöhlerlinie folgt. 
+
+\begin{subequations}
+\label{eq:gesamte_gleichung}
+\begin{align}
+\lg N_{50\%,\text{fiktiv}} &= \frac{1}{n} \sum \lg N_{i,\text{fiktiv}} \label{eq:mittelwert} \\[1ex]
+\rightarrow \quad N_{50\%,\text{fiktiv}} &= 10^{\lg N_{50\%,\text{fiktiv}}} \label{eq:rueckrechnung}
+\end{align}
+\end{subequations}
+
+Die Standardabweichung in \Eqref{eq:S_Perlenschnurverfahren} gibt an, wie stark die Versuchsergebnisse um den in \Eqref{eq:rueckrechnung} berechneten Mittelwert des fiktiven Lasthorizonts schwanken. 
+
+\begin{equation}\label{eq:S_Perlenschnurverfahren}
+\tilde{s}_{\lg N} = \sqrt{\frac{1}{n - 2} \cdot \sum \left( \lg N_{i,\text{fiktiv}} - \lg N_{50\%,\text{fiktiv}} \right)^2}
+\end{equation}
+
+
+Die DIN 50100 sieht für einen kleinen Stichprobenumfang einen Korrekturfaktor für die Standardabweichung vor (\Eqref{eq:s_korrektur}). 
+
+\begin{equation}\label{eq:s_korrektur}
+\tilde{s}_{\lg N,\text{korr}} = \tilde{s}_{\lg N} \cdot \frac{n - 1{,}74}{n - 2}
+\end{equation}
+
+Die Schwingspielzahlen der statistischen Streubänder der 10\% und 90\% Ausfallwahrscheinlichkeit auf dem fiktiven Lasthorizont können mit folgenden beiden Gleichungen ermittelt werden:
+
+\begin{subequations}
+\begin{align}
+N_{90\%} &= 10^{\left( \lg N_{50\%,\text{fiktiv}} + 1{,}282 \cdot \tilde{s}_{\lg N,\text{korr}} \right)} \label{eq:N90} \\[1ex]
+N_{10\%} &= 10^{\left( \lg N_{50\%,\text{fiktiv}} - 1{,}282 \cdot \tilde{s}_{\lg N,\text{korr}} \right)} \label{eq:N10}
+\end{align}
+\end{subequations}
+
+Die ermittelte Zeitfestigkeitsgerade kann nun in die sich ergebenden Punkte der Schwingspielzahl $N_\text{90\%}$ und $N_\text{10\%}$ verschoben werden. 
+
 
 	\subsection{Verfahren zur Bestimmung der Dauerfestigkeit}
