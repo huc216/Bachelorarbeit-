@@ -885,9 +885,9 @@ Ein zyklisch belastetest Bauteil erfährt einen Dauerbruch. Ursache für einen D
 	\subsection{Verfahren zur Bestimmung der Zeitfestigkeit}
 Zur Bestimmung der Lage der Zeitfestigkeit können laut DIN 50100 zwei Verfahren angewendet werden. 
 
-Das erste Verfahren wird Horizontenverfahren genannt und kommt zum Einsatz, wenn bekannt ist, wo der Bereich der Kurzzeitfestigkeit und der Langzeitfestigkeit liegt \cite[Seite 273]{Eulitz2022}. Da bei dem vorliegenden Versuch von der Firma Siemens jedoch nur insgesamt 15 Proben für den Wöhlerversuch bereitgestellt wurden und zusätzlich der Bereich der Zeitfestigkeit nicht bekannt ist, wird auf das zweite Verfahren zurück gegriffen. 
+Das erste Verfahren wird Horizontenverfahren genannt und kommt zum Einsatz, wenn bekannt ist, wo der Bereich der Kurzzeitfestigkeit und der Langzeitfestigkeit liegt \cite[Seite 273]{Eulitz2022}. Da für den vorliegenden Versuch eine geringe Stichprobengröße von insgesamt 15 Proben für den Wöhlerversuch vorhanden sind und zusätzlich der Bereich der Zeitfestigkeit nicht bekannt ist, wird auf das zweite Verfahren zurück gegriffen. 
 
-Das zweite Verfahren ist das Perlenschnurverfahren, welches Verwendung findet, wenn die Lage des Zeitfestigkeitsbereichs nicht bekannt ist. Der entscheidende Vorteil ist, dass auch bei einer geringen Probenanzahl eine geeignete Wöhlerlinie bestimmt werden kann. Die Vorgehensweise ist ein Vorantasten auf unterschiedlichen Lasthorizonten, bis zu den Übergängen der Kurz- und Langzeitfestigkeit. Mehrere Proben auf einem Lasthorizont zu messen ist möglich \cite[Seite 278]{Eulitz2022}. 
+Das zweite Verfahren ist das Perlenschnurverfahren, welches Verwendung findet, wenn die Lage des Zeitfestigkeitsbereichs nicht definiert ist. Der entscheidende Vorteil ist, dass auch bei einer geringen Probenanzahl eine geeignete Wöhlerlinie bestimmt werden kann. Die Vorgehensweise ist ein Vorantasten auf unterschiedlichen Lasthorizonten, bis zu den Übergängen der Kurz- und Langzeitfestigkeit. Mehrere Proben auf einem Lasthorizont zu messen ist möglich \cite[Seite 278]{Eulitz2022}. 
 
 Die Zeitfestigkeitsgerade kann mit der sogenannten Basquin-Gleichung (\Eqref{eq:Zeitfestigkeitsgerade_C}) gemäß DIN 50100 ermittelt werden:
 
@@ -895,11 +895,13 @@ Die Zeitfestigkeitsgerade kann mit der sogenannten Basquin-Gleichung (\Eqref{eq:
     N = C \cdot \sigma_{\mathrm{a}}^{-k}.
 \end{equation}
 
-Die Parameter k und C in \Eqref{eq:Zeitfestigkeitsgerade_C} stehen für die Steigung der Zeitfestigkeitsgeraden und für den Achsenabschnitt der Schwingspielzahl N für $L_a$=1. 
-Wird der dekadische Logarithmus angewendet, kann \Eqref{eq:Zeitfestigkeitsgerade_C} auch wie folgt geschrieben werden:
+Die Parameter k und C in \Eqref{eq:Zeitfestigkeitsgerade_C} stehen für die Steigung der Zeitfestigkeitsgeraden und für den Achsenabschnitt der Schwingspielzahl N für $\sigma_a$=1. 
+In der noch folgenden Versuchsauswertung des Wöhlerversuches wird bei der Erstellung der Wöhlerlinie sowohl die Kraft über die Schwingspielzahl, als auch die Spannungsampflitude über die Schwingspielzahl aufgetragen. Aus diesem Grund kann auch in \Eqref{eq:Zeitfestigkeitsgerade_C} sowie in den folgenden Gleichungen mit der Kraftamplitude gerechnet werden. 
+
+Wird der dekadische Logarithmus auf \Eqref{eq:Zeitfestigkeitsgerade_C} angewendet, kann diese auch wie folgt geschrieben werden:
 
     \begin{equation}\label{eq:Zeitfestigkeitsgerade_log}
-    \lg N = \lg C - k \cdot \lg L_a.
+    \lg N = \lg C - k \cdot \lg \sigma_a.
     \end{equation}
     
 \Eqref{eq:Zeitfestigkeitsgerade_log} kann durch Substitution in eine Geradengleichung umgeformt werden (siehe \Eqref{eq:substitution}).
@@ -914,7 +916,7 @@ Die verwendeten Substituenten sind dabei wie folgt definiert:
 y   &= \lg N   \\
 a_0 &= \lg C   \\
 a_1 &= -k  \\           
-x   &= \lg L_{\text{a}} .
+x   &= \lg \sigma_{\text{a}} .
 \end{align*} 
 
 Beide Parameter $a_0$ und $a_1$ werden mit der Methode der kleinsten Fehlerquadrate nach \Eqref{eq:reg_a1} und \Eqref{eq:reg_a0}  bestimmt. 
@@ -943,10 +945,38 @@ Unter der Prämisse, dass die Standardabweichung auf allen Lasthorizonten gleich
 Die Standardabweichung wird ermittelt, indem jeder Versuchspunkt auf einen virtuellen Lasthorizont, der frei wählbar ist verschoben wird (siehe \Figref{fig:Diagramm_Perlenschnurverfahren}). 
 
 \begin{figure}[H]
-    \begin{center}
-        \includegraphics[width=0.8\textwidth]{Perlenschnurverfahren}
+    \centering
+    \begin{tikzpicture}
+        % 1. Das bereinigte Bild einbinden und die Dimensionen festlegen
+        \node[anchor=south west, inner sep=0] (bild) at (0,0) {
+            \includegraphics[width=0.8\textwidth]{Perlenschnurverfahren}
+        };
         
-        \vspace{0.2cm} % Kleiner Abstand zum Bild
+        % 2. Ein relatives Koordinatensystem (0,0 bis 1,1) über das Bild legen
+        \begin{scope}[x={(bild.south east)}, y={(bild.north west)}]
+            
+            % --- VERTIKALE ACHSE (Y-Achse) ---
+            % Beschriftung oben links an der Achse
+            \node[anchor=east, font=\small] at (0.0, 0.92) {$\sigma_{\mathrm{a}}\;\mathrm{(lg)}$};
+            
+            % Fiktiver Lasthorizont (Mitte links)
+            \node[anchor=east, font=\small] at (0.0, 0.42) {$\sigma_{\mathrm{a,fiktiv}}$};
+            
+            
+            % --- HORIZONTALE ACHSE (X-Achse) ---
+            % Achsentick 10^5
+            \node[anchor=north, font=\small] at (0.0, 0.0) {$10^5$};
+            
+            % Achsentick 10^6
+            \node[anchor=north, font=\small] at (0.52, 0.0) {$10^6$};
+            
+            % Beschriftung unten rechts an der Achse
+            \node[anchor=north, font=\small] at (0.93, 0.0) {$N\;\mathrm{(lg)}$};
+            
+        \end{scope}
+    \end{tikzpicture}
+    
+            \vspace{0.2cm} % Kleiner Abstand zum Bild
         \begin{minipage}{0.75\textwidth}
             \small
             \textbf{Legende:}
@@ -958,15 +988,15 @@ Die Standardabweichung wird ermittelt, indem jeder Versuchspunkt auf einen virtu
         
         \caption{Ermittlung der Standardabweichung Perlenschnurverfahren \cite[Seite 56]{DIN50100}.}
         \label{fig:Diagramm_Perlenschnurverfahren}
-    \end{center}
 \end{figure}
+
 
 Die hervorgehobene Linie kennzeichnet die 50\%-Zeitfestigkeitsgerade mit der Steigung k. Mit der Nummer 1 ist die verschobene Linie dargestellt, die die neue fiktive Schwingspielzahl auf dem fiktiven Lasthorizont darstellt. 
 
  Die entsprechende Formel, die die neue fiktive Schwingspielzahl nach der Verschiebung angibt ist \Eqref{eq:N_fiktiv}.
- 
- \begin{equation}\label{eq:N_fiktiv}
-    N_{i,\mathrm{fiktiv}} = N_i \cdot \left( \frac{L_{\mathrm{a,fiktiv}}}{L_{\mathrm{a},i}} \right)^{-k}
+
+\begin{equation}\label{eq:N_fiktiv}
+    N_{i,\mathrm{fiktiv}} = N_i \cdot \left( \frac{\sigma_{\mathrm{a,fiktiv}}}{\sigma_{\mathrm{a},i}} \right)^{-k}
 \end{equation}
 
 Mit \Eqref{eq:mittelwert} wird der Mittelwert der Schwingspielzahlen des fiktiven Lasthorizontes gebildet und anschließend mit \Eqref{eq:rueckrechnung} wieder entlogarithmiert, sodass die Schwingspielzahl der 50\%-Wöhlerlinie folgt. 
@@ -1003,5 +1033,6 @@ N_{10\%} &= 10^{\left( \lg N_{50\%,\text{fiktiv}} - 1{,}282 \cdot \tilde{s}_{\lg
 
 Die ermittelte Zeitfestigkeitsgerade kann nun in die sich ergebenden Punkte der Schwingspielzahl $N_\text{90\%}$ und $N_\text{10\%}$ verschoben werden. 
 
+Einbezogen werden dürfen in die Zeitfestigkeitsgerade alle Messergebnisse deren Lastamplitude über dem höchsten Durchläufer liegt (DIN 50100).
 
 	\subsection{Verfahren zur Bestimmung der Dauerfestigkeit}
