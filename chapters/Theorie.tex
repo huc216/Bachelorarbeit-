@@ -883,11 +883,105 @@ Zu erkennen ist, dass bei Typ II die Spannungsamplitude weiter abfällt, nur mit
 Ein zyklisch belastetest Bauteil erfährt einen Dauerbruch. Ursache für einen Dauerbruch ist die Ermüdung. 
 
 	\subsection{Verfahren zur Bestimmung der Zeitfestigkeit}
-Zur Bestimmung der Lage der Zeitfestigkeit können laut DIN 50100 zwei Verfahren angewendet werden. 
+Zur Bestimmung der Lage der Zeitfestigkeit können laut DIN 50100 zwei Verfahren angewendet werden, die zur Versuchsdurchführung dienen. Im Bereich der Zeitfestigkeit tritt immer ein Ausfall der Probe ein. In dem vorliegenden Fall ist dies ein Nietbruch, aber auch ein Blechriss. 
+Das erste der beiden Verfahren ist das Horizontenverfahren. Die Vorgehensweise besteht darin zwei Lasthorizonte zu wählen, die möglichst nah an den Grenzen des Kurzzeit- und des Langzeitfestigkeitbereichs liegen und dort anschließend mehrere Proben zu prüfen (siehe \Figref{fig:Diagramm_Horizontenverfahren}).
 
-Das erste Verfahren wird Horizontenverfahren genannt und kommt zum Einsatz, wenn bekannt ist, wo der Bereich der Kurzzeitfestigkeit und der Langzeitfestigkeit liegt \cite[Seite 273]{Eulitz2022}. Da für den vorliegenden Versuch eine geringe Stichprobengröße von insgesamt 15 Proben für den Wöhlerversuch vorhanden sind und zusätzlich der Bereich der Zeitfestigkeit nicht bekannt ist, wird auf das zweite Verfahren zurück gegriffen. 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=stealth, thick]
+% Achsen
+\draw[->, line width=1.2pt] (0,0) -- (9,0)
+    node[below right] {$N\,(\lg)$};
 
-Das zweite Verfahren ist das Perlenschnurverfahren, welches Verwendung findet, wenn die Lage des Zeitfestigkeitsbereichs nicht definiert ist. Der entscheidende Vorteil ist, dass auch bei einer geringen Probenanzahl eine geeignete Wöhlerlinie bestimmt werden kann. Die Vorgehensweise ist ein Vorantasten auf unterschiedlichen Lasthorizonten, bis zu den Übergängen der Kurz- und Langzeitfestigkeit. Mehrere Proben auf einem Lasthorizont zu messen ist möglich \cite[Seite 278]{Eulitz2022}. 
+\draw[->, line width=1.2pt] (0,0) -- (0,6.3)
+    node[above left, rotate=90] {$\sigma_a\,(\lg)$};
+
+% Horizontale Linien
+\draw[dashed] (0,4.5) -- (8.1,4.5);
+\draw[dashed] (0,1.8) -- (8.1,1.8);
+
+% Beschriftungen links
+\node[left] at (0,4.5) {$S_{a1}$};
+\node[left] at (0,1.8) {$S_{a2}$};
+
+% 50%-Wöhlerlinie, oben weiter links durch Punktbereich
+\draw[line width=1.6pt] (1.2,5.2) -- (6.7,0.8);
+
+% Beschriftung gerade
+\node at (5.3,3.6) {50\,\%-Wöhlerlinie};
+
+% Obere rote Punkte
+\foreach \x in {0.7,1.3,1.7,2.0,2.3,2.6,3.2}
+{
+    \fill[black] (\x,4.5) circle (2.5pt);
+}
+
+% Untere rote Punkte
+\foreach \x in {3.8,4.6,5.1,5.5,5.8,6.3,6.9,7.8}
+{
+    \fill[black] (\x,1.8) circle (2.5pt);
+}
+
+\end{tikzpicture}
+        \caption{Horizontenverfahren \cite[Seite 26]{Dissertation_Woehler}.}
+        \label{fig:Diagramm_Horizontenverfahren}
+\end{figure}
+
+Der Nachteil des Horizontenverfahren ist, dass es nur dann verwendet werden kann, wenn bekannt ist, wo der Bereich der Kurzzeitfestigkeit und der Langzeitfestigkeit liegt \cite[Seite 273]{Eulitz2022}. 
+
+Da für den vorliegenden Versuch eine geringe Stichprobengröße von insgesamt 15 Proben für den Wöhlerversuch vorhanden sind und zusätzlich der Bereich der Zeitfestigkeit nicht bekannt ist, wird auf das zweite Verfahren zurück gegriffen. 
+
+Das sogennante Perlenschnurverfahren. Das zweite Verfahren ist das Perlenschnurverfahren, welches Verwendung findet, wenn die Lage des Zeitfestigkeitsbereichs nicht definiert ist. Der entscheidende Vorteil ist, dass auch bei einer geringen Probenanzahl eine geeignete Wöhlerlinie bestimmt werden kann. Die Vorgehensweise ist ein Vorantasten auf unterschiedlichen Lasthorizonten, bis zu den Übergängen der Kurz- und Langzeitfestigkeit. Mehrere Proben auf einem Lasthorizont zu prüfen ist möglich \cite[Seite 278]{Eulitz2022}. 
+
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        % 1. Das bereinigte Bild einbinden und die Dimensionen festlegen
+        \node[anchor=south west, inner sep=0] (bild) at (0,0) {
+            \includegraphics[width=0.8\textwidth]{Perlenschnurverfahren}
+        };
+        
+        % 2. Ein relatives Koordinatensystem (0,0 bis 1,1) über das Bild legen
+        \begin{scope}[x={(bild.south east)}, y={(bild.north west)}]
+            
+            % --- VERTIKALE ACHSE (Y-Achse) ---
+            % Beschriftung oben links an der Achse
+            \node[anchor=east, font=\small] at (0.0, 0.92) {$\sigma_{\mathrm{a}}\;\mathrm{(lg)}$};
+            
+            % Fiktiver Lasthorizont (Mitte links)
+            \node[anchor=east, font=\small] at (0.0, 0.42) {$\sigma_{\mathrm{a,fiktiv}}$};
+            
+            
+            % --- HORIZONTALE ACHSE (X-Achse) ---
+            % Achsentick 10^5
+            \node[anchor=north, font=\small] at (0.0, 0.0) {$10^5$};
+            
+            % Achsentick 10^6
+            \node[anchor=north, font=\small] at (0.52, 0.0) {$10^6$};
+            
+            % Beschriftung unten rechts an der Achse
+            \node[anchor=north, font=\small] at (0.93, 0.0) {$N\;\mathrm{(lg)}$};
+            
+        \end{scope}
+    \end{tikzpicture}
+    
+            \vspace{0.2cm} % Kleiner Abstand zum Bild
+        \begin{minipage}{0.75\textwidth}
+            \small
+            \textbf{Legende:}
+            \begin{description}
+                \item[1] Verschiebung der Versuchsergebnisse entlang der Geradenneigung
+            \end{description}
+        \end{minipage}
+        \vspace{0.2cm} % Kleiner Abstand zur Caption
+        
+        \caption{Ermittlung der Standardabweichung Perlenschnurverfahren \cite[Seite 56]{DIN50100}.}
+        \label{fig:Diagramm_Perlenschnurverfahren}
+\end{figure}
+
+
+Die hervorgehobene Linie kennzeichnet die 50\%-Zeitfestigkeitsgerade mit der Steigung k. Mit der Nummer 1 ist die verschobene Linie dargestellt, die die neue fiktive Schwingspielzahl auf dem fiktiven Lasthorizont darstellt. 
 
 Die Zeitfestigkeitsgerade kann mit der sogenannten Basquin-Gleichung (\Eqref{eq:Zeitfestigkeitsgerade_C}) gemäß DIN 50100 ermittelt werden:
 
@@ -944,55 +1038,6 @@ Unter der Prämisse, dass die Standardabweichung auf allen Lasthorizonten gleich
 
 Die Standardabweichung wird ermittelt, indem jeder Versuchspunkt auf einen virtuellen Lasthorizont, der frei wählbar ist verschoben wird (siehe \Figref{fig:Diagramm_Perlenschnurverfahren}). 
 
-\begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-        % 1. Das bereinigte Bild einbinden und die Dimensionen festlegen
-        \node[anchor=south west, inner sep=0] (bild) at (0,0) {
-            \includegraphics[width=0.8\textwidth]{Perlenschnurverfahren}
-        };
-        
-        % 2. Ein relatives Koordinatensystem (0,0 bis 1,1) über das Bild legen
-        \begin{scope}[x={(bild.south east)}, y={(bild.north west)}]
-            
-            % --- VERTIKALE ACHSE (Y-Achse) ---
-            % Beschriftung oben links an der Achse
-            \node[anchor=east, font=\small] at (0.0, 0.92) {$\sigma_{\mathrm{a}}\;\mathrm{(lg)}$};
-            
-            % Fiktiver Lasthorizont (Mitte links)
-            \node[anchor=east, font=\small] at (0.0, 0.42) {$\sigma_{\mathrm{a,fiktiv}}$};
-            
-            
-            % --- HORIZONTALE ACHSE (X-Achse) ---
-            % Achsentick 10^5
-            \node[anchor=north, font=\small] at (0.0, 0.0) {$10^5$};
-            
-            % Achsentick 10^6
-            \node[anchor=north, font=\small] at (0.52, 0.0) {$10^6$};
-            
-            % Beschriftung unten rechts an der Achse
-            \node[anchor=north, font=\small] at (0.93, 0.0) {$N\;\mathrm{(lg)}$};
-            
-        \end{scope}
-    \end{tikzpicture}
-    
-            \vspace{0.2cm} % Kleiner Abstand zum Bild
-        \begin{minipage}{0.75\textwidth}
-            \small
-            \textbf{Legende:}
-            \begin{description}
-                \item[1] Verschiebung der Versuchsergebnisse entlang der Geradenneigung
-            \end{description}
-        \end{minipage}
-        \vspace{0.2cm} % Kleiner Abstand zur Caption
-        
-        \caption{Ermittlung der Standardabweichung Perlenschnurverfahren \cite[Seite 56]{DIN50100}.}
-        \label{fig:Diagramm_Perlenschnurverfahren}
-\end{figure}
-
-
-Die hervorgehobene Linie kennzeichnet die 50\%-Zeitfestigkeitsgerade mit der Steigung k. Mit der Nummer 1 ist die verschobene Linie dargestellt, die die neue fiktive Schwingspielzahl auf dem fiktiven Lasthorizont darstellt. 
-
  Die entsprechende Formel, die die neue fiktive Schwingspielzahl nach der Verschiebung angibt ist \Eqref{eq:N_fiktiv}.
 
 \begin{equation}\label{eq:N_fiktiv}
@@ -1036,3 +1081,19 @@ Die ermittelte Zeitfestigkeitsgerade kann nun in die sich ergebenden Punkte der 
 Einbezogen werden dürfen in die Zeitfestigkeitsgerade alle Messergebnisse deren Lastamplitude über dem höchsten Durchläufer liegt (DIN 50100).
 
 	\subsection{Verfahren zur Bestimmung der Dauerfestigkeit}
+	Zur Bestimmung des Langzeitfestigkeitbereichs schlägt die DIN 50100 verschiedene Verfahren vor. Die Vorgehensweisen folgender Verfahren aus der DIN werden nun erläutert und anschließend das geeignetste Verfahren ausgewählt:
+	\begin{itemize}
+    \item Probit Verfahren
+    \item Abgrenzungsverfahren
+    \item Treppenstufenverfahren nach ?
+    \item Maximum-Likelihood Methode
+	\end{itemize}
+
+Das Probit-Verfahren erfordert eine Festlegung von mindestens 4 Lasthorizonten. Auf jedem Lasthorizont müssen mindestens 10 Proben geprüft werden, um die Streuung auswerten zu können. Wie in \Figref{fig:probit_verfahren} muss dabei jeder Lasthorizont mindestens einen Bruch und einen Durchläufer aufweisen.  
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Probit Verfahren}
+    \caption{Probit-Verfahren \cite[Seite 36]{Dissertation_Woehler}.}
+    \label{fig:probit_verfahren}
+\end{figure}

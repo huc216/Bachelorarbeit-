@@ -3,6 +3,7 @@
 %-----------------------------------------------------------------------
 
 \section{Versuchsaufbau}
+In \Tabref{tab:sensoren_uebersicht} sind die verschiedenen Sensoren der drei Hydropulsanlagen des Maschinendynamiklabors aufgelistet. Jede Hydropulsanlage besitzt einen Kraft- als auch einen Wegsensor, der fest an der Maschine verbaut ist. Zusätzlich ist ein Laser Sensor, der die Wegänderung aufnimmt vorhanden und kann flexibel bei allen drei Anlagen eingesetzt werden.
 
 \begin{table}[htbp]
     \centering
@@ -14,26 +15,24 @@
         \hline
         \textbf{Bezeichnung} & \textbf{Messgröße} & \textbf{Zuordnung Anlage} & \textbf{Status} \\
         \hline
-        Weg PLF7D   & Weg [mm]   & Hydropulsanlage 1 & Fest verbaut \\
-        Kraft PLF7D & Kraft [kN] & Hydropulsanlage 1 & Fest verbaut \\
+        Weg PL100K   & Weg [mm]   & Hydropulsanlage 1 & Fest verbaut \\
+        Kraft PL100K & Kraft [kN] & Hydropulsanlage 1 & Fest verbaut \\
         \hline
         Weg PL16K   & Weg [mm]   & Hydropulsanlage 2 & Fest verbaut \\
         Kraft PL16K & Kraft [kN] & Hydropulsanlage 2 & Fest verbaut \\
         \hline
-        Weg PL100K  & Weg [mm]   & Hydropulsanlage 3 & Fest verbaut \\
-        Kraft PL100K& Kraft [kN] & Hydropulsanlage 3 & Fest verbaut \\
+        Weg PLF7D  & Weg [mm]   & Hydropulsanlage 3 & Fest verbaut \\
+        Kraft PLF7D & Kraft [kN] & Hydropulsanlage 3 & Fest verbaut \\
         \hline
         Weg Laser   & Weg [mm]   & Flexibel (Anlage 1--3) & Wechselbar \\
         \hline
     \end{tabular}
 \end{table}
 
+Für den vorliegenden Versuch wird die Hydropulsanlage 2 verwendet, dessen Prüfzylinder eine Zugkraft von 16kN aufbringen kann \cite{oth}. \textbf{Da die Firme Siemens die Proben schon einmal an der Hydropulsanlage testen hat lassen?} Um den MATLAB-Code für zukünftige Versuche an allen drei Hydropulsnalagen zu standardisieren, werden alle Sensoren in den Code mit einbezogen. 
 
 
-
-
-
-\Figref{fig:Perlenschnurverfahren} zeigt die drei Schritte zur Auswertung der Wöhlerkurve.
+ \Figref{fig:Perlenschnurverfahren} zeigt die drei Schritte zur Auswertung der Wöhlerkurve.
 
     \begin{figure}[H]
         \begin{center}
@@ -44,6 +43,8 @@
     \end{figure}
 
 \section{Versuchsdurchführung}
+Da die Festigkeit der Niete untersucht wird und nicht die des Blechs müssen die Proben, die ein Blechriss erfahren haben aus der Versuchsreihe gestrichen werden. 
+
 \subsection{Versuchsparameter}
 
 \section{Versuchsdurchführung}
