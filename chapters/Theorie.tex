@@ -1,128 +1,15 @@
 \chapter{Theoretischer Hintergrund}
 
-	\section{Mechanische Grundlagen}
-Zum Verständnis der Versuchsauswertungen des Scherzugversuches und des Schwingfestigkeitsversuches sind die Definitionen einiger Begriffe aus der Festigkeitslehre notwendig. 
+	\section{Werkstoffmechanische Grundlagen der Ermüdung}
 
-	\subsection{Beanspruchungsarten}
-	\label {subsec: Beanspruchungsarten}
-Die Beanspruchungsart gibt wieder, in welche Richtung eine Kraft von außen auf ein Bauteil wirkt und führt dementsprechend zu unterschiedlicher Verformung des Bauteils. Die grundlegenden Beanspruchungsarten sind Zug-, Druck-, Schub-, Biege-, Torsions- und Knickbeanspruchungen, sowie aus diesen genannten Beanspruchungsarten zusammengesetzte Beanspruchungen  \cite[Seite 4-7]{HolzmannMeyerSchumpich2020}. Relevant für die Versuchsauswertung des Scherzugversuches ist die Schubbeanspruchung und für den Wöhlerversuch die Zugbeanspruchung. 
+Bei einem statischen Zugversuch verformt sich das Bauteil unter der Streckgrenze elastisch und über der Streckgrenze sowohl elastisch als auch plastisch \cite[Seite 8]{Laepple2016}. Unter zyklischer Belastung hingegen treten plastische Verformungen in der Mikrostruktur des Metalls bereits weit unterhalb der Streckgrenze auf. Das Voranschreiten dieser mikrostrukturellen Schädigung ist die sogennante Ermüdung, die schlussendlich zu einem Ermüdungsbruch führen kann.  
 
-	\subsection{Spannungsbegriffe}
-Wird ein Bauteil von außen durch eine der in Kapitel \ref{subsec: Beanspruchungsarten} genannten Beanspruchungsarten belastet, so wirken dieser Belastung innere Kräfte entgegen. Diese sind entgegengerichtet zur äußeren Kraft und gleich groß, um ein Kräftegleichgewicht aufrecht zu erhalten. Mit der Gleichgewichtsbedingung aus der Statik, wird dies in der Formel \Eqref{eq:Kraeftebilanz} allgemein ausgedrückt. Es ist zu sehen, dass die Summe aller Kräfte gleich null sein muss \cite[Seite 9-10]{Balke2008}.
+Während der Zugversuch also die statische Maximalkraft $F_{\text{max}}$ ermittelt, untersucht der Wöhlerversuch das Versagen des Bauteils bei zyklischer Beanspruchung weit unter dieser Maximalkraft, verursacht durch Materialermüdung \cite[Seite 1-5]{Ermüdungsfestigkeit2007}. 
 
-    \begin{equation}\label{eq:Kraeftebilanz}
-        \sum_{i=1}^{n} \mathbf{F}_i = 0.
-    \end{equation}
+Wenn nun die innere Kraft auf die beanspruchte Querschnittsfläche bezogen wird, entsteht der Begriff der Spannung \cite[Seite 9-10]{Balke2008}. Der Spannungsbegriff wird in die Normalspannung und die Tangentialspannung, die sich durch die unterschiedliche Krafteinwirkung voneinander abgrenzen, unterteilt. Normalspannungen entstehen durch senkrecht auf die Fläche auftretende Kräfte. Tangentialspannungen hingegen treten immer dann auf, wenn Kräfte in der Schnittebene -- auch Querkräfte $F_Q$ genannt -- vorliegen~\cite[Seite 206]{KabusFestigkeitslehre2023}. Diese elastischen und plastischen Verformungen sind die Auswirkung einer wirkenden Spannung.
+Im elastischen Fall bewegt sich das Bauteil nach Entlastung wieder in die Ausgangslage zurück. Im Gegensatz zur plastischen Verformung, bei der eine irreversible Schädigung zurückbleibt, die die Grundlage für die spätere Ermüdung bildet. 
 
-In \Figref{fig:Rundstab_mit_Zugkraft} werden die inneren Kräfte exemplarisch an einem Schnittufer einer Rundprobe angetragen, die beidseitig mit einer Zugkraft belastet wird \cite[Seite 202]{KabusFestigkeitslehre2023}. 
-
-\begin{figure}[H]
-    \centering
-\begin{tikzpicture}[scale=1.2, every node/.style={scale=0.9}, >=latex]
-
-    % --- 1. DEFINITIONEN ---
-    \def\stabbreite{5.5}
-    \def\stabhöhe{0.8}
-    \def\schnittpos{2.5}
-
-    % --- 2. OBERER GESAMTSTAB (Ausschnitt) ---
-    \begin{scope}[shift={(0,0)}]
-        \draw[thick] (0,0) rectangle (\stabbreite, \stabhöhe);
-        \draw[dashed, gray] (-0.5, 0.4) -- (\stabbreite+0.5, 0.4);
-        
-        % Äußere Kräfte
-        \draw[->, ultra thick] (0, 0.4) -- (-1.2, 0.4) node[left] {$F$};
-        \draw[->, ultra thick] (\stabbreite, 0.4) -- (\stabbreite+1.2, 0.4) node[right] {$F$};
-        
-        % Schnittlinie
-        \draw[thick, xshift=\schnittpos cm, yshift=0cm] 
-            decorate[decoration={zigzag, segment length=5pt, amplitude=2pt}] {(0,0) -- (0,\stabhöhe)};
-        
-        % Querschnittsfläche (Berührt oben und unten)
-        \draw[pattern=north east lines, draw=black] (\stabbreite-0.8, 0.4) ellipse (0.3 and 0.4);
-        
-        % Beschriftung nach links verschoben
-        \node (flaeche_text) at (\stabbreite-1.1, -0.6) {Querschnittsfläche $A$};
-        % Pfeil startet nun mittig über dem Text und zeigt zur Fläche
-        \draw[->, thick] (flaeche_text.north) -- (\stabbreite-0.8, 0.15);
-    \end{scope}
-
-    % --- 3. LINKES SCHNITTUFER ---
-    \begin{scope}[shift={(0,-2.2)}]
-        \draw[thick] (0,0) -- (\schnittpos,0);
-        \draw[thick] (0,\stabhöhe) -- (\schnittpos,\stabhöhe);
-        \draw[thick] (0,0) -- (0,\stabhöhe);
-        \draw[thick, xshift=\schnittpos cm, yshift=0cm] 
-            decorate[decoration={zigzag, segment length=5pt, amplitude=2pt}] {(0,0) -- (0,\stabhöhe)};
-        
-        \draw[->, ultra thick] (0, 0.4) -- (-1.2, 0.4) node[left] {$F$};
-        \draw[->, ultra thick] (\schnittpos, 0.4) -- (\schnittpos+1.0, 0.4) node[right] {$F_i$};
-        
-        \coordinate (S1) at (\schnittpos, 0.1);
-    \end{scope}
-
-    % --- 4. RECHTES SCHNITTUFER ---
-    \begin{scope}[shift={(\schnittpos+0.8, -3.4)}]
-        \draw[thick] (0,0) -- (\stabbreite-\schnittpos, 0);
-        \draw[thick] (0,\stabhöhe) -- (\stabbreite-\schnittpos,\stabhöhe);
-        \draw[thick] (\stabbreite-\schnittpos, 0) -- (\stabbreite-\schnittpos, \stabhöhe);
-        \draw[thick, xshift=0cm, yshift=0cm] 
-            decorate[decoration={zigzag, segment length=5pt, amplitude=2pt}] {(0,0) -- (0,\stabhöhe)};
-        
-        \draw[->, ultra thick] (\stabbreite-\schnittpos, 0.4) -- (\stabbreite-\schnittpos+1.2, 0.4) node[right] {$F$};
-        \draw[->, ultra thick] (0, 0.4) -- (-1.0, 0.4) node[left] {$F_i$};
-        
-        \coordinate (S2) at (0, 0.7);
-    \end{scope}
-
-    % --- 5. BESCHRIFTUNG SCHNITTUFER ---
-    \node (text_schnitt) at (3.9, -2.2) {Schnittufer};
-    \draw[->, thick] (text_schnitt.west) -- (S1);
-    \draw[->, thick] (text_schnitt.west) -- (S2);
-
-\end{tikzpicture}
-            \caption{Rundstab mit Zugkraft \cite[Seite 202]{KabusFestigkeitslehre2023}.}
-	  \label{fig:Rundstab_mit_Zugkraft}
-\end{figure}
-
-Da bei der Zugkraft die Kräfte normal zur Ebene angreifen, wird die Kraft daher auch Normalkraft $F_N$ genannt \cite[Seite 4-7]{HolzmannMeyerSchumpich2020}.
-Für das Beispiel in \Figref{fig:Rundstab_mit_Zugkraft} kann nun das Kräftegleichgewicht gemäß \Eqref{eq:Kraeftebilanz} aufgestellt werden:
-
-     \begin{equation}\label{eq:Kraeftegleichgewicht}
-        -F_N + \sigma A = 0.
-    \end{equation}
-
-Dabei ist $F_N$ die Zugkraft, die von Außen auf das Bauteil wirkt und  $\sigma A$ steht für die innere Kraft, die der äußeren Kraft entgegenwirkt, bestehend aus der Spannung und der beanspruchten Fläche des Bauteils.
-Wenn nun die innere Kraft auf die beanspruchte Querschnittsfläche bezogen wird, ensteht der Begriff der Spannung und es folgt \Eqref{eq:Zugspannung}:
-
-    \begin{equation}\label{eq:Zugspannung}
-        \sigma = \frac{F_N}{A}\,.
-    \end{equation}
-
-Ist die Spannung $\sigma >0 $ wird sie als Zugspannung definiert und ist die Spannung $\sigma < 0$ handelt es sich um eine Druckspannung \cite[Seite 9-10]{Balke2008}.
-Diese Spannung findet sich im Wöhlerversuch wieder. 
-
-Der Spannungsbegriff lässt sich nochmals in Normalspannung und Tangentialspannung unterteilen. Diese beiden Spannungen unterscheiden sich durch die unterschiedliche Krafteinwirkung. Normalspannungen entstehen durch senkrecht auf die Fläche auftretenden Kräfte. Tangentialspannungen hingegen treten immer dann auf, wenn Kräfte in der Schnittebene - auch Querkräfte $F_Q$ genannt - auftreten. Analog zu \Eqref{eq:Zugspannung} ergibt sich die Tangentialspannung in \Eqref{eq:Schubspannung} \cite[Seite 206]{KabusFestigkeitslehre2023}: 
-
-    \begin{equation}\label{eq:Schubspannung}
-        \tau = \frac{F_Q}{A}\,.
-    \end{equation}
-
-Die Tangentialspannung dient der Bewertung der Nietverbindung im Scherzugversuches.
-Diese grundlegenden Definitionen stellen die Grundlage für die Auswertung der Spannungszustände in den Versuchen dar. 
-
-	\subsection{Elastische und plastische Verformung}	
-Elastische und plastische Verformungen sind die Auswirkung einer Beanspruchung und damit einer wirkenden Spannung.
-Bei der elastischen Verformung bewegt sich das Bauteil nach Entlastung wieder in die Ausgangslage zurück, wohingegen bei plastischer Verformung dies nicht der Fall ist. 
-Wenn ein Bauteil rein elastisch verformt wird, so gilt das folgende Hooke'sche Gesetz (\Eqref{eq:Dehnung}), welches die Proportionalität zwischen Spannung und Dehnung aufzeigt, verknüpft mit dem werkstoffspezifischen E-Modul. 
-
-    \begin{equation}\label{eq:Dehnung}
-    \sigma = E \cdot \varepsilon 
-    \end{equation}
-
-Bei dem statischen Zugversuch verformt sich das Bauteil unter der Streckgrenze elastisch und über der Streckgrenz sowohl elastisch als auch plastisch. Bei zyklischer Belastung hingegen tritt eine plastische Verformung auch unterhalb der Streckgrenze auf. Der Grund dafür folgt im nächsten Kapitel. \textbf{Quelle! + nochmal überarbeiten}
-
-	\subsection{Gitterfehler}
+	\subsection{Mikroskopische Rissentstehung (Gitterfehler)}
 Die sogennanten Ermüdungsrisse, die bei zyklischer Belastung entstehen, werden durch die Mikrostruktur der Metalle begünstigt. Explizit handelt es sich bei Metallen um Realkristalle, die sich durch ihre fehlerhafte Gitterstruktur auszeichnen. Diese Gitterfehler, die zunächst zu Mikrorissen und später zu einem Bruch führen können gilt es in Punkt-, Linien-, Flächen-, und Raumdefekte zu unterscheiden. Zu den Punktdefekten gehören Leerstellen. Als Liniendefekt gibt es die Versetzungen. Flächendefekte sind zum Beispiel Korngrenzen und Stapelfehler.  Zu den räumlichen Defekten gehören Poren, Einschlüsse und Ausscheidungen \cite[Seite 55]{Werkstoffkunde2015}. Wichtig für die Entstehung von Ermüdungsrissen sind von den Punktdefekten die Leerstellen und von den Liniendefekten die Versetzungen. Die Entstehung von Ermüdungsrissen basiert auf dem Vorhandensein von Leerstellen und der Bewegung von Versetzungen.
 
 Bei idealen Kristallen ist jeder Platz in der Gitterstruktur mit einem Atom belegt. Bei einem Realkristall hingegen gibt es unebsetzte Gitterplätze, also die bereits erwähnten Leerstellen. Dadurch können die Atome leichter diffundieren, wodurch wiederum die plastische Verformung begünstigt wird. Wenn sich ein Bauteil beginnt plastisch zu verformen, nimmt des Weiteren auch die Anzahl der Leerstellen zu \cite[Kapitel 2.2.1]{Werkstofftechnik2018}.
@@ -239,7 +126,7 @@ Da die Rissgröße pro Schwingung zunimmt, sinkt folglich die tragende Fläche u
 
 Bei dem Wöhlerversuch sind es eben diese Mikrorisse, die schließlich zum Versagen des Bauteils führen. Deshalb wird untersucht, wie viele Lastspiele das Material aushält, bevor die Summe der Mikrorisse zu einer Schädigung des Bauteils führen.
 
-	\subsection{Schwingungen}
+	\subsection{Makroskopische Schwingungskenngrößen}
 Bei dem Wöhlerversuch erfährt das Bauteil eine zyklische Spannungsänderung, die auch als mechanische Schwingung bezeichnet wird. 
 \Figref{fig:Lastzeitverlaeufe} stellt die beiden Schwingungsarten gegenüber.
 Auf der einen Seite zeigt Teilbild b) die allgemeine dynamische Schwingung, wie sie auch häufig in der Praxis auftritt, und auf der anderen Seite wird die periodische Sinusschwingung in Teilbild a) dargestellt. Da die allgemeine dynamische Schwingung jedoch zu komplex zum Nachbilden für Versuche ist, wird für den Wöhlerversuch eine periodische Schwingung gemäß Teilbild a) verwendet. 
@@ -1085,11 +972,10 @@ Einbezogen werden dürfen in die Zeitfestigkeitsgerade alle Messergebnisse deren
 	\begin{itemize}
     \item Probit Verfahren
     \item Abgrenzungsverfahren
-    \item Treppenstufenverfahren nach ?
-    \item Maximum-Likelihood Methode
+    \item Treppenstufenverfahren nach Hück
 	\end{itemize}
 
-Das Probit-Verfahren erfordert eine Festlegung von mindestens 4 Lasthorizonten. Auf jedem Lasthorizont müssen mindestens 10 Proben geprüft werden, um die Streuung auswerten zu können. Wie in \Figref{fig:probit_verfahren} muss dabei jeder Lasthorizont mindestens einen Bruch und einen Durchläufer aufweisen.  
+Das Probit-Verfahren erfordert eine Festlegung von mindestens 4 Lasthorizonten. Auf jedem Lasthorizont müssen mindestens 10 Proben geprüft werden, um die Streuung auswerten zu können. Wie in \Figref{fig:probit_verfahren} veranschaulicht muss dabei jeder Lasthorizont mindestens einen Bruch und einen Durchläufer aufweisen.  
 
 \begin{figure}[H]
     \centering
