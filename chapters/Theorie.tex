@@ -199,7 +199,15 @@ Da die Rissgröße pro Schwingung zunimmt, verringert sich folglich die tragende
 
 Im Wöhlerversuch führen diese Mikrorisse schließlich zum Versagen des Bauteils. Deshalb wird untersucht, wie viele Lastspiele das Material erträgt, bevor die Summe der Mikrorisse zu einem makroskopischen Riss im Bauteil führt.
 
-	\subsection{Makroskopische Schwingungskenngrößen}
+
+	\section{Scherzugversuch}
+Das Ziel des Scherzugversuches ist es, die Maximalkraft $F_{\text{max}}$ zu bestimmen, die die Probe vor ihrem Versagen erträgt \cite[Seite 216-218]{RoloffMatek2021}. Diese Maximalkraft, auch Scherkraft genannt, ist anschließend die oberste Grenze für die Lasthorizonte des nachfolgenden Wöhlerversuches.  
+
+Die zwei Versagensarten, die auftreten können, sind die Abscherung des Niets, durch Überschreiten der Scherspannung im Niet, oder ein Blechriss infolge des Lochleibungsdruckes~\cite[Seite 129]{Maschinenteile2007}. 
+
+
+	\section{Wöhlerversuch nach DIN 50100}
+	\subsection{Schwingungskenngrößen}
 Bei dem Wöhlerversuch erfährt das Bauteil eine zyklische Spannungsänderung, die auch als mechanische Schwingung bezeichnet wird. 
 \Figref{fig:Lastzeitverlaeufe} stellt die beiden Schwingungsarten gegenüber.
 Auf der einen Seite zeigt Teilbild b) die allgemeine dynamische Schwingung, wie sie auch häufig in der Praxis auftritt, und auf der anderen Seite wird die periodische Sinusschwingung in Teilbild a) dargestellt. Da die allgemeine dynamische Schwingung jedoch zu komplex zum Nachbilden für Versuche ist, wird für den Wöhlerversuch eine periodische Schwingung gemäß Teilbild a) verwendet. 
@@ -294,7 +302,7 @@ Der zeitliche Verlauf einer Beanspruchung hat Einfluss auf die Lebensdauer eines
 \begin{tikzpicture}[>=Stealth, font=\sffamily\small]
 
     % --- 1. PARAMETER ---
-    \def\m{0.375} 
+    \def\m{0.35} % Auf 0.35 gesetzt, damit die Wellen bei R = unendlich und R = 0 exakt bei 0 anfangen
     \def\amp{1.4} 
 
     % --- 2. KOORDINATENSYSTEM ---
@@ -303,10 +311,10 @@ Der zeitliche Verlauf einer Beanspruchung hat Einfluss auf die Lebensdauer eines
     \node[right] at (0.1, 4.1) {Zug +};
     \node[right] at (0.1, -3.7) {Druck --};
 
-% --- 3. HÜLLKURVEN ---
-% + 1.0 am Ende der y-Klammer verschiebt die Linie nach oben
-\draw[dashed, gray] (-7.5, {\m*(-7.5) + \amp + 0.1}) -- (7.5, {\m*(7.5) + \amp + 0.1}) node[right, black] {$\sigma_{\text{max}}$};
-\draw[dashed, gray] (-7.5, {\m*(-7.5) - \amp - 0.05}) -- (7.5, {\m*(7.5) - \amp - 0.05}) node[right, black] {$\sigma_{\text{min}}$};
+     % --- 3. HÜLLKURVEN (mit manuellem Offset auseinandergeschoben) ---
+    \draw[dashed, gray] (-7.55, {\m*(-7.55) + \amp + 0.1}) -- (7.55, {\m*(7.55) + \amp + 0.1}) node[right, black] {$\sigma_{\text{max}}$};
+    \draw[dashed, gray] (-7.55, {\m*(-7.55) - \amp - 0.1}) -- (7.55, {\m*(7.55) - \amp - 0.1}) node[right, black] {$\sigma_{\text{min}}$};
+
 
     % --- 4. OPTIMIERTES MAKRO ---
     \newcommand{\perfectwave}[2]{
@@ -322,25 +330,24 @@ Der zeitliche Verlauf einer Beanspruchung hat Einfluss auf die Lebensdauer eines
             \draw[<->] (#1, 0) -- (#1, \midy);
         \fi
         
-        % Hauptbeschriftung über der Welle (jetzt explizit scriptsize)
+        % Hauptbeschriftung über der Welle
         \node[above, yshift=8pt] at (#1, {\midy + \amp}) {\scriptsize #2};
     }
 
     % --- 5. LASTFÄLLE ---
     % 1. Hälfte: sigma_m rechts vom Pfeil
-% 1. Hälfte: sigma_m rechts vom Pfeil
-    \perfectwave{-6.5}{} % Hier das zweite Argument leer lassen
-    \node[above] at (-6.5, 0.1) {\scriptsize $|\sigma_m| > \sigma_a$}; % Positioniert den Text kurz über der x-Achse
+    \perfectwave{-6.5}{} 
+    \node[above] at (-6.5, 0.1) {\scriptsize $|\sigma_m| > \sigma_a$}; 
     \node[right] at (-6.4, -1.2) {\scriptsize $\sigma_m$}; 
-
+    
     \perfectwave{-4.0}{$|\sigma_m| = \sigma_a$} 
     \node[right] at (-3.9, -0.7) {\scriptsize $\sigma_m$};
-
+    
     \perfectwave{-2.0}{$|\sigma_m| < \sigma_a$} 
-    \node[right] at (-1.9, -0.4) {\scriptsize $\sigma_m$};
+    \node[right] at (-1.9, -0.4) {\scriptsize $\sigma_m$}; 
 
     % Mitte
-    \perfectwave{0}{$\sigma_m = 0$}          
+    \perfectwave{0.0}{$\sigma_m = 0$}          
 
     % 2. Hälfte: sigma_m links vom Pfeil
     \perfectwave{2.0}{$\sigma_m < \sigma_a$}  
@@ -352,26 +359,31 @@ Der zeitliche Verlauf einer Beanspruchung hat Einfluss auf die Lebensdauer eines
     \perfectwave{6.5}{$\sigma_m > \sigma_a$} 
     \node[left] at (6.4, 1.2) {\scriptsize $\sigma_m$};
 
-
-    % --- 6. UNTERE BESCHRIFTUNG ---
+    % --- 6. UNTERE BESCHRIFTUNG (TABELLE) ---
     \begin{scope}[shift={(0,-4.8)}]
+        % Horizontale Trennlinie
         \draw[thick] (-7.5,0) -- (7.5,0);
-        \draw (-3.5, 1.0) -- (-3.5, -1.0); 
-        \draw (3.3, 1.0) -- (3.3, -1.0);  
         
-        \node at (-6.3, 0.3) {\scriptsize $1 < R_\sigma < \infty$};
-        \node at (-4.2, 0.3) {\scriptsize $R_\sigma = \infty$};
-        \node at (-2.1, 0.3) {\scriptsize $-\infty < R_\sigma < -1$};
-        \node at (0, 0.3)    {\scriptsize $R_\sigma = -1$};
-        \node at (2.2, 0.3)  {\scriptsize $-1 < R_\sigma < 0$};
+        % Vertikale Trennlinien exakt an den Grenzen der Bereiche ausgerichtet (bei x = -4 und x = 4)
+        \draw (-3.2, 0.6) -- (-3.2, -1.0); 
+        \draw (3.2, 0.6) -- (3.2, -1.0);  
+        
+        % R-Werte exakt unter den jeweiligen Wellen zentriert
+        \node at (-6.5, 0.3) {\scriptsize $1 < R_\sigma < \infty$};
+        \node at (-4.0, 0.3) {\scriptsize $R_\sigma = \infty$};
+        \node at (-2.0, 0.3) {\scriptsize $-\infty < R_\sigma < -1$};
+        \node at (0.0, 0.3)  {\scriptsize $R_\sigma = -1$};
+        \node at (2.0, 0.3)  {\scriptsize $-1 < R_\sigma < 0$};
         \node at (4.0, 0.3)  {\scriptsize $R_\sigma = 0$};
-        \node at (6.3, 0.3)  {\scriptsize $0 < R_\sigma < 1$};
+        \node at (6.5, 0.3)  {\scriptsize $0 < R_\sigma < 1$};
         
-        \draw[<->, >=stealth] (-3.4, -0.3) -- (-1.2, -0.3) node[midway, below, scale=0.8] {Druck-};
-        \draw[<->, >=stealth] (1.2, -0.3) -- (3.2, -0.3) node[midway, below, scale=0.8] {Zug-};
+        % Einseitige Pfeile nach außen mit vertikalem Begrenzungsstrich (|) innen
+        \draw[|<->, >=stealth] (-1.0, -0.3) -- (-3.1, -0.3) node[midway, below, scale=0.8] {Druck-};
+        \draw[|<->, >=stealth] (1.0, -0.3) -- (3.1, -0.3) node[midway, below, scale=0.8] {Zug-};
 
+        % Hauptbereiche zentriert in ihren Abschnitten
         \node[below] at (-5.5, -0.1) {\footnotesize Druckschwellbereich};
-        \node[below] at (0, -0.7) {\footnotesize Wechselbereich};
+        \node[below] at (0.0, -0.7) {\footnotesize Wechselbereich};
         \node[below] at (5.5, -0.1) {\footnotesize Zugschwellbereich};
     \end{scope}
 
@@ -384,24 +396,17 @@ Die dynamischen Lastfälle lassen sich in schwellende und wechselnde Belastung u
 Schwellende Lastfälle zum Beispiel treten bei einer Druckfeder auf, die immer wieder be- und entlastet wird. Dabei bewegt sich die Feder nach der Entlastung stets in die Ausgangslage zurück, in der die Spannung gleich null ist. Wechselnde Lastfälle entstehen dagegen, wenn das Bauteil abwechselnd auf Zug und Druck belastet wird, wie zum Beispiel eine Pleuelstange in einem Verbrennungsmotor \cite{teclehrerfreund2015}.
 
 Für die in dieser Arbeit behandelten Nietverbindungen ist der Zugschwellbereich ($0  < R_\sigma < 1$) von Bedeutung, da die Proben im Wöhlerversuch unter schwellender Zugbeanspruchung geprüft werden. 
-
-	\section{Scherzugversuch}
-Das Ziel des Scherzugversuches ist es die Maximalkraft $F_{\text{max}}$ zu bestimmen, die die Probe vor ihrem Versagen aushält. Diese Maximalkraft, auch Scherkraft genannt, ist anschließend die oberste Grenze für die Lasthorizonte des nachfolgenden Wöhlerversuches \cite[Seite 129]{Maschinenteile2007}.  
-
-
-	\section{Wöhlerversuch}
+	
        \subsection{Funktionsprinzip Hydropulsanlage}
-Für die Erstellung der Wöhlerkurve wird die servohydraulische Prüfmaschine (auch Hydropulser genannt) verwendet. Der Begriff Servohydraulik beschreibt dabei alle hydraulischen Systeme, bei denen geregelte und gesteuerte Volumenströme Anwendung finden \textbf{Quelle für den Satz}  . 
+Für die Erstellung der Wöhlerkurve wird die servohydraulische Prüfmaschine, auch Hydropulser genannt, verwendet. Die Hauptkomponenten eines servohydraulischen Systems umfassen eine Antriebsmaschine, eine hydrostatische Pumpe, einen Motor, Steuerventile sowie den Prüfzylinder als Arbeitsmaschine. Der Kreislauf wird durch einen Flüssigkeitsbehälter ergänzt. Zur Pflege der Druckflüssigkeit sind ein Filter, ein Kühler und ein Vorwärmer integriert. Vervollständigt wird das System durch die Leitungen und die Druckflüssigkeit \cite[Seite 2-3]{Ölhydraulik2020}. 
 
-Die Hauptkomponenten eines servohydraulischen Systems umfassen eine Antriebsmaschine, eine hydrostatische Pumpe, einen Motor, Steuerventile sowie den Prüfzylinder als Arbeitsmaschine. Der Kreislauf wird durch einen Flüssigkeitsbehälter ergänzt. Zur Pflege der Druckflüssigkeit sind ein Filter, ein Kühler und ein Vorwärmer integriert. Vervollständigt wird das System durch die Leitungen und die Druckflüssigkeit \cite[Seite 2-3]{Ölhydraulik2020}. 
-
-Eine Hydropulsanlage dient im Allgemeinen dazu hydraulische Energie in mechanische Energie umzuwandeln. 
-Die Einsetzbarkeit einer Hydropulsanlage ist vielseitig. Die Anwendungsbereiche erstrecken sich von Bauteilcharakterisierung über quasistatische und dynamische Bauteilprüfung bis hin zu Vibrations- und Schockprüfung \cite{Instron}. Für diesen Versuch ist allerdings nur die dynamische Bauteilprüfung relevant. 
+Eine Hydropulsanlage dient im Allgemeinen dazu, hydraulische Energie in mechanische Energie umzuwandeln. 
+Die Einsetzbarkeit einer Hydropulsanlage ist vielseitig. Die Anwendungsbereiche erstrecken sich von Bauteilcharakterisierung über quasistatische und dynamische Bauteilprüfung bis hin zu Vibrations- und Schockprüfung \cite{Instron}. Für diesen Versuch ist die dynamische Bauteilprüfung relevant. 
 
 Den Aufbau der Hydropulsanlage des Maschinendynamik-Labors an der Ostbayerischen Technischen Hochschule Regensburg zeigt  \Figref{fig:Regelkreis_Hydropulser_Gesamt} a). 
 \Figref{fig:Regelkreis_Hydropulser_Gesamt} b) veranschaulicht diese servohydraulische Prüfmaschine schematisch mit ihrer Funktionsweise.
 Zur Differenzierung ist der Ölkreislauf mit durchgezogenen Linien und der Regelkreis mit gestrichelten Linien gekennzeichnet.
-Bei dem Stoffkreislauf wird das Öl aus einem Aggregat, symbolisiert durch eine Pumpe, in den Kreislauf gefördert. Das Aggregat umfasst jedoch nicht nur die Pumpe, sondern auch den Motor, der die Pumpe antreibt, einen Ölspeicher, einen Hochdruckfilter sowie ein Druckbegrenzungsventil. Ein hochpräzises Servoventil bestimmt dabei, in welche Kammer des Zylinders das Öl fließt sowie die Durchflussmenge. Dies ist von Bedeutung, um die Probe einer zyklischen Belastung aussetzen zu können. Der Zylinder übt dann Kraft auf die Probe aus. 
+Bei dem Stoffkreislauf wird das Öl aus einem Aggregat -- bestehend aus Antriebsmotor, der die Pumpe antreibt, Ölspeicher, Hochdruckfilter und Druckbegrenzungsventil -- in den Kreislauf gefördert. Ein hochpräzises Servoventil bestimmt dabei, in welche Kammer des Zylinders das Öl fließt sowie die Durchflussmenge. Dies ist von Bedeutung, um die Probe einer zyklischen Belastung aussetzen zu können. Der Zylinder übt dann Kraft auf die Probe aus. 
 
 \begin{figure}[H]
     \centering
@@ -481,20 +486,18 @@ Bei dem Stoffkreislauf wird das Öl aus einem Aggregat, symbolisiert durch eine 
     \label{fig:Regelkreis_Hydropulser_Gesamt}
 \end{figure}
 
+Die vorhandenen Sensoren zur Regelung der Anlage im Maschinendynamik-Labor sind ein Kraftaufnehmer und ein Wegaufnehmer. Beide können zur Regelung der Anlage verwendet werden. Entsprechend der DIN 50100 wird für den vorliegenden Versuch die Kraftregelung angewendet.
+Dabei wird die aktuelle Kraft mittels einer Kraftmessdose aufgenommen. Dieses Ist-Signal wird dann gemäß dem Regelkreislauf in \Figref{fig:Regelkreis_Hydropulser_Gesamt} b) verstärkt und an einen PID-Regler übermittelt, der die Regeldifferenz zwischen dem Ist-Wert und dem Soll-Wert berechnet und in Form eines Stellsignals an das Servoventil weitergibt. Das Signal des Verstärkers kann zusätzlich durch eine Anzeige sichtbar gemacht werden \cite[Seite 262]{Ölhydraulik2020}.
 
-An Sensoren sind im Maschinendynamik-Labor aktuell ein Kraftaufnehmer und ein Wegaufnehmer verbaut und angeschlossen. Beide können zur Regelung der Anlage verwendet werden. Entsprechend der DIN 50100 wird für den vorliegenden Versuch die Kraftregelung angewendet.
-Dabei wird die aktuelle Kraft mittels einer Kraftmessdose aufgenommen. Dieses Ist-Signal wird dann gemäß dem Regelkreislauf in \Figref{fig:Regelkreis_Hydropulser_Gesamt} b) verstärkt und an einen PID-Regler weitergegeben, der die Regeldifferenz zwischen dem Ist-Wert und dem Soll-Wert berechnet und in Form eines Stellsignals an das Servoventil weitergibt. Das Signal des Verstärkers kann zusätzlich durch eine Anzeige sichtbar gemacht werden \cite[Seite 262]{Ölhydraulik2020}.
+Der Grund für die Anwendung der Kraftregelung besteht darin, dass die Kraftamplitude bei dem Wöhlerversuch konstant gehalten werden soll. Würde die Messung weggeregelt erfolgen, würde sich die Kraft durch den Rissfortschritt und die damit einhergehende Entfestigung des Bauteils kontinuirlich verringern, wodurch die Versuchsergebnisse verfälscht wären \cite[Seite 9]{DIN50100}. 
 
-Im Maschinendynamik-Labor der OTH stehen drei verschiedene Hydropulser zur Verfügung. Für den Schwingfestigkeitsversuch wird der Hydropulser, dessen Zylinder eine Maximalkraft von 16\,kN aufbringen kann, verwendet. Der Hub des Zylinders beträgt 100\,mm. Die gewählte Prüffrequenz liegt bei 40\,Hz. Zur Gewährleistung der Sicherheit kann ein Abbruchkriterium für den Kraft oder Wegsensor eingestellt werden. Dieses greift bei Kraftabfall oder Hubüberschreitung und schaltet die Anlage ab. 
-
-
-\textbf{Warum Kraftregelung? } 
+Im Maschinendynamik-Labor der OTH stehen drei verschiedene Hydropulser zur Verfügung. Für den Schwingfestigkeitsversuch wird der Hydropulser, dessen Zylinder eine Maximalkraft von 16\,kN aufbringen kann, verwendet \cite{oth}. Die gewählte Prüffrequenz liegt bei 40\,Hz. Zur Gewährleistung der Sicherheit kann ein Abbruchkriterium für den Kraft- oder Wegsensor eingestellt werden. Dieses greift bei Kraftabfall oder Hubüberschreitung und schaltet die Anlage ab. 
 
 	
 	\subsection{Statistische Auswertung anhand der Norm}
-	Als Grundlage der Wöhlerlinie dienen Stichproben, die aus einer Grundgesamtheit, hier allen produzierten Bauteile, entnommen werden. Der Vorteil von Stichproben liegt beispielsweise in der schnelleren Auswertbarkeit, da sie einen deutlich geringeren Umfang als die Grundgesamtheit aufweisen und dadurch auch Kosten einsparen. Folglich muss die Auswertung mit MATLAB statistisch erfolgen \cite[Seite 20-21]{StatHedderich2020}. 
+	Als Grundlage der Wöhlerlinie dienen Stichproben, die aus einer Grundgesamtheit, hier allen produzierten Bauteilen, entnommen werden. Der Vorteil von Stichproben liegt beispielsweise in der schnelleren Auswertbarkeit, da sie einen deutlich geringeren Umfang als die Grundgesamtheit aufweisen und dadurch auch Kosten einsparen. Folglich muss die Auswertung mit MATLAB statistisch erfolgen \cite[Seite 20-21]{StatHedderich2020}. 
 	 
-Die Wöhlerkurve kann nach zwei unterschiedlichen Prinzipien aufgestellt werden. Entweder wird für alle Proben wird ein konstantes Spannungsverhältnis R oder eine konstante Mittelspannung $\sigma_m$ eingestellt. Die Spannungsamplitude wird dabei für jede Probe unterschiedlich gewählt, jedoch wird sie während der Versuchsdurchführung konstant gehalten. Als Ergebnis folgt entweder eine Bruchschwingspielzahl $N_B$ oder eine Grenzschwingspielzahl $N_G$. Bei einer Bruchschwingspielzahl werden alle Schwingspiele bis zum Bruch aufsummiert. Bei der Grenzschwingspielzahl hat die Probe eine gewisse Anzahl an Schwingspielen ertragen und der Versuch wird beendet. Das Versuchsergebnis wird als Durchläufer bezeichnet. Den Zusammenhang zwischen Lebensdauer und Amplitude veranschaulicht \Figref{fig:Schwingungen der Einzelproben}. Probe eins und zwei brechen aufgrund ihrer großen Amplituden $\sigma_{\text{a1}}$ und $\sigma_{\text{a2}}$ nach einer gewissen Schwingspielzahl $N_B$. Der letzte Prüfkörper n hingegen erleidet keinen Bruch, aufgrund der verhältnismäßig kleinen Amplitude $\sigma_{\text{an}}$ \cite[Seite 272]{Werkstofftechnik-Praktikum2021}. 
+Die Wöhlerkurve kann nach zwei unterschiedlichen Prinzipien aufgestellt werden. Entweder wird für alle Proben ein konstantes Spannungsverhältnis R oder eine konstante Mittelspannung $\sigma_m$ eingestellt. Die Spannungsamplitude wird dabei für jede Probe unterschiedlich gewählt, jedoch wird sie während der Versuchsdurchführung konstant gehalten. Als Ergebnis folgt entweder eine Bruchschwingspielzahl $N_B$ oder eine Grenzschwingspielzahl $N_G$. Bei einer Bruchschwingspielzahl werden alle Schwingspiele bis zum Bruch aufgezeichnet. Bei der Grenzschwingspielzahl wird der Versuch beendet und das Versuchsergebnis wird als Durchläufer bezeichnet. Den Zusammenhang zwischen Lebensdauer und Amplitude veranschaulicht \Figref{fig:Schwingungen der Einzelproben}. Probe 1 und 2 versagen aufgrund ihrer großen Amplituden $\sigma_{\text{a1}}$ und $\sigma_{\text{a2}}$ nach ihrer entsprechenden Schwingspielzahl $N_{\text{B1}}$ bzw. $N_{\text{B2}}$ . Der letzte Prüfkörper~n hingegen wird als Durchläufer gewertet, denn aufgrund der verhältnismäßig kleinen Amplitude $\sigma_{\text{an}}$ erfährt dieser kein Versagen \cite[Seite 272]{Werkstofftechnik-Praktikum2021}. 
 
 \begin{figure}[H]
     \centering
@@ -597,8 +600,8 @@ Die Wöhlerkurve kann nach zwei unterschiedlichen Prinzipien aufgestellt werden.
 \label{fig:Schwingungen der Einzelproben}
 \end{figure}
 
-Um nun aus den aufgezeichneten Schwingungen der einzelnen Proben eine Wöhlerkurve abzuleiten, wird die eingestellte Spannungsamplitude $\sigma_a$, über die erreichte Schwingspielzahl $N$ doppelt logharithmisch aufgetragen. Folglich werden die Datenpunkte der in \Figref{fig:Schwingungen der Einzelproben} abgebildeten Proben 1 und 2 in  \Figref{fig:Wöhlerkurve} eingetragen. Dies sind die Schnittpunkte der jeweiligen Spannungsamplituden $\sigma_{\text{a1}}$ und $\sigma_{\text{a2}}$ mit den beiden Bruchschwingspielzahlen $N_{\text{B1}}$ und  $N_{\text{B2}}$, verteilt in einem Streuband.
-Aus den Versuchsergebnissen mehrerer Proben ensteht nach statistischer Auswertung eine wie in \Figref{fig:Wöhlerkurve} gezeigte Kurve. Die Wöhlerkurve wird nach DIN 50100 in den Bereich der Kurzzeitfestigkeit (LCF, engl. Low Cycle Fatigue), der Zeitfestigkeit (HCF, engl. High Cycle Fatigue) und der Langzeitfestigkeit (LLF, engl. Long Life Fatigue) eingeteilt  \cite[Seite 17]{DIN50100}. In der Praxis zeigt sich, dass im Bereich der Zeitfestigkeit und der Langzeitfestigkeit die Proben eine beträchtliche Streuung zeigen. Ursache hierfür sind eine Vielzahl von Einflussfaktoren, wie beispielsweise Werkstoffinhomogenitäten oder eine ungleiche Einspannung, deren Wirkungen das Verhalten der Probe beeinflussen. Das sich bildende Streuband wird in \Figref{fig:Wöhlerkurve} (Nummer 2) veranschaulicht \cite[Seite 259]{Laepple2016}.
+Zur Ableitung der Wöhlerlinie aus den experimentell ermittelten Schwingspielzahlen der einzelnen Proben, wird die eingestellte Spannungsamplitude $\sigma_a$ über die erreichte Schwingspielzahl $N$ doppelt logarithmisch aufgetragen. Folglich werden die Datenpunkte der in \Figref{fig:Schwingungen der Einzelproben} abgebildeten Proben 1 und 2 in  \Figref{fig:Wöhlerkurve} eingetragen. Dies sind die Schnittpunkte der jeweiligen Spannungsamplituden $\sigma_{\text{a1}}$ und $\sigma_{\text{a2}}$ mit den beiden Bruchschwingspielzahlen $N_{\text{B1}}$ und  $N_{\text{B2}}$, verteilt in einem Streuband (\Figref{fig:Wöhlerkurve} (Nummer 2)).
+Aus den Versuchsergebnissen mehrerer Proben ensteht nach statistischer Auswertung eine wie in \Figref{fig:Wöhlerkurve} gezeigte Kurve. Die Wöhlerkurve wird nach DIN 50100 in den Bereich der Kurzzeitfestigkeit (LCF, engl. Low Cycle Fatigue), der Zeitfestigkeit (HCF, engl. High Cycle Fatigue) und der Langzeitfestigkeit (LLF, engl. Long Life Fatigue) eingeteilt  \cite[Seite 17]{DIN50100}. In der Praxis zeigt sich, dass in den Bereichen der Zeitfestigkeit und der Langzeitfestigkeit die Proben eine signifikante statistische Streuung aufweisen. Ursache hierfür sind eine Vielzahl von Einflussfaktoren, wie beispielsweise Werkstoffinhomogenitäten oder eine ungleiche Einspannung, deren Wirkungen das Verhalten der Probe beeinflussen \cite[Seite 259]{Laepple2016}.
 
 \begin{figure}[H]
     \centering
@@ -726,24 +729,23 @@ Aus den Versuchsergebnissen mehrerer Proben ensteht nach statistischer Auswertun
 \label{fig:Wöhlerkurve}
 \end{figure}
 
-Die statische Festigkeit ist an Pfeil 5 in \Figref{fig:Wöhlerkurve} dargestellt und stellt die maximal ertragbare statische Belastung dar. Nummer 3 symbolisiert eine Probe im Zeitfestigkeitsbereich. Da sie eines der beiden Ausfallkriterien (Anriss oder Bruch) erreicht hat, wird sie als Ausfall bezeichnet. Nummer 4 hingegen liegt im Bereich der Langzeitfestigkeit und wird als Durchläufer gewertet, da die Grenzschwingspielzahl erreicht ist.
+Die statische Festigkeit wird durch Pfeil 5 in \Figref{fig:Wöhlerkurve} repräsentiert und stellt die maximal ertragbare statische Belastung dar. Nummer 3 kennzeichnet eine Probe im Zeitfestigkeitsbereich. Da sie eines der beiden Ausfallkriterien (Anriss oder Bruch) erreicht hat, wird sie als Ausfallprobe bezeichnet. Nummer 4 hingegen liegt im Bereich der Langzeitfestigkeit und wird als Durchläufer gewertet, da die Grenzschwingspielzahl $N_G$ erreicht ist.
 
-Hinsichtlich des Aufbaus der Wöhlerkurve lassen sich drei Bereiche unterscheiden.
-Im Bereich der Kurzzeitfestigkeit werden die Proben mit einer großen Amplitude beaufschlagt und es ergibt sich eine geringe Lebensdauer. Dabei liegen die Messergebnisse zwischen \(10^{0}\) und \(10^{4}\) Schwingspielen. Die Zeitfestigkeit liegt zwischen  \(10^{4}\) Schwingspielen und der Knickschwingspielzahl $N_K$ und wird durch die Zeitfestigkeitsgerade (siehe Nummer 1 in \Figref{fig:Wöhlerkurve}) beschrieben.
+Die großen Amplituden im Bereich der Kurzzeitfestigkeit bewirken eine geringe Lebensdauer. Dabei liegen die Messergebnisse zwischen \(10^{0}\) und \(10^{4}\) Schwingspielen. Gemäß der DIN 50100 wird der Kurzzeitfestigkeitsbereich (LCF) nicht betrachtet, da dort ein dehnungs- und schiebungskontrollierter Versuch erfolgen muss. Die Zeitfestigkeit liegt zwischen  \(10^{4}\) Schwingspielen und der Knickschwingspielzahl $N_K$ und wird durch die Zeitfestigkeitsgerade (siehe Nummer 1 in \Figref{fig:Wöhlerkurve}) beschrieben.
 
-Am Ende der Zeitfestigkeitsgerade folgt die Knickschwingspielzahl. Diese liegt im Bereich zwischen $5 \cdot 10^4$ und $10^7$ Schwingspielen und repräsentiert den Übergang von der Zeitfestigkeit zur Langzeitfestigkeit.
-Zum Bereich der Langzeitfestigkeit zählen alle Schwingspiele, die größer sind als die Knickschwingspielzahl $N_K$.
+Am Ende der Zeitfestigkeitsgerade folgt die Knickschwingspielzahl. Diese liegt im Bereich zwischen $5 \cdot 10^4$ und $10^7$ Lastwechseln und repräsentiert den Übergang von der Zeitfestigkeit zur Langzeitfestigkeit.
+Zum Bereich der Langzeitfestigkeit zählen alle Schwingspiele, die größer sind als die Knickschwingspielzahl $N_K$ \cite[Seite 9-17]{DIN50100}.
 
-Laut DIN 50100 gibt es drei Typen der Langzeitfestigkeit, welche einen unterschiedlichen Verlauf der Wöhlerkurve nach dem Knickpunkt darstellen:
+Die DIN 50100 unterscheidet drei Typen der Langzeitfestigkeit, die einen unterschiedlichen Verlauf der Wöhlerkurve nach dem Knickpunkt darstellen:
 
 % Im Dokument:
 \begin{itemize}
-    \item {Typ 1: horizontaler Verlauf}
-    \item {Typ 2: gerade mit geringerer Neigung $k_2$}
-  \item {Typ 3: zuerst horizontaler Verlauf und dann noch weiterer Abfall der Kurve}
+    \item {Typ I: horizontaler Verlauf}
+    \item {Typ II: Gerade mit geringerer Neigung $k^*$}
+  \item {Typ III: zuerst horizontaler Verlauf und dann noch weiterer Abfall der Kurve}
 \end{itemize}
   
-  Da Typ III nach einmaliger Nennung in der Norm außen vor gelassen wird, wird in \Figref{fig:Vergleich Typ I und Typ II der Wöhlerkurve} nur der Vergleich zwischen Typ I und II veranschaulicht. 
+  Da Typ III in der Norm außdrücklich nicht behandelt wird, veranschaulicht \Figref{fig:Vergleich Typ I und Typ II der Wöhlerkurve} nur den Vergleich zwischen Typ I und II. 
 
   
 \begin{figure}[H]
@@ -793,7 +795,7 @@ Laut DIN 50100 gibt es drei Typen der Langzeitfestigkeit, welche einen unterschi
             \draw[thick, dashed] (0, -1.0) -- (0.8, -1.0) node[right] {Wöhlerkurve -- Typ II};
             \node[right, align=left, scale=0.85] at (0.8, -1.7) {
                 $\rightarrow$ kfz-Stähle\\
-                $\rightarrow$ hdp-Stähle\\
+                $\rightarrow$ hdp-Metalle\\
             };
         \end{scope}
 
@@ -803,12 +805,7 @@ Laut DIN 50100 gibt es drei Typen der Langzeitfestigkeit, welche einen unterschi
 \end{figure}
 
 
-Zu erkennen ist, dass bei Typ II die Spannungsamplitude weiter abfällt, nur mit einer kleineren Steigung. Im Unterschied dazu ist bei Typ I ein horizontaler Verlauf der Wöhlerlinie zu erkennen. 
-
-
-
-
-Ein zyklisch belastetest Bauteil erfährt einen Dauerbruch. Ursache für einen Dauerbruch ist die Ermüdung. 
+Zu erkennen ist, dass bei Typ II die Spannungsamplitude weiter abfällt, jedoch mit einer geringeren Neigung $k^*$. Im Unterschied dazu verläuft Typ I horizontal ab der Grenzschwingspielzahl $N_G$. 
 
 	\subsection{Verfahren zur Bestimmung der Zeitfestigkeit}
 Zur Bestimmung der Lage der Zeitfestigkeit können laut DIN 50100 zwei Verfahren angewendet werden, die zur Versuchsdurchführung dienen. Im Bereich der Zeitfestigkeit tritt immer ein Ausfall der Probe ein. In dem vorliegenden Fall ist dies ein Nietbruch, aber auch ein Blechriss. 
