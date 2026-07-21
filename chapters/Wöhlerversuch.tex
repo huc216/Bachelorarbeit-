@@ -32,20 +32,26 @@ In \Tabref{tab:sensoren_uebersicht} sind die verschiedenen Sensoren der drei Hyd
 Für den vorliegenden Versuch wird die Hydropulsanlage 2 verwendet, dessen Prüfzylinder eine Zugkraft von 16kN aufbringen kann \cite{oth}. \textbf{Da die Firme Siemens die Proben schon einmal an der Hydropulsanlage testen hat lassen?} Um den MATLAB-Code für zukünftige Versuche an allen drei Hydropulsnalagen zu standardisieren, werden alle Sensoren in den Code mit einbezogen. 
 
 
- \Figref{fig:Perlenschnurverfahren} zeigt die drei Schritte zur Auswertung der Wöhlerkurve.
-
-    \begin{figure}[H]
-        \begin{center}
-            \includegraphics[width=1.0\textwidth]{Schritte Perlenschnurverfahren}
-            \caption{Schritte zur Auswertung des Perlenschnurverfahrens.}
-	  \label{fig:Perlenschnurverfahren}
-        \end{center}
-    \end{figure}
-
-\section{Versuchsdurchführung}
+\section{Anforderungen an die Auswertesoftware}
 Da die Festigkeit der Niete untersucht wird und nicht die des Blechs müssen die Proben, die ein Blechriss erfahren haben aus der Versuchsreihe gestrichen werden. 
 
 Da für den vorliegenden Wöhlerversuch eine geringe Stichprobengröße von insgesamt 15 Proben zur Verfügung steht und zusätzlich der Bereich der Zeitfestigkeit nicht bekannt ist, wird auf das zweite, folgende Verfahren zurückgegriffen. 
-\subsection{Versuchsparameter}
+
+\section{Entwicklung des MATLAB-Programms}
+
+\subsection{Einlesen}
+\subsection{Datenaufbereitung}
+\subsection{Auswertung}
+\subsection{Wöhlerkurve}
 
 \section{Versuchsdurchführung}
+
+    \begin{figure}[H]
+        \begin{center}
+            \includegraphics[width=1.0\textwidth]{Vergleich der Wegsignale.pdf}
+            \caption{Vergleich Wegsignal des Wegaufnehmers Lasersensor und des Wegaufnehmers PL16K.}
+  	  \label{fig:weg_laser}
+        \end{center}
+    \end{figure}
+    
+Wegsensor PL16K ist an Zylinder montiert, deswegen wird die Bewegung des Zylinders bzw. der Maschine in Form relativ starker Oszillationen im Vergleich zum Lasersensor sichtbar. Dieser ist an einer separaten (unbewegten) Stelle befestigt. Begründung für Priorität des Lasersensors im Code.
