@@ -499,6 +499,10 @@ Im Maschinendynamik-Labor der OTH stehen drei verschiedene Hydropulser zur Verf�
 	
 	\subsection{Statistische Auswertung anhand der Norm}
 	Als Grundlage der Wöhlerlinie dienen Stichproben, die aus einer Grundgesamtheit, hier allen produzierten Bauteilen, entnommen werden. Der Vorteil von Stichproben liegt beispielsweise in der schnelleren Auswertbarkeit, da sie einen deutlich geringeren Umfang als die Grundgesamtheit aufweisen und dadurch auch Kosten einsparen. Folglich muss die Auswertung mit MATLAB statistisch erfolgen \cite[Seite 20-21]{StatHedderich2020}. 
+	
+Die Auswertung der Wöhlerlinie folgt einer logarithmischen Normalverteilung. 
+\textbf{Eine logarithmische Normalverteilung liegt vor, wenn die Logarithmen einer Größe normalverteilt sind. Im Wöhlerversuch wird angenommen, dass die logarithmierten Schwingspielzahlen einer Normalverteilung folgen. Dadurch können Mittelwert, Standardabweichung und Ausfallwahrscheinlichkeiten statistisch bestimmt werden.\\
+Beim Perlenschnurverfahren wird davon ausgegangen, dass die Schwingspielzahlen einer logarithmischen Normalverteilung folgen. Dies bedeutet, dass nicht die Schwingspielzahlen $N$ selbst normalverteilt sind, sondern ihre dekadischen Logarithmen $\lg N$. Durch diese Annahme können die statistischen Kenngrößen der Grundgesamtheit bestimmt werden. Ziel des Verfahrens ist die möglichst genaue Schätzung des Mittelwertes der logarithmierten Schwingspielzahlen $N_{50\,\%,GG}$ sowie der Standardabweichung $s_{\lg N,GG}$. Diese Kenngrößen bilden die Grundlage für die Beschreibung der Streuung der Versuchsergebnisse und ermöglichen die Bestimmung von Ausfallwahrscheinlichkeiten sowie die Berechnung von Wöhlerlinien mit unterschiedlichen Überlebens- bzw. Ausfallwahrscheinlichkeiten. (Tabelle 2,3 und 4)}
 	 
 Die Wöhlerkurve kann nach zwei unterschiedlichen Prinzipien aufgestellt werden. Entweder wird für alle Proben ein konstantes Spannungsverhältnis R oder eine konstante Mittelspannung $\sigma_m$ eingestellt. Die Spannungsamplitude wird dabei für jede Probe unterschiedlich gewählt, jedoch wird sie während der Versuchsdurchführung konstant gehalten. Als Ergebnis folgt entweder eine Bruchschwingspielzahl $N_B$ oder eine Grenzschwingspielzahl $N_G$. Bei einer Bruchschwingspielzahl werden alle Schwingspiele bis zum Bruch aufgezeichnet. Bei der Grenzschwingspielzahl wird der Versuch beendet und das Versuchsergebnis wird als Durchläufer bezeichnet. Den Zusammenhang zwischen Lebensdauer und Amplitude veranschaulicht \Figref{fig:Schwingungen der Einzelproben}. Probe 1 und 2 versagen aufgrund ihrer großen Amplituden $\sigma_{\text{a1}}$ und $\sigma_{\text{a2}}$ nach ihrer entsprechenden Schwingspielzahl $N_{\text{B1}}$ bzw. $N_{\text{B2}}$ . Der letzte Prüfkörper~n hingegen wird als Durchläufer gewertet, denn aufgrund der verhältnismäßig kleinen Amplitude $\sigma_{\text{an}}$ erfährt dieser kein Versagen \cite[Seite 272]{Werkstofftechnik-Praktikum2021}. 
 
@@ -736,7 +740,7 @@ Die statische Festigkeit wird durch Pfeil 5 in \Figref{fig:Wöhlerkurve} repräs
 
 Die großen Amplituden im Bereich der Kurzzeitfestigkeit bewirken eine geringe Lebensdauer. Dabei liegen die Messergebnisse zwischen \(10^{0}\) und \(10^{4}\) Schwingspielen. Gemäß der DIN 50100 wird der Kurzzeitfestigkeitsbereich (LCF) nicht betrachtet, da dort ein dehnungs- und schiebungskontrollierter Versuch erfolgen muss. Die Zeitfestigkeit liegt zwischen  \(10^{4}\) Schwingspielen und der Knickschwingspielzahl $N_K$ und wird durch die Zeitfestigkeitsgerade (siehe Nummer 1 in \Figref{fig:Wöhlerkurve}) beschrieben.
 
-Am Ende der Zeitfestigkeitsgerade folgt die Knickschwingspielzahl. Diese liegt im Bereich zwischen $5 \cdot 10^4$ und $10^7$ Lastwechseln und repräsentiert den Übergang von der Zeitfestigkeit zur Langzeitfestigkeit.
+Am Ende der Zeitfestigkeitsgerade folgt die Knickschwingspielzahl. Diese liegt im Bereich zwischen $5 \cdot 10^5$ und $10^7$ Lastwechseln und repräsentiert den Übergang von der Zeitfestigkeit zur Langzeitfestigkeit.
 Zum Bereich der Langzeitfestigkeit zählen alle Schwingspiele, die größer sind als die Knickschwingspielzahl $N_K$ \cite[Seite 9-17]{DIN50100}.
 
 Die DIN 50100 unterscheidet drei Typen der Langzeitfestigkeit, die einen unterschiedlichen Verlauf der Wöhlerkurve nach dem Knickpunkt darstellen:
@@ -744,7 +748,7 @@ Die DIN 50100 unterscheidet drei Typen der Langzeitfestigkeit, die einen untersc
 % Im Dokument:
 \begin{itemize}
     \item {Typ I: horizontaler Verlauf}
-    \item {Typ II: Gerade mit geringerer Neigung $k^*$}
+    \item {Typ II: Gerade mit geringerer Steigung $k^*$}
   \item {Typ III: zuerst horizontaler Verlauf und dann noch weiterer Abfall der Kurve}
 \end{itemize}
   
@@ -808,14 +812,14 @@ Die DIN 50100 unterscheidet drei Typen der Langzeitfestigkeit, die einen untersc
 \end{figure}
 
 
-Zu erkennen ist, dass bei Typ II die Spannungsamplitude weiter abfällt, jedoch mit einer geringeren Neigung $k^*$. Im Unterschied dazu verläuft Typ I horizontal ab der Grenzschwingspielzahl $N_G$. 
+Zu erkennen ist, dass bei Typ II die Spannungsamplitude weiter abfällt, jedoch mit einer geringeren Steigung $k^*$. Im Unterschied dazu verläuft Typ I horizontal ab der Grenzschwingspielzahl $N_G$. 
 
 \clearpage
 
 	\subsection{Experimentelle Verfahren zur Bestimmung der Zeitfestigkeit}
 Zur Bestimmung der Lage der Zeitfestigkeit können laut DIN 50100 zwei Verfahren angewendet werden, die zur Versuchsdurchführung dienen. Im Bereich der Zeitfestigkeit tritt immer ein Ausfall der Probe ein.
 
-Das erste der beiden Verfahren ist das Horizontenverfahren. Dabei werden zwei Lasthorizonte gewählt, die möglichst nah an den Grenzen des Kurzzeit- und des Langzeitfestigkeitbereichs liegen, um dort anschließend mehrere Proben zu prüfen (siehe \Figref{fig:Diagramm_Horizontenverfahren}).
+Beim sogenannten Horizontenverfahren werden zwei Lasthorizonte gewählt, die möglichst nah an den Grenzen des Kurzzeit- und des Langzeitfestigkeitbereichs liegen, um dort anschließend mehrere Proben zu prüfen (siehe \Figref{fig:Diagramm_Horizontenverfahren}).
 
 \begin{figure}[H]
     \centering
@@ -858,10 +862,13 @@ Das erste der beiden Verfahren ist das Horizontenverfahren. Dabei werden zwei La
         \label{fig:Diagramm_Horizontenverfahren}
 \end{figure}
 
-Der Nachteil des Horizontenverfahrens liegt darin, dass es nur dann verwendet werden kann, wenn bekannt ist, wo der Bereich der Kurzzeitfestigkeit und der Langzeitfestigkeit liegt \cite[Seite 273]{Eulitz2022}. 
+Der Nachteil dieses Verfahrens besteht darin, dass es nur dann verwendet werden kann, wenn die Lage der Kurz- und Langzeitfestigkeitsintervalle bekannt ist \cite[Seite 273]{Eulitz2022}. 
 
-Das Perlenschnurverfahren findet Verwendung, wenn die Lage des Zeitfestigkeitsbereichs nicht definiert ist. Der entscheidende Vorteil ist, dass auch bei einer geringen Probenanzahl eine geeignete Wöhlerlinie bestimmt werden kann. Die Vorgehensweise ist ein stufenweises Anpassen der unterschiedlichen Lasthorizonte bis zu den Übergängen der Kurz- und Langzeitfestigkeit. Mehrere Proben auf einem Lasthorizont zu prüfen ist möglich \cite[Seite 278]{Eulitz2022}. 
+Das Perlenschnurverfahren wird immer dann herangezogen, wenn die Grenzen des Zeitfestigkeitsbereichs noch nicht exakt verifiziert wurden. Ein weiterer entscheidender Vorteil äußert sich dadurch, dass auch bei einer geringen Probenanzahl eine geeignete Wöhlerlinie bestimmt werden kann. Die Vorgehensweise ist ein stufenweises Adaptieren der unterschiedlichen Lasthorizonte bis zu den Übergängen der Kurz- und Langzeitfestigkeit. Es ist zudem möglich, mehrere Proben auf einem Lasthorizont zu prüfen \cite[Seite 278]{Eulitz2022}. 
 
+Hierbei sind jedoch zwei wesentliche Einschränkungen zu berücksichtigen. Sowohl bei einer zu geringen Probenzahl (n < 10 Proben) als auch bei einem zu geringen Quotienten der Schwingspielzahl des obersten und des untersten Lasthorizonts (Quotient < 5) verlieren sämtliche zu schätzenden Kenngrößen (Mittelwert, Standardabweichung und Steigung der Zeitfestigkeitsgeraden) ihre Aussagekraft. Diese erlauben dann keine zuverlässigen statistischen Aussage über die Grundgesamtheit. 
+
+Für die Standardabweichung der Grundgesamtheit wird in der DIN 50100 ein Bereich zwischen 0,10 und 0,30 angeraten. Wenn keine Referenzwerte vorliegen, wird eine Standardabweichung der Grundgesamtheit von $s_{\lg N,\text{GG}}$=0,20 empfohlen \cite[Seite 30]{DIN50100}. Mit der noch folgenden \Eqref{eq:S_Perlenschnurverfahren} wird die Standardabweichung der Stichprobe berechnet. Im Idealfall stimmt diese mit der wahren Standardabweichung der Grundgesamtheit überein. Da die tatsächliche Standardabweichung üblicherweise vor dem Versuch nicht bekannt ist, wird die zuvor erwähnte $s_{\lg N,\text{GG}}$=0,20 als initialer Schätzwert herangezogen. Dies ist lediglich ein Erfahrungswert und entspricht nicht zwingend der wahren Standardabweichung der Grundgesamtheit.
 
 \begin{figure}[H]
     \centering

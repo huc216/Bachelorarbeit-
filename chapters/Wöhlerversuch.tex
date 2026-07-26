@@ -1,8 +1,6 @@
 %-----------------------------------------------------------------------
 \chapter{Wöhlerversuch}%\label{chap:kap1}
 %-----------------------------------------------------------------------
-
-\section{Versuchsaufbau}
 In \Tabref{tab:sensoren_uebersicht} sind die verschiedenen Sensoren der drei Hydropulsanlagen des Maschinendynamiklabors aufgelistet. Jede Hydropulsanlage besitzt einen Kraft- als auch einen Wegsensor, der fest an der Maschine verbaut ist. Zusätzlich ist ein Laser Sensor, der die Wegänderung aufnimmt vorhanden und kann flexibel bei allen drei Anlagen eingesetzt werden.
 
 \begin{table}[htbp]
@@ -29,24 +27,264 @@ In \Tabref{tab:sensoren_uebersicht} sind die verschiedenen Sensoren der drei Hyd
     \end{tabular}
 \end{table}
 
-Für den vorliegenden Versuch wird die Hydropulsanlage 2 verwendet, dessen Prüfzylinder eine Zugkraft von 16kN aufbringen kann \cite{oth}. \textbf{Da die Firme Siemens die Proben schon einmal an der Hydropulsanlage testen hat lassen?} Um den MATLAB-Code für zukünftige Versuche an allen drei Hydropulsnalagen zu standardisieren, werden alle Sensoren in den Code mit einbezogen. 
+Um den MATLAB-Code für zukünftige Versuche an allen drei Hydropulsnalagen zu standardisieren, werden alle Sensoren in den Code mit einbezogen. 
 
-
-\section{Anforderungen an die Auswertesoftware}
 Da die Festigkeit der Niete untersucht wird und nicht die des Blechs müssen die Proben, die ein Blechriss erfahren haben aus der Versuchsreihe gestrichen werden. 
 
-Da für den vorliegenden Wöhlerversuch eine geringe Stichprobengröße von insgesamt 15 Proben zur Verfügung steht und zusätzlich der Bereich der Zeitfestigkeit nicht bekannt ist, wird auf das zweite, folgende Verfahren zurückgegriffen. 
+\textbf{Versuchsvorbereitung}:
+Zur Erleichterung der Versuchsdurchführung und zur Gewährleistung statistisch auswertbarer Ergebnisse enthält die DIN 50100 Empfehlungen für die Versuchsplanung. 
+	
+	Unterstützung findet der Anwender bei der Ermittlung der Probenanzahl. Für das Perlenschnurverfahren liegen drei Tabellen vor. Je nachdem, ob beim Perlenschnurverfahren der Fokus auf dem Mittelwert $N_{50\,\%,\mathrm{GG}}$, der Standardabweichung $s_{\lg N,\mathrm{GG}}$ oder der Steigung der Wöhlerlinie $k_{\mathrm{GG}}$ liegt, kann anhand der gewünschten Schätzgenauigkeit der Versuchsergebnisse  in den entsprechenden Tabellen (siehe Anhang~\ref{anhang:tabelle_erforderliche_Probenanzahl}) die benötigte Probenanzahl abgelesen werden. 
+	Für das Treppenstufenverfahren sind zwei Tabellen im Anhang hinterlegt, die ebenfalls die erforderliche Probenanzahl liefern, um die Langzeitfestigkeit $L_{aL,NG,\mathrm{GG}}$ und die Standardabweichung $s_{\lg L,\mathrm{GG}}$ mit einer bestimmten Genauigkeit anzugeben.
+	Da in dem vorliegenden Versuch die Firma Siemens bereits die Probenanzahl bestimmt hat, ist dieser Schritt hier nicht mehr notwendig.
+	
+	Des Weiteren wird der Anwender darauf hingewiesen, dass der Quotient der Schwingspielzahlen, des höchsten und des niedrigsten Lasthorizontes beim Perlenschnurverfahren mindestens fünf betragen soll. Ein von der Norm anzustrebender Richtwert ist ein Quotient von 50. Unterschreitet der Quotient die Mindestvorgabe von fünf, so sind die Schätzungen von Mittelwert, Standardabweichung und Steigung  nach DIN 50100 unvertretbar.
+	Der aus der geringen Anzahl an Messungen und den neuen, fiktiven Proben berechnete Quotient von 18 wurde als ausreichend befunden. 
+	
+	Zur Versuchsvorbereitung gehört beim Treppenstufenverfahren das Festlegen der Belastungsstufen. Diese werden auf Grundlage einer abgeschätzten Langzeitfestigkeit sowie des Stufensprungs $d_\text{lg}$ ermittelt. Zuerst wird der Stufensprung unter Zuhilfenahme der Standardabweichung $s_{\lg L,\mathrm{GG}}$ der Grundgesamtheit für spanend bearbeitende Stähle mit \Eqref{eq:d_lg} bestimmt. Mit dem sich ergebenden Stufensprung $d_\text{lg}$=1,059 können anschließend die Laststufen mit \Eqref{eq:Laststufen} berechnet werden.
+	
+	Beim Treppenstufenverfahren muss mindestens ein aber maximal drei Lasthorizonte sowohl Brüche als auch Durchläufer aufweisen. 
+	Tritt der Fall auf, dass ein Lasthorizont nur Brüche und ein zweiter Lasthorizont nur Durchläufer aufweist, kann keine Standaradabweichung bestimmt werden. In diesem Fall ist gemäß \Eqref{eq:d_lg_1_2} ein neuer Stufensprung zu berechnen.
+	
+	Zu beachten ist außerdem, dass die Treppenstufenfolge mindestens zwei Umkehrpunkte aufweisen muss und dass Versuche, die am Anfang durchgeführt wurden und deren Treppenstufe anschließend im Laufe des Versuches nicht erneut erreicht werden, aussortiert werden müssen. 
+	
+	Da bei einer Kraftamplitude von 1125$N$ ein Durchläufer gemessen wurde, wurde dieser Lasthorizont $L_1$ als geschätzte Langzeitfestigkeit festgelegt. 
 
-\section{Entwicklung des MATLAB-Programms}
 
-\subsection{Einlesen}
-\subsection{Datenaufbereitung}
-\subsection{Auswertung}
-\subsection{Wöhlerkurve}
+	\section{Anforderungen an das Auswerteprogramm}
 
-\section{Versuchsdurchführung}
+	\subsection{Zielsetzung}	
+Mithilfe des Programms erfolgt eine automatisierte, normgerechte Auswertung der Messdaten der Hydropulsanlage, sodass eine Aussage über die Lebensdauer der Bauteile in Abhängigkeit der Belastungsamplitude getroffen werden kann. Bisher gab es keine für die OTH verfügbare, standardisierte Versuchsauswertung zur Ermittlung von Wöhlerkurven. Das Programm unterstützt den Anwender bei der Auswahl und Eingabe der relevanten Messdateien und Versuchsparameter. Nach Auswertung der Messergebnisse generiert MATLAB ein für den Kunden bereitgestelltes PDF-Prüfprotokoll. 
+Diese erleichtert den manuellen Aufwand und reduziert den Zeitbedarf maßgeblich. Zusätzlich sorgt die standardisierte Auswertung für vergleichbare und insbesondere reproduzierbare Ergebnisse. 
 
-    \begin{figure}[H]
+	\textbf{Warum wurde das Programm entwickelt?
+		Welche Probleme der bisherigen Auswertung sollen gelöst werden?
+		Welche Aufgaben übernimmt das Programm?
+	Automatisierung der Versuchsauswertung
+	Verringerung manueller Arbeitsschritte
+	Standardisierung}
+	
+	\subsection{Eingabeparameter}
+	Welche Eingaben macht der Benutzer?
+	Versuchsdaten
+	Materialparameter
+	Auswerteparameter
+	Dateiauswahl
+	eventuell Knickschwingspielzahl oder andere Einstellungen
+	
+	\subsection{Anforderungen}
+	Neben dem Hauptziel eine normgerechte Auswertung entsprechend der DIN 50100 zu erstellen, gibt es weitere Anforderungen, die das Programm erfüllen soll. Dazu gehört das Einlesen mehrerer Excel-Dateien auf einmal. Zusätzlich ist ein getrenntes Einlesen der Dateien des Zeit- und Langzeitfestigkeitsbereichs zu gewährleisten, sowie eine getrennte Auswertung der beiden Bereiche.
+	Das MATLAB-Auswerteprogramm an sich ist eine bedienfreundliche Benutzeroberfläche sicherzustellen, bei der so wenige wie möglich Benutzereingaben erfolgen müssen. Des Weiteren ist es erforderlich die Fehlermeldungen nachvollziehbar und verständlich für den Nutzer zu gestalten. Die Diagramme sollen übersichtlich sein. Außerdem soll der Programmcode erweiterbar sein, falls der Benutzer weitere Wünsche hat. Eine weitere Anforderung ist, dass am Ende der Auswertung ein PDF-Prüfprotokoll erstellt wird. Die PDF-Datei muss eine strukturierte Dokumentation der Ergebnisse enthalten.
+	Gewährleistet sein soll ein strukturierter, funktionsbasierter Aufbau, der die Übersichtlichkeit des Programmcodes sichert. 
+	
+	\textbf{mehrere Dateien gleichzeitig
+	Zeit- und Langzeitfestigkeit getrennt
+	automatisierte Auswertung
+	PDF-Erstellung
+	übersichtliche Diagramme
+	Erweiterbarkeit}
+
+	
+	\section{Programmstruktur}
+	\subsection{Programmaufbau und Funktionsstruktur}
+	Aufbau in Hauptprogramm und Funktionen
+	Modularisierung
+	Vorteile der Funktionsstruktur
+	kurze Beschreibung jeder Funktion (Dateien einlesen
+Messdaten aufbereiten
+Kraftamplitude bestimmen
+Zeitfestigkeit auswerten
+Langzeitfestigkeit auswerten
+PDF erzeugen)
+
+	\subsection{Programmablauf}
+	\Figref{fig:programmablauf} zeigt den Ablauf des entwickelten MATLAB-Auswerteprogramms.
+	
+\begin{figure}[H]
+    \centering
+
+    \resizebox{\textwidth}{!}{%
+    \begin{tikzpicture}[
+        font=\fontsize{20}{24}\selectfont,
+        node distance=13mm and 8mm,
+        startstop/.style={
+            ellipse,
+            draw=black,
+            thick,
+            minimum width=4.6cm,
+            minimum height=1.45cm,
+            inner xsep=5mm,
+            inner ysep=3mm,
+            align=center
+        },
+        inputoutput/.style={
+            trapezium,
+            trapezium left angle=70,
+            trapezium right angle=110,
+            draw=black,
+            thick,
+            minimum width=6.2cm,
+            minimum height=1.75cm,
+            inner xsep=6mm,
+            inner ysep=4mm,
+            align=center
+        },
+        process/.style={
+            rectangle,
+            draw=black,
+            thick,
+            minimum width=5.8cm,
+            minimum height=1.75cm,
+            inner xsep=5mm,
+            inner ysep=4mm,
+            align=center
+        },
+        processwide/.style={
+            rectangle,
+            draw=black,
+            thick,
+            minimum width=7.2cm,
+            minimum height=1.75cm,
+            inner xsep=5mm,
+            inner ysep=4mm,
+            align=center
+        },
+        arrow/.style={
+            thick,
+            -{Latex[length=3.5mm]}
+        }
+    ]
+
+    % Programmstart
+    \node (start) [startstop]
+        {Programmstart};
+
+    \node (parameter) [inputoutput, below=of start]
+        {Eingabe der Versuchs- und\\Auswerteparameter};
+
+    \node (zfdateien) [inputoutput, below=of parameter]
+        {Auswahl und Einlesen der\\Zeitfestigkeitsdaten};
+
+    \node (lfdateien) [inputoutput, below=of zfdateien]
+        {Auswahl und Einlesen der\\Langzeitfestigkeitsdaten};
+
+    \node (aufteilung) [processwide, below=of lfdateien]
+        {Getrennte Verarbeitung der Zeit- und\\Langzeitfestigkeitsdaten};
+
+    % Zeitfestigkeitsbereich
+    \node (zfaufbereitung) [
+        process,
+        below left=of aufteilung,
+        xshift=-3mm
+    ]
+        {Auslesen und Aufbereiten der\\Zeitfestigkeitsdaten};
+
+    \node (zfabbruch) [process, below=of zfaufbereitung]
+        {Bestimmung des Abbruchkriteriums\\der Zeitfestigkeitsproben};
+
+    \node (zfkraft) [process, below=of zfabbruch]
+        {Ermittlung der Kraftamplituden\\der Zeitfestigkeitsproben};
+
+    \node (zfauswertung) [process, below=of zfkraft]
+        {Auswertung des\\Zeitfestigkeitsbereichs};
+
+    % Langzeitfestigkeitsbereich
+    \node (lfaufbereitung) [
+        process,
+        below right=of aufteilung,
+        xshift=3mm
+    ]
+        {Auslesen und Aufbereiten der\\Langzeitfestigkeitsdaten};
+
+    \node (lfabbruch) [process, below=of lfaufbereitung]
+        {Bestimmung des Abbruchkriteriums\\der Langzeitfestigkeitsproben};
+
+    \node (lfkraft) [process, below=of lfabbruch]
+        {Ermittlung der Kraftamplituden\\der Langzeitfestigkeitsproben};
+
+    \node (lfauswertung) [process, below=of lfkraft]
+        {Auswertung des\\Langzeitfestigkeitsbereichs};
+
+    % Zusammenführung
+    \node (zusammenfuehrung) [
+        processwide,
+        below=12mm of $(zfauswertung)!0.5!(lfauswertung)$
+    ]
+        {Zusammenführung der Auswertungsergebnisse};
+
+    \node (woehler) [processwide, below=of zusammenfuehrung]
+        {Berechnung und Darstellung der Wöhlerkurve};
+
+    \node (pdf) [processwide, below=of woehler]
+        {Erstellung des PDF-Prüfprotokolls};
+
+    \node (ende) [startstop, below=of pdf]
+        {Programmende};
+
+    % Gemeinsamer Ablauf
+    \draw [arrow] (start) -- (parameter);
+    \draw [arrow] (parameter) -- (zfdateien);
+    \draw [arrow] (zfdateien) -- (lfdateien);
+    \draw [arrow] (lfdateien) -- (aufteilung);
+
+    % Verzweigung in die beiden Auswertungsbereiche
+    \coordinate (verzweigung)
+        at ($(aufteilung.south)+(0,-8mm)$);
+
+    \draw [thick]
+        (aufteilung.south) -- (verzweigung);
+
+    \draw [arrow]
+        (verzweigung) -| (zfaufbereitung.north);
+
+    \draw [arrow]
+        (verzweigung) -| (lfaufbereitung.north);
+
+    % Zeitfestigkeitsbereich
+    \draw [arrow] (zfaufbereitung) -- (zfabbruch);
+    \draw [arrow] (zfabbruch) -- (zfkraft);
+    \draw [arrow] (zfkraft) -- (zfauswertung);
+
+    % Langzeitfestigkeitsbereich
+    \draw [arrow] (lfaufbereitung) -- (lfabbruch);
+    \draw [arrow] (lfabbruch) -- (lfkraft);
+    \draw [arrow] (lfkraft) -- (lfauswertung);
+
+    % Zusammenführung der beiden Bereiche
+    \draw [arrow]
+        (zfauswertung.south) |- (zusammenfuehrung.west);
+
+    \draw [arrow]
+        (lfauswertung.south) |- (zusammenfuehrung.east);
+
+    % Abschließender Programmablauf
+    \draw [arrow] (zusammenfuehrung) -- (woehler);
+    \draw [arrow] (woehler) -- (pdf);
+    \draw [arrow] (pdf) -- (ende);
+
+    \end{tikzpicture}%
+    }
+
+    \caption{Schematischer Ablauf des entwickelten MATLAB-Auswerteprogramms}
+    \label{fig:programmablauf}
+\end{figure}
+
+
+Zu Beginn erfolgt eine Abfrage der Parameter für die Versuchsauswertung, aber auch für die Erstellung des Prüfberichts am Ende mittels eines Eingabefeldes. Nach erfolgreicher Eingabe können die entsprechenden Dateien der Versuchsproben, getrennt für den Zeitfestigkeitsbereich und den Langzeitfestigkeitsbereich in das Programm geladen werden. Im nächsten Schritt werden die benötigten Messdaten aus den Dateien extrahiert und aufbereitet. Danach kann die Auswertung des Zeitfestigkeitsbereiches erfolgen und anschließend auch die des Langzeitfestigkeitsbereiches. Aus den Ergebnissen der beiden Abschnitte wird daraufhin die Wöhlerkurve erstellt und in einem Diagramm veranschaulicht. Schlussendlich werden alle wesentlichen Versuchsergebnisse und Daten in das Prüfprotokoll eingetragen und für den Benutzer bereitgestellt.   
+
+	\section{Einlesen der Messdaten}
+	Für das Einlesen der Messdaten erfolgt eine Dateiauswahl durch den Benutzer. Akzeptierte Dateiformate sind .xlsx- und .xls-Formate. Aufgrund der unterschiedlichen Auswerteverfahren erfolgt das Importieren der Messdaten der Zeitfestigkeit und der Langzeitfestigkeit getrennt. Der Nutzer wird folglich mit einem Infofenster dazu aufgefordert, zuerst die Dateien des Zeitfestigkeitsbereiches auszuwählen. Wenn dies erledigt ist erscheint erst das Infofenster des Langzeitfestigkeitsbereiches, um die zugehörigen Dateien auszuwählen.  Das Infofenster wird durch die MATLAB-Funktion \texttt{msgbox} erzeugt. Mit der Funktion \texttt{uigetfile} können dabei auch mehrere Dateien gleichzeitig in das Programm eingelesen werden. Aufgrund einer while-Schleife öffnet sich der Dateiauswahldialog so lang immer wieder bis der Nutzer keine Datei mehr auswählt. Zur Vermeidung eines redundanten Programmcode wurde der Dateieneinlesevorgang in eine eigene Funktion ausgelagert. Die eingelesenen Tabelleninhalte werden mit der MATLAB-Funktion \texttt{readcell} vollständig in einem Cell-Array gespeichert, um die Tabellenstruktur zu erhalten. In einer Zelle des Cell-Arrays befinden sich folglich die kompletten Rohmessdaten einer Probe, die mit der ursprünglichen Tabellenstruktur der Hydropulsanlage erhalten bleiben. Dieser Vorgang erleichtert die Weiterverarbeitung der Proben als getrennte Tabellen.  Zeit- und Langzeitfestigkeitsdateien werden dabei in zwei unterschiedlichen Cell-Arrays abgespeichert. Im nächsten Schritt werden alle relevanten Daten aus den Proben extrahiert, die zur Versuchsauswertung benötigt werden und unter neuen variablen gespeichert
+
+	\section{Aufbereitung der Messdaten}
+	\subsection{Extraktion der relevanten Messgrößen}
+	welche Spalten benötigt werden
+	Kraft
+	Weg
+	Zykluszähler
+	Zeit
+	Bruchschwingspielzahl
+	
+	    \begin{figure}[H]
         \begin{center}
             \includegraphics[width=1.0\textwidth]{Vergleich der Wegsignale.pdf}
             \caption{Vergleich Wegsignal des Wegaufnehmers Lasersensor und des Wegaufnehmers PL16K.}
@@ -55,3 +293,47 @@ Da für den vorliegenden Wöhlerversuch eine geringe Stichprobengröße von insg
     \end{figure}
     
 Wegsensor PL16K ist an Zylinder montiert, deswegen wird die Bewegung des Zylinders bzw. der Maschine in Form relativ starker Oszillationen im Vergleich zum Lasersensor sichtbar. Dieser ist an einer separaten (unbewegten) Stelle befestigt. Begründung für Priorität des Lasersensors im Code.
+
+	\subsection{Umstrukturierung der Daten}
+	Speicherung unter neuen Variablen,
+	Vereinheitlichung,
+	Trennung der Messgrößen,
+	Vorbereitung der Berechnung
+	
+	\subsection{Vorverarbeitung}
+	eventuelle Umrechnung,
+	Einheiten,
+	Datenbereiche auswählen,
+	benötigte Messpunkte
+	
+	
+	\section{Auswertung des Zeitfestigkeitsbereichs}
+	\subsection{Berechnung der Kraftamplitude}
+	Maximum,
+	Minimum,
+	Mittelwert,
+	Kraftamplitude,
+	verwendete Gleichungen,
+	MATLAB-Umsetzung
+	
+	\subsection{Bestimmung der Bruchschwingspielzahl}
+	Zykluszähler,
+	letzter Messwert,
+	Zuordnung zur Probe
+	
+	\subsection{Berechnung der Regressionsgeraden}
+	logarithmische Darstellung,
+	lineare Regression,
+	Steigung,
+	Lageparameter
+	
+	\subsection{Streuung}
+	Standardabweichung,
+	Berechnung,
+	Korrektur kleiner Stichproben,
+	Bedeutung
+	
+	
+	
+
+
