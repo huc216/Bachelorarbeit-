@@ -1,22 +1,25 @@
 \chapter{Theoretischer Hintergrund}
 
 	\section{Werkstoffmechanische Grundlagen der Ermüdung}
-	
-Wird ein statischer Lastfall betrachtet, bilden die Zugfestigkeit, definiert als die Maximalspannung, die ein Werkstoff ertragen kann, sowie die Streckgrenze die zentralen Kenngrößen  \cite[Seite 117]{HibbelerTechnischeMechanik2013}. 
 
-Wenn die wirkende Spannung geringer als die Streckgrenze ist, verformt sich das Bauteil elastisch. Überschreitet die Spannung diese Grenze, tritt neben der elastischen auch eine makroskopische plastische Verformung auf \cite[Seite 8]{Laepple2016}. Unter zyklischer Belastung hingegen treten plastische Verformungen in der Mikrostruktur des Metalls bereits weit unterhalb der Streckgrenze auf. Das Voranschreiten dieser mikrostrukturellen Schädigung wird als Materialermüdung bezeichnet. Dieser Prozess kann schlussendlich zu einem Ermüdungsbruch führen \cite[Seite 1-5]{Ermüdungsfestigkeit2007}.  
+Bei einer statischen Beanspruchung stellen neben dem Elastizitätsmodul die Zugfestigkeit sowie die Streckgrenze die zentralen Kenngrößen in einem Spannungs-Dehnungs-Diagramm dar. Dabei ist die Zugfestigkeit als die maximale mechanische Spannung definiert, die ein Werkstoff vor dem Versagen aufnehmen kann~\cite[Seite~117]{HibbelerTechnischeMechanik2013}. Liegt die wirkende Beanspruchung unterhalb der Streckgrenze, verformt sich das Bauteil rein elastisch. Wird dieser Grenzwert hingegen überschritten, tritt neben dem elastischen Anteil auch eine makroskopische plastische Verformung auf~\cite[Seite~8]{Laepple2016}. Während sich diese bleibende Deformation bei einer statischen Belastung erst oberhalb der Streckgrenze einstellt, verändert sich das werkstoffmechanische Verhalten unter zyklischer Beanspruchung grundlegend.
 
-Die mechanische Spannung ist das Verhältnis aus der inneren Kraft bezogen auf die beanspruchte Querschnittsfläche \cite[Seite 9-10]{Balke2008}. Der Spannungsbegriff wird in die Normalspannung und die Tangentialspannung unterteilt, die sich durch die Richtung der Krafteinwirkung bezüglich der betrachteten Fläche voneinander unterscheiden. Normalspannungen entstehen durch senkrecht auf die Fläche auftretende Kräfte. Tangentialspannungen hingegen ergeben sich immer dann, wenn Kräfte in der Schnittebene wirken, die beispielsweise durch äußere Querkräfte $F_Q$ hervorgerufen werden~\cite[Seite 206]{KabusFestigkeitslehre2023}. 
-Im elastischen Fall bewegt sich das Bauteil nach Entlastung wieder in die Ausgangslage zurück. Unter zyklischer Belastung hingegen führen wiederholte, mikroplastische Verformungen zu einer irreversiblen Schädigung, welche die die Grundlage für die spätere Materialermüdung und Rissentstehung bildet \cite[Seite 8]{Laepple2016} \cite[Seite 5]{Ermüdungsfestigkeit2007}. 
+Unter zyklischer Beanspruchung treten plastische Verformungen in der Mikrostruktur des Metalls bereits weit unterhalb der Streckgrenze auf. Das Voranschreiten dieser mikrostrukturellen Schädigung wird als Materialermüdung bezeichnet und kann schließlich zu einem Ermüdungsbruch führen~\cite[Seite~1--5]{Ermüdungsfestigkeit2007}. Zum Verständnis dieser Mechanismen werden im Folgenden die Grundlagen des Spannungsbegriffs erläutert.
+
+Die mechanische Spannung ist definiert als das Verhältnis der inneren Kraft zur beanspruchten Querschnittsfläche \cite[Seite 9--10]{Balke2008}. Im Allgemeinen wird zwischen der Normalspannung und der Tangentialspannung unterschieden, die sich durch die jeweilige Richtung der Krafteinwirkung bezüglich der betrachteten Fläche auszeichnen. Normalspannungen entstehen durch senkrecht auf die betrachtete Fläche wirkende Kräfte, Tangentialspannungen dagegen durch in der Schnittebene wirkende Kräfte, beispielsweise infolge äußerer Querkräfte $F_Q$~\cite[Seite~206]{KabusFestigkeitslehre2023}. Insbesondere Tangentialspannungen spielen bei den mikrostrukturellen Schädigungsmechanismen eine entscheidende Rolle.
+
+Die bei der Materialermüdung ablaufenden Mechanismen der Rissentstehung werden im folgenden Abschnitt behandelt.
 
 	\subsection{Mikroskopische Rissentstehung (Gitterfehler)}
-Metalle liegen als Realkristalle vor, die sich durch ihre fehlerhafte Gitterstruktur auszeichnen. Diese Defekte lassen sich anhand ihrer räumlichen Dimension in nulldimensionale (punktförmige), eindimensionale (linienförmige), zweidimensionale (flächenhafte) und dreidimensionale (räumliche) Gitterfehler klassifizieren. Zu den nulldimensionalen Defekten gehören Leerstellen, Substitutions- und Zwischengitteratome. Die Gruppe eindimensionaler Defekte umfasst die Stufen- und Schraubenversetzungen. Zweidimensionale Defekte sind zum Beispiel Korngrenzen und Stapelfehler. \\
-Zu den dreidimensionalen Defekten gehören Poren, Einschlüsse und Ausscheidungen \cite[Kapitel 2.2.1]{Werkstoffkunde2015}. Die Entstehung von Ermüdungsrissen basiert auf dem Vorhandensein von Leerstellen und der Bewegung von Versetzungen.
+Metalle liegen in Form von Realkristallen vor, die durch ihre fehlerhafte Gitterstruktur charakterisiert sind. Diese Defekte lassen sich anhand ihrer räumlichen Dimension in nulldimensionale (punktförmige), eindimensionale (linienförmige), zweidimensionale (flächenhafte) und dreidimensionale (räumliche) Gitterfehler klassifizieren. Zu den nulldimensionalen Defekten gehören Leerstellen, Substitutions- und Zwischengitteratome. Die Gruppe eindimensionaler Defekte umfasst die Stufen- und Schraubenversetzungen. Zweidimensionale Defekte sind zum Beispiel Korngrenzen und Stapelfehler. 
 
-Bei idealen Kristallen ist jeder Platz in der Gitterstruktur mit einem Atom belegt. Ein Realkristall hingegen weist unbesetzte Gitterplätze auf. Diese ermöglichen die Diffusion der Atome und je mehr Leerstellen vorhanden sind, umso höher ist das Ausmaß der Diffusion. Hierdurch wird die plastische Verformung begünstigt, da durch die Leerstellen das Klettern von Versetzungen erfolgen kann. Durch die plastische Verformung eines Bauteils verstärkt sich dieser Effekt zunehmend. \cite[Kapitel 2.2.1]{Werkstofftechnik2018}.
+Zu den dreidimensionalen Defekten zählen Poren, Einschlüsse und Ausscheidungen~\cite[Kap.~2.2.1]{Werkstoffkunde2015}. Die Entstehung von Ermüdungsrissen basiert auf dem Vorhandensein von Leerstellen und der Bewegung von Versetzungen.
 
-Die Versetzungsbewegung tritt ein, wenn die auf das Gleitsystem einwirkende Schubspannung größer ist als die kritische Schubspannung des Werkstoffs. Die Versetzungen wandern bis zu einem Hindernis, wie etwa einer Korngrenze oder Ausscheidungen. \\ 
-Als Grundlage für die plastische Verformung bei zyklischer Beanspruchung dient eine geringe Anzahl an Versetzungen, die sich unter der Streckgrenze bereits bewegen können. Wenn sich die Versetzungen an Korngrenzen aufstauen, erzeugt dies Spannungen im Nachbarkristall und es können sich infolgedessen auch dort Versetzungen bewegen. In der Belastungsphase entsteht durch das Wandern der Versetzungen eine Gleitverschiebung~($\Delta s$). Dabei entsteht eine neue Oberfläche. Durch Oxidation an der neuen Oberfläche wird die Gleitebene blockiert. Um bei Lastumkehr wieder in die andere Richtung wandern zu können, erfolgt die Rückgleitung der Versetzungen auf einer parallelen Gleitebene, dargestellt in Teilbild b) in \Figref{fig:gleitbaender-mechanismus}. Mit jedem Belastungszyklus wiederholt sich dieser Vorgang und es entstehen an der Oberfläche Intrusionen und Extrusionen \cite[Seite 265-267]{Werkstofftechnik-Praktikum2021}. 
+Bei idealen Kristallen ist jeder Platz in der Gitterstruktur mit einem Atom belegt. Ein Realkristall hingegen weist unbesetzte Gitterplätze auf. Diese ermöglichen die Diffusion der Atome. Je mehr Leerstellen vorhanden sind, umso höher ist das Ausmaß der Diffusion. Hierdurch wird die plastische Verformung begünstigt, da durch die Leerstellen das Klettern von Versetzungen erfolgen kann. Durch die plastische Verformung eines Bauteils verstärkt sich dieser Effekt zunehmend~\cite[Kap.~2.2.1]{Werkstofftechnik2018}.
+
+Die Versetzungsbewegung tritt ein, wenn die auf das Gleitsystem einwirkende Schubspannung größer ist als die kritische Schubspannung des Werkstoffs. Die Versetzungen wandern bis zu einem Hindernis, wie etwa einer Korngrenze oder Ausscheidungen. 
+
+Als Grundlage für die plastische Verformung bei zyklischer Beanspruchung dient eine geringe Anzahl an Versetzungen, die sich unter der Streckgrenze bereits bewegen können. Wenn sich die Versetzungen an Korngrenzen aufstauen, erzeugt dies Spannungen im Nachbarkristall und es können sich infolgedessen auch dort Versetzungen bewegen. In der Belastungsphase entsteht durch das Wandern der Versetzungen eine Gleitverschiebung~($\Delta s$). Dabei entsteht eine neue Oberfläche. Durch Oxidation an der neuen Oberfläche wird die Gleitebene blockiert. Um bei Lastumkehr wieder in die andere Richtung wandern zu können, erfolgt die Rückgleitung der Versetzungen auf einer parallelen Gleitebene, wie in Teilbild b) in \Figref{fig:gleitbaender-mechanismus} dargestellt ist. Mit jedem Belastungszyklus wiederholt sich dieser Vorgang und es entstehen an der Oberfläche Intrusionen und Extrusionen~\cite[Seite~265--267]{Werkstofftechnik-Praktikum2021}. 
 
 \begin{figure}[H] 
     \centering
@@ -119,11 +122,11 @@ Als Grundlage für die plastische Verformung bei zyklischer Beanspruchung dient 
     \label{fig:gleitbaender-mechanismus}
 \end{figure}
 
-Zusammengefasst ist die Grundlage der plastischen Verformung die Versetzungsbewegung, die dann zu Intrusionen und Extrusionen führt, an denen sich Risskeime ausbilden und ein Anriss entsteht. 
+Zusammengefasst ist die Bewegung von Versetzungen die Grundlage der plastischen Verformung, die Intrusionen und Extrusionen verursacht. An diesen bilden sich Risskeime aus, wobei die Rissinitiierung meist an den Intrusionen einsetzt.
 
-Der Rissvorgang bildet sich oftmals zuerst an den Intrusionen aus. Bei der zyklischen Beanspruchung wird der Riss bei jedem Lastwechsel geöffnet und dann wieder weitestgehend geschlossen, wodurch dieser bei jedem Zyklus wächst. 
+Bei der zyklischen Beanspruchung wird der Riss bei jedem Lastwechsel geöffnet und wieder weitestgehend geschlossen, wodurch dieser bei jedem Zyklus wächst. 
 
-Insgesamt werden drei Rissstadien unterschieden: Im Rissstadium 1 (siehe \Figref{fig:Rissausbreitung}) entstehen solange Anrisse, bis die Spannungsspitzen im Kerbgrund derart fortgeschritten sind, sodass sich das Bauteil nicht mehr weiter plastisch verformen kann und der Riss umschwenkt. Die Ausbreitung geschieht dabei senkrecht zur größten Normalspannung (=~Rissstadium 2). \Figref{fig:Rissausbreitung} veranschaulicht diese Richtungsänderung. Die Rissausbreitung verläuft transkristallin durch die einzelnen Körner hindurch. 
+Insgesamt werden drei Rissstadien unterschieden: Im Rissstadium 1 (siehe \Figref{fig:Rissausbreitung}) folgt der Mikroriss zunächst den aktiven Gleitbändern, da diese Phase durch Schubspannungen dominiert wird. Mit zunehmender Risslänge wird jedoch die Normalspannung infolge der Spannungskonzentration an der Rissspitze derart dominant, dass der Riss in die Ebene der maximalen Zugspannung umschwenkt. Dieses Umschwenken leitet das Rissstadium 2 ein, bei dem die Ausbreitung senkrecht zur größten Normalspannung geschieht. \Figref{fig:Rissausbreitung} veranschaulicht diese Richtungsänderung. Die Rissausbreitung verläuft dabei transkristallin durch die einzelnen Körner hindurch~\cite[Seite~267-268]{Werkstofftechnik-Praktikum2021}.
 
 \begin{figure}[H]
 \centering
@@ -196,24 +199,23 @@ Insgesamt werden drei Rissstadien unterschieden: Im Rissstadium 1 (siehe \Figref
 \label{fig:Rissausbreitung}
 \end{figure}
 
-Da die Rissgröße pro Schwingung zunimmt, verringert sich folglich die lasttragende Fläche und die Spannung im Bauteil erhöht sich. Wenn die Spannung im verbleibenden, lasttragenden Querschnitt die Zugfestigkeit erreicht, tritt Rissstadium 3 ein und es erfolgt der Restgewaltbruch \cite[Seite 267-269]{Werkstofftechnik-Praktikum2021}. 
+Da die Rissgröße mit jeder Schwingung zunimmt, verringert sich die lasttragende Fläche und bei gleichbleibender Kraft erhöht sich die Spannung im Bauteil. Sobald die Spannung im verbleibenden Querschnitt die Zugfestigkeit erreicht, tritt Rissstadium 3 ein und es erfolgt der Restgewaltbruch~\cite[Seite~268]{Werkstofftechnik-Praktikum2021}. 
 
-Im Wöhlerversuch führen diese Mikrorisse schließlich zum Versagen des Bauteils. Deshalb wird untersucht, wie viele Lastspiele das Material erträgt, bevor die Summe der Mikrorisse zu einem makroskopischen Riss im Bauteil führt. 
+Die sich aus der zyklischen Beanspruchung ergebende Materialermüdung ist die Ursache des Probenversagens unterhalb der statischen Festigkeitsgrenze im Wöhlerversuch. Daher wird untersucht, nach wie vielen Lastspielen der sich ausbreitende Riss zum Versagen des Bauteils führt~\cite[Seite~261]{Werkstofftechnik-Praktikum2021}.
+ 
 \clearpage
 
-
-	\section{Scherzugversuch}
-Das Ziel des Scherzugversuches ist es, die Maximalkraft $F_{\text{max}}$ zu bestimmen, die die Probe vor ihrem Versagen erträgt \cite[Seite 216-218]{RoloffMatek2021}. Diese Maximalkraft, auch Scherkraft genannt, ist anschließend die oberste Grenze für die Lasthorizonte des nachfolgenden Wöhlerversuches.  
-
-Die zwei Versagensarten, die auftreten können, sind die Abscherung des Niets, durch Überschreiten der Scherspannung im Niet, oder ein Blechriss infolge des Lochleibungsdruckes~\cite[Seite 129]{Maschinenteile2007}. 
-
-
 	\section{Wöhlerversuch nach DIN 50100}
+Da sich die Lasthorizonte des Wöhlerversuchs an der statischen Tragfähigkeit des Prüflings orientieren~\cite[Seite~272]{Werkstofftechnik-Praktikum2021}, wird diese im Rahmen der vorliegenden Arbeit zunächst mithilfe eines Scherzugversuchs bestimmt.
+	
+	\subsection{Statische Voruntersuchung (Scherzugversuch)}
+	Der Scherzugversuch dient der Bestimmung der Maximalkraft $F_{\text{max}}$, welche der Prüfling unmittelbar vor seinem Versagen aufnehmen kann~\cite[Seite~216--218]{RoloffMatek2021}. Die im Wöhlerversuch aufgebrachten Lasten werden unterhalb von $F_{\text{max}}$ gewählt, da die Belastungsstufen grundsätzlich unterhalb der statischen Tragfähigkeit des Prüflings festgelegt werden~\cite[Seite~272]{Werkstofftechnik-Praktikum2021}.
+	
 	\subsection{Schwingungskenngrößen}
-Bei dem Wöhlerversuch erfährt das Bauteil eine zyklische Spannungsänderung, die auch als mechanische Schwingung bezeichnet wird. 
-\Figref{fig:Lastzeitverlaeufe} stellt die beiden Schwingungsarten gegenüber.
-Auf der einen Seite zeigt Teilbild b) die allgemeine dynamische Schwingung, wie sie auch häufig in der Praxis auftritt, und auf der anderen Seite wird die periodische Sinusschwingung in Teilbild a) dargestellt. Da die allgemeine dynamische Schwingung jedoch zu komplex zum Nachbilden für Versuche ist, wird für den Wöhlerversuch eine periodische Schwingung gemäß Teilbild a) verwendet. 
-Um zu gewährleisten, dass die Schwingungen reproduzierbar sind, werden in Teilbild a) die veranschaulichten charakteristischen Größen definiert. Diese umfassen die Oberspannung $\sigma_{\text{max}}$, die Unterspannung $\sigma_{\text{min}}$, die Mittelspannung $\sigma_m$ sowie die Spannungsamplitude $\sigma_a$ (siehe Symbole \Figref{fig:Lastzeitverlaeufe}~a)~\cite[Seite 269-270]{Werkstofftechnik-Praktikum2021}. Es ist anzumerken, dass die Sinuskurve hier nur der Erläuterung der Schwingbeanspruchung dient. In der Praxis kommen oftmals auch Dreiecks- oder Rechtecksbelastungen zum Einsatz~\cite[Seite 23]{Haibach2006}. 
+ Beim Wöhlerversuch wird der Prüfling zyklisch beansprucht. Der zeitliche Spannungsverlauf kann dabei als mechanische Schwingung dargestellt werden. \Figref{fig:Lastzeitverlaeufe} stellt die beiden Schwingungsarten gegenüber. 
+ Da allgemeine dynamische Belastungen  (\Figref{fig:Lastzeitverlaeufe} Teilbild b)) aufgrund ihres komplexen zeitlichen Verlaufs nur eingeschränkt reproduzierbar sind, wird im Wöhlerversuch in der Regel eine periodische Sinusschwingung gemäß \Figref{fig:Lastzeitverlaeufe} Teilbild a) verwendet.
+Zur eindeutigen Beschreibung der Schwingungen werden in Teilbild~a) die charakteristischen Spannungsgrößen definiert. Diese umfassen die Oberspannung $\sigma_{\text{max}}$, die Unterspannung $\sigma_{\text{min}}$, die Mittelspannung $\sigma_m$ sowie die Spannungsamplitude $\sigma_a$ (siehe Symbole \Figref{fig:Lastzeitverlaeufe}~a)). Diese Definitionen der Schwingungskenngrößen lassen sich analog auf den Kraftverlauf übertragen, woraus sich die korrespondierenden Kraftgrößen $F_{\text{max}}$, $F_{\text{min}}$, $F_{\text{m}}$ und $F_{\text{a}}$ ergeben~\cite[Seite 269--270]{Werkstofftechnik-Praktikum2021}. 
+Es ist anzumerken, dass die Sinuskurve hier nur der Erläuterung der Schwingbeanspruchung dient. In der Praxis kommen oftmals auch Dreiecks- oder Rechtecksbelastungen zum Einsatz~\cite[Seite~23]{Haibach2006}. 
 
 \begin{figure}[H]
     \centering
@@ -271,33 +273,34 @@ Um zu gewährleisten, dass die Schwingungen reproduzierbar sind, werden in Teilb
     \end{scope}
 
 \end{tikzpicture}
-\caption{Lastzeitverläufe: a) Kenngrößen am Beispiel einer periodischen Sinusschwingung, b) stochastische Betriebslast (In Anlehnung an \cite[Seite 269-270]{Werkstofftechnik-Praktikum2021}).}
+\caption{Lastzeitverläufe: a) Kenngrößen am Beispiel einer periodischen Sinusschwingung, b) stochastische Betriebslast (In Anlehnung an \cite[Seite 269--270]{Werkstofftechnik-Praktikum2021}).}
 \label{fig:Lastzeitverlaeufe}
 \end{figure}
 
-Da eine periodische Funktion als Anregung verwendet wird, nennt man den Wöhlerversuch auch Schwingfestigkeitsversuch. Ein Betriebsfestigkeitsversuch wäre es, wenn mit einer Beanspruchung nach \Figref{fig:Lastzeitverlaeufe}~b) gearbeitet wird. Sowohl die Schwingfestigkeit als auch die Betriebtsfestigkeit fallen unter den Begriff der Ermüdungsfestigkeit \cite[Seite 250]{Laepple2016}. 
+Da eine periodische Funktion als Anregung verwendet wird, nennt man den Wöhlerversuch auch Schwingfestigkeitsversuch. Wird das Bauteil hingegen mit einer stochastischen Beanspruchung gemäß \Figref{fig:Lastzeitverlaeufe}~Teilbild b) belastet, handelt es sich um einen Betriebsfestigkeitsversuch. Sowohl die Schwingfestigkeit als auch die Betriebsfestigkeit fallen unter den Begriff der Ermüdungsfestigkeit~\cite[Seite~250]{Laepple2016}. 
 
-Für die Zusammenhänge der in \Figref{fig:Lastzeitverlaeufe} a) dargestellten Kenngrößen sind folgende Formeln von Bedeutung. 
+Für die Zusammenhänge der in \Figref{fig:Lastzeitverlaeufe}~Teilbild a) dargestellten Kenngrößen sind folgende Formeln von Bedeutung. 
 
-Die Mittelspannung lässt sich mit der Formel in \Eqref{eq:Mittelspannung} berechnen. 
+Die Mittelspannung $\sigma_{\text{m}}$ berechnet sich hierbei aus dem arithmetischen Mittel von Ober- und Unterspannung nach~\Eqref{eq:Mittelspannung}:
 
 \begin{equation}\label{eq:Mittelspannung}
-\sigma_m = \frac{\sigma_{\text{max}} + \sigma_{\text{min}}}{2}
+\sigma_{\text{m}} = \frac{\sigma_{\text{max}} + \sigma_{\text{min}}}{2}.
 \end{equation}
 
-Die Spannungsamplitude kann nach \Eqref{eq:Spannungsamplitude} ermittelt werden.
+Die Spannungsamplitude $\sigma_{\text{a}}$ repräsentiert die halbe Schwingbreite und wird gemäß \Eqref{eq:Spannungsamplitude} ermittelt:
 
 \begin{equation}\label{eq:Spannungsamplitude}
-\sigma_a = \frac{\sigma_{\text{max}} - \sigma_{\text{min}}}{2}
+\sigma_{\text{a}} = \frac{\sigma_{\text{max}} - \sigma_{\text{min}}}{2}.
 \end{equation}
 
-Eine weitere wichtige Größe ist das Spannungsverhältnis R in \Eqref{eq:Ruhegrad}. Dieses gibt das Verhältnis von Unterspannung zu Oberspannung an \cite[Seite 270]{Werkstofftechnik-Praktikum2021}.
+Eine weitere wichtige Größe ist das Spannungsverhältnis $R$ in \Eqref{eq:Ruhegrad}. Dieses gibt das Verhältnis von Unterspannung zu Oberspannung an~\cite[Seite~270]{Werkstofftechnik-Praktikum2021}:
 
 \begin{equation}\label{eq:Ruhegrad}
-R_{\sigma} = \frac{\sigma_{\text{min}}}{\sigma_{\text{max}}}
+R = \frac{\sigma_{\text{min}}}{\sigma_{\text{max}}}.
 \end{equation}
 
 \clearpage
+
 Der zeitliche Verlauf einer Beanspruchung hat Einfluss auf die Lebensdauer eines Bauteils. Trägt man die Beanspruchung über die Zeit auf, dann lassen sich drei verschiedene Bereiche gegenüberstellen. 
 
 \begin{figure}[H]
@@ -372,13 +375,13 @@ Der zeitliche Verlauf einer Beanspruchung hat Einfluss auf die Lebensdauer eines
         \draw (3.2, 0.6) -- (3.2, -1.0);  
         
         % R-Werte exakt unter den jeweiligen Wellen zentriert
-        \node at (-6.5, 0.3) {\scriptsize $1 < R_\sigma < \infty$};
-        \node at (-4.0, 0.3) {\scriptsize $R_\sigma = \infty$};
-        \node at (-2.0, 0.3) {\scriptsize $-\infty < R_\sigma < -1$};
-        \node at (0.0, 0.3)  {\scriptsize $R_\sigma = -1$};
-        \node at (2.0, 0.3)  {\scriptsize $-1 < R_\sigma < 0$};
-        \node at (4.0, 0.3)  {\scriptsize $R_\sigma = 0$};
-        \node at (6.5, 0.3)  {\scriptsize $0 < R_\sigma < 1$};
+        \node at (-6.5, 0.3) {\scriptsize $1 < R < \infty$};
+        \node at (-4.0, 0.3) {\scriptsize $R = \infty$};
+        \node at (-2.0, 0.3) {\scriptsize $-\infty < R < -1$};
+        \node at (0.0, 0.3)  {\scriptsize $R = -1$};
+        \node at (2.0, 0.3)  {\scriptsize $-1 < R < 0$};
+        \node at (4.0, 0.3)  {\scriptsize $R = 0$};
+        \node at (6.5, 0.3)  {\scriptsize $0 < R < 1$};
         
         % Einseitige Pfeile nach außen mit vertikalem Begrenzungsstrich (|) innen
         \draw[|<->, >=stealth] (-1.0, -0.3) -- (-3.1, -0.3) node[midway, below, scale=0.8] {Druck-};
@@ -396,35 +399,34 @@ Der zeitliche Verlauf einer Beanspruchung hat Einfluss auf die Lebensdauer eines
 \end{figure}
 
 Die dynamischen Lastfälle lassen sich in schwellende und wechselnde Belastung unterteilen.
-Schwellende Lastfälle zum Beispiel treten bei einer Druckfeder auf, die immer wieder be- und entlastet wird. Dabei bewegt sich die Feder nach der Entlastung stets in die Ausgangslage zurück, in der die Spannung gleich null ist. Wechselnde Lastfälle entstehen dagegen, wenn das Bauteil abwechselnd auf Zug und Druck belastet wird, wie zum Beispiel eine Pleuelstange in einem Verbrennungsmotor \cite{teclehrerfreund2015}.
+Schwellende Lastfälle zum Beispiel treten bei einer Druckfeder auf, die immer wieder be- und entlastet wird. Dabei bewegt sich die Feder nach der Entlastung stets in die Ausgangslage zurück, in der die Spannung gleich null ist. Wechselnde Lastfälle entstehen dagegen, wenn das Bauteil abwechselnd auf Zug und Druck belastet wird, wie zum Beispiel eine Pleuelstange in einem Verbrennungsmotor~\cite{teclehrerfreund2015}.
 
-Für die in dieser Arbeit behandelten Nietverbindungen ist der Zugschwellbereich ($0  < R_\sigma < 1$) von Bedeutung, da die Proben im Wöhlerversuch unter schwellender Zugbeanspruchung geprüft werden. 
+Für die in dieser Arbeit behandelten Nietverbindungen ist der Zugschwellbereich~($0<R<1$) von Bedeutung, da die Proben im Wöhlerversuch unter schwellender Zugbeanspruchung von $R = 0{,}5$ geprüft werden. 
 	
        \subsection{Funktionsprinzip Hydropulsanlage}
-Für die Erstellung der Wöhlerkurve wird die servohydraulische Prüfmaschine, auch Hydropulser genannt, verwendet. Die Hauptkomponenten eines servohydraulischen Systems umfassen eine Antriebsmaschine, eine hydrostatische Pumpe, einen Motor, Steuerventile sowie den Prüfzylinder als Arbeitsmaschine. Der Kreislauf wird durch einen Flüssigkeitsbehälter ergänzt. Zur Pflege der Druckflüssigkeit sind ein Filter, ein Kühler und ein Vorwärmer integriert. Vervollständigt wird das System durch die Leitungen und die Druckflüssigkeit \cite[Seite 2-3]{Ölhydraulik2020}. 
+      Die Hydropulsanlage nutzt hydraulische Druckenergie, um über einen Hydraulikzylinder definierte Kräfte auf den Prüfling aufzubringen~\cite[Seite~3]{Ölhydraulik2020}.
+Die vielseitigen Anwendungsbereiche erstrecken sich von der Bauteilcharakterisierung über quasistatische und dynamische Bauteilprüfung bis hin zu Vibrations- und Schockprüfung~\cite{Instron}. Für diesen Versuch ist die dynamische Bauteilprüfung zur Erstellung der Wöhlerkurve relevant. 
 
-Eine Hydropulsanlage dient im Allgemeinen dazu, hydraulische Energie in mechanische Energie umzuwandeln. 
-Die Einsetzbarkeit einer Hydropulsanlage ist vielseitig. Die Anwendungsbereiche erstrecken sich von Bauteilcharakterisierung über quasistatische und dynamische Bauteilprüfung bis hin zu Vibrations- und Schockprüfung \cite{Instron}. Für diesen Versuch ist die dynamische Bauteilprüfung relevant. 
-
-Den Aufbau der Hydropulsanlage des Maschinendynamik-Labors an der Ostbayerischen Technischen Hochschule Regensburg zeigt  \Figref{fig:Regelkreis_Hydropulser_Gesamt} a). 
-\Figref{fig:Regelkreis_Hydropulser_Gesamt} b) veranschaulicht diese servohydraulische Prüfmaschine schematisch mit ihrer Funktionsweise.
+ Um die grundlegende Funktionsweise dieser servohydraulischen Prüfmaschine zu verdeutlichen, zeigt \Figref{fig:Regelkreis_Hydropulser_Gesamt} b) den dazugehörigen Systemaufbau in einer schematischen Übersicht, welche sich an den Beschreibungen in~\cite[Seite~262]{Ölhydraulik2020} orientiert.
 Zur Differenzierung ist der Ölkreislauf mit durchgezogenen Linien und der Regelkreis mit gestrichelten Linien gekennzeichnet.
-Bei dem Stoffkreislauf wird das Öl aus einem Aggregat -- bestehend aus Antriebsmotor, der die Pumpe antreibt, Ölspeicher, Hochdruckfilter und Druckbegrenzungsventil -- in den Kreislauf gefördert. Ein hochpräzises Servoventil bestimmt dabei, in welche Kammer des Zylinders das Öl fließt sowie die Durchflussmenge. Dies ist von Bedeutung, um die Probe einer zyklischen Belastung aussetzen zu können. Der Zylinder übt dann Kraft auf die Probe aus. 
+Bei dem Stoffkreislauf wird das Fluid aus einem Aggregat -- bestehend aus Antriebsmotor mit hydrostatischer Pumpe, Ölspeicher, Hochdruckfilter und Druckbegrenzungsventil -- in das System gefördert. Zur Konditionierung der Druckflüssigkeit sind zudem ein Filter, ein Kühler und ein Vorwärmer integriert~\cite[Seite~3]{Ölhydraulik2020}. Ein hochpräzises Servoventil steuert sowohl die Durchflussmenge als auch die Richtung des Volumenstroms in die jeweiligen Kammern des Zylinders. Dadurch wird es möglich, einen Prüfling einer zyklischen Belastung auszusetzen, bei welcher der Zylinder die erforderliche Prüfkraft ausübt. 
 
-\begin{figure}[H]
+Das Maschinendynamik-Labor der OTH Regensburg verfügt über drei verschiedene Hydropulsanlagen. Für den vorliegenden Versuch kommt der Hydropulser, dessen Zylinder eine Maximalkraft von 16\,kN aufbringen kann, zum Einsatz~\cite{oth}. Die fotografische Abbildung dieser installierten Prüfanlage ist in \Figref{fig:Regelkreis_Hydropulser_Gesamt}~a) dargestellt.  
+
+\begin{figure}[htbp]
     \centering
     % --- OBERES TEILBILD (FOTO) ---
-         \subfloat[Aufbau Hydropulsanlage \protect\\ Maschinendynamik-Labor \protect\\ OTH Regensburg\label{fig:Hydropulsanlage_foto}]{%
+         \subfloat[ Hydropulsanlage \protect\\ Maschinendynamik-Labor \protect\\ OTH Regensburg\label{fig:Hydropulsanlage_foto}]{%
         \begin{minipage}{0.4\textwidth} % Vergrößert das Foto für optimale Sichtbarkeit
             \centering
             \includegraphics[width=\textwidth]{Hydropulsanlage_gesamt}
         \end{minipage}%
     }
     
-    \vspace{0.5cm} % Erzeugt einen sauberen vertikalen Abstand zwischen den beiden Elementen
+    \vspace{0,5cm} % Erzeugt einen sauberen vertikalen Abstand zwischen den beiden Elementen
 
     % --- UNTERES TEILBILD (DIAGRAMM) ---
-    \subfloat[Schematischer Aufbau und signaltechnischer Regelkreis\label{fig:Regelkreis_Schema}]{%
+    \subfloat[Schematischer Aufbau und Regelkreis\label{fig:Regelkreis_Schema}]{%
         \begin{minipage}{1.0\textwidth} % Nutzt die volle Textbreite für maximale Lesbarkeit
             \centering
             \begin{tikzpicture}[
@@ -485,26 +487,27 @@ Bei dem Stoffkreislauf wird das Öl aus einem Aggregat -- bestehend aus Antriebs
     }
 
     % --- GEMEINSAME HAUPTBILDUNTERSCHRIFT ---
-    \caption{Servohydraulische Prüfmaschine (Hydropulsanlage) im\protect\\ Maschinendynamik-Labor der OTH: a) Foto-Versuchsaufbau,\protect\\ b) Schematischer Aufbau und Regelkreis\protect\\ (eigene Darstellung in Anlehnung an \cite[Seite 261]{Ölhydraulik2020}).}
+    \caption{Servohydraulische Prüfmaschine (Hydropulsanlage) im\protect\\ Maschinendynamik-Labor der OTH:\protect\\ a)~Hydropulsanlage Maschinendynamik-Labor OTH Regensburg,\protect\\ b) Schematischer Aufbau und Regelkreis\protect\\ (eigene Darstellung in Anlehnung an \cite[Seite 261]{Ölhydraulik2020}).}
     \label{fig:Regelkreis_Hydropulser_Gesamt}
 \end{figure}
 
-Die vorhandenen Sensoren zur Regelung der Anlage im Maschinendynamik-Labor sind ein Kraftaufnehmer und ein Wegaufnehmer. Beide können zur Regelung der Anlage verwendet werden. Entsprechend der DIN 50100 wird für den vorliegenden Versuch die Kraftregelung angewendet.
-Dabei wird die aktuelle Kraft mittels einer Kraftmessdose aufgenommen. Dieses Ist-Signal wird dann gemäß dem Regelkreislauf in \Figref{fig:Regelkreis_Hydropulser_Gesamt} b) verstärkt und an einen PID-Regler übermittelt, der die Regeldifferenz zwischen dem Ist-Wert und dem Soll-Wert berechnet und in Form eines Stellsignals an das Servoventil weitergibt. Das Signal des Verstärkers kann zusätzlich durch eine Anzeige sichtbar gemacht werden \cite[Seite 262]{Ölhydraulik2020}.
+Die vorhandenen Sensoren zur Regelung der Anlage im Maschinendynamik-Labor sind ein Kraftaufnehmer und ein Wegaufnehmer. Entsprechend der DIN 50100 wird für den Wöhlerversuch die Kraftregelung angewendet.
+Der Grund dieser Entscheidung besteht darin, dass die Kraftamplitude über die gesamte Versuchsdauer konstant gehalten werden muss~\cite[Seite~9]{DIN50100}. Würde die Messung weggeregelt erfolgen, verringert sich die Kraft durch den Rissfortschritt und die damit einhergehende Entfestigung des Bauteils kontinuierlich. In der Folge würde der Prüfling eine unzulässig hohe Zyklenzahl erreichen und die ermittelte Lebensdauer wäre verfälscht. 
 
-Der Grund für die Anwendung der Kraftregelung besteht darin, dass die Kraftamplitude bei dem Wöhlerversuch konstant gehalten werden soll. Würde die Messung weggeregelt erfolgen, würde sich die Kraft durch den Rissfortschritt und die damit einhergehende Entfestigung des Bauteils kontinuirlich verringern, wodurch die Versuchsergebnisse verfälscht wären \cite[Seite 9]{DIN50100}. 
-
-Im Maschinendynamik-Labor der OTH stehen drei verschiedene Hydropulser zur Verfügung. Für den Schwingfestigkeitsversuch wird der Hydropulser, dessen Zylinder eine Maximalkraft von 16\,kN aufbringen kann, verwendet \cite{oth}. Die gewählte Prüffrequenz liegt bei 40\,Hz. Zur Gewährleistung der Sicherheit kann ein Abbruchkriterium für den Kraft- oder Wegsensor eingestellt werden. Dieses greift bei Kraftabfall oder Hubüberschreitung und schaltet die Anlage ab. 
+Der zugehörige Regelkreis wird in \Figref{fig:Regelkreis_Hydropulser_Gesamt}~b) gezeigt. Hierbei wird die aktuelle Kraft mittels einer Kraftmessdose aufgenommen. Dieses Ist-Signal wird dann verstärkt und an einen PID-Regler übermittelt, der die Regeldifferenz zwischen dem Ist-Wert und dem Soll-Wert berechnet und in Form eines Stellsignals an das Servoventil weitergibt. Das Signal des Verstärkers kann zusätzlich durch eine Anzeige sichtbar gemacht werden~\cite[Seite~262]{Ölhydraulik2020}.
+Zur Gewährleistung der Sicherheit kann ein Abbruchkriterium für den Kraft- oder Wegsensor eingestellt werden. Dieses greift bei Kraftabfall oder Hubüberschreitung und schaltet die Anlage ab automatisch ab. 
 
 	
 	\subsection{Statistische Auswertung anhand der Norm}
-	Als Grundlage der Wöhlerlinie dienen Stichproben, die aus einer Grundgesamtheit, hier allen produzierten Bauteilen, entnommen werden. Der Vorteil von Stichproben liegt beispielsweise in der schnelleren Auswertbarkeit, da sie einen deutlich geringeren Umfang als die Grundgesamtheit aufweisen und dadurch auch Kosten einsparen. Folglich muss die Auswertung mit MATLAB statistisch erfolgen \cite[Seite 20-21]{StatHedderich2020}. 
-	
+	Als Grundlage der Wöhlerlinie dienen Stichproben, die aus einer Grundgesamtheit entnommen werden, d.h. in diesem Fall alle produzierten Bauteile. Der Vorteil von Stichproben liegt unter anderem in der verkürzten Versuchs- und Auswertezeit, da diese einen deutlich geringeren Umfang als die Grundgesamtheit aufweisen und dadurch Kosten einsparen~\cite[Seite~20--21]{StatHedderich2020}. Um von den Ergebnissen dieser begrenzten Stichproben präzise und mathematisch abgesichert auf das Verhalten der gesamten Produktreihe schließen zu können, ist eine statistische Auswertung erforderlich. Diese Analyse wird im Rahmen dieser Arbeit rechnergestützt mithilfe von MATLAB durchgeführt.
+
 Die Auswertung der Wöhlerlinie folgt einer logarithmischen Normalverteilung. 
-\textbf{Eine logarithmische Normalverteilung liegt vor, wenn die Logarithmen einer Größe normalverteilt sind. Im Wöhlerversuch wird angenommen, dass die logarithmierten Schwingspielzahlen einer Normalverteilung folgen. Dadurch können Mittelwert, Standardabweichung und Ausfallwahrscheinlichkeiten statistisch bestimmt werden.\\
-Beim Perlenschnurverfahren wird davon ausgegangen, dass die Schwingspielzahlen einer logarithmischen Normalverteilung folgen. Dies bedeutet, dass nicht die Schwingspielzahlen $N$ selbst normalverteilt sind, sondern ihre dekadischen Logarithmen $\lg N$. Durch diese Annahme können die statistischen Kenngrößen der Grundgesamtheit bestimmt werden. Ziel des Verfahrens ist die möglichst genaue Schätzung des Mittelwertes der logarithmierten Schwingspielzahlen $N_{50\,\%,GG}$ sowie der Standardabweichung $s_{\lg N,GG}$. Diese Kenngrößen bilden die Grundlage für die Beschreibung der Streuung der Versuchsergebnisse und ermöglichen die Bestimmung von Ausfallwahrscheinlichkeiten sowie die Berechnung von Wöhlerlinien mit unterschiedlichen Überlebens- bzw. Ausfallwahrscheinlichkeiten. (Tabelle 2,3 und 4)}
+Im Gegensatz zu einer klassischen (gaußschen) Standardnormalverteilung basiert eine logarithmische Normalverteilung auf den Logarithmen der betrachteten Größen. Derartige Normalverteilungen finden insbesondere dann Anwendung, wenn sich die relevanten Intervalle der entsprechenden Parameter über einen großen Bereich erstrecken. So ist beispielsweise nicht die Schwingspielzahl $N$ selbst normalverteilt, sondern ihre dekadischen Logarithmen $\lg N$.
+Analog zur Standardnormalverteilung lässt sich jene über die beiden Kenngrößen logarithmierter Mittelwert und Standardabweichung eindeutig charakterisieren. Diese bilden die Grundlage für die Beschreibung der Streuung der Versuchsergebnisse und ermöglichen die Bestimmung von Ausfallwahrscheinlichkeiten sowie die Berechnung von Wöhlerlinien mit unterschiedlichen Überlebens- bzw. Ausfallwahrscheinlichkeiten (Tabelle 2,3 und 4 der DIN 50100). 
+
+Ziel der beiden, im weiteren Verlauf der Arbeit folgenden, statistischen Auswerteverfahren (Perlenschnur- und Treppenstufenverfahren) ist die möglichst genaue Schätzung des Mittelwertes der logarithmierten Schwingspielzahlen $N_{50\,\%,GG}$ sowie der Standardabweichung $s_{\lg N,GG}$ der Grundgesamtheit auf Grundlage der vorliegenden Stichprobe.
 	 
-Die Wöhlerkurve kann nach zwei unterschiedlichen Prinzipien aufgestellt werden. Entweder wird für alle Proben ein konstantes Spannungsverhältnis R oder eine konstante Mittelspannung $\sigma_m$ eingestellt. Die Spannungsamplitude wird dabei für jede Probe unterschiedlich gewählt, jedoch wird sie während der Versuchsdurchführung konstant gehalten. Als Ergebnis folgt entweder eine Bruchschwingspielzahl $N_B$ oder eine Grenzschwingspielzahl $N_G$. Bei einer Bruchschwingspielzahl werden alle Schwingspiele bis zum Bruch aufgezeichnet. Bei der Grenzschwingspielzahl wird der Versuch beendet und das Versuchsergebnis wird als Durchläufer bezeichnet. Den Zusammenhang zwischen Lebensdauer und Amplitude veranschaulicht \Figref{fig:Schwingungen der Einzelproben}. Probe 1 und 2 versagen aufgrund ihrer großen Amplituden $\sigma_{\text{a1}}$ und $\sigma_{\text{a2}}$ nach ihrer entsprechenden Schwingspielzahl $N_{\text{B1}}$ bzw. $N_{\text{B2}}$ . Der letzte Prüfkörper~n hingegen wird als Durchläufer gewertet, denn aufgrund der verhältnismäßig kleinen Amplitude $\sigma_{\text{an}}$ erfährt dieser kein Versagen \cite[Seite 272]{Werkstofftechnik-Praktikum2021}. 
+Die Wöhlerkurve kann nach zwei unterschiedlichen Prinzipien aufgestellt werden. Entweder wird für alle Proben ein konstantes Spannungsverhältnis R oder eine konstante Mittelspannung $\sigma_{\text{m}}$ eingestellt. Die Spannungsamplitude wird dabei für jeden Prüfling unterschiedlich gewählt, jedoch wird sie während der Versuchsdurchführung konstant gehalten. Als Ergebnis folgt entweder eine Bruchschwingspielzahl $N_{\text{B}}$ oder eine Grenzschwingspielzahl $N_G$. Bei einer Bruchschwingspielzahl werden alle Schwingspiele bis zum Bruch aufgezeichnet. Bei der Grenzschwingspielzahl wird der Versuch beendet und das Versuchsergebnis wird als Durchläufer bezeichnet. Den Zusammenhang zwischen Lebensdauer und Amplitude veranschaulicht \Figref{fig:Schwingungen der Einzelproben}. Probe 1 und 2 versagen aufgrund ihrer großen Amplituden $\sigma_{\text{a1}}$ und $\sigma_{\text{a2}}$ nach ihrer entsprechenden Schwingspielzahl $N_{\text{B1}}$ bzw. $N_{\text{B2}}$ . Der letzte Prüfkörper~n hingegen wird als Durchläufer gewertet, denn aufgrund der verhältnismäßig kleinen Amplitude $\sigma_{\text{an}}$ erfährt dieser kein Versagen~\cite[Seite~272]{Werkstofftechnik-Praktikum2021}. 
 
 \begin{figure}[H]
     \centering
@@ -607,8 +610,8 @@ Die Wöhlerkurve kann nach zwei unterschiedlichen Prinzipien aufgestellt werden.
 \label{fig:Schwingungen der Einzelproben}
 \end{figure}
 
-Zur Ableitung der Wöhlerlinie aus den experimentell ermittelten Schwingspielzahlen der einzelnen Proben, wird die eingestellte Spannungsamplitude $\sigma_a$ über die erreichte Schwingspielzahl $N$ doppelt logarithmisch aufgetragen. Folglich werden die Datenpunkte der in \Figref{fig:Schwingungen der Einzelproben} abgebildeten Proben 1 und 2 in  \Figref{fig:Wöhlerkurve} eingetragen. Dies sind die Schnittpunkte der jeweiligen Spannungsamplituden $\sigma_{\text{a1}}$ und $\sigma_{\text{a2}}$ mit den beiden Bruchschwingspielzahlen $N_{\text{B1}}$ und  $N_{\text{B2}}$, verteilt in einem Streuband (\Figref{fig:Wöhlerkurve} (Nummer 2)).
-Aus den Versuchsergebnissen mehrerer Proben ensteht nach statistischer Auswertung eine wie in \Figref{fig:Wöhlerkurve} gezeigte Kurve. Die Wöhlerkurve wird nach DIN 50100 in den Bereich der Kurzzeitfestigkeit (LCF, engl. Low Cycle Fatigue), der Zeitfestigkeit (HCF, engl. High Cycle Fatigue) und der Langzeitfestigkeit (LLF, engl. Long Life Fatigue) eingeteilt  \cite[Seite 17]{DIN50100}. In der Praxis zeigt sich, dass in den Bereichen der Zeitfestigkeit und der Langzeitfestigkeit die Proben eine signifikante statistische Streuung aufweisen. Ursache hierfür sind eine Vielzahl von Einflussfaktoren, wie beispielsweise Werkstoffinhomogenitäten oder eine ungleiche Einspannung, deren Wirkungen das Verhalten der Probe beeinflussen \cite[Seite 259]{Laepple2016}.
+Zur Ableitung der Wöhlerlinie aus den experimentell ermittelten Schwingspielzahlen der einzelnen Proben wird die eingestellte Spannungsamplitude $\sigma_{\text{a}}$ über die erreichte Schwingspielzahl $N$ doppelt logarithmisch aufgetragen. Beispielhaft werden hierfür die Datenpunkte der in \Figref{fig:Schwingungen der Einzelproben} abgebildeten Proben 1 und 2 in  \Figref{fig:Wöhlerkurve} eingetragen. Dies sind die Schnittpunkte der jeweiligen Spannungsamplituden $\sigma_{\text{a1}}$ und $\sigma_{\text{a2}}$ mit den beiden Bruchschwingspielzahlen $N_{\text{B1}}$ und  $N_{\text{B2}}$, innerhalb eines Streubandes (\Figref{fig:Wöhlerkurve} (Nummer 2)).
+Aus den Versuchsergebnissen mehrerer Proben entsteht nach statistischer Auswertung eine wie in \Figref{fig:Wöhlerkurve} gezeigte Kurve. Die Wöhlerkurve wird nach DIN 50100 in den Bereich der Kurzzeitfestigkeit (LCF, engl. Low Cycle Fatigue), der Zeitfestigkeit (HCF, engl. High Cycle Fatigue) und der Langzeitfestigkeit (LLF, engl. Long Life Fatigue) eingeteilt~\cite[Seite~17]{DIN50100}. In der Praxis zeigt sich, dass in den Bereichen der Zeitfestigkeit und der Langzeitfestigkeit die Proben eine signifikante statistische Streuung aufweisen. Ursache hierfür sind eine Vielzahl von Einflussfaktoren, wie beispielsweise Werkstoffinhomogenitäten oder eine ungleiche Einspannung, deren Wirkungen das Verhalten der Probe beeinflussen~\cite[Seite~259]{Laepple2016}.
 
 \begin{figure}[H]
     \centering
@@ -736,12 +739,12 @@ Aus den Versuchsergebnissen mehrerer Proben ensteht nach statistischer Auswertun
 \label{fig:Wöhlerkurve}
 \end{figure}
 
-Die statische Festigkeit wird durch Pfeil 5 in \Figref{fig:Wöhlerkurve} repräsentiert und stellt die maximal ertragbare statische Belastung dar. Nummer 3 kennzeichnet eine Probe im Zeitfestigkeitsbereich. Da sie eines der beiden Ausfallkriterien (Anriss oder Bruch) erreicht hat, wird sie als Ausfallprobe bezeichnet. Nummer 4 hingegen liegt im Bereich der Langzeitfestigkeit und wird als Durchläufer gewertet, da die Grenzschwingspielzahl $N_G$ erreicht ist.
+Die statische Festigkeit wird durch Pfeil 5 in \Figref{fig:Wöhlerkurve} repräsentiert und stellt die maximal ertragbare statische Belastung dar. Nummer 3 kennzeichnet eine Probe im Zeitfestigkeitsbereich. Da sie einen Bruch (bzw. das Ausfallkriterium) erreicht hat, wird sie als Ausfallprobe bezeichnet. Nummer 4 hingegen liegt im Bereich der Langzeitfestigkeit und wird als Durchläufer gewertet, da die Grenzschwingspielzahl $N_{\text{G}}$ erreicht ist~\cite[Seite~9]{DIN50100}.
 
-Die großen Amplituden im Bereich der Kurzzeitfestigkeit bewirken eine geringe Lebensdauer. Dabei liegen die Messergebnisse zwischen \(10^{0}\) und \(10^{4}\) Schwingspielen. Gemäß der DIN 50100 wird der Kurzzeitfestigkeitsbereich (LCF) nicht betrachtet, da dort ein dehnungs- und schiebungskontrollierter Versuch erfolgen muss. Die Zeitfestigkeit liegt zwischen  \(10^{4}\) Schwingspielen und der Knickschwingspielzahl $N_K$ und wird durch die Zeitfestigkeitsgerade (siehe Nummer 1 in \Figref{fig:Wöhlerkurve}) beschrieben.
+Die großen Amplituden im Bereich der Kurzzeitfestigkeit bewirken eine geringe Lebensdauer. Dabei liegen die Messergebnisse zwischen $10^{0}$ und $10^{4}$ Schwingspielen. Gemäß der DIN 50100 wird der Kurzzeitfestigkeitsbereich (LCF) nicht betrachtet, da dort ein dehnungs- und schiebungskontrollierter Versuch erfolgen muss~\cite[Seite~9]{DIN50100}. Die Zeitfestigkeit liegt zwischen  \(10^{4}\) Schwingspielen und der Knickschwingspielzahl $N_{\text{K}}$ und wird durch die Zeitfestigkeitsgerade (siehe Nummer 1 in \Figref{fig:Wöhlerkurve}) beschrieben~\cite[Seite~15--16]{DIN50100}.
 
-Am Ende der Zeitfestigkeitsgerade folgt die Knickschwingspielzahl. Diese liegt im Bereich zwischen $5 \cdot 10^5$ und $10^7$ Lastwechseln und repräsentiert den Übergang von der Zeitfestigkeit zur Langzeitfestigkeit.
-Zum Bereich der Langzeitfestigkeit zählen alle Schwingspiele, die größer sind als die Knickschwingspielzahl $N_K$ \cite[Seite 9-17]{DIN50100}.
+Am Ende der Zeitfestigkeitsgeraden folgt der Knickpunkt, welcher durch die Knickschwingspielzahl gekennzeichnet ist. Diese liegt im Bereich zwischen $5 \cdot 10^5$ und $10^7$ Lastwechseln und repräsentiert den Übergang von der Zeitfestigkeit zur Langzeitfestigkeit.
+Zum Bereich der Langzeitfestigkeit zählen alle Schwingspiele, die größer sind als die Knickschwingspielzahl $N_{\text{K}}$~\cite[Seite~15--16]{DIN50100}, wobei der Versuch bei Erreichen der Grenzschwingspielzahl $N_{\text{G}}$ beendet wird.
 
 Die DIN 50100 unterscheidet drei Typen der Langzeitfestigkeit, die einen unterschiedlichen Verlauf der Wöhlerkurve nach dem Knickpunkt darstellen:
 
@@ -753,7 +756,6 @@ Die DIN 50100 unterscheidet drei Typen der Langzeitfestigkeit, die einen untersc
 \end{itemize}
   
   Da Typ III in der Norm außdrücklich nicht behandelt wird, veranschaulicht \Figref{fig:Vergleich Typ I und Typ II der Wöhlerkurve} nur den Vergleich zwischen Typ I und II. 
-
   
 \begin{figure}[H]
     \centering
@@ -811,15 +813,14 @@ Die DIN 50100 unterscheidet drei Typen der Langzeitfestigkeit, die einen untersc
     \label{fig:Vergleich Typ I und Typ II der Wöhlerkurve}
 \end{figure}
 
-
-Zu erkennen ist, dass bei Typ II die Spannungsamplitude weiter abfällt, jedoch mit einer geringeren Steigung $k^*$. Im Unterschied dazu verläuft Typ I horizontal ab der Grenzschwingspielzahl $N_G$. 
+Zu erkennen ist, dass bei Typ II die Spannungsamplitude weiter abfällt, jedoch mit einer geringeren Steigung $k^*$. Im Unterschied dazu verläuft Typ I horizontal ab der Grenzschwingspielzahl $N_{\text{G}}$. 
 
 \clearpage
 
 	\subsection{Experimentelle Verfahren zur Bestimmung der Zeitfestigkeit}
 Zur Bestimmung der Lage der Zeitfestigkeit können laut DIN 50100 zwei Verfahren angewendet werden, die zur Versuchsdurchführung dienen. Im Bereich der Zeitfestigkeit tritt immer ein Ausfall der Probe ein.
 
-Beim sogenannten Horizontenverfahren werden zwei Lasthorizonte gewählt, die möglichst nah an den Grenzen des Kurzzeit- und des Langzeitfestigkeitbereichs liegen, um dort anschließend mehrere Proben zu prüfen (siehe \Figref{fig:Diagramm_Horizontenverfahren}).
+Beim sogenannten Horizontenverfahren werden zwei Lasthorizonte gewählt, die möglichst nah an den Grenzen des Kurzzeit- und des Langzeitfestigkeitbereichs liegen, um auf diesen Lastniveaus anschließend mehrere Proben zu prüfen (siehe \Figref{fig:Diagramm_Horizontenverfahren}).
 
 \begin{figure}[H]
     \centering
@@ -862,13 +863,17 @@ Beim sogenannten Horizontenverfahren werden zwei Lasthorizonte gewählt, die mö
         \label{fig:Diagramm_Horizontenverfahren}
 \end{figure}
 
-Der Nachteil dieses Verfahrens besteht darin, dass es nur dann verwendet werden kann, wenn die Lage der Kurz- und Langzeitfestigkeitsintervalle bekannt ist \cite[Seite 273]{Eulitz2022}. 
+Der Nachteil dieses Verfahrens besteht darin, dass es nur dann zum Einsatz kommen kann, wenn die Lage der Kurz- und Langzeitfestigkeitsintervalle bekannt ist \cite[Seite 273]{Eulitz2022}. 
 
-Das Perlenschnurverfahren wird immer dann herangezogen, wenn die Grenzen des Zeitfestigkeitsbereichs noch nicht exakt verifiziert wurden. Ein weiterer entscheidender Vorteil äußert sich dadurch, dass auch bei einer geringen Probenanzahl eine geeignete Wöhlerlinie bestimmt werden kann. Die Vorgehensweise ist ein stufenweises Adaptieren der unterschiedlichen Lasthorizonte bis zu den Übergängen der Kurz- und Langzeitfestigkeit. Es ist zudem möglich, mehrere Proben auf einem Lasthorizont zu prüfen \cite[Seite 278]{Eulitz2022}. 
+Im Gegensatz dazu wird das Perlenschnurverfahren immer dann herangezogen, wenn die Grenzen des Zeitfestigkeitsbereichs noch nicht exakt verifiziert wurden. Ein weiterer entscheidender Vorteil äußert sich dadurch, dass auch bei einer geringen Probenanzahl eine geeignete Wöhlerlinie bestimmt werden kann~\cite[Seite~278]{Eulitz2022}.  
 
-Hierbei sind jedoch zwei wesentliche Einschränkungen zu berücksichtigen. Sowohl bei einer zu geringen Probenzahl (n < 10 Proben) als auch bei einem zu geringen Quotienten der Schwingspielzahl des obersten und des untersten Lasthorizonts (Quotient < 5) verlieren sämtliche zu schätzenden Kenngrößen (Mittelwert, Standardabweichung und Steigung der Zeitfestigkeitsgeraden) ihre Aussagekraft. Diese erlauben dann keine zuverlässigen statistischen Aussage über die Grundgesamtheit. 
+Beim Perlenschnurverfahren wird zunächst ein Versuch auf einem beliebigen Lasthorizont im vermuteten Zeitfestigkeitsbereich durchgeführt. Die Vorgehensweise ist ein stufenweises Adaptieren der unterschiedlichen Lasthorizonte mit dem Ziel, sich bestmöglich an die Grenzen des Kurz- bzw. Langzeitfestigkeitsbereichs anzunähern~\cite[Seite~26]{DIN50100}. Ein weiteres Maß für die statistische Aussagekraft der Stichprobe über die Grundgesamtheit ist das Verhältnis der Schwingspielzahlen des höchsten ($N_{50\,\%,2}$) und niedrigsten ($N_{50\,\%,1}$) Lasthorizonts (vgl. Tabelle 2 und 4 der DIN 50100). In der DIN 50100 wird sich an einem Quotient von 50 orientiert~\cite[Seite~30]{DIN50100}. Es ist zudem möglich, mehrere Proben auf einem Lasthorizont zu prüfen \cite[Seite 278]{Eulitz2022}.   
 
-Für die Standardabweichung der Grundgesamtheit wird in der DIN 50100 ein Bereich zwischen 0,10 und 0,30 angeraten. Wenn keine Referenzwerte vorliegen, wird eine Standardabweichung der Grundgesamtheit von $s_{\lg N,\text{GG}}$=0,20 empfohlen \cite[Seite 30]{DIN50100}. Mit der noch folgenden \Eqref{eq:S_Perlenschnurverfahren} wird die Standardabweichung der Stichprobe berechnet. Im Idealfall stimmt diese mit der wahren Standardabweichung der Grundgesamtheit überein. Da die tatsächliche Standardabweichung üblicherweise vor dem Versuch nicht bekannt ist, wird die zuvor erwähnte $s_{\lg N,\text{GG}}$=0,20 als initialer Schätzwert herangezogen. Dies ist lediglich ein Erfahrungswert und entspricht nicht zwingend der wahren Standardabweichung der Grundgesamtheit.
+Beim Perlenschnurverfahren sind jedoch zwei wesentliche Einschränkungen zu berücksichtigen. Sowohl bei einer zu geringen Probenzahl (n < 10 Proben) als auch bei einem zu geringen Quotienten der Schwingspielzahlen (Quotient < 5) verlieren sämtliche zu schätzende Kenngrößen (Mittelwert, Standardabweichung und Steigung der Zeitfestigkeitsgeraden) ihre Aussagekraft. Diese erlauben dann keine zuverlässige statistische Aussage über die Grundgesamtheit~\cite[Seite~30]{DIN50100}. 
+
+Für die Standardabweichung der Grundgesamtheit wird in der DIN 50100 ein Bereich zwischen 0,10 und 0,30 angeraten. Wenn keine Referenzwerte vorliegen, wird eine Standardabweichung der Grundgesamtheit von $s_{\lg N,\mathrm{GG}} = 0{,}20$ empfohlen~\cite[Seite~30]{DIN50100}. Mit der noch folgenden \Eqref{eq:S_Perlenschnurverfahren} wird die Standardabweichung der Stichprobe berechnet. Im Idealfall stimmt diese mit der wahren Standardabweichung der Grundgesamtheit überein. Da die tatsächliche Standardabweichung üblicherweise vor dem Versuch nicht bekannt ist, wird die zuvor erwähnte $s_{\lg N,\mathrm{GG}} = 0{,}20$ als initialer Schätzwert herangezogen. Dies ist lediglich ein Erfahrungswert und entspricht nicht zwingend der wahren Standardabweichung der Grundgesamtheit.
+
+Um die Standardabweichung zu ermitteln, werden alle Stichproben auf einen fiktiven Lasthorizont $\sigma_\text{a,fiktiv}$ parallel zur Zeitfestigkeitsgeraden (entsprechend Linie Nummer 1) verschoben, wie in \Figref{fig:Diagramm_Perlenschnurverfahren} gezeigt. Die hervorgehobene Linie kennzeichnet die 50\%-Zeitfestigkeitsgerade mit der Steigung k. 
 
 \begin{figure}[H]
     \centering
@@ -916,8 +921,6 @@ Für die Standardabweichung der Grundgesamtheit wird in der DIN 50100 ein Bereic
         \label{fig:Diagramm_Perlenschnurverfahren}
 \end{figure}
 
-
-Die hervorgehobene Linie kennzeichnet die 50\%-Zeitfestigkeitsgerade mit der Steigung k. Mit der Nummer 1 ist die verschobene Linie bezeichnet, die die neuen fiktiven Schwingspielzahlen auf dem fiktiven Lasthorizont abbildet. 
 
 Die Zeitfestigkeitsgerade kann mit der sogenannten Basquin-Gleichung (\Eqref{eq:Zeitfestigkeitsgerade_C}) gemäß DIN 50100 ermittelt werden:
 

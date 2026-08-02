@@ -3,17 +3,25 @@
 \chapter{Einleitung}%\label{chap:kap1}
 %-----------------------------------------------------------------------
     %-----------------------------------------------------------------------
-    \section{Stand der Technik} %\label{chap:sec1}
- Durch die Industrialisierung des 19. Jahrhunderts, insbesondere durch die Entwicklung der Eisenbahn und deren Schadensfälle hat August Wöhler mit Versuchen eine neue Technik zur Lösung von zahlreichen Problemen entwickelt. Er hat durch gebrochene Radsatzwellen an Lokomotiven entdeckt, dass Bauteile auch unterhalb der statischen Festigkeitsgrenze beschädigt werden können. 
-Sein Versuch, der den Zusammenhang zwischen Bruchlastspielzahl und Ausschlagspannung herstellt zeigt, dass wiederholte, schwingende Belastungen zum Bruch führen können, auch wenn sie weit unterhalb der statischen Festigkeitsgrenze liegen.
-Seitdem spielt die dynamische Werkstoffprüfung eine wichtige Rolle und befindet sich mittlerweile im alltäglichen Gebrauch von Firmen.
-
-
-    %	
-    %-----------------------------------------------------------------------
     \section{Motivation} %\label{chap:sec1}
-    %-----------------------------------------------------------------------
-Die vorliegende Bachelorarbeit dient der Entwicklung einer MATLAB-Auswertesoftware, die die Belastung der Maschine und die Reaktion des Prüflings bewertet. Der komplette Aufgabenbereich ist interessant und spannend, weil er von der Funktion und Bedienung der Anlage bis zum Kundenauftrag mit zertifizierten Prüfschein reicht.  
+ Im Rahmen der Industrialisierung des 19. Jahrhunderts entdeckte August Wöhler anhand gebrochener Radsatzwellen an Lokomotiven, dass Bauteile auch unterhalb der statischen Festigkeitsgrenze infolge zyklischer Beanspruchung versagen können. 
+ Um diese Beobachtung zu untersuchen, entwickelte August Wöhler eine neue Technik zur Lösung dieses Problems \cite[Seite 261]{Werkstofftechnik-Praktikum2021}. 
+Aus diesen Untersuchungen resultiert der fundamentale Zusammenhang zwischen der Schwingspielzahl (Lebensdauer) und der Spannungsamplitude und zeigt, dass wiederholte, schwingende Belastungen zum Bruch führen können, auch wenn sie weit unterhalb der statischen Festigkeitsgrenze liegen. Die dabei entstandene Wöhlerkurve spielt in der dynamischen Werkstoffprüfung seither eine wichtige Rolle und befindet sich mittlerweile im alltäglichen Gebrauch von Firmen \cite[Seite 18-19]{Ermüdungsfestigkeit2007}.
+
+So lässt beispielsweise die Siemens AG Schwingfestigkeitsversuche an der Hydropulsanlage des Maschinendynamik-Labors der OTH Regensburg durchführen. Da bisher keine standardisierte und normgerechte Auswertesoftware zur Verfügung stand, widmet sich die vorliegende Bachelorarbeit der Entwicklung einer MATLAB-Auswertesoftware, welche die Belastung der Maschine sowie die Reaktion des Prüflings bewertet. Der Schwerpunkt der Arbeit liegt auf einer weitreichend automatisierten Auswertung der Rohdaten der Hydropulsanlage sowie der Erstellung eines normgerechten Prüfprotokolls.
+
+ Das Programm unterstützt den Anwender bei der Auswahl und Eingabe der relevanten Messdateien und Versuchsparameter. Die Auswertesoftware reduziert den manuellen Aufwand und den Zeitbedarf maßgeblich. Zusätzlich sorgt die standardisierte Auswertung für vergleichbare und insbesondere reproduzierbare Ergebnisse. 
+
+	\section{Zielsetzung}
+	Neben der Auswertung entsprechend der DIN 50100 sind im Programm weitere Anforderungen zu erfüllen. Dazu gehört das Einlesen sämtlicher Rohdaten der Hydropulsanlage und eine intuitive und bedienfreundliche Benutzeroberfläche mit der geringstmöglichen Anzahl an Benutzereingaben. Zudem gilt es, Anwenderfehler durch das Programm aktiv abzufangen. Die korrespondierenden Fehlermeldungen sind dabei ebenso wie die visuelle Darstellung der Ergebnisse für den Bediener nachvollziehbar und aussagekräftig zu gestalten.
+	Darüber hinaus soll der Programmcode modular und erweiterbar aufgebaut sein, sodass zukünftige Funktionserweiterungen problemlos integriert werden können. Die Übersichtlichkeit und Wartbarkeit des Programmcodes ist durch integrierte Kommentare sowie einen strukturierten und funktionsbasierten Aufbau sicherzustellen. Eine weitere Anforderung besteht in der automatisierten Erstellung eines PDF-Prüfprotokolls nach Abschluss der Auswertung. Die PDF-Datei muss dabei eine klar gegliederte Dokumentation der Ergebnisse enthalten.
+	
+	Die Entwicklung und Umsetzung der beschriebenen Anforderungen ist in der vorliegenden Bachelorarbeit wie folgt dargestellt und gegliedert: 
+	In Kapitel 2 werden die theoretischen Grundlagen der Materialermüdung, der Schwingfestigkeit, des Wöhlerdiagramms und der statistischen Auswertungsverfahren sowie das Funktionsprinzip der Hydropulsanlage thematisiert. Anschließend werden in Kapitel 3 die Versuchsergebnisse des in Neustadt an der Donau durchgeführten Scherzugversuches in kompakter Form behandelt. Zu Beginn des darauffolgenden Kapitels 4 sind wichtige Informationen für den Nutzer sowie eine Übersicht der Vorteile des Programms gegenüber einer manuellen Auswertung zu finden.
+	Im Anschluss werden das Hauptprogramm sowie die einzelnen zugehörigen, entwickelten Funktionen der MATLAB-Auswertesoftware schrittweise entsprechend dem modularen Aufbau beschrieben.  
+	
+	Für die Erstellung der Abbildungen 2.1 bis 2.8 im Theorieteil wurde unterstützend KI zur Generierung des LaTeX-/TikZ-Codes verwendet, um qualitativ hochwertige Vektorgrafiken und ein einheitliches Erscheinungsbild der Abbildungen zu gewährleisten.
+
 
 
 

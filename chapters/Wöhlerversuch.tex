@@ -46,39 +46,9 @@ Um die Versuchsdurchführung normgerecht zu gestalten und die Auswertesoftware k
 	   \begin{itemize}
 	   \item Entfernen fehlerhafter Proben (z.B. beschädigter Excel-Dateien, vorzeitig abgebrochener Versuche, falsches Ausfallkriterium,...)
    	   \item Ausgangslaststufe $L_0$ festlegen
-             \item 
 	\end{itemize}
 
-
-
-
-	\section{Anforderungen an das Auswerteprogramm}
-
-	\subsection{Zielsetzung}	
-Mithilfe des Programms erfolgt eine automatisierte, normgerechte Auswertung der Messdaten der Hydropulsanlage, sodass eine Aussage über die Lebensdauer der Bauteile in Abhängigkeit der Belastungsamplitude getroffen werden kann. Bisher gab es keine für die OTH verfügbare, standardisierte Versuchsauswertung zur Ermittlung von Wöhlerkurven. Das Programm unterstützt den Anwender bei der Auswahl und Eingabe der relevanten Messdateien und Versuchsparameter. Nach Auswertung der Messergebnisse generiert MATLAB ein für den Kunden bereitgestelltes PDF-Prüfprotokoll. 
-Die Auswertesoftware erleichtert den manuellen Aufwand und reduziert den Zeitbedarf maßgeblich. Zusätzlich sorgt die standardisierte Auswertung für vergleichbare und insbesondere reproduzierbare Ergebnisse. 
-
-	\textbf{Warum wurde das Programm entwickelt?
-		Welche Probleme der bisherigen Auswertung sollen gelöst werden?
-		Welche Aufgaben übernimmt das Programm?
-	Automatisierung der Versuchsauswertung
-	Verringerung manueller Arbeitsschritte
-	Standardisierung}
-	
-	\subsection{Anforderungen}
-	Neben dem Hauptziel, eine normgerechte Auswertung entsprechend der DIN 50100 anzufertigen, gibt es weitere Anforderungen, die das Programm erfüllen soll. Dazu gehört das gleichzeitige Einlesen mehrerer Excel-Dateien. Zusätzlich ist ein getrenntes Einlesen der Dateien des Zeit- und Langzeitfestigkeitsbereichs zu gewährleisten sowie eine getrennte Auswertung der beiden Bereiche.
-	
-	Die Benutzeroberfläche muss intuitiv und bedienfreundlich sein und so wenige Benutzereingaben wie möglich erfordern. Des Weiteren ist es vorgesehen, die Fehlermeldungen nachvollziehbar und verständlich für den Nutzer zu gestalten. Die Diagramme sollen übersichtlich sein. Außerdem soll der Programmcode erweiterbar sein, um zukünftige Funktionserweiterungen zu ermöglichen. Eine weitere Anforderung ist, dass am Ende der Auswertung ein PDF-Prüfprotokoll erstellt wird. Die PDF-Datei muss eine klar gegliederte Dokumentation der Ergebnisse enthalten.
-	Ein strukturierter, funktionsbasierter Aufbau, stellt die Übersichtlichkeit des Programmcodes sicher. 
-	
-	\textbf{mehrere Dateien gleichzeitig
-	Zeit- und Langzeitfestigkeit getrennt,
-	automatisierte Auswertung,
-	PDF-Erstellung,
-	übersichtliche Diagramme,
-	Erweiterbarkeit}
-
-	
+		
 	\section{Programmstruktur}
 	\subsection{Programmaufbau und Funktionsstruktur}
 	Die Auswertesoftware ist in ein Hauptprogramm und mehrere Funktionsdateien gegliedert. Die Aufgabe des Hauptprogramms besteht darin, die Funktionsadateien nacheinander aufzurufen. Dabei werden die erforderlichen Eingabedaten an die Funktionen übergeben und diese liefern daraufhin die gewünschten Rückgabeparameter.
@@ -114,17 +84,6 @@ Die Auswertesoftware erleichtert den manuellen Aufwand und reduziert den Zeitbed
 \end{table}
 
 Die Vorteile der Funktionsstruktur begründen die Entscheidung für diese strukturierten Arbeitsweise. Denn Funktionen erhöhen die Übersichtlichkeit, da durch die Auslagerung der Programmschritte das Hauptprogramm nicht überladen wird. Zum anderen ist der Code bei der Erstellung einfacher zu warten, falls ein Fehler auftritt. Des Weiteren wird die Erweiterbarkeit und Wiederverwendbarkeit des Programmcodes für den Laboringenieur erleichtert.
-
-	
-	\textbf{Aufbau in Hauptprogramm und Funktionen
-	Modularisierung
-	Vorteile der Funktionsstruktur (bessere Übersichtlichkeit, Wartbarkeit, Erweiterbarkeit, Wiederverwendbarkeit)
-	kurze Beschreibung jeder Funktion (Dateien einlesen
-Messdaten aufbereiten
-Kraftamplitude bestimmen
-Zeitfestigkeit auswerten
-Langzeitfestigkeit auswerten
-PDF erzeugen)}
 
 	\subsection{Programmablauf}
 	\Figref{fig:programmablauf} zeigt den Ablauf des entwickelten MATLAB-Auswerteprogramms.
@@ -304,10 +263,6 @@ Mittels eines Eingabefeldes erfolgt zunächst eine Abfrage der Parameter für di
 Die einzelnen Schritte des Programmablaufs werden in den folgenden Kapiteln näher erläutert. 
 
 	\section{Eingabe der Versuchsparameter}
-	\textbf{Welche Eingaben macht der Benutzer?
-	Versuchsdaten
-	Materialparameter
-	Auswerteparameter}
 	\subsection{Aufbau der MATLAB-App}
 	Für eine benutzerfreundliche Bedienung wurde das Eingabefenster mit dem MATLAB-App Designer erstellt. Die App dient der Erfassung aller für die Versuchsauswertung und die Erstellung des Prüfprotokolls erforderlichen Eingabeparameter.
 	 Ein wesentlicher Vorteil der App besteht darin, dass das Eingabefenster jederzeit um Eingabefelder erweitert werden kann, ohne Änderungen am Hauptprogramm vornehmen zu müssen. Durch die Verwendung von Eingabefeldern, Dropdown-Menüs und vorgegebenen Standardwerten werden Fehleingaben reduziert und der Eingabeprozess für den Benutzer vereinfacht. Die Verwendung der App reduziert den Aufwand für den Benutzer durch eine übersichtlich gestaltete Oberfläche. 
