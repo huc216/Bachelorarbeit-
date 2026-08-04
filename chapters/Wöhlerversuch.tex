@@ -2,28 +2,22 @@
 \chapter{Wöhlerversuch}%\label{chap:kap1}
 %-----------------------------------------------------------------------
 
-Da die Festigkeit der Niete untersucht wird und nicht die des Blechs müssen die Proben, die ein Blechriss erfahren haben aus der Versuchsreihe gestrichen werden. 
-	
-	Der aus der geringen Anzahl an Messungen und den neuen, fiktiven Proben berechnete Quotient von 18 wurde als ausreichend befunden. 
-	
-	Zur Versuchsvorbereitung gehört beim Treppenstufenverfahren das Festlegen der Belastungsstufen. Diese werden auf Grundlage einer abgeschätzten Langzeitfestigkeit sowie des Stufensprungs $d_\text{lg}$ ermittelt. Zuerst wird der Stufensprung unter Zuhilfenahme der Standardabweichung $s_{\lg L,\mathrm{GG}}$ der Grundgesamtheit für spanend bearbeitende Stähle mit \Eqref{eq:d_lg} bestimmt. Mit dem sich ergebenden Stufensprung $d_\text{lg}$=1,059 können anschließend die Laststufen mit \Eqref{eq:Laststufen} berechnet werden.
-	
+Da für die Entwicklung und Validierung der MATLAB-Auswertesoftware nur eine begrenzte Anzahl realer Versuchsdaten zur Verfügung stand, wurden auf Grundlage der gemessenen Proben zusätzlich fiktive Versuchsdaten erstellt. Diese orientieren sich hinsichtlich ihrer Kraftniveaus, Schwingspielzahlen und Messsignalverläufe an den realen Versuchsergebnissen und dienen der Überprüfung der Funktionsfähigkeit sowie der Validierung der implementierten Auswertesoftware.
 
+Zu Beginn des Kapitels wird eine kurze Bedienungsanleitung mit einer ergänzenden Checkliste vorgestellt, welche die erforderlichen Vorbereitungen für eine erfolgreiche Versuchsdurch- und eine erfolgreiche Programmausführung übersichtlich zusammenfasst und dem Nutzer als Orientierung dient.
 	
-	Da bei einer Kraftamplitude von 1125$N$ ein Durchläufer gemessen wurde, wurde dieser Lasthorizont $L_1$ als geschätzte Langzeitfestigkeit festgelegt. 
-
 	\section{Bedienungsanleitung für den Nutzer}
 Um die Versuchsdurchführung normgerecht zu gestalten und die Auswertesoftware korrekt sowie gewinnbringend einzusetzen, muss der Versuch zuvor geplant, durchgeführt und dokumentiert werden. Die nachfolgende Bedienungsanleitung beschreibt stichpunktartig die Schritte vor, während und nach dem Versuch (bis zum Start der Auswertesoftware).
 
 \textbf{Vorbereitung der Versuchsdurchführung:}
 	\begin{itemize}
     \item Falls die Probenanzahl nicht extern vorgegeben ist, richtet sich diese nach der gewünschten Schätzgenauigkeit der Parameter der Grundgesamtheit für die Zeitfestigkeit ($N_{50\,\%,\mathrm{GG}}$, $s_{\lg N,\mathrm{GG}}$ und $k_{\mathrm{GG}}$) und für die Langzeitfestigkeit ($L_{aL,NG,\mathrm{GG}}$ sowie $s_{\lg L,\mathrm{GG}}$); für die zugehörigen Tabellen siehe Anhang~\ref{anhang:tabelle_erforderliche_Probenanzahl}.
-    \item Vorgabe der Prüffrequenz und des Spannungsverhältnisses (deren Angabe erfolgt im Eingabefenster)
-    \item Festlegung der Grenzschwingspielzahl anhand des Werkstoffs: für kubisch-raumzentrierte $N_{\text{G}} = 5 \times 10^6 \text{ Schwingspiele}$ und für kubisch-flächenzentrierte/hexagonal dichtest gepackte Werkstoffe $N_{\text{G}} = 10^7 \text{ Schwingspiele}$
-    \item Bestimmung der geschätzten Langzeitfestigkeit (hierfür macht die DIN~50100 keine spezifischen Angaben, weshalb diese sinnvoll vom Benutzer gewählt werden muss; im Idealfall stützt sich die Schätzung auf Erfahrungswerte oder Vorversuche)
+    \item Vorgabe der Prüffrequenz und des Spannungsverhältnisses (deren Angabe erfolgt im Eingabefenster)~\cite[Seite~65]{DIN50100}
+    \item Festlegung der Grenzschwingspielzahl anhand des Werkstoffs: für kubisch-raumzentrierte $N_{\text{G}} = 5 \times 10^6 \text{ Schwingspiele}$ und für kubisch-flächenzentrierte/hexagonal dichtest gepackte Werkstoffe $N_{\text{G}} = 10^7 \text{ Schwingspiele}$~\cite[Seite 16]{DIN50100}
+    \item Bestimmung der geschätzten Langzeitfestigkeit (hierfür macht die DIN~50100 keine spezifischen Angaben, weshalb diese sinnvoll vom Benutzer gewählt werden muss; im Idealfall stützt sich die Schätzung auf Erfahrungswerte oder Vorversuche)~\cite[Seite~49]{DIN50100}
     \item Berechnen (mit \Eqref{eq:d_lg} und Anhang C der DIN~50100) oder Herauslesen des logarithmischen Stufensprungs (aus \Tabref{tab:Standardabweichung_Treppenstufenverfahren}) 
     \item Berechnung der Laststufen des Treppenstufenverfahrens (\Eqref{eq:Laststufen}): Bei Betrachtung der Tabelle in Anhang D.1.3 in der DIN 50100 liegt nahe, dass insgesamt zehn Laststufen ermittelt werden. Dabei werden in \Eqref{eq:Laststufen} für die Laufvariable beispielsweise $i=-4,\dots,0,\dots,5$ eingesetzt und die Resultate in der Tabelle im Anhang D.1.3 aus der DIN~50100 festgehalten.
-    \item Allgemein empfiehlt es sich, die in der genannten Tabelle aufgeführten Parameter für die Versuchsplanung sowie die gesamte folgende Versuchsdurchführung zu dokumentieren. 
+    \item Allgemein empfiehlt es sich, die in der genannten Tabelle aufgeführten Parameter für die Versuchsplanung sowie die gesamte folgende Versuchsdurchführung zu dokumentieren~\cite[Seite~64--66]{DIN50100}. 
 	\end{itemize}
 
 \textbf{Während der Versuchsdurchführung:}
@@ -33,11 +27,11 @@ Um die Versuchsdurchführung normgerecht zu gestalten und die Auswertesoftware k
     	   \item Separierung der Daten in Zeitfestigkeitsbereich und Langzeitfestigkeitsbereich 
     	    \item Zudem ist folgende \textbf{Checkliste} während der Versuchsdurchführung zu beachten:
  \begin{itemize}[label=--]
-     \item  Der Quotient der Schwingspielzahlen des höchsten und des niedrigsten gewählten Lasthorizontes beim Perlenschnurverfahren muss mindestens fünf betragen. Ein von der Norm anzustrebender Richtwert ist ein Quotient von 50. Unterschreitet dieser die Mindestvorgabe, so sind die Schätzungen von Mittelwert, Standardabweichung und Steigung nach DIN 50100 nicht aussagekräftig.
-    \item Beim Treppenstufenverfahren müssen mindestens ein, aber maximal drei Lasthorizonte mit wenigstens einem Bruch und einem Durchläufer existieren. Weist ein Lasthorizont nur Brüche und ein zweiter nur Durchläufer auf, kann keine Standaradabweichung bestimmt werden. In diesem Fall ist gemäß \Eqref{eq:d_lg_1_2} ein neuer Stufensprung zu berechnen.
-    \item Die Treppenstufenfolge erfordert mindestens zwei Umkehrpunkte und darf nicht unterbrochen werden
-    \item Proben auf Laststufen, die anfänglich durchgeführt wurden und deren Treppenstufe im Laufe des Versuches nicht erneut erreicht werden, werden nicht gewertet; diese müssen nicht manuell entfernt werden sondern werden in der Auswertesoftware automatisch erkannt und nicht berücksichtigt.
-    \item Es müssen mindestens vier Proben im Zeitfestigkeitsbereich und zehn Proben im Langzeitfestigkeitsbereich vorhanden sein, da sonst keine statistische Aussagekraft gewährleistet ist.
+     \item  Der Quotient der Schwingspielzahlen des höchsten und des niedrigsten gewählten Lasthorizontes beim Perlenschnurverfahren muss mindestens fünf betragen. Ein von der Norm anzustrebender Richtwert ist ein Quotient von 50. Unterschreitet dieser die Mindestvorgabe, so sind die Schätzungen von Mittelwert, Standardabweichung und Steigung nach DIN 50100 nicht aussagekräftig~\cite[Seite~38]{DIN50100}.
+    \item Beim Treppenstufenverfahren müssen mindestens ein, aber maximal drei Lasthorizonte mit wenigstens einem Bruch und einem Durchläufer existieren. Weist ein Lasthorizont nur Brüche und ein zweiter nur Durchläufer auf, kann keine Standaradabweichung bestimmt werden. In diesem Fall ist gemäß \Eqref{eq:d_lg_1_2} ein neuer Stufensprung zu berechnen~\cite[Seite~48]{DIN50100}.
+    \item Die Treppenstufenfolge erfordert mindestens zwei Umkehrpunkte und darf nicht unterbrochen werden~\cite[Seite~59]{DIN50100}
+    \item Proben auf Laststufen, die anfänglich durchgeführt wurden und deren Treppenstufe im Laufe des Versuches nicht erneut erreicht werden, werden nicht gewertet~\cite[Seite~59]{DIN50100}; diese müssen nicht manuell entfernt werden sondern werden in der Auswertesoftware automatisch erkannt und nicht berücksichtigt.
+    \item Für die entwickelte Auswertesoftware werden mindestens vier Proben im Zeitfestigkeitsbereich und zehn Proben im Langzeitfestigkeitsbereich vorausgesetzt. Diese Mindestanzahlen orientieren sich an den in der DIN 50100 angegebenen Tabellen zur statistischen Auswertung sowie an den in dieser Arbeit gewählten Auswerteverfahren (vgl. DIN 50100, Tabelle~2 bis Tabelle~4 sowie Tabelle~9 und Tabelle~10)~\cite[Seite~30--35 und Seite~68--69]{DIN50100}.
 \end{itemize}
 	\end{itemize}
 
@@ -84,6 +78,8 @@ Um die Versuchsdurchführung normgerecht zu gestalten und die Auswertesoftware k
 \end{table}
 
 Die Vorteile der Funktionsstruktur begründen die Entscheidung für diese strukturierten Arbeitsweise. Denn Funktionen erhöhen die Übersichtlichkeit, da durch die Auslagerung der Programmschritte das Hauptprogramm nicht überladen wird. Zum anderen ist der Code bei der Erstellung einfacher zu warten, falls ein Fehler auftritt. Des Weiteren wird die Erweiterbarkeit und Wiederverwendbarkeit des Programmcodes für den Laboringenieur erleichtert.
+
+\clearpage
 
 	\subsection{Programmablauf}
 	\Figref{fig:programmablauf} zeigt den Ablauf des entwickelten MATLAB-Auswerteprogramms.
@@ -313,7 +309,7 @@ Die einzelnen Schritte des Programmablaufs werden in den folgenden Kapiteln näh
 	
 	In \Tabref{tab:sensoren_uebersicht} sind die verschiedenen Kraft- und Wegsensoren der drei Hydropulsanlagen des Maschinendynamiklabors aufgelistet. Jede Hydropulsanlage besitzt einen Kraft- als auch einen Wegsensor, der fest an der Maschine verbaut ist. Zusätzlich ist ein Laser Sensor, der die Wegänderung aufnimmt vorhanden und kann flexibel bei allen drei Anlagen eingesetzt werden.
 
-\begin{table}[htbp]
+\begin{table}[ht]
     \centering
     \caption{Übersicht der Sensoren und deren Zuordnung zu den Hydropulsanlagen}
     \label{tab:sensoren_uebersicht}

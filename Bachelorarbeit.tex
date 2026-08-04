@@ -178,7 +178,7 @@ section      %im Inhaltsverzeichnis auf section-Ebene erscheinen
 %
 % Die Glossareinträge stehen in dieser Datei. Es muss unbedingt vor begin{document} eingelesen werden
 %
-\input{chapters/glossar}
+%\input{chapters/glossar}
 %
 %Nutzung des Glossar, z.B \gls{FEM}. Dies führt bei der ersten Nutzung dazu, dass die Abkürzung ausgeschrieben wird, bei weiterer Nutzung nur noch die Abkürzung.
 
@@ -303,7 +303,6 @@ pdfkeywords={}
     \include{chapters/einleitung}
 
     \include{chapters/Theorie}
-
     
     \include{chapters/Scherzugversuch}
 
@@ -321,7 +320,7 @@ pdfkeywords={}
     \printbibliography[heading=bibnumbered] %Diese Option nummeriert das Litvezeichnsi
 
     %% Abkürzungsverzeichnisse, wenn gewünscht, ansonsten die folgende Zeile auskommentieren. 
-    \chapter{Glossar} \printglossaries % Entries in file chapters/gloassar are printed at this position. Used für abbreviations and explanations of symbols
+   % \chapter{Glossar} \printglossaries % Entries in file chapters/gloassar are printed at this position. Used für abbreviations and explanations of symbols
     % Einzeln 
     %\printglossary[type=\acronymtype, title={Abkürzungsverzeichnis}] %Abkürzungen
     %\printglossary[type=symbolslist, title={Formelzeichen}]

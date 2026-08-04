@@ -1,22 +1,52 @@
 \chapter{Scherzugversuch}
 
-Der Scherzugversuch wurde von der auftraggebenden Firma Siemens Mobility GmbH gefordert. Er dient der Bestimmung der maximalen Tragkraft der Probe, sowie der daraus abgeleiteten Zugfestigkeit. 
-
-Die zwei Versagensarten, die auftreten können, sind die Abscherung des Niets, durch Überschreiten der Scherspannung im Niet, oder ein Blechriss infolge des Lochleibungsdruckes~\cite[Seite 129]{Maschinenteile2007}. 
+Im Rahmen der von der Siemens AG beauftragten Versuchsreihe wurde der Scherzugversuch als statische Voruntersuchung für die nachfolgenden Wöhlerversuche durchgeführt.
+Ziel ist nicht die Bestimmung einer werkstoffspezifischen Zugfestigkeit, sondern die Ermittlung der maximal übertragbaren
+Kraft (hier der vernieteten Verbindung). Wie in \Chapref{chap:Theorie_Scherzugversuch} erläutert, dient die im Scherzugversuch
+ermittelte statische Tragfähigkeit als Orientierungsgröße für die
+Festlegung der Lastniveaus des Wöhlerversuchs.
+ Diese statische Tragfähigkeit dient als Orientierungsgröße für die Festlegung der Lastniveaus im Wöhlerversuch, die unterhalb der statischen Versagenslast liegen müssen. Zusätzlich wird die auftretende Versagensart dokumentiert. Da der Schwerpunkt der Arbeit auf der standardisierten Aufbereitung und Auswertung der Messdaten der Hydropulsanlage liegt, werden der
+Versuchsaufbau und die Durchführung des Scherzugversuchs im Folgenden nur in dem
+für die Einordnung und Nachvollziehbarkeit erforderlichen Umfang beschrieben.
 
 	 \section{Versuchsaufbau}
-Der Scherzugversuch wurde am Technologie Campus in Neustadt an der Donau durchgeführt. Die dort bereitgestellte Stanndprüfmaschine der Firma Zwick/Roell ist in  \Figref{fig:Zugpruefmaschine} zu sehen. 
+Die Scherzugversuche wurden am Technologie Campus in Neustadt an der Donau durchgeführt. Die dort verwendete Standprüfmaschine der Firma Zwick/Roell ist in \Figref{fig:Zugpruefmaschine} zu sehen. 
 
     \begin{figure}[H]
         \begin{center}
-            \includegraphics[width=0.4\textwidth]{Zugpruefmaschine_Zwick}
-            \caption{Zugprüfmaschine Zwick/Roell Z250.}
+            \includegraphics[width=0.27\textwidth]{Zugpruefmaschine_Zwick}
+            \caption{Zugprüfmaschine Zwick/Roell Z250 (eigene Aufnahme).}
 	  \label{fig:Zugpruefmaschine}
         \end{center}
     \end{figure}
 
+Während des Versuchs wurden die aufgebrachte Kraft und der Traversenweg kontinuierlich aufgezeichnet.
+
 	\section{Proben und Vorbereitung}
-Untersucht werden jeweils fünf Proben aus drei unterschiedlichen Probenchargen. Alle Chargen besitzen den gleichen Aufbau und bestehen aus zwei miteinander vernieteten Bleche. Die Niete ist bei allen drei Proben eine Blindniete mit einem Bohrungsdurchmesser von \SI{6,4}{\milli\meter}. Die erste Probencharge aus Aluminium ist in  \Figref{fig:Zugproben Aluminium} exemplarisch abgebildet. Beide vernieteten Bleche weisen eine Dicke von \SI{3}{\milli\meter} auf. 
+	Untersucht wurden drei Probenchargen mit jeweils fünf vernieteten Prüfkörpern. Alle
+Proben bestanden aus zwei über eine Blindnietverbindung gefügten Blechen. Der
+Bohrungsdurchmesser betrug bei sämtlichen Proben \SI{6.4}{\milli\metre}. Die Chargen
+unterschieden sich hinsichtlich des Werkstoffs und der Blechdicken. Eine Übersicht ist
+in \Tabref{tab:scherzug_probenchargen} angegeben.
+
+\begin{table}[H]
+    \centering
+    \caption{Übersicht der im Scherzugversuch untersuchten Probenchargen.}
+    \label{tab:scherzug_probenchargen}
+    \resizebox{\textwidth}{!}{%
+        \begin{tabular}{c c c c c}
+            \hline
+            Charge & Werkstoff & Blechdicke 1 & Blechdicke 2 & Probenanzahl \\
+            \hline
+            1 & AlMg3 & \SI{3}{\milli\metre} & \SI{3}{\milli\metre} & 5 \\
+            2 & Chrom-Nickel-Stahl & \SI{2}{\milli\metre} & \SI{5}{\milli\metre} & 5 \\
+            3 & Chrom-Nickel-Stahl & \SI{3}{\milli\metre} & \SI{3}{\milli\metre} & 5 \\
+            \hline
+        \end{tabular}%
+    }
+\end{table}
+
+Die Aluminiumproben der ersten Charge sind exemplarisch in \Figref{fig:Zugproben Aluminium} dargestellt.
 
     \begin{figure}[H]
         \begin{center}
@@ -26,85 +56,69 @@ Untersucht werden jeweils fünf Proben aus drei unterschiedlichen Probenchargen.
         \end{center}
     \end{figure}
 
-Um die Proben im Nachhinein wieder erkennen zu können und die Bruchbilder eindeutig zuordnenzukönnen, werden sie mit einer Probennummer versehen. Eine Aluminiumprobe ist beispielsweise in \Figref{fig:Zugprobe Aluminium beschriftet} mit ihrer entsprechenden Beschriftung dargestellt.
-
-    \begin{figure}[H]
-        \begin{center}
-            \includegraphics[width=0.6\textwidth]{Zugprobe_Aluminium_beschriftet}
-            \caption{Zugprobe Aluminium beschriftet.}
-	  \label{fig:Zugprobe Aluminium beschriftet}
-        \end{center}
-    \end{figure}
-
-Die Probenbezeichnung Z\_P05\_AlMg3\_3\_3mm\_D6.4\_kpl der gewählten Probe in \Figref{fig:Zugprobe Aluminium beschriftet} steht für Probenart, Probennummer, Werkstoff, Dicke Blech eins, Dicke Blech zwei, Bohrungsdurchmesser und Status der Bearbeitung. Hier handelt es sich folglich um eine Zugprobe mit der Probennummer fünf gefertigt aus dem Werkstoff Aluminium (AlMg3). Beide Bleche weisen eine Blechstärke von \SI{3}{\milli\meter} auf. Der Bohrungsdurchmesser beträgt \SI{6,4}{\milli\meter}. Kpl am Ende der Bezeichnung gibt an, dass die Probe komplett ist, also vollständig hergestellt ist.  
-
-Probencharge zwei und drei bestehen im Vergleich zu Probencharge eins aus Chrom-Nickel-Stahl. Bei der Probencharge zwei betragen die Blechdicken \SI{2}{\milli\meter} und \SI{5}{\milli\meter}. Die Bleche der Probencharge drei sind wie in der ersten Charge jeweils \SI{3}{\milli\meter} dick.
+Zur eindeutigen Zuordnung der Messdaten, Bruchbilder und Prüfprotokolle wurde für
+sämtliche Proben eine einheitliche Probenbezeichnung verwendet. 
+\clearpage
+Die Bezeichnung \texttt{Z\_P05\_AlMg3\_3\_3mm\_D6.4\_kpl} enthält beispielsweise die Probenart, die Probennummer, den Werkstoff, die beiden Blechdicken, den Bohrungsdurchmesser und den
+Bearbeitungsstatus. \\Diese eindeutige Benennung unterstützt die spätere standardisierte
+Zuordnung und Weiterverarbeitung der Versuchsdaten.
 
 	 \section{Durchführung}
-Für den Versuch müssen verschiedene Versuchsparameter, wie die Vorschubgeschwindigkeit und die Einspannlänge eingestellt werden. Diese sorgen dafür, dass die Probenchargen einheitlich, vergleichbar und reproduzierbar in ihren Messwerten sind. Anschließend wird die Versuchsdurchführung Schritt für Schritt dargelegt und eine Auswertung des Versuches durchgeführt. 
-
 	\subsection{Versuchsparameter}
-Zu Beginn des Versuchs werden die Spannbacken mit einer Tastprobe vorgespannt, sodass die Spannbacken parallel und zentriert ausgerichtet sind. Damit die Kraft mittig am Niet angreift, kommen Ausgleichsbleche mit der notwendigen Blechstärke zum Einsatz. Diese stellen sicher, dass die Kraftlinie in einer Ebene mit der Scherebene liegt, was den Vorgaben der Norm DIN EN ISO 14589 entspricht \cite[Seite 7]{Blindniete_Norm}. Um ein Rutschen der Probe infolge der verunreinigten Flächen der Ausgleichsbleche zu vermeiden, werden die Ausgleichsbleche vor Versuchsbeginn mit Aceton gereinigt und dadurch von Fett auf der Oberfläche befreit. Die Ausgleichsbleche besitzen die entsprechenden Blechstärken von \SI{3}{\milli\meter} in  \Figref{fig:Ausgleichsblech Zugprobe 3mm} und \SI{2}{\milli\meter} sowie \SI{5}{\milli\meter} in \Figref{fig:Ausgleichsbleche Zugprobe 2_5mm}.
+	Damit die Nietverbindung möglichst ohne zusätzliche Biegebeanspruchung geprüft wird,
+muss die Kraftlinie in der Ebene der Scherfuge liegen. Hierzu wurden Ausgleichsbleche
+verwendet, deren Dicke an die jeweilige Probengeometrie angepasst war. Vor der
+Versuchsdurchführung wurden die Kontaktflächen gereinigt und die Spannbacken parallel
+sowie zentrisch ausgerichtet. Die zentrische und biegemomentarme Einspannung sowie die
+gewählte Prüfgeschwindigkeit orientieren sich an den Vorgaben der DIN~EN~ISO~14589
+für die mechanische Prüfung von Blindnieten~\cite[Seite~7]{Blindniete_Norm}.
 
-\begin{figure}[H]
+Die wesentlichen Versuchsparameter sind in \Tabref{tab:scherzug_versuchsparameter} zusammengefasst.
+
+\begin{table}[H]
     \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{Ausgleichsblech_3mm}
-        \caption{Ausgleichsblech \SI{3}{\milli\meter} }
-        \label{fig:Ausgleichsblech Zugprobe 3mm}
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{Ausgleichsbleche_2_5mm}
-        \caption{Ausgleichsbleche \SI{2}{\milli\meter} und \SI{5}{\milli\meter}}
-        \label{fig:Ausgleichsbleche Zugprobe 2_5mm}
-    \end{minipage}
-\end{figure}
- 
-Die gewählte Prüfgeschwindigkeit beträgt \SI{10}{\milli\meter\per\minute} und liegt damit innerhalb des von der Norm DIN EN ISO 14589 zulässigen Bereichs von 7\,mm/min bis 13\,mm/min \cite[Seite 7]{Blindniete_Norm}. Die Prüflänge, also der freiliegende Teil der Probe, der tatsächlich belastet wird, beträgt bei allen drei Probenchargen \SI{80}{\milli\meter} (vgl. \Figref{fig:Zugprobe_Einspannlaenge}). 
-
-
-    \begin{figure}[H]
-        \begin{center}
-            \includegraphics[width=0.6\textwidth]{Einspannlaenge}
-            \caption{Einspannlänge Zugprobe.}
-	  \label{fig:Zugprobe_Einspannlaenge}
-        \end{center}
-    \end{figure}
-
-Zusätzlich sind in \Figref{fig:Zugprobe_Einspannlaenge} die bereits montierten Ausgleichsbleche der ersten Probencharge aus Aluminium zu erkennen.
+    \caption{Wesentliche Parameter der Scherzugversuche.}
+    \label{tab:scherzug_versuchsparameter}
+    \begin{tabular}{l l}
+        \hline
+        Prüfparameter & Eingestellter Wert \\
+        \hline
+        Prüfgeschwindigkeit & \SI{10}{\milli\metre\per\minute} \\
+        Freie Prüflänge & \SI{80}{\milli\metre} \\
+        Vorkraft & ca. \SI{120}{\newton} \\
+        Abbruchkriterium & Versagen der Nietverbindung oder des Blechs \\
+        \hline
+    \end{tabular}
+\end{table}
 
 	\subsection{Versuchsablauf}
-Der erste Schritt besteht darin, die Probe in die Spannbacken einzuspannen. Für die erste Probencharge wurden die kleinen Spannbacken vom Typ 8406 verwendet, jedoch wurde nach der ersten Charge auf die großen Spannbacken Typ 8507 gewechselt, da sich die Proben etwas verzogen haben. Um die Probe bei den kleinen Spannbacken zu zentrieren wurde, wie in \Figref{fig:Anschlagwinkel Zugprobe} gezeigt, an die obere und untere Spannbacke ein Anschlagwinkel verschraubt.
+	
+	Zu Beginn jedes Versuchs wurde die Probe zentrisch in die Spannbacken eingesetzt und
+über die angepassten Ausgleichsbleche ausgerichtet. Für die erste Probencharge kamen
+zunächst Spannbacken des Typs 8406 zum Einsatz. Da sich einzelne Proben beim Spannen
+leicht verzogen, wurden für die beiden nachfolgenden Chargen größere Spannbacken des
+Typs 8507 verwendet. Anschließend wurde die freie Prüflänge kontrolliert, die
+Schutztür geschlossen und die Vorkraft von etwa \SI{120}{\newton} aufgebracht.
 
-    \begin{figure}[H]
-        \begin{center}
-            \includegraphics[width=0.5\textwidth]{Anschlagwinkel_Zugprobe}
-            \caption{Anschlagwinkel Zugprobe.}
-	  \label{fig:Anschlagwinkel Zugprobe}
-        \end{center}
-    \end{figure}
-
-Vor dem Start der Messung wird die Probenbezeichnung in das Programm eingegeben, um die Ergebnisse später der richtigen Probe zuordnen zu können.
-Um die Proben der zweiten und dritten Probencharge mittig in den großen Spannbacken auszurichten werden wie in \Figref{fig:Zentrierstriche Zugprobe} zwei Zentrierstriche auf den Proben angebracht. 
-
-    \begin{figure}[H]
-        \begin{center}
-            \includegraphics[width=0.6\textwidth]{Zentrierstriche_Zugprobe}
-            \caption{Zentrierstriche Zugprobe.}
-	  \label{fig:Zentrierstriche Zugprobe}
-        \end{center}
-    \end{figure}
-
-Der rechte, längs zur Probe verlaufende Strich dient der Zentrierung in der Spannbacke, während der linke Strich die Einhaltung einer einheitlichen Einspannhöhe sicherstellt. 
-
-Wenn die Probe eingespannt und die Türe verchlossen ist, kann die gewählte  Vorkraft von circa 120 Newton aufgebracht werden. Anschließend wird die Messung gestartet. Das Ende der Messung tritt ein, wenn das Versagenskriterium erreicht wird.  
+Nach dem Start der Messung wurde die Traverse mit konstanter Geschwindigkeit bewegt,
+bis die Nietverbindung oder eines der Bleche versagte. Für jede Probe wurden der
+Kraft-Weg-Verlauf, die Maximalkraft und die beobachtete Versagensart dokumentiert.
+Diese Größen bilden die Grundlage der folgenden Auswertung.
 
 	 \section{Auswertung}
-	  Um die Prüfergebnisse des Scherzugversuches grafisch darzustellen, wird typischerweise das Kraft-Weg-Diagramm verwendet. 
-Das Diagramm der ersten Probencharge aus AlMg3 zeigt \Figref{fig:Diagramm_AlMg3_3}. Jedoch wurden leider die Werte für die Probe 1 bei Versuchsdurchführung nicht mit aufgezeichnet und fehlt aus diesem Grund in der Abbildung. 
+
+Die Versuchsergebnisse werden mithilfe von Kraft-Weg-Diagrammen dargestellt. Für jede
+Probe wird die Maximalkraft aus dem jeweiligen Kraftverlauf bestimmt. Zur Beschreibung
+der Streuung innerhalb einer Charge werden der arithmetische Mittelwert, die
+Standardabweichung und der Variationskoeffizient verwendet. Die zugehörigen
+statistischen Grundlagen wurden in Kapitel~2 erläutert.
+
+\subsection*{Charge 1: AlMg3, Blechdicken \SI{3}{\milli\metre}/\SI{3}{\milli\metre}}
+
+Die Kraft-Weg-Verläufe der Aluminiumproben sind in
+\Figref{fig:Diagramm_AlMg3_3} dargestellt. Für Probe~1 wurde kein verwertbarer
+Messdatensatz gespeichert, weshalb die statistische Auswertung dieser Charge auf den
+vier vollständig aufgezeichneten Versuchen basiert.
 	  
     \begin{figure}[H]
         \begin{center}
@@ -113,9 +127,19 @@ Das Diagramm der ersten Probencharge aus AlMg3 zeigt \Figref{fig:Diagramm_AlMg3_
 	  \label{fig:Diagramm_AlMg3_3}
         \end{center}
     \end{figure}
-Der Mittelwert der Maximalkraft liegt bei 9770\,$N$. Die Proben weisen eine geringe Standardabweichung von 40,8\,$N$ auf und einen Variationskoeffizienten von 0,42\,$\%$. \\
-Bei den Versagensarten lassen sich zwei Kategorien unterscheiden. Entweder ein Probenversagen oder ein Nietbruch. Bei der ersten Probencharge hat bei allen Proben das Blech versagt.
+    
+Die mittlere Maximalkraft beträgt 9770\,$N$. Mit einer
+Standardabweichung von 40,8\,$N$ und einem Variationskoeffizienten von
+0,42\,$\%$ weisen die aufgezeichneten Ergebnisse eine geringe Streuung auf.
+Bei den geprüften Aluminiumproben trat das Versagen jeweils im Blech auf.
 
+\subsection*{Charge 2: Chrom-Nickel-Stahl, Blechdicken
+\SI{2}{\milli\metre}/\SI{5}{\milli\metre}}
+
+Die Kraft-Weg-Verläufe der zweiten Charge sind in
+\Figref{fig:Diagramm_CrNi2_5} abgebildet. Die Proben erreichten das Ausfallkriterium bei einem
+geringeren Traversenweg als die Aluminiumproben. Bei allen fünf Proben trat ein
+Nietbruch auf. Des Weiteren sind am Anfang der Kurven Zacken zu erkennen, die ihre Ursache vermutlich in einem leichten Verrutschen der Proben haben. 
     
 Bei den Chrom-Nickel-Proben mit zwei und fünf Millimeter Blechstärke zeigt sich in \Figref{fig:Diagramm_CrNi2_5}, dass die Proben nach einem deutlich geringeren Weg bereits versagen. Des Weiteren sind am Anfang der Kurven Zacken zu erkennen, die ihre Ursache vermutlich darin haben, dass die Proben leicht verrutscht sind. 
         \begin{figure}[H]
@@ -125,8 +149,14 @@ Bei den Chrom-Nickel-Proben mit zwei und fünf Millimeter Blechstärke zeigt sic
 	  \label{fig:Diagramm_CrNi2_5}
         \end{center}
     \end{figure}
-Die mittlere Maximalkraft liegt bei 1100\,$N$, die Standardabweichung bei 328\,$N$ un der Variationskoeffizient bei 2,99\,$\%$. 
-Alle fünf Proben haben einen Nietbruch erlitten. 
+Die mittlere Maximalkraft liegt bei 11000\,$N$, die Standardabweichung bei 328\,$N$ und der Variationskoeffizient bei 2,99\,$\%$. 
+
+\subsection*{Charge 3: Chrom-Nickel-Stahl, Blechdicken
+\SI{3}{\milli\metre}/\SI{3}{\milli\metre}}
+
+Die dritte Charge weist die höchsten gemessenen Maximalkräfte auf. Die zugehörigen
+Kraft-Weg-Verläufe sind in \Figref{fig:Diagramm_CrNi3_3} dargestellt. Auch bei
+dieser Charge versagten sämtliche Proben durch einen Nietbruch.
 
             \begin{figure}[H]
         \begin{center}
@@ -135,9 +165,57 @@ Alle fünf Proben haben einen Nietbruch erlitten.
 	  \label{fig:Diagramm_CrNi3_3}
         \end{center}
     \end{figure}
-Die ermittelten Werte sind hier deutlich höher als bei den Aluminiumproben. Der Mittelwert der Maximalkraft liegt bei 14900\,$N$, die Standardabweichung bei 393\,$N$ und der Variationskoeffizient bei 2,63\,$\%$. 
-Hier ist erneut bei allen fünf Proben die Niet gebrochen. 
 
- Das Ergebnis der beiden Chrom-Nickel Chargen lässt darauf schließen, dass sich Chrom-Nickel-Stahl weniger verformt bevor es bricht im Vergleich zu Aluminium.
+Die mittlere Maximalkraft beträgt 14900\,$N$, die Standardabweichung 393\,$N$ und der Variationskoeffizient 2,63\,$\%$. 
 
-Auf die zugehörigen Prüfprotokolle wird im Anhang A.1 verwiesen.
+\subsection*{Zusammenfassung und Einordnung}
+
+\Tabref{tab:scherzug_ergebnisse} fasst die wesentlichen Ergebnisse der drei
+Probenchargen zusammen.
+
+\begin{table}[H]
+    \centering
+    \caption{Zusammenfassung der Ergebnisse der Scherzugversuche.}
+    \label{tab:scherzug_ergebnisse}
+    \resizebox{\textwidth}{!}{%
+        \begin{tabular}{l c c c c}
+            \hline
+            Probencharge &
+            mittlere Maximalkraft &
+            Standardabweichung &
+            Variationskoeffizient &
+            Versagensart \\
+            \hline
+            AlMg3, 3/3 mm &
+            \SI{9770}{\newton} &
+            \SI{40.8}{\newton} &
+            \SI{0.42}{\percent} &
+            Blechversagen \\
+            CrNi, 2/5 mm &
+            \SI{11000}{\newton} &
+            \SI{328}{\newton} &
+            \SI{2.99}{\percent} &
+            Nietbruch \\
+            CrNi, 3/3 mm &
+            \SI{14900}{\newton} &
+            \SI{393}{\newton} &
+            \SI{2.63}{\percent} &
+            Nietbruch \\
+            \hline
+        \end{tabular}%
+    }
+\end{table}
+
+ Die Ergebnisse zeigen, dass sich sowohl die maximal übertragbare Kraft als auch die
+Versagensart in Abhängigkeit von Werkstoff und Blechdicken unterscheiden. Ein
+unmittelbarer werkstofflicher Vergleich allein anhand des Traversenwegs ist jedoch nur
+eingeschränkt möglich, da sich neben dem Werkstoff auch die Geometrie und die
+Versagensart der Chargen unterscheiden.
+
+Für die nachfolgenden Wöhlerversuche ist insbesondere die statische Tragfähigkeit der
+jeweils untersuchten Nietverbindung relevant. Die im Scherzugversuch ermittelten
+Maximalkräfte dienen daher als obere Orientierungsgröße für die Festlegung der
+dynamischen Lastniveaus. Die Lasten des Wöhlerversuchs werden unterhalb dieser
+statischen Versagenslasten gewählt, sodass nicht ein unmittelbares statisches Versagen,
+sondern das Ermüdungsverhalten der Verbindung untersucht wird. Die vollständigen
+Prüfprotokolle der Scherzugversuche sind in \Anhref{anhang:pruefprotokoll} enthalten.
