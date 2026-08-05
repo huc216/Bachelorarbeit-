@@ -45,17 +45,17 @@ Um die Versuchsdurchführung normgerecht zu gestalten und die Auswertesoftware k
 		
 	\section{Programmstruktur}
 	\subsection{Programmaufbau und Funktionsstruktur}
-	Die Auswertesoftware ist in ein Hauptprogramm und mehrere Funktionsdateien gegliedert. Die Aufgabe des Hauptprogramms besteht darin, die Funktionsadateien nacheinander aufzurufen. Dabei werden die erforderlichen Eingabedaten an die Funktionen übergeben und diese liefern daraufhin die gewünschten Rückgabeparameter.
-	 Jede Funktion erfüllt eine klar definierte Aufgabe. Die verwendeten Funktionen und eine kurze Beschreibung ihrer Aufgaben finden sich in \Tabref{tab:funktionsuebersicht} wieder.
+	Die Auswertesoftware ist in ein Hauptprogramm und mehrere Funktionsdateien gegliedert. Die Aufgabe des Hauptprogramms besteht darin, die Funktionsdateien nacheinander aufzurufen. Dabei werden die erforderlichen Eingabedaten an die Funktionen übergeben und diese liefern daraufhin die gewünschten Rückgabeparameter.
+	 Jede Funktion erfüllt eine klar definierte Aufgabe. Die verwendeten Funktionen und eine kurze Beschreibung ihrer Aufgaben sind in \Tabref{tab:funktionsuebersicht} zusammengefasst.
 	
 \begin{table}[H]
     \centering
-    \caption{Übersicht der verwendeten MATLAB-Funktionen}
+    \caption{Übersicht der im Rahmen der Arbeit implementierten MATLAB-Funktionen}
     \label{tab:funktionsuebersicht}
 
     \begin{tabular}{|p{5.7cm}|p{8.5cm}|}
         \hline
-        \textbf{Funktion} & \textbf{Aufgabe} \\
+        \textbf{Funktionsname} & \textbf{Aufgabe} \\
         \hline
 
         \texttt{Dateien\_einlesen} &
@@ -65,19 +65,20 @@ Um die Versuchsdurchführung normgerecht zu gestalten und die Auswertesoftware k
         \texttt{Daten\_auslesen} &
         Extraktion der für die Auswertung relevanten Messgrößen aus den eingelesenen Messdateien. \\
         \hline
-
-        \texttt{Kraftamplitude\_bestimmen} &
-        Ermittlung der Kraftamplituden aus den Messdaten. \\
-        \hline
-
-        \texttt{Abbruchkriterium\_bestimmen} &
+        
+         \texttt{Abbruchkriterium} &
         Bestimmung der Bruchschwingspielzahl anhand des definierten Abbruchkriteriums. \\
         \hline
+
+        \texttt{Kraftamplitude\_auslesen} &
+        Ermittlung der Kraftamplitude aus den Messdaten. \\
+        \hline
+
 
     \end{tabular}
 \end{table}
 
-Die Vorteile der Funktionsstruktur begründen die Entscheidung für diese strukturierten Arbeitsweise. Denn Funktionen erhöhen die Übersichtlichkeit, da durch die Auslagerung der Programmschritte das Hauptprogramm nicht überladen wird. Zum anderen ist der Code bei der Erstellung einfacher zu warten, falls ein Fehler auftritt. Des Weiteren wird die Erweiterbarkeit und Wiederverwendbarkeit des Programmcodes für den Laboringenieur erleichtert.
+Die Vorteile der Funktionsstruktur begründen die Entscheidung für diese strukturierte Arbeitsweise. Zum einen erhöhen Funktionen die Übersichtlichkeit, da durch die Auslagerung der Programmschritte das Hauptprogramm nicht überladen wird. Zum anderen ist der Code bei der Erstellung einfacher zu warten, falls ein Fehler auftritt. Des Weiteren werden die Erweiterbarkeit und Wiederverwendbarkeit des Programmcodes für den Laboringenieur erleichtert.
 
 \clearpage
 
@@ -197,7 +198,7 @@ Die Vorteile der Funktionsstruktur begründen die Entscheidung für diese strukt
         {Zusammenführung der Auswertungsergebnisse};
 
     \node (woehler) [processwide, below=of zusammenfuehrung]
-        {Berechnung und Darstellung der Wöhlerkurve};
+        {Berechnung und Darstellung der Wöhlerlinie};
 
     \node (pdf) [processwide, below=of woehler]
         {Erstellung des PDF-Prüfprotokolls};
@@ -254,60 +255,55 @@ Die Vorteile der Funktionsstruktur begründen die Entscheidung für diese strukt
 \end{figure}
 
 
-Mittels eines Eingabefeldes erfolgt zunächst eine Abfrage der Parameter für die Versuchsauswertung sowie für die Erstellung des Prüfberichts. Nach der Eingabe werden die entsprechenden Dateien der Versuchsproben für den Zeitfestigkeitsbereich und anschließend für den Langzeitfestigkeitsbereich in das Programm geladen. Das Programm arbeitet anschließend mit den getrennten Dateien der beiden Bereiche. Die benötigten Messdaten (Zeit, Weg, Kraft und Schwingspielzahl) werden aus den Dateien extrahiert und gespeichert. Parallel wird anhand des Abbruchkriteriums die Bruchschwingspielzahl der Proben bestimmt. Danach folgt die Ermittlung der Kraftamplituden aus den Messdaten. Anschließend erfolgt die Auswertung des Zeitfestigkeitsbereiches wie auch die des Langzeitfestigkeitsbereiches. Aus den Ergebnissen der beiden Abschnitte wird daraufhin die Wöhlerkurve erstellt und in einem Diagramm veranschaulicht. Abschließend werden alle wesentlichen Auswertungsergebnisse in das Prüfprotokoll eingetragen und für den Benutzer bereitgestellt.   
+Mittels eines Eingabefeldes erfolgt zunächst eine Abfrage der Parameter für die Versuchsauswertung sowie für die Erstellung des Prüfberichts. Nach der Eingabe werden die entsprechenden Dateien der Versuchsproben für den Zeitfestigkeitsbereich und anschließend für den Langzeitfestigkeitsbereich in das Programm geladen. Das Programm arbeitet im weiteren Verlauf mit den getrennten Datensätzen der beiden Bereiche. Die benötigten Messdaten (Zeit, Weg und Kraft) sowie die Schwingspielzahl werden aus den Dateien extrahiert und gespeichert. Parallel wird anhand des Abbruchkriteriums die Bruchschwingspielzahl der Proben bestimmt. Daran schließt sich die Ermittlung der Kraftamplituden aus den Messdaten an. Anschließend erfolgt die Auswertung des Zeit- und Langzeitfestigkeitsbereichs. Aus den Ergebnissen der beiden Abschnitte wird daraufhin die Wöhlerlinie erstellt und in einem Diagramm visualisiert. Abschließend werden alle wesentlichen Auswertungsergebnisse in das Prüfprotokoll eingetragen und für den Benutzer bereitgestellt.   
 
 Die einzelnen Schritte des Programmablaufs werden in den folgenden Kapiteln näher erläutert. 
 
 	\section{Eingabe der Versuchsparameter}
-	\subsection{Aufbau der MATLAB-App}
-	Für eine benutzerfreundliche Bedienung wurde das Eingabefenster mit dem MATLAB-App Designer erstellt. Die App dient der Erfassung aller für die Versuchsauswertung und die Erstellung des Prüfprotokolls erforderlichen Eingabeparameter.
-	 Ein wesentlicher Vorteil der App besteht darin, dass das Eingabefenster jederzeit um Eingabefelder erweitert werden kann, ohne Änderungen am Hauptprogramm vornehmen zu müssen. Durch die Verwendung von Eingabefeldern, Dropdown-Menüs und vorgegebenen Standardwerten werden Fehleingaben reduziert und der Eingabeprozess für den Benutzer vereinfacht. Die Verwendung der App reduziert den Aufwand für den Benutzer durch eine übersichtlich gestaltete Oberfläche. 
+	\subsection{Gestaltung des MATLAB-App-Eingabefensters}
+	Für eine benutzerfreundliche Bedienung wurde das Eingabefenster mit dem MATLAB-App Designer erstellt. Die App erfasst alle für die Versuchsauswertung und die Erstellung des Prüfprotokolls erforderlichen Parameter.
+	 Ein wesentlicher Vorteil der App besteht darin, dass das Eingabefenster jederzeit um Erfassungsfelder erweitert werden kann, ohne Änderungen am Hauptprogramm vornehmen zu müssen. Durch den gezielten Einsatz von Eingabefeldern, Dropdown-Menüs und vorgegebenen Standardwerten werden Fehleingaben reduziert, was die Dateneingabe erheblich vereinfacht und den zeitlichen Aufwand für den Anwender reduziert.
 	 
-	 Für die Eingabe werden Textfelder, numerische Eingabefelder, Dropdown-Menüs sowie Optionsfelder verwendet. Nach Fertigstellung der Eingaben werden über den ''Auswahl bestätigen''-Button die eingetragenen Werte an das Hauptprogramm übergeben. 
+	 Für die Eingabe werden Textfelder, numerische Eingabefelder, Dropdown-Menüs sowie Optionsfelder verwendet. Nach Fertigstellung der Eingaben werden über den  \glqq Auswahl bestätigen\grqq{}-Button die eingetragenen Werte an das Hauptprogramm übergeben. 
 	 
 	
 	\subsection{Eingabeparameter}
 	Das Eingabefenster ist entsprechend seiner Funktion in zwei Bereiche unterteilt.
 	Im oberen Bereich befinden sich die Versuchsdaten, die in das PDF-Prüfprotokoll eingetragen werden. Dazu zählen der Prüfer, das Datum, der Kunde, die allgemeine Probenbezeichnung, die Prüftemperatur und die Frequenz der Schwingprüfung.
-	Der untere Bereich enthält die Werkstoffwahl, die Grenzschwingspielzahl, den Wöhlerkurven-Typ, den Lasthorizont $L_0$ sowie die Standardabweichung der Grundgesamtheit. 
+	Der untere Bereich enthält die Werkstoffwahl, die Grenzschwingspielzahl, den Wöhlerlinien-Typ, den Lasthorizont $L_0$ sowie die Standardabweichung der Grundgesamtheit. 
 	
 	Das Eingabefenster der entwickelten MATLAB-App ist in \Figref{fig:Eingabefenster} dargestellt.
 	
 	 \begin{figure}[H]
-        \begin{center}
+        \centering
             \includegraphics[width=1.0\textwidth]{Eingabefenster_MATLAB.png}
             \caption{Eingabefenster MATLAB}
   	  \label{fig:Eingabefenster}
-        \end{center}
 \end{figure}
 	
-	Zusätzlich sorgt das Eingabefenster für automatische Vorschläge. Die Werkstoffauswahl dient als Grundlage der automatischen Vorgabe der Grenzschwingspielzahl und des Wöhlerkurven-Typs gemäß den Empfehlung der DIN 50100. Die vorgeschlagenen Werte können vom Benutzer übernommen oder bei Bedarf angepasst werden. Der Wöhlerkurven-Typ bestimmt die unterschiedliche Auswertung des Langzeitfestigkeitbereichs und die Grenzschwingspielzahl legt fest, ab wann eine Probe als Durchläufer gewertet wird. Darüber hinaus werden für das Datum, die Prüftemperatur und die Prüffrequenz ebenfalls Standardwerte bereitgestellt. 
+	Zusätzlich sorgt das Eingabefenster für automatische Vorschläge. Die Werkstoffauswahl dient hierbei als Grundlage der standardisierten Vorgabe der Grenzschwingspielzahl und des Wöhlerlinien-Typs gemäß den Empfehlungen der DIN 50100. Die vorgeschlagenen Werte können vom Benutzer übernommen oder bei Bedarf angepasst werden. Der Wöhlerlinien-Typ bestimmt die unterschiedliche Auswertung des Langzeitfestigkeitsbereichs und die Grenzschwingspielzahl legt fest, ab wann eine Probe als Durchläufer gewertet wird. Darüber hinaus werden für das Prüfdatum, die Prüftemperatur und die Prüffrequenz ebenfalls Standardwerte bereitgestellt. 
 	
-	Der Lasthorizont $L_0$ stellt die Ausgangslaststufe des Treppenstufenverfahrens dar. Die Standardabweichung dient der Berechnung des logarithmischen Stufensprungs zwischen den einzelnen Treppenstufen.  
+	Der Lasthorizont $L_0$ stellt die Ausgangslaststufe des Treppenstufenverfahrens dar. Die Standardabweichung dient der Berechnung des logarithmischen Stufensprungs zwischen den einzelnen Laststufen.  
 	
-	Über den Befehl \texttt{getOutputData} werden die eingegebenen Werte an das Hauptprogramm übergeben und den nachfolgenden Programmfunktionen zur Verfügung gestellt. 
+	Über \texttt{getOutputData} werden die eingegebenen Werte an das Hauptprogramm übergeben und den nachfolgenden Programmfunktionen zur Verfügung gestellt. 
 
 	\section{Einlesen der Messdaten}
-	Für das Einlesen der Messdaten erfolgt eine Dateiauswahl durch den Benutzer. Akzeptierte Dateiformate sind .xlsx- und .xls-Formate. Aufgrund der unterschiedlichen Auswerteverfahren erfolgt das Importieren der Messdaten der Zeitfestigkeit und der Langzeitfestigkeit getrennt. Der Nutzer wird folglich mit einem Infofenster dazu aufgefordert, zuerst die Dateien des Zeitfestigkeitsbereiches auszuwählen. Wenn dies erledigt ist erscheint erst das Infofenster des Langzeitfestigkeitsbereiches, um die zugehörigen Dateien auszuwählen.  Das Infofenster wird durch die MATLAB-Funktion \texttt{msgbox} erzeugt. Mit der Funktion \texttt{uigetfile} können dabei auch mehrere Dateien gleichzeitig in das Programm eingelesen werden. Aufgrund einer while-Schleife öffnet sich der Dateiauswahldialog so lang immer wieder bis der Nutzer keine Datei mehr auswählt. Zur Vermeidung eines redundanten Programmcode wurde der Dateieneinlesevorgang in eine eigene Funktion ausgelagert. Die eingelesenen Tabelleninhalte werden mit der MATLAB-Funktion \texttt{readcell} vollständig in einem Cell-Array gespeichert, um die Tabellenstruktur zu erhalten. In einer Zelle des Cell-Arrays befinden sich folglich die kompletten Rohmessdaten einer Probe, die mit der ursprünglichen Tabellenstruktur der Hydropulsanlage erhalten bleiben. Dieser Vorgang erleichtert die Weiterverarbeitung der Proben als getrennte Tabellen.  Zeit- und Langzeitfestigkeitsdateien werden dabei in zwei unterschiedlichen Cell-Arrays abgespeichert. Im nächsten Schritt werden alle relevanten Daten aus den Proben extrahiert, die zur Versuchsauswertung benötigt werden und unter neuen variablen gespeichert
-	
-	\textbf{if-Abfrage, wenn es zu wenige Proben für die beiden Bereiche sind}
+	Das Einlesen der Messdaten beginnt mit der Dateiauswahl durch den Benutzer. Akzeptierte Dateien sind Excel-Dateien im Format \texttt{.xlsx} und \texttt{.xls}. Aufgrund der unterschiedlichen Auswerteverfahren erfolgt das Importieren der Messdaten der Zeitfestigkeit und der Langzeitfestigkeit getrennt. Der Nutzer wird folglich mit einem Informationsfenster dazu aufgefordert, zuerst die Dateien des Zeitfestigkeitsbereiches auszuwählen. Erst nach Abschluss dieser Auswahl erscheint ein weiteres Dialogfenster für den Langzeitfestigkeitsbereich, um die zugehörigen Dateien auszuwählen. 
+ Das Informationsfenster wird durch die MATLAB-Funktion \texttt{msgbox} erzeugt. 
+ 
+ Die eigentliche Dateiauswahl erfolgt mithilfe der MATLAB-Funktion \texttt{uigetfile}, mit der mehrere Dateien gleichzeitig in das Programm eingelesen werden können. Eine \texttt{while}-Schleife sorgt dafür, dass sich der Dateiauswahldialog so lange erneut öffnet, bis der Nutzer keine weitere Datei auswählt. Zur Vermeidung redundanten Programmcodes wurde der gesamte Dateieneinlesevorgang in die Funktion \texttt{Dateien\_einlesen} ausgelagert.
+ 
+ Nach Abschluss der Dateiauswahl wird überprüft, ob für beide Auswertebereiche eine ausreichende Anzahl an Proben vorliegt. Für den Zeitfestigkeitsbereich müssen mindestens vier Proben und für den Langzeitfestigkeitsbereich mindestens zehn Proben ausgewählt worden sein. Wird diese Mindestanzahl unterschritten, gibt das Programm eine entsprechende Fehlermeldung aus bricht die weitere Programmausführung ab, da für kleinere Stichproben nach DIN~50100 keine Fehler zur Grundgesamtheit angegeben sind.
+ 
+ Die mit \texttt{readcell} eingelesenen Tabellen werden jeweils als vollständiges Cell-Array in einem übergeordneten Cell-Array gespeichert. Jedes Element dieses übergeordneten Cell-Arrays enthält damit die vollständigen Rohmessdaten einer Probe in der ursprünglichen Tabellenstruktur der Hydropulsanlage. Dies erleichtert die spätere Weiterverarbeitung der einzelnen Proben. Die Dateien des Zeitfestigkeits- und des Langzeitfestigkeitsbereichs werden dabei in zwei getrennten Cell-Arrays gespeichert. Im nächsten Schritt werden alle für die Versuchsauswertung relevanten Messgrößen aus den Proben extrahiert und in neuen Variablen abgelegt.
 
 	\section{Aufbereitung der Messdaten}
 	
 	\subsection{Extraktion der relevanten Messgrößen}
-	\textbf{welche Spalten benötigt werden
-	Kraft
-	Weg
-	Zykluszähler
-	Zeit
-	Bruchschwingspielzahl 
-	Suche der Kanäle über den Kanalnamen
-	dadurch unabhängig von der Spaltenreihenfolge}
 	
-	Das Ziel dieses Schrittes ist es aus den Tabellen der einzelnen Proben alle relevanten Daten zu extrahieren. Ausgeführt wird dieser Schritt mit der Programmfunktion \texttt{Daten\_auslesen}. Die benötigten Spalten sind Kraft, Weg, Zeit und der Zykluszähler (Schwingspielzahl). Um die entsprechenden Spalten in der Tabelle zu finden wird zuerst nach der Zeit-Spalte gesucht und anschließend in dieser Zeile nach den weiteren Nahmen für Kraft, Weg und Schwingspielzahl gesucht. Dadurch wird eine Suche unabhängig der Spaltenreihenfolge gewährleistet. 
-	Die Messwerte werden anschließend in einem double gespeichert. 
+	Das Ziel dieses Schrittes ist es aus den Tabellen der einzelnen Proben alle relevanten Daten zu extrahieren. Dieser Verarbeitungsschritt wird durch die Funktion \texttt{Daten\_auslesen} ausgeführt. Für die Auswertung werden die Messgrößen Kraft, Weg, Zeit und Schwingspielzahl benötigt. Zur Identifikation dieser wird zunächst die Zeile, die das Wort Zeit enthält lokalisiert. Ausgehend von dieser Zeile werden anschließend die Spaltenüberschriften für Kraft, Weg und Schwingspielzahl ermittelt. Dadurch wird eine Suche unabhängig der Spaltenreihenfolge gewährleistet. 
 	
-	In \Tabref{tab:sensoren_uebersicht} sind die verschiedenen Kraft- und Wegsensoren der drei Hydropulsanlagen des Maschinendynamiklabors aufgelistet. Jede Hydropulsanlage besitzt einen Kraft- als auch einen Wegsensor, der fest an der Maschine verbaut ist. Zusätzlich ist ein Laser Sensor, der die Wegänderung aufnimmt vorhanden und kann flexibel bei allen drei Anlagen eingesetzt werden.
+	In \Tabref{tab:sensoren_uebersicht} sind die verschiedenen Kraft- und Wegsensoren der drei Hydropulsanlagen des Maschinendynamiklabors aufgelistet. Jede Hydropulsanlage verfügt über einen Kraft- als auch einen Wegsensor, der fest an der Maschine verbaut ist. Zusätzlich ist ein Lasersensor, der die Wegänderung erfasst, vorhanden und kann flexibel bei allen drei Anlagen eingesetzt werden.
 
 \begin{table}[ht]
     \centering
@@ -335,7 +331,9 @@ Die einzelnen Schritte des Programmablaufs werden in den folgenden Kapiteln näh
 
 Um den MATLAB-Code für zukünftige Versuche an allen drei Hydropulsnalagen zu standardisieren, werden alle Sensoren in den Code mit einbezogen. 
 
-\Figref{fig:weg_laser} vergleicht das aufgezeichnete Wegsignal des PL16K-Sensors und des Lasersensors.
+\Figref{fig:weg_laser} zeigt den Vergleich der aufgezeichneten Wegsignale des PL16K-Sensors und des Lasersensors.
+ Wie aus \Figref{fig:weg_laser} hervorgeht, weist das Wegsignal des Sensors PL16K im Vergleich zum Lasersensor deutlich stärkere Oszillationen auf. Die Ursache hierfür liegt in der direkten Montage des PL16K-Sensors am Zylinder. Dadurch erfasst er mechanische Schwingungen und Vibrationen der Zylinderbewegung direkt im Messsignal. 
+   Der Lasersensor hingegen, ist an einer separaten, unbewegten Stelle befestigt. Dadurch liefert dieser ein ruhigeres und weniger von den Schwingungen der Hydropulsanlage beeinflusstes Wegsignal. Aufgrund dieser Eigenschaft prüft das Programm zunächst, ob der Lasersensor verfügbar ist. Ist dies der Fall wird dessen Messsignal anschließend für die Auswertung verwendet. Andernfalls greift das Programm auf den Wegsensor der jeweiligen Hydropulsanlage zurück.  
 	
 	    \begin{figure}[H]
         \begin{center}
@@ -344,49 +342,80 @@ Um den MATLAB-Code für zukünftige Versuche an allen drei Hydropulsnalagen zu s
   	  \label{fig:weg_laser}
         \end{center}
     \end{figure}
-  
-  Wie aus \Figref{fig:weg_laser} hervorgeht, weist das Wegsignal des Sensors PL16K im Vergleich zum Lasersensor deutlich stärkere Oszillationen auf. Die Ursache hierfür ist die Montage des Wegsensors PL16K direkt am Zylinder montiert und dadurch die Bewegung des Zylinders sichtbar wird. Wohingegen der Lasersensor an einer separaten, unbewegten Stelle befestigt ist. Aufgrund dieser Feststellung erfolgt immer zuerst eine Abfrage, ob der Lasersensor verfügbar ist. Ist dies der Fall wird dessen Messignal anschließend für die Auswertung verwendet. Andernfalls sucht das Programm nach einem der anderen genannten Wegsensoren.  
 
-	\subsection{Umstrukturierung der Daten}
-	Speicherung unter neuen Variablen,
-	Vereinheitlichung,
-	Trennung der Messgrößen,
-	Vorbereitung der Berechnung
+	\subsection{Vereinheitlichung und Speicherung der Messdaten}
+	Die extrahierten Messgrößen Kraft, Weg, Zeit und Schwingspielzahl werden in separate Matrizen gespeichert. Dabei entspricht jede Spalte den Messwerten einer Probe. Für eine einheitliche Weiterverarbeitung werden die in den Rohmessdaten in Kilonewton vorliegenden Kraftwerte in Newton umgerechnet. Da der \texttt{QuarterCycleCounter} stets den vierfachen Wert der Schwingspielzahl ausgibt, werden die ausgelesenen Werte durch vier dividiert. Die Daten des Zeit- und des Langzeitfestigkeitsbereiches werden zunächst getrennt gespeichert.  
 	
-	\subsection{Vorverarbeitung}
-	eventuelle Umrechnung,
-	Einheiten,
-	Datenbereiche auswählen,
-	benötigte Messpunkte
+	\section{Bestimmung der Bruchschwingspielzahl}
+	Nach der Aufbereitung und Vereinheitlichung der Messdaten erfolgt im nächsten Schritt die Bestimmung der Bruchschwingspielzahl. Hierfür wird die Programmfunktion \texttt{Abbruchkriterium} verwendet.
+	 
+	 Da die Hydropulsanlage einer gewissen Regelverzögerung unterliegt und dadurch ein Nachschwingen erfolgen kann ist das Ziel des Abbruchkriteriums eine reproduzierbare Bruchschwingspielzahl zu bestimmen, die möglichst nicht durch das Nachschwingen der Hydropulsanlage beeinflusst wird. Dies dient vorallem der Vergleichbarkeit der einzelnen Proben.
+	 Das Abbruchkriterium stützt sich auf die Wegänderung, da bei Probenversagen ein sprunghafter Anstieg des Weges erfolgt, wodurch sich der Bruch eindeutig erkennen lässt. Da die Rohmessdaten nur die letzten 30 Sekunden vor der Beendigung des Versuchs enthalten, weist das Wegsignal zu diesem Zeitpunkt bereits einen individuellen Regeloffset auf. Es kann daher kein absoluter Wegwert als allgemeines Abbruchkriterium verwendet werden. Des Weiteren unterscheidet sich das Bruchverhalten von Werkstoff zu Werkstoff aufgrund unterschiedlicher Werkstoff- und Bauteileigenschaften, weshalb eine Weggrenzwert als Abbruchkriterium riskant wäre. Aus diesem Grund wird die Steigungsänderung betrachtet. Hier wurde anhand der vorliegenden Messdaten empirisch ein Faktor für die Steigungsänderung von 5 bestimmt. Diese Steigungsänderung wird dabei auf die Anfangssteigung des aufgezeichneten Messbereichs bezogen. 
+	 Da die Wegänderung die periodischen Schwingungen enthält, kann die Steigung nicht aus zwei nebeneinader liegenden Messpunkten bestimmt werden, das die Steigung sonst die Steigung der einzelnen Schwingspiele darstellt. Aus diesem Grund wird das geglaettete Wegsignal der einzelnen Proben mit der MATLAB-Funktion \texttt{movmean} in einer vorgegebene Fenstergröße ermittelt. Die Fenstergröße entspricht hierbei der Anzahl der Messpunkte einer Schwingung. Diese ergeben sich aus der Division der Dauer einer Schwingung (1/Prüffrequenz) und dem aus den in eingelesenen Excel-Tabellen stehenden Abtastintervall. 
+	 
+	Da bei den Durchläufern kein Bruch auftritt und somit kein Weganstieg erfolgt, wird der letzte Messpunkt (die Endschwingspielzahl) verwendet. 
 	
+	Da sich das aufgezeichnete Wegsignal bei unterschiedlichen Werkstoffen und Probengeometrien unterscheiden kann, ist bei zukünftigen Versuchsreihen der verwendete Steigungsfaktor zu überprüfen und gegebenenfalls anzupassen. 
+	Dazu wird das Ergebnis der Abbruchwerte in einem Weg-Zeit-Plot dargestellt. Der in der Auswertesoftware ermittelte Abbruchpunkt wird im Diagramm markiert. Dadurch kann der Nutzer diesen Vorgang leichter nachvollziehen und die Abbruchpunkte auf Richtigkeit überprüfen.
+	
+	 \begin{figure}[H]
+        \centering
+            \includegraphics[width=1.0\textwidth]{Diagramm_Abbruchkriterium.png}
+            \caption{Darstellung des Abbruchpunkts im Weg-Zeit-Diagramm der untersuchten Proben.}
+  	  \label{fig:Abbruchpunkt}
+    \end{figure}
+	
+	 \begin{figure}[H]
+        \centering
+            \includegraphics[width=1.0\textwidth]{Diagramm_Abbruchkriterium_Detailansicht.png}
+            \caption{Deitailansicht zur Darstellung des Abbruchpunkts im Weg-Zeit-Diagramm der untersuchten Proben.}
+  	  \label{fig:Abbruchpunkt_Detail}
+    \end{figure}
+	
+	Die ermittelte Bruchschwingspielzahl dient anschließend zusammen mit der Kraftamplitude als Grundlage für die Berechnung der Wöhlerlinie.
+	
+\textbf{Eingangs- und Ausgangsgrößen?
+Wahl der Fenstergröße?
+Übergabe der Ergebnisse an das Hauptprogramm. noch was zu den Abbildungen schreiben!}
+
+	\section{Berechnung der Kraftamplitude}
+	Die Kraftamplitude stellt die letzte benötigte Kenngröße zur Auswertung des Zeitfestigkeits- und der Langzeitfestigkeitsbereichs dar. Diese wird mithilfe der Teilfunktion des Auswerteprogramms \texttt{Kraftamplitude\_auslesen} ermittelt. 
+	
+	Da die Probe aufgrund der zyklischen Belastung einen sinusförmige Prüfkraft erfährt, ergibt sich die Kraftamplitude analog zu \Eqref{eq:Spannungsamplitude}. Aus diesem Grund genügt die Bestimmung der Minima und Maxima. 
+	
+	Zur Bestimmung der lokalen Maxima des Kraftsignals wird die MATLAB-Funktion \texttt{findpeaks} verwendet. Diese werden dann in einem zeitlichen Mindestabstand auch MinPeakDistance genannt gesucht. Dieser verhindert die Mehrfacherkennung innerhalb einer Schwingung. Der gewählte Mindestabstand berechnet sich aus der Prüffrequenz und entspricht 70\,\% der Dauer einer Schwingungsperiode, um mehrere Maxima innerhalb derselben Schwingung zu vermeiden. Da \texttt{findpeaks} ausschließlich Maxima erkennt wird zur Bestimmung der Minima das Kraftsignal invertiert und anschließend mit \texttt{findpeaks} ausgewertet. Die ermittelten Minima werden anschließend wieder auf ihr ürsprüngliches Vorzeichen zurückgesetzt. Aufgrund dessen kann diese Vorgehensweise unabhängig des gewählten Spannungsverhältnis R (=Lastverhältnis) angewendet werden. 
+	
+	Anschließend wird der Mittelwert aller Minima und aller Maxima berechnet, da die einzelnen Peaks aufgrund des vorhandenen Messrauschens sowie Reglerschwankungen leicht schwanken können. Deshalb liefert der Mittelwert eine robustere Bestimmung der Kraftamplitude.
+	Aus der halben Differnz der beiden Mittelwerte ergibt sich anschließend die Kraftamplitude. 
+	
+	Die berechneten Kraftamplituden werden als Vektor an das Hauptprogramm zurückgegeben. Dabei wird ein Kraftamplitudenwert pro Probe ausgegeben. 
+	
+	\textbf{warum 0,7*Dauer Schwingung? Begründung schreiben!}
+	
+	
+	\clearpage
 	
 	\section{Auswertung des Zeitfestigkeitsbereichs}
-	\subsection{Berechnung der Kraftamplitude}
-	Maximum,
-	Minimum,
-	Mittelwert,
-	Kraftamplitude,
-	verwendete Gleichungen,
-	MATLAB-Umsetzung
-	
-	\subsection{Bestimmung der Bruchschwingspielzahl}
-	Zykluszähler,
-	letzter Messwert,
-	Zuordnung zur Probe
+	Mit den ermittelten Kraftamplituden und Schwingspielzahlen kann der Zeitfestigkeitsbereich ausgewertet werden. Hierzu wird das in \Chapref{chap:Theorie_Zeitfestigkeit} vorgestellte Perlenschnurverfahren im MATLAB-Programm umgesetzt. 
+	Das Ziel dieses Auswerteschrittes ist es die Zeitfestigkeitsgerade mit ihren charakteristischen Parametern $C$ und $k$ zu bestimmen, welche die Grundlage für die weitere Berechnung der Knickschwingspielzahl bilden. 
 	
 	\subsection{Berechnung der Regressionsgeraden}
-	logarithmische Darstellung,
-	lineare Regression,
-	Steigung,
-	Lageparameter
+	Da die Wöhlerlinie doppelt logarithmisch dargestellt wird, wird zunächst die Kraftamplitude und die Schwingspielzahl dekadisch logarithmiert. Anschließend werden die Summen aus den logarithmierten Werten gebildet:
+	\begin{equation}
+\sum x,\qquad
+\sum y,\qquad
+\sum x y,\qquad
+\sum x^2.
+\end{equation}. 
+	Anschließend werden mit diesen Summen die Regressionsparameter $a_0$ und $a_1$ nach den Gleichungen \Eqref{eq:reg_a1} und \Eqref{eq:reg_a0} berechnet. 
+	Diese Parameter dienen der Berechnung der Steigung der Wöhlerlinie $k$ und des Achsenabschnitts  $C$ der Schwingspielzahl (\Eqref{eq:reg_C} und \Eqref{eq:reg_k} ) der Zeitfestigkeitsgeraden und späteren Wöhlerlinie.
 	
-	\subsection{Streuung}
-	Standardabweichung,
-	Berechnung,
-	Korrektur kleiner Stichproben,
-	Bedeutung
 	
+	\subsection{Berechnung Standardabweichung}
+	Um die 10\,\% und die 90\,\% Ausfallwahrscheinlichkeitslinien, die eine Aussage über die Streuung der Ergebnisse liefern mit in das Wöhlerdiagramm einzeichnen zu können muss die Standardabweichung berechnet werden. 
+	Gemäß DIN~50100 wird dafür ein fiktiver Lasthorizont definiert. Die Wahl der Lage steht dem Nutzer frei. Deshalb wird diese Entscheidung vom MATLAB-Code abgenommen und ein Lasthorizont in der Mitte des gemessenen obersten und untersten Lasthorizontes des Zeitfestigkeitsbereichs festgelegt. Die neue fiktive Schwingspielzahl die sich nach paralleler Verschiebung auf den fiktiven Lasthorizont ergibt wird nach \Eqref{eq:N_fiktiv} berechnet.  
 	
+		Zur Veranschaulichung dieser Regressionsrechnung wird die Zeitfestigkeitsgerade zwischen dem höchsten und dem niedrigsten gemessenen Lasthorizont dargestellt
 	
 
 

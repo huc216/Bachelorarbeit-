@@ -875,7 +875,7 @@ Zu erkennen ist, dass bei Typ II die Spannungsamplitude weiter abfällt, jedoch 
 
 \clearpage
 
-	\subsection{Experimentelle Verfahren zur Bestimmung der Zeitfestigkeit}
+	\subsection{Experimentelle Verfahren zur Bestimmung der Zeitfestigkeit} \label{chap:Theorie_Zeitfestigkeit}
 	
 Zur Bestimmung der Lage der Zeitfestigkeit muss laut DIN~50100 entweder das Perlenschnurverfahren oder das Horizontenverfahren angewendet werden. Die Auswertung der Proben erfolgt nach Erreichen des definierten Ausfallkriteriums (z. B. Anriss oder Bruch)~\cite[Seite~25--26]{DIN50100}.
 
@@ -977,12 +977,12 @@ Beide Parameter $a_0$ und $a_1$ werden mit der Methode der kleinsten Fehlerquadr
 
 Mit den bestimmten Regressionsparametern können nun die Steigung $k$ und der Lageparameter $C$ der Basquin-Gleichung in \Eqref{eq:reg_C} und \Eqref{eq:reg_k} bestimmt werden: 
 
-\begin{equation}\label{eq:reg_C},
-    C = 10^{a_0}
+\begin{equation}\label{eq:reg_C}
+    C = 10^{a_0},
 \end{equation}
 
-\begin{equation}\label{eq:reg_k}.
-    k = -{a_1}
+\begin{equation}\label{eq:reg_k}
+    k = -{a_1}.
 \end{equation}
 
 Die damit ermittelte Regressionsgerade repräsentiert die \(50\,\%\)-Wöhlerlinie. Dies impliziert, dass bei der jeweiligen
@@ -1089,17 +1089,17 @@ höchsten Lasthorizonts mit einem Durchläufer liegt
 \clearpage
 
 	\subsection{Experimentelle Verfahren zur Bestimmung der Langzeitfestigkeit}
-	Zur Bestimmung des Langzeitfestigkeitsbereichs werden in der DIN~50100 verschiedene Verfahren vorgeschlagen. Nachfolgend werden die gängigsten Methoden erläutert, um anschließend das für diese Arbeit adäquateste Verfahren auszuwählen:
+	Zur Bestimmung des Langzeitfestigkeitsbereichs werden in der DIN~50100 verschiedene Verfahren vorgeschlagen. Nachfolgend werden die gängigsten Methoden erläutert, um anschließend das für diese Arbeit adäquateste Verfahren auszuwählen~\cite[Seite 45]{DIN50100}:
 	\begin{itemize}
     \item Probit-Verfahren
     \item Abgrenzungsverfahren
-    \item Treppenstufenverfahren nach Hück
+    \item Treppenstufenverfahren 
 	\end{itemize}
 
 In dieser Arbeit werden das Probit- und das Abgrenzungsverfahren nur schematisch und überblicksartig vorgestellt, da die Norm die Anwendung des Treppenstufenverfahrens nahelegt. Weitere Gründe für die Wahl des Treppenstufenverfahrens gehen aus dem weiteren Verlauf dieses Kapitels hervor.
 
 Das Probit-Verfahren erfordert eine Festlegung von mindestens vier Lasthorizonten mit äquidistanten Abständen. Auf jedem Lasthorizont müssen mindestens zehn Proben geprüft werden, um eine statistisch zuverlässige Aussage über die Streuung treffen zu können. Zudem setzt jeder Lasthorizont das Vorliegen von mindestens einem Bruch und einem Durchläufer voraus.
-In \Figref{fig:probit_verfahren} ist zu erkennen, dass die Ausfallwahrscheinlichkeit $P_A$ auf jedem Lasthorizont separat ausgewertet wird.  
+In \Figref{fig:probit_verfahren} ist zu erkennen, dass die Ausfallwahrscheinlichkeit $P_{\text{A}}$  auf jedem Lasthorizont separat ausgewertet wird~\cite[Seite~36]{Dissertation_Woehler}.  
 
 \begin{figure}[H]
     \centering
@@ -1110,7 +1110,7 @@ In \Figref{fig:probit_verfahren} ist zu erkennen, dass die Ausfallwahrscheinlich
 
 Das Probit-Verfahren erweist sich jedoch bei kleinen Stichprobenumfängen als ungeeignet, da für die Prüfung im Langzeitfestigkeitsbereich mindestens 40 Proben erforderlich sind \cite[Seite 36]{Dissertation_Woehler}. Zusätzliche Ausführungen zur Vorgehensweise und den zugehörigen Gleichungen sind in \cite{Probitverfahren} zu finden. 
 
-Beim Abgrenzungsverfahren werden, ähnlich wie beim Horizontenverfahren, lediglich zwei Lasthorizonte betrachtet (siehe \Figref{fig:Abgrenzungsverfahren}). Die Auswertung erfolgt mittels eines Wahrscheinlichkeitspapiers. Hierbei wird anhand der Anzahl der Ausfälle und der Versuche des i-ten Lasthorizonts die jeweilige Ausfallwahrscheinlichkeit bestimmt. Für weitere Details zum Abgrenzungsverfahren wird auf \cite{Abgrenzungsverfahren} verwiesen. 
+Beim Abgrenzungsverfahren~\cite{Abgrenzungsverfahren} werden, ähnlich wie beim Horizontenverfahren~\cite[Seite~26]{Dissertation_Woehler}, lediglich zwei Lasthorizonte betrachtet (siehe \Figref{fig:Abgrenzungsverfahren}). Die Auswertung erfolgt mittels eines Wahrscheinlichkeitspapiers. Hierbei wird anhand der Anzahl der Ausfälle und der Versuche des i-ten Lasthorizonts die jeweilige Ausfallwahrscheinlichkeit bestimmt. Für weitere Details zum Abgrenzungsverfahren wird auf \cite{Abgrenzungsverfahren} verwiesen. 
 
 
 \begin{figure}[H]
@@ -1120,17 +1120,17 @@ Beim Abgrenzungsverfahren werden, ähnlich wie beim Horizontenverfahren, ledigli
     \label{fig:Abgrenzungsverfahren}
 \end{figure}
 
-Beim Treppenstufenverfahren wird der Lasthorizont für die erste Probe zunächst entsprechend einer abgeschätzten Langzeitfestigkeit gewählt. Diese beruht entweder auf Erfahrungswerten oder wird vom Versuchsdurchführenden sinnvoll festgelegt. Stellt diese einen Bruch dar, wird die Lastamplitude im nächsten Schritt um eine Stufe mit einem definierten Stufensprung reduziert. Erweist sich die Probe hingegen als Durchläufer, erfolgt beim nächsten Versuch eine Erhöhung der Lastamplitude um eine Stufe. Dieses Vorgehen wird analog für jeden Prüfling der gesamten Stichprobe angewendet. Für die Anwendbarkeit des Treppenstufenverfahrens müssen sich auf ein bis drei Laststufen sowohl Brüche als auch Durchläufer befinden. Dieser Zustand stellt sich normalerweise ein, wenn der Stufensprung wie folgt gewählt wird: 
+Beim Treppenstufenverfahren wird der Lasthorizont für die erste Probe zunächst entsprechend einer abgeschätzten Langzeitfestigkeit gewählt. Diese beruht entweder auf Erfahrungswerten oder wird vom Versuchsdurchführenden sinnvoll festgelegt. Stellt diese einen Bruch dar, wird die Lastamplitude im nächsten Schritt um eine Stufe mit einem definierten Stufensprung reduziert. Erweist sich die Probe hingegen als Durchläufer, erfolgt beim nächsten Versuch eine Erhöhung der Lastamplitude um eine Stufe. Dieses Vorgehen wird analog für jeden Prüfling der gesamten Stichprobe angewendet. Für die Anwendbarkeit des Treppenstufenverfahrens müssen sich auf ein bis drei Laststufen sowohl Brüche als auch Durchläufer befinden. Dieser Zustand stellt sich normalerweise ein, wenn der Stufensprung wie folgt gewählt wird~\cite[Seite 47--49]{DIN50100}: 
 
 \begin{equation}\label{eq:d_lg}
 d_{\lg} = 10^{s_{\lg L,\mathrm{GG}}}.
 \end{equation}
 
-Der maßgebliche Vorteil des Treppenstufenverfahrens besteht darin, dass sich mit dieser Methode der Mittelwert präzise und ohne großen Aufwand ermitteln lässt, da sich die Versuchsergebnisse systematisch um den Mittelwert einstellen. 
+Der maßgebliche Vorteil des Treppenstufenverfahrens besteht darin, dass sich mit dieser Methode der Mittelwert präzise und ohne großen Aufwand ermitteln lässt, da sich die Versuchsergebnisse systematisch um den Mittelwert einstellen~\cite[Seite~47]{DIN50100}. 
 
-Während im Zeitfestigkeitsbereich nach Vorgabe der Lastamplitude die resultierende Bruchschwingspielzahl als Antwort des Systems gemessen wird und sich somit im Wöhlerdiagramm eine Streuung in horizontaler Richtung (d.~h. in Richtung der Schwingspielzahl-Achse) ergibt, wird im Langzeitfestigkeitsbereich das Ziel verfolgt, die Amplitude mit $50\,\%$ Ausfallwahrscheinlichkeit zu bestimmen. Daher breitet sich die Streuung in diesem Fall in vertikaler Richtung (d.~h. entlang der Lastamplituden-Achse) aus.
+Während im Zeitfestigkeitsbereich nach Vorgabe der Lastamplitude die resultierende Bruchschwingspielzahl als Antwort des Systems gemessen wird und sich somit im Wöhlerdiagramm eine Streuung in horizontaler Richtung (d.~h. in Richtung der Schwingspielzahl-Achse) ergibt~\cite[Seite~54]{DIN50100}, wird im Langzeitfestigkeitsbereich das Ziel verfolgt, die Amplitude mit $50\,\%$ Ausfallwahrscheinlichkeit zu bestimmen. Daher breitet sich die Streuung in diesem Fall in vertikaler Richtung (d.~h. entlang der Lastamplituden-Achse) aus~\cite[Seite~44]{DIN50100}.
 
-Ist die Standardabweichung im Vorhinein nicht bekannt, ist auf empirisch ermittelte Werte zurückzugreifen. Die folgende \Tabref{tab:Standardabweichung_Treppenstufenverfahren} enthält die Standardabweichung der Grundgesamtheit und den korrespondierenden Stufensprung $d_{\lg}$ für verschiedene Materialien:
+Ist die Standardabweichung im Vorhinein nicht bekannt, ist auf empirisch ermittelte Werte zurückzugreifen. Die folgende \Tabref{tab:Standardabweichung_Treppenstufenverfahren} enthält die Standardabweichung der Grundgesamtheit und den korrespondierenden Stufensprung $d_{\lg}$ für verschiedene Materialien~\cite[Seite~48]{DIN50100}:
 
 \begin{table}[H]
 \centering
@@ -1148,9 +1148,9 @@ Schrauben & 0,050 & 1,122 \\ \hline
 \end{tabular}
 \end{table}
 
-Für weitere Materialien und deren Werte wird auf die Tabelle in Anhang C der DIN~50100 verwiesen. 
+Für weitere Materialien und deren Werte wird auf die Tabelle in Anhang C der DIN~50100 verwiesen~\cite[Seite~89]{DIN50100}. 
 
-Damit Vorversuche die Versuchsergebnisse nicht verfälschen, dürfen diese bei der Versuchsauswertung nicht einfließen. Von den Prüfergebnissen zu Beginn der Treppenstufenfolge fließen nur diejenigen in die Auswertung ein, deren Lastniveau während des Versuches erneut erreicht wurde. So werden beispielsweise in \Figref{fig:Treppenstufenverfahren} die ersten beiden Versuche nicht gewertet. 
+Damit Vorversuche die Versuchsergebnisse nicht verfälschen, dürfen diese bei der Versuchsauswertung nicht einfließen. Von den Prüfergebnissen zu Beginn der Treppenstufenfolge fließen nur diejenigen in die Auswertung ein, deren Lastniveau während des Versuches erneut erreicht wurde~\cite[Seite~59]{DIN50100}. So werden beispielsweise in \Figref{fig:Treppenstufenverfahren} die ersten beiden Versuche nicht gewertet. 
 
 \begin{figure}[H]
     \centering
@@ -1159,58 +1159,90 @@ Damit Vorversuche die Versuchsergebnisse nicht verfälschen, dürfen diese bei d
     \label{fig:Treppenstufenverfahren}
 \end{figure}
 
-Anhand der Ermittlung des Stufensprungs, können unter ZuHilfenahme einer geschätzten Langzeitfestigkeit $L_{\text{aL},NG}$ die Laststufen anhand von \Eqref{eq:Laststufen} berechnet werden.
+Anhand der Ermittlung des Stufensprungs, können unter ZuHilfenahme einer geschätzten Langzeitfestigkeit $L_{\text{aL},NG}$ die Laststufen mit \Eqref{eq:Laststufen} berechnet werden~\cite[Seite~49]{DIN50100}:
 \begin{equation} \label{eq:Laststufen} 
     L_i = L_{\text{aL},NG} \cdot (d_{\lg})^i
 \end{equation}
 
-Die DIN~50100 legt dabei nahe sich vor Versuchsbeginn bis zu zehn Laststufen zu ermitteln.
-Ausgehend vom untersten Lasthorizont Null erfolgt die Nummerierung aufsteigend. Die Ereignisse Bruch und Durchläufer werden auf jeder Laststufe einzeln zusammen gezählt und fließen in die drei Hilfsgrößen $F_T$ (\Eqref{eq:F_T}), $A_T$ (\Eqref{eq:A_T}) und $B_T$ (\Eqref{eq:B_T}) zur Berechnung des Mittelwertes ein.
+Die DIN~50100 legt dabei nahe sich vor Versuchsbeginn bis zu zehn Laststufen zu ermitteln~\cite[Seite~92]{DIN50100}.
+Ausgehend vom untersten Lasthorizont Null erfolgt die Nummerierung aufsteigend bzw. absteigend. Die mathematische Auswertung des Treppenstufenverfahrens erfolgt nach den Vorgaben der DIN~50100. Dabei werden die Ereignisse Bruch und Durchläufer für jeden Horizont einzeln gezählt und fließen in die drei Hilfsgrößen $F_T$ (\Eqref{eq:F_T}), $A_T$ (\Eqref{eq:A_T}) und $B_T$ (\Eqref{eq:B_T}) zur Berechnung des Mittelwertes ein~\cite[Seite~60--61]{DIN50100}:
 
 \begin{equation} \label{eq:F_T} 
-    F_{\text{T}} = \sum f_i
+    F_{\text{T}} = \sum f_i,
 \end{equation}
 
 \begin{equation} \label{eq:A_T} 
-    A_{\text{T}} = \sum i \cdot f_i
+    A_{\text{T}} = \sum i \cdot f_i,
 \end{equation}
 
 \begin{equation} \label{eq:B_T} 
-    B_{\text{T}} = \sum i^2 \cdot f_i
+    B_{\text{T}} = \sum i^2 \cdot f_i.
 \end{equation}
 
-Der Mittelwert der Langzeitfestigkeit kann dann mit \Eqref{eq:LaL_NG} bestimmt werden.
+Hierbei bezeichnet $f_{\text{i}}$ die Anzahl der auswertbaren Versuchsergebnisse auf der Laststufe i. Aus den Hilfsgrößen ergibt sich anschließend der Mittelwert der Langzeitfestigkeit zu \Eqref{eq:LaL_NG}:
 
 \begin{equation} \label{eq:LaL_NG} 
-    L_{\text{aL},NG} = L_0 \cdot d_{\lg}^{\left(\frac{A_{\text{T}}}{F_{\text{T}}}\right)}
+    L_{\text{aL},NG} = L_0 \cdot d_{\lg}^{\left(\frac{A_{\text{T}}}{F_{\text{T}}}\right)}.
 \end{equation}
 
-Zwei Bedingungen sind allerdings noch zu beachten und später im MATLAB-Code abzufangen, falls diese nicht eingehalten werden.
-Es müssen mindestens zwei Umkehrpunkte vorliegen, um eine statistisch abgesicherte Versuchsauswertung durchführen zu können. 
-Wenn ein Lasthorizont nur mit Brüchen und einer nur mit Durchläufern vorliegt, muss der Stufensprung neu zu:
+Für die weitere statistische Auswertung wird zunächst die Varianz der Laststufenverteilung bestimmt. Diese ergibt sich nach DIN 50100 zu~\Eqref{eq:D_T}:
+\begin{equation}
+\label{eq:D_T}
+D_{\mathrm{T}} =\frac{F_{\mathrm{T}} \cdot B_{\mathrm{T}} - A_{\mathrm{T}}^{2}}{F_{\mathrm{T}}^{2}}.
+\end{equation}
+
+Mit der Varianz $D_{\text{t}}$, dem verwendeten Stufensprung $d_{\text{lg}}$ sowie der Anzahl der auswertbaren Versuchsergebnisse kann anschließend die Standardabweichung der Langzeitfestigkeit $s_{\text{lg~L}}$ berechnet werden. Dabei unterscheidet die DIN 50100 zwei Fälle. Für $D_{\mathrm{T}} < 0{,}5$ gilt~\Eqref{eq:s_lgL_1}:
+\begin{equation}
+\label{eq:s_lgL_1}
+s_{\lg L} = 0{,}5 \cdot \lg d_{\lg}.
+\end{equation}
+
+Für $D_{\mathrm{T}} \geq 0{,}5$ ergibt sich die Standardabweichung zu~\Eqref{eq:s_lgL_2}:
+\begin{equation}
+\label{eq:s_lgL_2}
+s_{\lg L}
+=
+\lg d_{\lg}
+\cdot 10^{4.579494 \cdot F_{\mathrm{T}}^{-0.889521}}
+\cdot D_{\mathrm{T}}^{\,7.235548 \cdot F_{\mathrm{T}}^{-0.405229}}.
+\end{equation}
+
+Für die Durchführung des Versuchs sind zusätzlich zwei Randbedingungen zu beachten.
+Zum einen müssen mindestens zwei Umkehrpunkte vorliegen, um eine statistisch abgesicherte Versuchsauswertung durchführen zu können~\cite[Seite~60--61]{DIN50100}. 
+\clearpage
+Zum anderen darf kein Lasthorizont ausschließlich Brüche beziehungsweise Durchläufer enthalten. Ist diese Bedingung nicht erfüllt, empfiehlt die DIN 50100, den verwendeten Stufensprung zu halbieren. Hierzu wird der neue Stufensprung nach~\Eqref{eq:d_lg_1_2} 
+
 \begin{equation} \label{eq:d_lg_1_2} 
     d_{\text{lg},1/2} = \sqrt{d_{\text{lg}}}
 \end{equation}
-gewählt werden, damit eine Standardabweichung berechnet werden kann. 
+
+bestimmt und die Laststufen werden entsprechend neu festgelegt~\cite[Seite~60--61]{DIN50100}. 
 
 	\subsection{Ermittlung der Knickschwingspielzahl}
- Da der Bereich der Zeitfestigkeit mit dem Perlenschnurverfahren bestimmt wird, lautet die zugehörige Gleichung für die Knickschwingspielzahl aus der DIN~50100 (Seite 62):
+ Da der Bereich der Zeitfestigkeit mit dem Perlenschnurverfahren bestimmt wird, folgt die zugehörige Gleichung für die Knickschwingspielzahl aus der DIN~50100:
+ 
  \begin{equation} \label{eq:N_K} 
     N_{\text{K}} = C \cdot \left(L_{\text{aL},NK}\right)^{-k}
 \end{equation}
 
+hierbei stellen \(C\) und \(k\) die aus der linearen Regression des Zeitfestigkeitsbereichs bestimmten Parameter der Wöhlergeraden dar. \(L_{\text{aL},NK}\) bezeichnet die Lastamplitude an der Knickschwingspielzahl~\cite[Seite~62]{DIN50100}.
+
+Bei einer Wöhlerlinie des Typs~I verläuft der Langzeitfestigkeitsbereich horizontal, sodass die Lastamplitude unabhängig von der Schwingspielzahl konstant bleibt. Es gilt:
+
 \begin{equation} \label{eq:La_TypI} 
-    L_{\text{a}} = L_{\text{aL},NK}
+    L_{\text{a}} = L_{\text{aL},NK}.
 \end{equation}
+
+Bei einer Wöhlerlinie des Typs~II nimmt die Lastamplitude auch im Langzeitfestigkeitsbereich mit zunehmender Schwingspielzahl weiter ab. Die Lastamplitude ergibt sich in diesem Fall zu:
 
 \begin{equation} \label{eq:La_TypII} 
-    L_{\text{a}} = L_{\text{aL},NK} \cdot \left(\frac{N}{N_{\text{K}}}\right)^{\frac{1}{-k_2}}
+    L_{\text{a}} = L_{\text{aL},NK} \cdot \left(\frac{N}{N_{\text{K}}}\right)^{\frac{1}{-k_2}}.
 \end{equation}
 
+Dabei bezeichnet \(k_2\) die Steigung der Wöhlerlinie im Langzeitfestigkeitsbereich und beschreibt den weiteren Abfall der Lastamplitude bei Wöhlerlinien des Typs II~\cite[Seite~105]{DIN50100}.
 
 	\section{Statistische Grundlagen}
-	Für die Versuchsauswertung sind folgende drei Größen relevant: \\
-Der arithmetische Mittelwert $\bar{x}$ nach \Eqref{eq:Arithmetischer_Mittelwert} \cite[Seite 23]{Statistik2018}:
+	Für die Versuchsauswertung sind folgende drei Größen relevant: Der arithmetische Mittelwert $\bar{x}$ nach \Eqref{eq:Arithmetischer_Mittelwert} \cite[Seite 23]{Statistik2018}:
 
     \begin{equation}\label{eq:Arithmetischer_Mittelwert}
    \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i.
@@ -1222,10 +1254,10 @@ Die Standardabweichung $s$ nach \Eqref{eq:Standardabweichung} \cite[Seite 28]{St
    s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2}.
     \end{equation}
     
-Und der Variationskoeffizient $v$ nach \Eqref{eq:Variationskoeffizient} \cite[Seite 29]{Statistik2018}:
+Der Variationskoeffizient $v$ nach \Eqref{eq:Variationskoeffizient} \cite[Seite 29]{Statistik2018}:
 
     \begin{equation}\label{eq:Variationskoeffizient}
-   v [\%] = \frac{s}{\bar{x}} \cdot 100.
+   v = \frac{s}{\bar{x}} \cdot 100.
     \end{equation}
      
-Der arithmetische Mittelwert repräsentiert bei der Versuchsauswertung den Durchschnitt der Maximalkräfte $F_{\text{max}}$~der Proben. Die Standardabweichung zeigt die Streuung der Versuchsergebnisse um den arithmetischen Mittelwert und sagt damit etwas über die Wiederholgenauigkeit der Versuche aus. Der Variationskoeffizient gibt das Verhältnis zwischen der Standardabweichung und dem Mittelwert an und ist eine dimensionslose Kenngröße zum Vergleich zwischen den verschiedenen Probendicken \cite[Seite 23-29]{Statistik2018}. 
+Der arithmetische Mittelwert repräsentiert bei der Versuchsauswertung den Durchschnitt der Maximalkräfte $F_{\text{max}}$~der Proben. Die Standardabweichung zeigt die Streuung der Versuchsergebnisse um den arithmetischen Mittelwert und sagt damit etwas über die Wiederholgenauigkeit der Versuche aus. Der Variationskoeffizient gibt das Verhältnis zwischen der Standardabweichung und dem Mittelwert an und ist eine dimensionslose Kenngröße zum Vergleich zwischen den verschiedenen Probendicken \cite[Seite 23--29]{Statistik2018}. 
