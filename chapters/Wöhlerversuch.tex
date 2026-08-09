@@ -396,26 +396,180 @@ Wahl der Fenstergröße?
 	\clearpage
 	
 	\section{Auswertung des Zeitfestigkeitsbereichs}
-	Mit den ermittelten Kraftamplituden und Schwingspielzahlen kann der Zeitfestigkeitsbereich ausgewertet werden. Hierzu wird das in \Chapref{chap:Theorie_Zeitfestigkeit} vorgestellte Perlenschnurverfahren im MATLAB-Programm umgesetzt. 
-	Das Ziel dieses Auswerteschrittes ist es die Zeitfestigkeitsgerade mit ihren charakteristischen Parametern $C$ und $k$ zu bestimmen, welche die Grundlage für die weitere Berechnung der Knickschwingspielzahl bilden. 
+	Mit Hilfe der ermittelten Kraft- bzw. Spannungsamplituden und der Bruchschwingspielzahlen der Zeitfestigkeitsproben kann der Zeitfestigkeitsbereich ausgewertet werden. Hierzu wird das in \Chapref{chap:Theorie_Zeitfestigkeit} vorgestellte Perlenschnurverfahren im MATLAB-Programm realisiert. Abhängig davon, ob der belastete Querschnitt angegeben wurde, erfolgt die Auswertung anhand der Kraft- oder Spannungsamplitude. Diese werden im Folgenden (analog zur korrespondierenden Variable im MATLAB-Programm) zusammenfassend als Auswerteamplitude bezeichnet.
+	Ziel dieses Auswerteschrittes ist die Bestimmung der 50\,\%-Zeitfestigkeitsgeraden sowie ihrer Parameter $C$ und $k$. Diese werden im weiteren Programmablauf gemeinsam mit der Langzeitfestigkeit zur Ermittlung der Knickschwingspielzahl verwendet.
+	Die nachfolgend beschriebenen Auswertungsschritte sind im MATLAB-Programm implementiert.
+	
 	
 	\subsection{Berechnung der Regressionsgeraden}
-	Da die Wöhlerlinie doppelt logarithmisch dargestellt wird, wird zunächst die Kraftamplitude und die Schwingspielzahl dekadisch logarithmiert. Anschließend werden die Summen aus den logarithmierten Werten gebildet:
-	\begin{equation}
-\sum x,\qquad
-\sum y,\qquad
-\sum x y,\qquad
-\sum x^2.
-\end{equation}. 
-	Anschließend werden mit diesen Summen die Regressionsparameter $a_0$ und $a_1$ nach den Gleichungen \Eqref{eq:reg_a1} und \Eqref{eq:reg_a0} berechnet. 
-	Diese Parameter dienen der Berechnung der Steigung der Wöhlerlinie $k$ und des Achsenabschnitts  $C$ der Schwingspielzahl (\Eqref{eq:reg_C} und \Eqref{eq:reg_k} ) der Zeitfestigkeitsgeraden und späteren Wöhlerlinie.
+	Zur Veranschaulichung werden die einzelnen Rechenschritte im weiteren Verlauf dieses Abschnitts exemplarisch anhand der generierten Proben demonstriert. Als Ausgangsgrößen dienen die zuvor vom MATLAB-Programm ermittelten Kraftamplituden und Bruchschwingspielzahlen der Zeitfestigkeitsproben, die in \Tabref{tab:Zeitfestigkeitsproben} aufgeführt sind.
+	\begin{table}[H]
+    \centering
+    \caption{Kraftamplituden und Bruchschwingspielzahlen der Zeitfestigkeitsproben}
+    \label{tab:Zeitfestigkeitsproben}
+    \begin{tabular}{c|c|c}
+        \hline
+        \textbf{Probe} & 
+        \textbf{Kraftamplitude $F_a$ in N} & 
+        \textbf{Bruchschwingspielzahl $N_B$} \\
+        \hline
+        1  & 2313,2 & 71\,098 \\
+        2  & 1599,8 & 1\,533\,291 \\
+        3  & 2195,7 & 101\,820 \\
+        4  & 2075,9 & 144\,990 \\
+        5  & 1926,2 & 219\,990 \\
+        6  & 1776,5 & 334\,990 \\
+        7  & 1656,8 & 469\,993 \\
+        8  & 1547,0 & 649\,990 \\
+        9  & 1447,2 & 892\,550 \\
+        10 & 1417,3 & 979\,990 \\
+        \hline
+    \end{tabular}
+\end{table}
 	
+	Für die beispielhafte, ausführliche Rechnung wird lediglich Probe 1 mit der Kraftamplitude $F_a = 2313{,}2\,\mathrm{N}$ und Bruchschwingspielzahl $N_B = 71\,098$ herangezogen.
 	
-	\subsection{Berechnung Standardabweichung}
-	Um die 10\,\% und die 90\,\% Ausfallwahrscheinlichkeitslinien, die eine Aussage über die Streuung der Ergebnisse liefern mit in das Wöhlerdiagramm einzeichnen zu können muss die Standardabweichung berechnet werden. 
-	Gemäß DIN~50100 wird dafür ein fiktiver Lasthorizont definiert. Die Wahl der Lage steht dem Nutzer frei. Deshalb wird diese Entscheidung vom MATLAB-Code abgenommen und ein Lasthorizont in der Mitte des gemessenen obersten und untersten Lasthorizontes des Zeitfestigkeitsbereichs festgelegt. Die neue fiktive Schwingspielzahl die sich nach paralleler Verschiebung auf den fiktiven Lasthorizont ergibt wird nach \Eqref{eq:N_fiktiv} berechnet.  
+	Da die Basquin-Gleichung nach \Eqref{eq:Zeitfestigkeitsgerade_C} durch den Zehner-Logarithmus linearisiert wird, können die Parameter der Zeitfestigkeitsgeraden mittels linearer Regression bestimmt werden. Hierfür werden die Auswerteamplitude und die Bruchschwingspielzahl gemäß \Eqref{eq:substitution} logarithmiert. Im Fall von Probe 1 resultiert:
+\begin{align*}
+x_1 &= \lg(F_{a,1}) = 3{,}3642, \\
+y_1 &= \lg(N_{B,1}) = 4{,}8519.
+\end{align*}
 	
-		Zur Veranschaulichung dieser Regressionsrechnung wird die Zeitfestigkeitsgerade zwischen dem höchsten und dem niedrigsten gemessenen Lasthorizont dargestellt
+	 Im MATLAB-Code werden die logarithmierten Werte aller Proben analog in den Variablen x und y gespeichert. Aus diesen wird zudem das Produkt $xy$ sowie das Quadrat aus $x$ gebildet:
+\begin{align*}	 
+x_1 y_1 &= 3{,}3642 \cdot 4{,}8519 = 16{,}3248, \\
+x_1^2 &= (3{,}3642)^2 = 11{,}3179.
+\end{align*}
+
+Führt man dies entsprechend für alle Proben des Zeitfestigkeitsbereiches durch, ergibt sich folgende \Tabref{tab:Regressionswerte_Zeitfestigkeit}:
+\begin{table}[H]
+    \centering
+    \caption{Logarithmierte Versuchswerte und Hilfsgrößen der Regressionsrechnung}
+    \label{tab:Regressionswerte_Zeitfestigkeit}
+    \begin{tabular}{c|c|c|c|c}
+        \hline
+        \textbf{Probe} &
+        $\boldsymbol{x = \lg F_a}$ &
+        $\boldsymbol{y = \lg N_B}$ &
+        $\boldsymbol{xy}$ &
+        $\boldsymbol{x^2}$ \\
+        \hline
+        1  & 3,3642 & 4,8519 & 16,3227 & 11,3180 \\
+        2  & 3,2041 & 6,1856 & 19,8191 & 10,2660 \\
+        3  & 3,3416 & 5,0078 & 16,7341 & 11,1661 \\
+        4  & 3,3172 & 5,1613 & 17,1213 & 11,0039 \\
+        5  & 3,2847 & 5,3424 & 17,5482 & 10,7893 \\
+        6  & 3,2496 & 5,5250 & 17,9540 & 10,5597 \\
+        7  & 3,2193 & 5,6721 & 18,2600 & 10,3637 \\
+        8  & 3,1895 & 5,8129 & 18,5402 & 10,1728 \\
+        9  & 3,1605 & 5,9506 & 18,8071 & 9,9889 \\
+        10 & 3,1514 & 5,9912 & 18,8810 & 9,9316 \\
+        \hline
+    \end{tabular}
+\end{table} 
+	 
+	 Im Anschluss werden die für die Regressionsrechnung erforderlichen logarithmierten Werte aufsummiert:
+\begin{align*}
+\sum x   &= 3{,}3642 + 3{,}2041 + 3{,}3416 + \ldots = 32{,}4821, \\
+\sum y   &= 4{,}8519 + 6{,}1856 + 5{,}0078 + \ldots = 55{,}5008, \\
+\sum xy  &= 16{,}3228 + 19{,}8193 + 16{,}7341 + \ldots = 179{,}9877, \\
+\sum x^2 &= 11{,}3178 + 10{,}2663 + 11{,}1663 + \ldots = 105{,}5600.
+\end{align*}
+
+Mit diesen Summen und der Probenanzahl $n$ werden die Regressionsparameter $a_0$ und $a_1$ nach \Eqref{eq:reg_a1} und \Eqref{eq:reg_a0} berechnet: 
+\begin{align*}
+a_1
+&= \frac{n\sum xy-\sum x\sum y}
+        {n\sum x^2-\left(\sum x\right)^2} \\[1mm]
+&= \frac{10\cdot179{,}9877-32{,}4821\cdot55{,}5008}
+        {10\cdot105{,}5600-(32{,}4821)^2} \\
+&= -5{,}6618,
+\end{align*}
+
+\begin{align*}
+a_0
+&= \frac{\sum y-a_1\sum x}{n} \\[1mm]
+&= \frac{55{,}5008-(-5{,}6618)\cdot32{,}4821}{10} \\
+&= 23{,}7709.
+\end{align*}
+
+In MATLAB erhält man für $\sum x$, $\sum xy$ und $\sum x^2$ identische Werte, während für $\sum y = 55.5010$, $a_0 = 23.8768$ und $a_1 = -5.6421$ minimale Abweichungen auftreten. Diese sind auf die Rundung der dargestellten Werte zurückzuführen, da MATLAB intern mit einer höheren numerischen Genauigkeit rechnet. Um präzisere Ergebnisse für die Kenngrößen $k$ und $C$ zu erreichen, werden nachfolgend die MATLAB-Resultate verwendet. 
+
+	Aus $a_0$ und $a_1$ werden daraufhin der Steigungsparameter $k$ und der Lageparameter $C$ der Zeitfestigkeitsgeraden nach \Eqref{eq:reg_C} und \Eqref{eq:reg_k} bestimmt: 
+\begin{align*}
+k &= -a_1 = -(-5{,}6421) = 5{,}6421, \\
+C &= 10^{a_0} = 10^{23{,}8768} = 7{,}53 \cdot 10^{23}.
+\end{align*}
+	Die durch $C$ und $k$ beschriebene Regressionsgerade entspricht der 50\,\%-Zeitfestigkeitsgeraden. Für deren Darstellung werden die zugehörigen Schwingspielzahlen an der höchsten und der niedrigsten Auswerteamplitude ermittelt. 
 	
+	\subsection{Berechnung der Standardabweichung und der Streulinien}
+	Zur Bestimmung der 10\,\%- und 90\,\%-Ausfallwahrscheinlichkeitslinien muss zunächst die Streuung der Versuchsergebnisse anhand der Standardabweichung ermittelt werden.
+	Gemäß DIN~50100 werden die Versuchsergebnisse zur Bestimmung der Standardabweichung auf einen fiktiven Lasthorizont verschoben. Da dessen Lage frei wählbar ist, wird dieser im MATLAB-Programm als arithmetischer Mittelwert aus der höchsten und der niedrigsten Auswerteamplitude festgelegt.
+Die fiktive Schwingspielzahl, die sich durch die parallele Verschiebung auf den fiktiven Lasthorizont ergibt, wird nach \Eqref{eq:N_fiktiv} berechnet.  
+	
+Zur Veranschaulichung der Berechnung der Standardabweichung ist in \Figref{fig:verschieben_Lasthorizonte} dargestellt, wie die einzelnen Proben parallel zur Zeitfestigkeitsgeraden auf den fiktiven Lasthorizont verschoben werden.
+	
+	\begin{figure}[H]
+        \centering
+            \includegraphics[width=1.0\textwidth]{verschieben_Lasthorizonte.png}
+            \caption{Verschieben der Versuchsergebnisse auf einen gemeinsamen Lasthorizont (In Anlehnung an DIN~50100, Seite 		56).}
+  	  \label{fig:verschieben_Lasthorizonte}
+    \end{figure}
+
+Aus den logarithmierten, fiktiven Schwingspielzahlen wird als nächstes gemäß \Eqref{eq:mittelwert} der Mittelwert auf dem fiktiven Lasthorizont bestimmt. Darauf aufbauend wird die Standardabweichung nach \Eqref{eq:S_Perlenschnurverfahren} berechnet und anschließend mit dem in \Eqref{eq:s_korrektur} angegebenen Korrekturfaktor angepasst.
+
+Mit der korrigierten Standardabweichung werden anschließend die Schwingspielzahlen für eine Ausfallwahrscheinlichkeit von 10\,\% und 90\,\% auf dem fiktiven Lasthorizont nach \Eqref{eq:N10} und \Eqref{eq:N90} bestimmt. Die 50\,\%-Zeitfestigkeitsgerade wird daraufhin parallel durch die entsprechenden Punkte verschoben, wodurch die 10\,\%- und 90\,\%-Zeitfestigkeitsgeraden entstehen.
+
+Dienen weniger als 10 Proben zur Auswertung oder ist der Quotient der Schwingspielzahlen der 50\,\%-Zeitfestigkeitsgeraden am niedrigsten und höchsten untersuchten Lasthorizont kleiner als fünf, gibt das Programm eine entsprechende Warnmeldung aus.. 
+Diese geben dem Nutzer die Information aus, dass die Schätzung des Mittelwertes, der Standardabweichung und der Steigung der Zeitfestigkeitsgerade statistisch nicht mehr erwartungsgetreu und unzuverlässig ist.
+
+Die damit ermittelten Parameter C, k und die drei Zeitfestigkeitsgeraden werden anschließend mit den Ergebnissen des Langzeitfestigkeitsbereichs zusammengeführt.
+
+\clearpage
+
+	\section{Auswertung des Langzeitfestigkeitsbereichs}
+	Die Auswertung des Langzeitfestigkeitsbereichs erfolgt nach dem in \Chapref{chap:Theorie_Treppenstufenverfahren} beschriebenen Treppenstufenverfahren. Ziel ist die Bestimmung der Langzeitfestigkeit einschließlich ihrer Streuung, die anschließend gemeinsam mit den Ergebnissen des Zeitfestigkeitsbereichs zur Ermittlung der Knickschwingspielzahl verwendet wird.
+	
+	\subsection{Zuordnung der Versuchsergebnisse zu den Laststufen}
+	Für die statistische Auswertung des Treppenstufenverfahrens müssen die Versuchsergebnisse zunächst den entsprechenden Laststufen zugeordnet werden.
+	Dazu werden die Brüche und Durchläufer auf den einzelnen Lasthorizonten zusammengezählt und als Ereignisse definiert. 
+	
+	Zunächst werden die Langzeitfestigkeitsproben anhand der ermittelten Schwingspielzahl in Brüche und Durchläufer eingeteilt.
+	Hierzu wird die Schwingspielzahl jeder Probe mit der vorgegebenen Grenzschwingspielzahl verglichen. Liegt sie unterhalb der Grenzschwingspielzahl, wird die Probe als Bruch gewertet. Bei einer Schwingspielzahl größer oder gleich der Grenzschwingspielzahl handelt es sich um einen Durchläufer. 
+	
+	Wurde eine belastete Querschnittsfläche angegeben, wird der vorgegebene Lasthorizont $L_0$ analog zu den Auswerteamplituden von einer Kraft- in eine Spannungsamplitude umgerechnet. So können der Lasthorizont $L_0$ und die Auswerteamplituden direkt miteinander verrechnet werden.
+	
+	Da die tatsächlich gemessene Auswerteamplitude geringfügig vom vorgegebenen Lasthorizont $L_0$ abweichen kann, wird zunächst die gemessene Auswerteamplitude mit der geringsten betragsmäßigen Abweichung zu $L_0$ bestimmt. Diese wird im weiteren Programmablauf als gemessener Ausgangslasthorizont $L_{0,\mathrm{gemessen}}$ verwendet.
+	
+	Wurde für die Versuchsdurchführung der Wurzelstufensprung aus \Eqref{eq:d_lg_1_2} verwendet, wird die logarithmische Schrittweite für die Laststufenzuordnung entsprechend angepasst. Hierzu wird der eingegebene Wert der Standardabweichung halbiert. 
+	
+	Zur Zuordnung der Versuchsergebnisse wird \Eqref{eq:Laststufen} nach der Laststufennummer i umgestellt. Da die gemessenen Auswerteamplituden aufgrund von Messabweichungen nicht exakt den theoretischen Laststufen entsprechen, wird das berechnete Ergebnis auf die nächstgelegene ganzzahlige Laststufennummer gerundet.
 
 
+	Anschließend werden nicht auswertbare Lasthorizonte entfernt. Zum einen werden die Proben, die eine Laststufennummer $i < 0$ aufweisen von der weiteren Auswertung ausgeschlossen, da sie unter dem untersten, gewerteten Lasthorizont $L_0$ liegen. Zum anderen werden nicht zu wertende Anfangsversuche nicht berücksichtigt. Gemäß der in \Chapref{chap:Theorie_Treppenstufenverfahren} beschriebenen Vorgehensweise werden zu Beginn der Treppenstufenfolge nur diejenigen Laststufen berücksichtigt, die im weiteren Versuchsverlauf erneut erreicht wurden. Hierzu überprüft das MATLAB-Programm die Laststufen vom höchsten Niveau abwärts und ermittelt, ab welcher Laststufe mehr als ein Ereignis vorliegt.
+	
+	Anschließend ergänzt das MATLAB-Programm gemäß der in \Chapref{chap:Theorie_Zeitfestigkeit} beschriebenen Vorgehensweise nach dem letzten realen Versuch eine fiktive Folgeprobe. Die zugehörige Laststufe wird dabei in Abhängigkeit vom Ergebnis der letzten realen Probe automatisch festgelegt.
+	
+	Anschließend überprüft das Programm, ob die ermittelte Laststufenfolge den Vorgaben des Treppenstufenverfahrens entspricht. Nach einem Durchläufer muss die folgende Probe auf der nächsthöheren und nach einem Bruch auf der nächstniedrigeren Laststufe liegen. Die daraus erwartete Laststufe wird mit der aus der gemessenen Auswerteamplitude bestimmten Laststufe verglichen. Bei einer Abweichung gibt das Programm eine Fehlermeldung aus
+	 
+	 Ist die Prüfung positiv wird anschließend die Treppenstufenfolge zur Veranschaulichung geplottet. 
+	
+    \begin{figure}[H]
+        \centering
+            \includegraphics[width=0.8\textwidth]{Treppenstufenfolge.png}
+            \caption{Folge im Treppenstufenverfahren.}
+  	  \label{fig:Treppenstufenfolge}
+    \end{figure}
+
+	\section{Automatisierte Erstellung des Prüfprotokolls}
+Nach Abschluss der Versuchsauswertung werden die wesentlichen Prüfparameter und Ergebnisse automatisiert in einem Prüfprotokoll zusammengeführt. Hierzu verwendet das MATLAB-Programm eine zuvor erstellte LaTeX-Vorlage, deren Platzhalter während der Programmausführung durch die eingegebenen und berechneten Werte ersetzt werden.
+
+Zunächst wird der Speicherort der LaTeX-Vorlage ermittelt und deren Inhalt als Text in MATLAB eingelesen. Kann die Vorlage nicht gefunden werden, wird die weitere Erstellung des Prüfprotokolls mit einer Fehlermeldung abgebrochen.
+
+Die zuvor erstellte Wöhlerkurve wird mit exportgraphics als PDF-Datei im Vektorformat exportiert. Durch die vektorbasierte Ausgabe bleibt die Darstellung auch bei einer Skalierung im Prüfprotokoll ohne Qualitätsverlust erhalten.
+
+Die LaTeX-Vorlage enthält definierte Platzhalter für allgemeine Angaben, Prüfparameter und Versuchsergebnisse. Diese werden mithilfe der MATLAB-Funktion replace durch die während der Programmausführung gespeicherten Werte ersetzt. Auf diese Weise werden beispielsweise Prüfdatum, Kunde, Projekt, Prüfer, Prüffrequenz, Spannungsverhältnis und Prüftemperatur automatisiert in das Prüfprotokoll übertragen.
+
+Für die Versuchsergebnisse des Zeit- und Langzeitfestigkeitsbereichs werden die Tabellenzeilen innerhalb von Schleifen automatisch erzeugt. Für jede Probe werden unter anderem Maximalkraft, Minimalkraft, Grundlast, Amplitude und Schwingspielzahl in einer für LaTeX geeigneten Zeichenkette zusammengefasst und anschließend an der entsprechenden Stelle in die Vorlage eingesetzt.
+
+Nach dem Ersetzen aller Platzhalter wird der resultierende LaTeX-Code als neue .tex-Datei gespeichert. Anschließend wird diese über einen Systemaufruf mit pdflatex kompiliert, sodass das Prüfprotokoll ohne weitere manuelle Bearbeitung als PDF-Datei erzeugt wird.

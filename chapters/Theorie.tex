@@ -940,7 +940,7 @@ Die Zeitfestigkeitsgerade kann mit der sogenannten Basquin-Gleichung (\Eqref{eq:
     N = C \cdot \sigma_{\mathrm{a}}^{-k}.
 \end{equation}
 
-Die Parameter $k$ und $C$ in \Eqref{eq:Zeitfestigkeitsgerade_C} stehen für die Steigung der Zeitfestigkeitsgeraden und für den Achsenabschnitt der Schwingspielzahl $N$ für $\sigma_{\text{a}} = 1$. 
+Die Parameter $k$ und $C$ in \Eqref{eq:Zeitfestigkeitsgerade_C} stehen für die Steigung der Zeitfestigkeitsgeraden und für den Lageparameter der Schwingspielzahl $N$ für $\sigma_{\text{a}} = 1$. 
 In der noch folgenden Auswertung des Wöhlerversuches wird bei der Erstellung der Wöhlerlinie die Kraft- bzw. Spannungsamplitude über der Schwingspielzahl aufgetragen. Die Formeln werden hier exemplarisch anhand der Spannungsamplitude erläutert, analog zur Norm. Sie lassen sich entsprechend auch auf die Kraftamplitude übertragen.
 
 Durch Anwendung des dekadischen Logarithmus wird die Basquin-Gleichung in eine lineare Form überführt. Die logarithmierte Gleichung, die Substitution und die daraus folgende Regressionsrechnung sind in der DIN~50100 auf Seite~55--56 angegeben~\cite[Seite~55--56]{DIN50100}:
@@ -975,7 +975,7 @@ Beide Parameter $a_0$ und $a_1$ werden mit der Methode der kleinsten Fehlerquadr
     a_0 = \frac{1}{n} \left( \sum y - a_1 \cdot \sum x \right).
 \end{equation}
 
-Mit den bestimmten Regressionsparametern können nun die Steigung $k$ und der Lageparameter $C$ der Basquin-Gleichung in \Eqref{eq:reg_C} und \Eqref{eq:reg_k} bestimmt werden: 
+Mit den bestimmten Regressionsparametern können nun der Steigungsparameter $k$ und der Lageparameter $C$ der Basquin-Gleichung in \Eqref{eq:reg_C} und \Eqref{eq:reg_k} bestimmt werden: 
 
 \begin{equation}\label{eq:reg_C}
     C = 10^{a_0},
@@ -1088,7 +1088,7 @@ höchsten Lasthorizonts mit einem Durchläufer liegt
 
 \clearpage
 
-	\subsection{Experimentelle Verfahren zur Bestimmung der Langzeitfestigkeit}
+	\subsection{Experimentelle Verfahren zur Bestimmung der Langzeitfestigkeit}\label{chap:Theorie_Treppenstufenverfahren}
 	Zur Bestimmung des Langzeitfestigkeitsbereichs werden in der DIN~50100 verschiedene Verfahren vorgeschlagen. Nachfolgend werden die gängigsten Methoden erläutert, um anschließend das für diese Arbeit adäquateste Verfahren auszuwählen~\cite[Seite 45]{DIN50100}:
 	\begin{itemize}
     \item Probit-Verfahren
@@ -1165,7 +1165,11 @@ Anhand der Ermittlung des Stufensprungs, können unter ZuHilfenahme einer gesch�
 \end{equation}
 
 Die DIN~50100 legt dabei nahe sich vor Versuchsbeginn bis zu zehn Laststufen zu ermitteln~\cite[Seite~92]{DIN50100}.
-Ausgehend vom untersten Lasthorizont Null erfolgt die Nummerierung aufsteigend bzw. absteigend. Die mathematische Auswertung des Treppenstufenverfahrens erfolgt nach den Vorgaben der DIN~50100. Dabei werden die Ereignisse Bruch und Durchläufer für jeden Horizont einzeln gezählt und fließen in die drei Hilfsgrößen $F_T$ (\Eqref{eq:F_T}), $A_T$ (\Eqref{eq:A_T}) und $B_T$ (\Eqref{eq:B_T}) zur Berechnung des Mittelwertes ein~\cite[Seite~60--61]{DIN50100}:
+Ausgehend vom untersten Lasthorizont Null erfolgt die Nummerierung aufsteigend bzw. absteigend. 
+
+Für die abschließende Auswertung der Treppenstufenfolge wird nach dem letzten realen Versuch eine fiktive Folgeprobe ergänzt. Nach einem Durchläufer wird diese der nächsthöheren Laststufe und nach einem Bruch der nächstniedrigeren Laststufe zugeordnet~\cite[Seite~60]{DIN50100}.
+
+Die mathematische Auswertung des Treppenstufenverfahrens erfolgt nach den Vorgaben der DIN~50100. Dabei werden die Ereignisse Bruch und Durchläufer für jeden Horizont einzeln gezählt und fließen in die drei Hilfsgrößen $F_T$ (\Eqref{eq:F_T}), $A_T$ (\Eqref{eq:A_T}) und $B_T$ (\Eqref{eq:B_T}) zur Berechnung des Mittelwertes ein~\cite[Seite~60--61]{DIN50100}:
 
 \begin{equation} \label{eq:F_T} 
     F_{\text{T}} = \sum f_i,
@@ -1209,7 +1213,6 @@ s_{\lg L}
 
 Für die Durchführung des Versuchs sind zusätzlich zwei Randbedingungen zu beachten.
 Zum einen müssen mindestens zwei Umkehrpunkte vorliegen, um eine statistisch abgesicherte Versuchsauswertung durchführen zu können~\cite[Seite~60--61]{DIN50100}. 
-\clearpage
 Zum anderen darf kein Lasthorizont ausschließlich Brüche beziehungsweise Durchläufer enthalten. Ist diese Bedingung nicht erfüllt, empfiehlt die DIN 50100, den verwendeten Stufensprung zu halbieren. Hierzu wird der neue Stufensprung nach~\Eqref{eq:d_lg_1_2} 
 
 \begin{equation} \label{eq:d_lg_1_2} 
@@ -1239,7 +1242,7 @@ Bei einer Wöhlerlinie des Typs~II nimmt die Lastamplitude auch im Langzeitfesti
     L_{\text{a}} = L_{\text{aL},NK} \cdot \left(\frac{N}{N_{\text{K}}}\right)^{\frac{1}{-k_2}}.
 \end{equation}
 
-Dabei bezeichnet \(k_2\) die Steigung der Wöhlerlinie im Langzeitfestigkeitsbereich und beschreibt den weiteren Abfall der Lastamplitude bei Wöhlerlinien des Typs II~\cite[Seite~105]{DIN50100}.
+Dabei bezeichnet \(k_2\) den Steigungsparameter der Wöhlerlinie im Langzeitfestigkeitsbereich und beschreibt den weiteren Abfall der Lastamplitude bei Wöhlerlinien des Typs II~\cite[Seite~105]{DIN50100}.
 
 	\section{Statistische Grundlagen}
 	Für die Versuchsauswertung sind folgende drei Größen relevant: Der arithmetische Mittelwert $\bar{x}$ nach \Eqref{eq:Arithmetischer_Mittelwert} \cite[Seite 23]{Statistik2018}:

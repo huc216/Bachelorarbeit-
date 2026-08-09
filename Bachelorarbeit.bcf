@@ -2489,12 +2489,12 @@
     <bcf:citekey order="111" intorder="1">DIN50100</bcf:citekey>
     <bcf:citekey order="112" intorder="1">DIN50100</bcf:citekey>
     <bcf:citekey order="113" intorder="1">DIN50100</bcf:citekey>
-    <bcf:citekey order="114" intorder="1">Statistik2018</bcf:citekey>
+    <bcf:citekey order="114" intorder="1">DIN50100</bcf:citekey>
     <bcf:citekey order="115" intorder="1">Statistik2018</bcf:citekey>
     <bcf:citekey order="116" intorder="1">Statistik2018</bcf:citekey>
     <bcf:citekey order="117" intorder="1">Statistik2018</bcf:citekey>
-    <bcf:citekey order="118" intorder="1">Blindniete_Norm</bcf:citekey>
-    <bcf:citekey order="119" intorder="1">DIN50100</bcf:citekey>
+    <bcf:citekey order="118" intorder="1">Statistik2018</bcf:citekey>
+    <bcf:citekey order="119" intorder="1">Blindniete_Norm</bcf:citekey>
     <bcf:citekey order="120" intorder="1">DIN50100</bcf:citekey>
     <bcf:citekey order="121" intorder="1">DIN50100</bcf:citekey>
     <bcf:citekey order="122" intorder="1">DIN50100</bcf:citekey>
@@ -2503,6 +2503,7 @@
     <bcf:citekey order="125" intorder="1">DIN50100</bcf:citekey>
     <bcf:citekey order="126" intorder="1">DIN50100</bcf:citekey>
     <bcf:citekey order="127" intorder="1">DIN50100</bcf:citekey>
+    <bcf:citekey order="128" intorder="1">DIN50100</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
