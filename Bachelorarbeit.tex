@@ -53,6 +53,8 @@ parskip=half% s. weiter unten
 \usepackage{tabularx}
 \usepackage{booktabs} % Wird ebenfalls für die Tabelle benötigt
 
+\usepackage{makecell}
+
 
 % --- Beispiel 1: "Times"-Look (sehr verbreitet) ---
 %\setmainfont{TeX Gyre Termes}      % Times-ähnlich, fast immer vorhanden
@@ -246,7 +248,7 @@ section      %im Inhaltsverzeichnis auf section-Ebene erscheinen
 %\newcommand{\studies}{Industrial Engineering} \newcommand{\abbrestud}{IE}
 %
 % Enter the name of the thesis:
-\newcommand{\doctitle}{Einführung eines Standards zur Aufbereitung und Auswertung von Messdaten der Hydropulsanlage}
+\newcommand{\doctitle}{Einführung eines Standards zur Aufbereitung und Auswertung von Messdaten für Schwingfestigkeitsversuche}
 %---------------------------------- -------------------------------------
 % Bei externer Arbeit die folgenden drei Kommandos aktivieren
 %---------------------------------- -------------------------------------
@@ -295,8 +297,8 @@ pdfkeywords={}
 
 
     %Auf Wunsch, für die Bewertung hat dies keine Auswirkungen
-    %\listoffigures % a list of all figures is created
-    %\listoftables % a list of all tables is created
+    \listoffigures % a list of all figures is created
+    \listoftables % a list of all tables is created
 
     %% Kapitel
 
@@ -308,6 +310,8 @@ pdfkeywords={}
 
 
     \include{chapters/Wöhlerversuch}
+    
+    \include{chapters/Fazit}
 
     %% Kapitel
     \include{chapters/abbildungen}

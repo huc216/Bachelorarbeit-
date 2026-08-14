@@ -1,0 +1,58 @@
+\chapter{Fazit und Ausblick}
+\section{Fazit}
+Ziel dieser Bachelorarbeit war die Einführung eines Standards zur Aufbereitung und Auswertung von Messdaten der Hydropulsanlage. Hierzu wurde eine MATLAB-basierte Auswertesoftware entwickelt, mit der die bei Schwingfestigkeitsversuchen entstehenden Rohmessdaten weitgehend automatisiert verarbeitet und entsprechend der DIN~50100 ausgewertet werden können. Neben der eigentlichen Versuchsauswertung standen insbesondere eine Reduzierung des manuellen Auswerteaufwands, eine reproduzierbare Vorgehensweise sowie eine möglichst bedienfreundliche Anwendung im Vordergrund.
+
+Im Rahmen der Arbeit wurde dafür ein modular aufgebauter Programmablauf entwickelt, der die einzelnen Schritte von der Eingabe der Versuchsparameter über das Einlesen und die Aufbereitung der Messdaten bis hin zur statistischen Auswertung miteinander verbindet. Die Messdateien des Zeit- und Langzeitfestigkeitsbereichs werden getrennt eingelesen und anschließend automatisiert weiterverarbeitet. Dabei werden die für die Auswertung benötigten Messgrößen Kraft, Weg, Zeit und Schwingspielzahl unabhängig von ihrer Position innerhalb der Messdateien identifiziert. Durch die Berücksichtigung der unterschiedlichen Kraft- und Wegsensoren der drei Hydropulsanlagen ist die Auswertung nicht auf eine einzelne Prüfmaschine beschränkt.
+
+Auf Grundlage der aufbereiteten Messdaten erfolgt anschließend die Auswertung des 
+Zeit- und Langzeitfestigkeitsbereichs. Für die Zeitfestigkeit wird das 
+Perlenschnurverfahren mit einer linearen Regression der logarithmierten Versuchswerte 
+angewendet, während die Langzeitfestigkeit mithilfe des Treppenstufenverfahrens 
+bestimmt wird. Neben der 50\,\%-Wöhlerlinie werden die Streuungen der Versuchsergebnisse 
+durch die 10\,\%- und 90\,\%-Wöhlerlinien berücksichtigt. Über die Bestimmung des 
+Knickpunktes werden der Zeit- und Langzeitfestigkeitsbereich schließlich zu einer 
+vollständigen Wöhlerlinie zusammengeführt.
+
+Ein weiterer Schwerpunkt lag auf der Automatisierung und Standardisierung des gesamten 
+Auswerteprozesses. Plausibilitätsprüfungen und Fehlermeldungen sollen fehlerhafte 
+Eingaben oder für die Auswertung ungeeignete Datensätze frühzeitig erkennen. Dadurch 
+wird nicht nur der manuelle Aufwand reduziert, sondern auch die Nachvollziehbarkeit 
+und Reproduzierbarkeit der Versuchsauswertung verbessert. Die Funktionsfähigkeit der 
+implementierten Berechnungen wurde anhand von realen sowie realitätsnah generierten 
+Messdatensätzen überprüft. Zusätzlich wurden ausgewählte Berechnungsschritte 
+exemplarisch nachvollzogen, wobei sich gegenüber den MATLAB-Ergebnissen lediglich 
+geringe, auf Rundungen zurückzuführende Abweichungen ergaben.
+
+Abschließend werden die ermittelten Ergebnisse automatisiert in Form der Wöhlerlinie 
+dargestellt und in einem Prüfprotokoll zusammengefasst. Damit steht ein durchgängiger 
+Auswerteprozess zur Verfügung, der die Verarbeitung der Rohmessdaten, deren Auswertung, 
+die Visualisierung der Ergebnisse und deren Dokumentation miteinander verbindet. 
+Der entwickelte modulare Aufbau ermöglicht darüber hinaus eine zukünftige Anpassung 
+und Erweiterung der Auswertesoftware. Insgesamt konnte somit ein standardisierter 
+und weitgehend automatisierter Ablauf für die Auswertung der Schwingfestigkeitsversuche 
+an den Hydropulsanlagen geschaffen werden.
+
+\section{Ausblick}
+
+Die im Rahmen dieser Arbeit entwickelte Auswertesoftware bildet eine Grundlage für 
+die standardisierte Auswertung zukünftiger Schwingfestigkeitsversuche an den 
+Hydropulsanlagen. Für die weitere Entwicklung bietet sich insbesondere eine 
+Validierung der Software anhand zusätzlicher realer Versuchsreihen an. Dadurch 
+können die implementierten Auswerteverfahren für unterschiedliche Werkstoffe, 
+Probengeometrien und Versuchsparameter überprüft und die Anwendungsgrenzen der 
+Software weiter untersucht werden.
+
+Darüber hinaus kann die Auswertesoftware zukünftig um weitere statistische 
+Auswerteverfahren ergänzt werden. Durch den modularen und funktionsbasierten Aufbau 
+des Programmcodes können zusätzliche Berechnungs- und Auswerteschritte in den 
+bestehenden Programmablauf integriert werden, ohne die grundlegende Struktur der 
+Software verändern zu müssen. Ebenso können weitere Plausibilitätsprüfungen 
+implementiert werden, um fehlerhafte oder ungewöhnliche Messdaten bereits während 
+der automatisierten Verarbeitung zu erkennen.
+
+Weiteres Entwicklungspotenzial besteht bei der automatisierten Erstellung des 
+Prüfprotokolls. Neben einer Erweiterung der ausgegebenen Versuchsinformationen und 
+Kennwerte könnten zukünftig zusätzliche Diagramme oder Auswertungen automatisch in 
+das Prüfprotokoll integriert werden. Auf diese Weise kann der in dieser Arbeit 
+entwickelte Standard schrittweise erweitert und an zukünftige Anforderungen bei 
+der Durchführung und Auswertung von Schwingfestigkeitsversuchen angepasst werden.

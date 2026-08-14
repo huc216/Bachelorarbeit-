@@ -1,0 +1,39 @@
+\babel@toc {ngerman}{}\relax 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Entstehung von Gleitbändern, sowie Intrusionen und Extrusionen infolge zyklischer Beanspruchung (In Anlehnung an \blx@tocontentsinit {0}\cite [Seite 8]{Ermüdungsfestigkeit2007}).}}{13}{figure.caption.4}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Rissstadium 1 und 2 (In Anlehnung an \blx@tocontentsinit {0}\cite [Seite 268]{Werkstofftechnik-Praktikum2021}).}}{14}{figure.caption.5}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Lastzeitverläufe: a) Kenngrößen am Beispiel einer periodischen Sinusschwingung, b) stochastische Betriebslast (In Anlehnung an \blx@tocontentsinit {0}\cite [Seite 269--270]{Werkstofftechnik-Praktikum2021}).}}{16}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Lastfälle schwellend und wechselnd (In Anlehnung an \blx@tocontentsinit {0}\cite [Seite 271]{Werkstofftechnik-Praktikum2021}, ergänzt um Betragsstriche nach \blx@tocontentsinit {0}\cite [Seite 17]{Ermüdungsfestigkeit2007}).}}{17}{figure.caption.7}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Servohydraulische Prüfmaschine (Hydropulsanlage) im\\ Maschinendynamik-Labor der OTH:\\ a)~Hydropulsanlage Maschinendynamik-Labor OTH Regensburg,\\ b) Schematischer Aufbau und Regelkreis\\ (eigene Darstellung in Anlehnung an \blx@tocontentsinit {0}\cite [Seite 261]{Ölhydraulik2020}).}}{19}{figure.caption.8}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces { Hydropulsanlage \\ Maschinendynamik-Labor \\ OTH Regensburg}}}{19}{subfigure.5.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Schematischer Aufbau und Regelkreis}}}{19}{subfigure.5.2}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Schwingungen der Einzelproben mit gleicher Mittelspannung und unterschiedlicher Spannungsamplitude (In Anlehnung an \blx@tocontentsinit {0}\cite [Seite 273]{Werkstofftechnik-Praktikum2021}).}}{21}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Prinzipskizze einer Wöhlerkurve (In Anlehnung an \blx@tocontentsinit {0}\cite [Seite 17]{DIN50100}).}}{22}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Vergleich Typ I und Typ II der Wöhlerkurve (eigene Darstellung in Anlehnung an \blx@tocontentsinit {0}\cite [Seite 18]{DIN50100}; Werkstoffzuordnung nach \blx@tocontentsinit {0}\cite [Seite 15--16]{DIN50100}).}}{23}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Horizontenverfahren \blx@tocontentsinit {0}\cite [Seite 26]{Dissertation_Woehler}.}}{24}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Ermittlung der Standardabweichung -- Perlenschnurverfahren~\blx@tocontentsinit {0}\cite [Seite~56]{DIN50100}.}}{27}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Probit-Verfahren \blx@tocontentsinit {0}\cite [Seite 36]{Dissertation_Woehler}.}}{29}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Abgrenzungsverfahren \blx@tocontentsinit {0}\cite [Seite 33]{Dissertation_Woehler}.}}{30}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Treppenstufenverfahren \blx@tocontentsinit {0}\cite [Seite 60]{DIN50100}.}}{31}{figure.caption.17}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Zugprüfmaschine Zwick/Roell Z250 (eigene Aufnahme).}}{36}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Zugproben Aluminium.}}{37}{figure.caption.20}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Scherzugversuch - Proben 2--5 (AlMg3\_3\_3mm, D6.4).}}{39}{figure.caption.22}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Scherzugversuch - Proben 1--5 (CrNi\_2\_5mm, D6.4).}}{40}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Scherzugversuch - Proben 1--5 (CrNi\_3\_3mm, D6.4).}}{41}{figure.caption.24}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Schematischer Ablauf des entwickelten MATLAB-Auswerteprogramms}}{46}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Eingabefenster des MATLAB-Programms mit exemplarisch eingetragenen Versuchsparametern}}{48}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Vergleich der Wegsignale des PL16K-Wegaufnehmers und des Lasersensors.}}{51}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Darstellung der Abbruchpunkte im Weg-Zeit-Diagramm der untersuchten Proben.}}{54}{figure.caption.31}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Detailansicht zur Darstellung der Abbruchpunkte im Weg-Zeit-Diagramm der untersuchten Proben.}}{54}{figure.caption.32}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Verschieben der Versuchsergebnisse auf einen gemeinsamen Lasthorizont (In Anlehnung an DIN~50100, Seite 56).}}{60}{figure.caption.35}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Darstellung der ausgewerteten Treppenstufenfolge.}}{66}{figure.caption.39}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Aus der MATLAB-Auswertung resultierende Wöhlerlinien des Auswertebeispiels}}{70}{figure.caption.42}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\def \@chapapp {\appendixname }
+\addvspace {10\p@ }
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

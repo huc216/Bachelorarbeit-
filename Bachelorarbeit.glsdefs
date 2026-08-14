@@ -1,0 +1,196 @@
+\glsdefs@newdocentry{FEM}%
+{%
+name={\acronymfont {\glsentryshort {FEM}}},%
+sort={FEM},%
+type={acronym},%
+first={FEM},%
+firstplural={FEMs},%
+text={FEM},%
+plural={FEMs},%
+description={Finite-Elemente-Methode},%
+descriptionplural={Finite-Elemente-Methode},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Finite-Elemente-Methode},%
+longplural={Finite-Elemente-Methodes},%
+short={FEM},%
+shortplural={FEMs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{BEM}%
+{%
+name={\acronymfont {\glsentryshort {BEM}}},%
+sort={BEM},%
+type={acronym},%
+first={BEM},%
+firstplural={BEMs},%
+text={BEM},%
+plural={BEMs},%
+description={Randelementmethode},%
+descriptionplural={Randelementmethode},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={Randelementmethode},%
+longplural={Randelementmethodes},%
+short={BEM},%
+shortplural={BEMs},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{symb:u}%
+{%
+name={$\bm u$},%
+sort={$\bm u$},%
+type={symbolslist},%
+first={$\protect \bm  {u}$},%
+firstplural={$\protect \bm  {u}$s},%
+text={$\protect \bm  {u}$},%
+plural={$\protect \bm  {u}$s},%
+description={Verschiebungsvektor},%
+descriptionplural={Verschiebungsvektor},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{index:j}%
+{%
+name={$\textsf {J}$},%
+sort={$\textsf {J}$},%
+type={indexlist},%
+first={$\protect \textsf  {J}$},%
+firstplural={$\protect \textsf  {J}$s},%
+text={$\protect \textsf  {J}$},%
+plural={$\protect \textsf  {J}$s},%
+description={Knoten $\textsf {J}$ eines Elements},%
+descriptionplural={Knoten $\textsf {J}$ eines Elements},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{index:i}%
+{%
+name={$\textsf {I}$},%
+sort={$\textsf {I}$},%
+type={indexlist},%
+first={$\protect \textsf  {I}$},%
+firstplural={$\protect \textsf  {I}$s},%
+text={$\protect \textsf  {I}$},%
+plural={$\protect \textsf  {I}$s},%
+description={Knoten $\textsf {I}$ eines Elements},%
+descriptionplural={Knoten $\textsf {I}$ eines Elements},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{testlist2}%
+{%
+name={$\nabla $},%
+sort={$\nabla $},%
+type={operatorlist},%
+first={$\nabla $},%
+firstplural={$\nabla $s},%
+text={$\nabla $},%
+plural={$\nabla $s},%
+description={Gradient},%
+descriptionplural={Gradient},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{testlist}%
+{%
+name={$\bm {D}_{\varepsilon }()$},%
+sort={$\bm {D}_{\varepsilon }()$},%
+type={operatorlist},%
+first={$\protect \bm  {D}_{\varepsilon }()$},%
+firstplural={$\protect \bm  {D}_{\varepsilon }()$s},%
+text={$\protect \bm  {D}_{\varepsilon }()$},%
+plural={$\protect \bm  {D}_{\varepsilon }()$s},%
+description={Differentialoperatormatrix},%
+descriptionplural={Differentialoperatormatrix},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
